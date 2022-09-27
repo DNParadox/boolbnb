@@ -17,7 +17,7 @@ class CreateSponsorshipsTable extends Migration
             $table->id();
             $table->char('name', 100);
             $table->smallInteger('hour');
-            $table->
+            // $table->
             $table->timestamps();
         });
     }
