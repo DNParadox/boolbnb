@@ -18,11 +18,11 @@ class CreateApartmentsTable extends Migration
             $table->text('address');
             $table->unsignedTinyInteger('bathroom');
             $table->unsignedTinyInteger('bed_number');
-            $table->text('description');
-            $table->float('latitude', 10, 7);
-            $table->float('longitude', 10, 7);
-            $table->unsignedBigInteger('price');
-            $table->text('photo');
+            $table->text('description')->nullable();
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 9);
+            $table->float('price', 7, 2);
+            $table->text('photo')->nullable();
             $table->unsignedTinyInteger('room_number');
             $table->unsignedSmallInteger('square_meters');
             $table->char('title',255);
