@@ -21,5 +21,7 @@ Route::middleware('auth')->namespace('Logged')->name('logged.')->prefix('logged'
 });
 
 Route::get('{any?}', function () {
-    return view('home'); 
+    return view('guest.home'); 
 })->where('any','.*');
+
+
