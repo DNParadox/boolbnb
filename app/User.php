@@ -44,16 +44,3 @@ class User extends Authenticatable
     }
 }
 
-
-
-// class User extends Model 
-// {
-
-//     protected $table= 'users';
-
-//     protected $fillable = [
-//         'name', 'surname', 'email', 'born_date', 'password',
-//     ];
-
-
-// }

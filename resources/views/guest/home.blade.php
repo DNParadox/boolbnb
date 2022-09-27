@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>FRONT END</title>
 </head>
 <body>
+
+    {{-- Pagina dedicata al front end. Andrà a ricopiare la pagina inizale di airBnb --}}
+    {{-- Aggiungete un file dedicato per l'header utilizzaando Vue  --}}
+    {{-- Quindi la struttura avrà main che innesta Header, MainContent, Footer --}}
     <div id="root">
 
     </div>
