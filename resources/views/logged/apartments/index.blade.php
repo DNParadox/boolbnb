@@ -7,6 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-  simone marra
+  <h2>i tuoi dati</h2>
+  <h3>Nome: {{$user->name}}</h3>
+  <h3>cognome: {{$user->surname}}</h3>
+  <h3>email: {{$user->email}}</h3>
+
+  <h2>i tuoi appartamenti</h2>
+  <a href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
 </body>
 </html>
