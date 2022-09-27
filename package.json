@@ -24,10 +24,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-<<<<<<< HEAD
-        "install": "^0.13.0"
-=======
         "vue-router": "^3.6.5"
->>>>>>> f2f31001d1c38edfae7fe97486b9fc76013c4a18
     }
 }
