@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // protected $table= 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -42,3 +43,17 @@ class User extends Authenticatable
         return $this->hasOne('App\Apartment');
     }
 }
+
+
+
+// class User extends Model 
+// {
+
+//     protected $table= 'users';
+
+//     protected $fillable = [
+//         'name', 'surname', 'email', 'born_date', 'password',
+//     ];
+
+
+// }
