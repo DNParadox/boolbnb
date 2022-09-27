@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // protected $table= 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -37,3 +38,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+
+
+
+// class User extends Model 
+// {
+
+//     protected $table= 'users';
+
+//     protected $fillable = [
+//         'name', 'surname', 'email', 'born_date', 'password',
+//     ];
+
+
+// }
