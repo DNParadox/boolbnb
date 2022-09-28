@@ -87,8 +87,8 @@ class ApartmentController extends Controller
         $have_one = true;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-
-        if(!$apartments){
+        
+        if($apartments == null){
             $have_one = false;
             
             $data = [
@@ -99,7 +99,7 @@ class ApartmentController extends Controller
             
             $data = [
                 'have_one' => $have_one,
-                'apartment' => $apartment,
+                'apartments' => $apartments,
             ]; 
         }
         

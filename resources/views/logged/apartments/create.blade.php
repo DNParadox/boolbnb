@@ -1,6 +1,17 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
+<div class="register">
+  <div class="container">
+    <div class="text">
+      <h1>Apri le porte ai viaggiatori</h1>
+    </div>
+
+    <div class="r-button">
+      <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
+    </div>
+  </div>
+</div>
   <div>
     <h1>Aggiungi un Appartamento</h1>
   </div>
