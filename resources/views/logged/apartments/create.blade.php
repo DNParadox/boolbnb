@@ -80,7 +80,7 @@
 
       <div class="mb-3">
           <label for="description" class="form-label">Contenuto</label>
-          <textarea class="form-control" id="description" name="description" rows="5">"{{ old('description') }}"</textarea>
+          <textarea class="form-control" id="description" name="description" rows="5">{{ old('description') }}</textarea>
       </div>
 
       <div class="mb-3">

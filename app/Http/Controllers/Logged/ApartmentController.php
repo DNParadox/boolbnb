@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\User;
 use App\Service;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -54,8 +55,20 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->getValidationRules());
-        $add_apartment = $request->all();
-        dd($add_apartment);
+        $form_data = $request->all();
+
+        if(isset($form_data['photo'])) {
+            $img_path = Storage::put('apartment-photos', $form_data['photo']);
+            $form_data['photo'] = $img_path;
+        }
+
+        $new_apartment = new Apartment();
+
+        
+
+        $new_apartment->fill($form_data);
+
+        
     }
 
     /**
