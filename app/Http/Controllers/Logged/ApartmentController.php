@@ -65,14 +65,20 @@ class ApartmentController extends Controller
     {
         $request->validate($this->getValidationRules());
         $form_data = $request->all();
-
         if(isset($form_data['photo'])) {
             $img_path = Storage::put('apartment-photo', $form_data['photo']);
             $form_data['photo'] = $img_path;
         }
 
         $new_apartment = new Apartment();
-        $new_apartment->fill($form_data);    
+        $new_apartment->address = $form_data['address'] . " " .$form_data['cap'] . " " . $form_data['city'];
+        $new_apartment->latitude = 14.444444;
+        $new_apartment->longitude = 40.444444;
+        $new_apartment->visibility = 1;
+        $new_apartment->fill($form_data);  
+        $new_apartment->save();
+        
+        return redirect()->route('logged.apartments.index');
     }
 
     /**
@@ -157,7 +163,7 @@ class ApartmentController extends Controller
             'bed_number' => 'required|min:1|max:999|numeric',
             'cap' => 'required|min:1|max:99999|numeric',
             'city' => 'required|min:5|max:100',
-            'bathroom_number' => 'required|min:1|max:999|numeric',
+            'bathroom' => 'required|min:1|max:999|numeric',
             'address' => 'required|min:10|max:60000',
             'price' => 'required|min:1|max:9999999|numeric',
             'photo' => 'image|max: 1024|nullable',

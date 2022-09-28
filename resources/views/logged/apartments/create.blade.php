@@ -58,8 +58,8 @@
   
           <div class="row">
             <div class="col mb-3">
-              <label for="bathroom_number" class="form-label">Numero di bagni</label>
-              <input type="number" class="form-control" id="bathroom_number" name="bathroom_number" value="{{ old('bathroom_number') }}">
+              <label for="bathroom" class="form-label">Numero di bagni</label>
+              <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}">
             </div>
       
             <div class="col mb-3">

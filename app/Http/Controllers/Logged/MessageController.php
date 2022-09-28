@@ -22,7 +22,8 @@ class MessageController extends Controller
         $have_one = true;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-        $messages = Message::Where('apartment_id', '=', $apartments->id)->get();  
+        $messages = Message::Where('apartment_id', '=', $apartments->id)->get();
+
         $data = [
             'apartments' => $apartments,
             'user' => $user,

@@ -11187,21 +11187,45 @@ h1 {
   height: auto;
 }
 
+.message_page_header {
+  height: 250px;
+  background-color: rgba(205, 205, 205, 0.2);
+  border-bottom: 2px solid rgba(205, 205, 205, 0.5);
+  padding-left: 50px;
+  padding-top: 60px;
+  color: rgb(135, 135, 135);
+}
+
+.message_page_header h2 {
+  font-size: 46px;
+}
+
+.message_page_header p {
+  font-size: 20px;
+  padding-left: 5px;
+}
+
 .message_page {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid rgba(205, 205, 205, 0.5);
 }
 
 .message_page .apartment_col {
-  width: 45%;
+  width: 250px;
   padding: 20px;
 }
 
 .message_page .apartment_col img {
-  border-radius: 20px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
 }
 
 .message_page .message_col {
-  width: 65%;
+  width: 600px;
+  text-align: left;
 }
 
 * {
