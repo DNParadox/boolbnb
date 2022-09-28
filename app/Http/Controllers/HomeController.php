@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('logged.home');
+        return view('logged.apartments.index');
     }
 }
