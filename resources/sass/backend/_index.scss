@@ -1,0 +1,27 @@
+
+body {
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+}
+
+.apartment {
+    display: flex;
+    margin-bottom: 30px;
+
+        img {
+            border-radius: 15px;
+        }
+
+        .right-part {
+            margin-left: 15px;
+
+            .info {
+                margin: 10px 0;
+            }
+
+            .delete {
+                margin-top: 15px;
+            }
+        }
+
+    
+}
