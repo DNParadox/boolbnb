@@ -3,12 +3,22 @@
   <div class="register">
     <div class="container">
       <div class="text">
-        <h1>Apri le porte ai viaggiatori</h1>
+        @if ($have_one)
+          <h1>Inserisci il tuo appartamento nella sezione in Evidenza</h1>
+        @else
+          <h1>Apri le porte ai viaggiatori</h1>
+        @endif
       </div>
   
-      <div class="r-button">
-        <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
-      </div>
+      @if ($have_one)
+        <div class="r-button">
+          <a class="btn btn-success" href="#">Sponsorizza</a>
+        </div>
+      @else
+        <div class="r-button">
+          <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
+        </div>
+      @endif
     </div>
   </div>
 
@@ -50,7 +60,6 @@
       </div>
 
       <div class="info">
-        <a class="btn btn-success" href="#">Sponsorizza</a>
         <a class="btn btn-warning" href="#">Vedi messaggi</a>
         <a class="btn btn-info" href="#">Statistiche</a>
         <a class="btn btn-danger" href="#">Disabilita</a>
@@ -93,13 +102,17 @@
         </div>
 
         <div class="info">
-          <a class="btn btn-success" href="#">Sponsorizza</a>
           <a class="btn btn-warning" href="#">Vedi messaggi</a>
           <a class="btn btn-info" href="#">Statistiche</a>
           <a class="btn btn-danger" href="#">Disabilita</a>
         </div>
         <hr m-5>
       </div> 
+    @else
+      <div class="banner">
+        <h2 class="text-center">Prova a ospitare su Bnb</h2>
+        <p class="text-center">Unisciti a noi. Saremo al tuo fianco in ogni momento.</p>
+      </div>
     @endif
 
     
