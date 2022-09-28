@@ -11029,6 +11029,36 @@ section {
   padding: 20px 0;
 }
 
+h1 {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.content-form-apt {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.content-form-apt .col-left {
+  border-right: 1px solid #e1e1e1;
+}
+
+.content-form-apt .form-check {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.content-form-apt .btn-content {
+  padding-top: 20px;
+}
+
+.content-form-apt .btn-content .btn-apt {
+  width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
