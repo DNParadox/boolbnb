@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\User;
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -35,7 +36,13 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        
+        $services = Service::all();
+
+        $data = [
+            'services' => $services,
+        ];
+
+        return view('logged.apartments.create', $data);
     }
 
     /**

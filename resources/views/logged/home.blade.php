@@ -1,1 +1,5 @@
-@extends('layouts.dashboard')
+@extends('layouts.URAdashboard')
+
+@section('content')
+
+@endsection

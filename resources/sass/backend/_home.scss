@@ -1,0 +1,22 @@
+.ura_header{
+  height: 60px;
+  font-size: 18px;
+  
+  .nav_menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0 20px;
+
+    .ul_links{
+      display: flex;
+      list-style-type: none;
+
+      li{
+        padding-inline: 20px;
+      }
+    }
+  }
+
+}
