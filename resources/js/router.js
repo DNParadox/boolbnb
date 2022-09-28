@@ -5,4 +5,6 @@ Vue.use(VueRouter);
 
 const router=new VueRouter({
     mode:'history'
-})
+});
+
+export default router;
