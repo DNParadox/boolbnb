@@ -54,19 +54,15 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->getValidationRules());
-        $form_data = $request->all();
+        // $request->validate($this->getValidationRules());
+        $form_data = $request->input->all();
 
         if(isset($form_data['photo'])) {
             $img_path = Storage::put('apartment-photo', $form_data['photo']);
             $form_data['photo'] = $img_path;
         }
 
-        $new_apartment = new Apartment();
-
-        
-
-        $new_apartment->fill($form_data);
+        dd($form_data);
 
         
     }

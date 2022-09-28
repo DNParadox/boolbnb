@@ -3,10 +3,9 @@
 @section('content')
   <h1>Aggiungi un Appartamento</h1>
     
-  <form action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
-      @csrf
-      @method('POST')
-
+  <form  method="post" enctype="multipart/form-data">
+    @csrf
+    {{-- @method('POST') --}}
       @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -90,4 +89,40 @@
 
       <input type="submit" value="Salva Post">          
   </form>
+
+
+  <script type="text/javascript">
+
+    document.querySelector('form').addEventListener('submit',
+      function(e) {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target).entries());
+
+        axios.get(`https://api.tomtom.com/search/2/geocode/${data.city}-${data.address}-${data.cap}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+        .then((response)=>{
+          data.position = response.data.results[0].position;
+        })
+
+        console.log(data);
+        
+        // axios.post("{{ route('logged.apartments.store') }}", this.data,{
+        //   headers: {
+        //     'X-CSRF-TOKEN' : window.Laravel.csrfToken
+        //   }
+        // });
+
+        axios({
+          method: 'post',
+          url: "{{ route('logged.apartments.store') }}",
+          data: {
+            formData: JSON.stringify(this.data)
+          },
+          headers: {
+            'X-CSRF-TOKEN' : document.querySelector('meta[name=csrf-token]').content,
+            'content-type': 'text/json'
+          }
+        })
+    })
+    
+  </script>
 @endsection

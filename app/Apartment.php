@@ -13,4 +13,8 @@ class Apartment extends Model
     public function service() {
         return $this->belongsToMany('App\Service');
     }
+
+    protected $fillable = [
+        '_token'
+    ];
 }
