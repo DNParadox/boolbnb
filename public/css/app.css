@@ -10954,6 +10954,11 @@ a.text-dark:focus {
   padding-inline: 20px;
 }
 
+.profile-banner {
+  background-color: #ffaC81;
+  padding: 40px 0;
+}
+
 * {
   margin: 0;
   padding: 0;
