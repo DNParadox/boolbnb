@@ -12,10 +12,27 @@
     .ul_links{
       display: flex;
       list-style-type: none;
+      justify-content: space-between;
+
 
       li{
-        padding-inline: 20px;
+        margin-inline: 5px;
+        padding-block: 7px;
+        padding-inline: 15px; 
       }
+      li:hover{
+        background-color: lightblue;
+        border-radius: 24px;
+      }
+    }
+  }
+  
+  figure{
+    width: 30px;
+    height: 20px;
+
+    img {
+      width: 100%;
     }
   }
 
