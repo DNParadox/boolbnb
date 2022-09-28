@@ -21,7 +21,7 @@ class ApartmentController extends Controller
     {
         $user = Auth::user();
         // ricarca degli appartamenti registrati dallo user
-        $apartments = Apartment::Where('user_id', "=", $user->id);
+        $apartments = Apartment::Where('users_id', "=", $user->id);
         $data = [
             'apartments' => $apartments,
             'user' => $user,
@@ -37,10 +37,12 @@ class ApartmentController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $services = Service::all();
 
         $data = [
             'services' => $services,
+            'user' => $user,
         ];
 
         return view('logged.apartments.create', $data);
@@ -63,12 +65,7 @@ class ApartmentController extends Controller
         }
 
         $new_apartment = new Apartment();
-
-        
-
-        $new_apartment->fill($form_data);
-
-        
+        $new_apartment->fill($form_data);    
     }
 
     /**
@@ -79,14 +76,22 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        // $apartment = Apartment::findOrFail($id);
-
-        // $data = [
-        //     'apartment' => $apartment,
-        // ];
+        try
+        {
+            $apartment = Apartment::Where('users_id', "=", $id);
+        }
+        catch(Exception $e)
+        {
+            dd($e->getMessage());
+        }
         
 
-        return view('logged.apartments.show');
+        $data = [
+            'apartment' => $apartment,
+        ];
+        
+
+        return view('logged.apartments.show', $data);
     }
 
     /**
@@ -97,7 +102,15 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $apartment = Apartment::findOrFail($id);
+        // $services =  Service::all();
+
+        // $data = [
+        //     'apartment' => $apartment,
+        //     'services' => $services,
+        // ];
+
+        return view('logged.apartments.edit');
     }
 
     /**

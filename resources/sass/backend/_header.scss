@@ -1,7 +1,6 @@
 .ura_header{
-  height: 60px;
-  font-size: 18px;
-  
+  height: 80px;
+  font-size: 1.25rem;
   .nav_menu{
     display: flex;
     justify-content: space-between;
@@ -11,22 +10,47 @@
 
     .ul_links{
       display: flex;
-      list-style-type: none;
       justify-content: space-between;
 
+      .icon {
+        font-size: 0.9rem;
+      }
 
-      li{
+      .links{
         margin-inline: 5px;
         padding-block: 7px;
         padding-inline: 15px; 
       }
-      li:hover{
-        background-color: lightblue;
+      .links:hover{
         border-radius: 24px;
+        background-color: rgba(205, 205, 205, 0.2);
+        opacity: 1;
       }
     }
+  } 
+  .icon-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    // Border in realtà colore più chiaro
+    border: 1px solid black;
+    margin-inline: 6px;
+   
+    .icon {
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    } 
   }
-  
+  .icon-container:active{
+    border: 2px solid black;
+  }
+
   figure{
     width: 30px;
     height: 20px;
@@ -35,5 +59,41 @@
       width: 100%;
     }
   }
+  .profile_header{
+    display: flex;
+  }
+  // Gestisce Position Relative riguardante voce "Menu" 
+  .pr1 {
+    position: relative;
+    cursor: pointer;
+    padding: 0 10px;
+  }
 
+  .pr2{
+    position: relative;
+    cursor: pointer;
+  }
+
+  .dropdown-container {
+    display: none;
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    padding-inline: 20px 70px;
+    padding-block: 10px;
+    box-shadow: 4px 4px rgba(136, 136, 136, 0.25);
+  }
+  .tr {
+    top: 70px;
+    right: 1%;
+  }
+
+  .tr1 {
+    top: 70px;
+  }
+
+  .active{
+    border-radius: 20px;
+  }
 }
+

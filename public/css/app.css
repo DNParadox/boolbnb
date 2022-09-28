@@ -10933,8 +10933,8 @@ a.text-dark:focus {
 }
 
 .ura_header {
-  height: 60px;
-  font-size: 18px;
+  height: 80px;
+  font-size: 1.25rem;
 }
 
 .ura_header .nav_menu {
@@ -10947,19 +10947,46 @@ a.text-dark:focus {
 
 .ura_header .nav_menu .ul_links {
   display: flex;
-  list-style-type: none;
   justify-content: space-between;
 }
 
-.ura_header .nav_menu .ul_links li {
+.ura_header .nav_menu .ul_links .icon {
+  font-size: 0.9rem;
+}
+
+.ura_header .nav_menu .ul_links .links {
   margin-inline: 5px;
   padding-block: 7px;
   padding-inline: 15px;
 }
 
-.ura_header .nav_menu .ul_links li:hover {
-  background-color: lightblue;
+.ura_header .nav_menu .ul_links .links:hover {
   border-radius: 24px;
+  background-color: rgba(205, 205, 205, 0.2);
+  opacity: 1;
+}
+
+.ura_header .icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: lightcoral;
+  border: 1px solid black;
+  margin-inline: 6px;
+}
+
+.ura_header .icon-container .icon {
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.ura_header .icon-container:active {
+  border: 2px solid black;
 }
 
 .ura_header figure {
@@ -10969,6 +10996,44 @@ a.text-dark:focus {
 
 .ura_header figure img {
   width: 100%;
+}
+
+.ura_header .profile_header {
+  display: flex;
+}
+
+.ura_header .pr1 {
+  position: relative;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.ura_header .pr2 {
+  position: relative;
+  cursor: pointer;
+}
+
+.ura_header .dropdown-container {
+  display: none;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  padding-inline: 20px 70px;
+  padding-block: 10px;
+  box-shadow: 4px 4px rgba(136, 136, 136, 0.25);
+}
+
+.ura_header .tr {
+  top: 70px;
+  right: 1%;
+}
+
+.ura_header .tr1 {
+  top: 70px;
+}
+
+.ura_header .active {
+  border-radius: 20px;
 }
 
 .apartment {
@@ -10993,8 +11058,12 @@ a.text-dark:focus {
 }
 
 .profile-banner {
-  background-color: #ffaC81;
-  padding: 40px 0;
+  background-image: url(data:image/webp;base64,UklGRoQCAABXRUJQVlA4WAoAAAAgAAAAHQAAHQAASUNDUAwCAAAAAAIMbGNtcwIQAABtbnRyUkdCIFhZWiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAAF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAAAANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZWiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYFUXdd7WtwegWJsZp8rGm/fdPD6TD//1ZQOCBSAAAAUAMAnQEqHgAeAD7ZYKpOtiWooygKqsAbCWQAnTLfAiGYXfAA/uw/rDUG/ySry930W5TklUCdPGwZvhShkxmlA5XTMUKtCBVuol3YS6MrvY4AAA==);
+  background-repeat: repeat;
+  background-size: cover;
+  padding-block: 70px;
+  color: white;
+  font-size: 1.4rem;
 }
 
 section {
@@ -11067,6 +11136,7 @@ h1 {
 
 ul {
   margin: 0;
+  list-style-type: none;
 }
 
 a {
