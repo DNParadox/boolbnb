@@ -64,7 +64,10 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        
+
+        return view('logged.apartments.show', $data);
     }
 
     /**
@@ -99,5 +102,25 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    protected function getValidationRules() {
+        // Creo le Validazioni per i campi nel form
+        return [
+            'title' => 'required|min:5|max:100',
+            'room_number' => 'required|min:1|max:3',
+            'bed_number' => 'required|min:1|max:3',
+            'bathroom_number' => 'image|max: 1024|nullable',
+            'Address' => 'required|min:5|max:255',
+            'latitude' => 'required|min:5|max:255',
+            'longitude' => 'required|min:5|max:255',
+            'Price' => 'required|min:5|max:255',
+            'Foto' => 'required|min:5|max:255',
+            'Visibility' => 'required|min:5|max:255',
+            'description' => 'required|min:10|max:60000',
+            'square_meters' => '',
+            'users_id' => 'nullable|exists:users,id',
+        ];
     }
 }
