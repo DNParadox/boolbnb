@@ -10971,6 +10971,27 @@ a.text-dark:focus {
   width: 100%;
 }
 
+.apartment {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.apartment img {
+  border-radius: 15px;
+}
+
+.apartment .right-part {
+  margin-left: 15px;
+}
+
+.apartment .right-part .info {
+  margin: 10px 0;
+}
+
+.apartment .right-part .delete {
+  margin-top: 15px;
+}
+
 .profile-banner {
   background-color: #ffaC81;
   padding: 40px 0;
