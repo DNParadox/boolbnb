@@ -1,7 +1,7 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
-  <h1>Aggiungi un Post</h1>
+  <h1>Aggiungi un Appartamento</h1>
     
   <form action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
       @csrf
@@ -80,7 +80,7 @@
 
       <div class="mb-3">
           <label for="description" class="form-label">Contenuto</label>
-          <textarea class="form-control" id="description" name="description" rows="5">{{ old('content') }}</textarea>
+          <textarea class="form-control" id="description" name="description" rows="5">"{{ old('description') }}"</textarea>
       </div>
 
       <div class="mb-3">
