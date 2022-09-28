@@ -22,14 +22,22 @@ class MessageController extends Controller
         $have_one = true;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-        $messages = Message::Where('apartment_id', '=', $apartments->id)->get();
-
-        $data = [
-            'apartments' => $apartments,
-            'user' => $user,
-            'messages' => $messages
-        ];
-
+        if(!$apartments){
+            $have_one = false;
+            $data = [
+                'user' => $user,
+                'have_one' => $have_one,
+            ];
+        } else {
+            $messages = Message::Where('apartment_id', '=', $apartments->id)->get();
+            $data = [
+                'apartments' => $apartments,
+                'user' => $user,
+                'messages' => $messages,
+                'have_one' => $have_one,
+            ];
+        }
+    
         return view('logged.message.index',  $data );
     }
 }

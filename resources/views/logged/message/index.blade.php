@@ -12,7 +12,8 @@
       </div>
     </div>
   </div>
-  <div class="message_page_header">
+@if ($have_one)
+   <div class="message_page_header">
     <h2>Controlla i messaggi degli utenti</h2>
     <p>I clienti stannto aspettando una risposta riguardante il loro prossimo soggiorno</p>
   </div>
@@ -28,7 +29,13 @@
         <p>{{ $messages[0]->message }}</p>
       </div>
     </div>
+  </div>    
+  @else
+  <div class="message_page_header">
+    <h2>Non hai appartamenti registrati</h2>
+    <p>registrane uno per poter visualizzare i messaggi o contatta il servizio clienti</p>
   </div>
-
+@endif
+  
  
 @endsection
