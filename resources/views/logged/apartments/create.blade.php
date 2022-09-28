@@ -1,7 +1,7 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
-  <h1>Aggiungi un Post</h1>
+  <h1>Aggiungi un Appartamento</h1>
     
   <form action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
       @csrf
@@ -83,10 +83,10 @@
           <textarea class="form-control" id="description" name="description" rows="5">"{{ old('content') }}"</textarea>
       </div>
 
-      <div class="mb-3">
+      {{-- <div class="mb-3">
           <label for="photo" class="form-label">Default file input example</label>
           <input class="form-control" type="file" id="photo" name="photo">
-        </div>
+      </div> --}}
 
       <input type="submit" value="Salva Post">          
   </form>
