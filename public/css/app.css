@@ -10954,15 +10954,16 @@ a.text-dark:focus {
   font-size: 0.9rem;
 }
 
-.ura_header .nav_menu .ul_links li {
+.ura_header .nav_menu .ul_links .links {
   margin-inline: 5px;
   padding-block: 7px;
   padding-inline: 15px;
 }
 
-.ura_header .nav_menu .ul_links li:hover {
+.ura_header .nav_menu .ul_links .links:hover {
   border-radius: 24px;
-  outline: 4px solid black;
+  background-color: rgb(205, 205, 205);
+  opacity: 1;
 }
 
 .ura_header .icon-container {
@@ -11001,9 +11002,10 @@ a.text-dark:focus {
   display: flex;
 }
 
-.ura_header .pr {
+.ura_header .pr1 {
   position: relative;
   cursor: pointer;
+  padding: 0 10px;
 }
 
 .ura_header .pr2 {
@@ -11018,11 +11020,20 @@ a.text-dark:focus {
   position: absolute;
   padding-inline: 20px 70px;
   padding-block: 10px;
+  box-shadow: 2px 2px rgba(136, 136, 136, 0.168627451);
 }
 
 .ura_header .tr {
-  top: 60px;
+  top: 70px;
   right: 1%;
+}
+
+.ura_header .tr1 {
+  top: 70px;
+}
+
+.ura_header .active {
+  border-radius: 20px;
 }
 
 .apartment {

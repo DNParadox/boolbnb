@@ -22,18 +22,18 @@
        
       </div>
       <ul class="ul_links">
-        <li>
+        <li class="links">
           <a href="#">Oggi</a>
         </li>
-        <li>
+        <li class="links">
           <a href="#">Sponsorizza</a> 
         </li>
-        <li>
+        <li class="links">
           <a href="#">Statistiche</a>
         </li>
-        <li>
+        <li class="links">
           <div class="pr1 dropdown-btn" href="#">Menu <i class="fa-solid fa-chevron-down icon"></i></div>
-          <ul class="dropdown-container">
+          <ul class="dropdown-container tr1">
             <li> 
               <a href="">
                 Link 1 

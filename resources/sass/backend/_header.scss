@@ -16,14 +16,15 @@
         font-size: 0.9rem;
       }
 
-      li{
+      .links{
         margin-inline: 5px;
         padding-block: 7px;
         padding-inline: 15px; 
       }
-      li:hover{
+      .links:hover{
         border-radius: 24px;
-        outline: 4px solid black;
+        background-color: rgb(205, 205, 205);
+        opacity: 1;
       }
     }
   } 
@@ -62,9 +63,10 @@
     display: flex;
   }
   // Gestisce Position Relative riguardante voce "Menu" 
-  .pr {
+  .pr1 {
     position: relative;
     cursor: pointer;
+    padding: 0 10px;
   }
 
   .pr2{
@@ -79,10 +81,19 @@
     position: absolute;
     padding-inline: 20px 70px;
     padding-block: 10px;
+    box-shadow: 2px 2px #8888882b;
   }
   .tr {
-    top: 60px;
+    top: 70px;
     right: 1%;
+  }
+
+  .tr1 {
+    top: 70px;
+  }
+
+  .active{
+    border-radius: 20px;
   }
 }
 
