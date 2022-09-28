@@ -28,6 +28,16 @@
       </div>
 
       <div class="mb-3">
+        <label for="cap" class="form-label">Indirizzo</label>
+        <input type="number" class="form-control" id="cap" name="cap" value="{{ old('cap') }}">
+      </div>
+
+      <div class="mb-3">
+        <label for="city" class="form-label">Indirizzo</label>
+        <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
+      </div>
+
+      <div class="mb-3">
         <label for="bathroom" class="form-label">Numero di bagni</label>
         <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}">
       </div>
