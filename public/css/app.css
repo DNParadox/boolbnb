@@ -11025,6 +11025,27 @@ a.text-dark:focus {
   right: 1%;
 }
 
+.apartment {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.apartment img {
+  border-radius: 15px;
+}
+
+.apartment .right-part {
+  margin-left: 15px;
+}
+
+.apartment .right-part .info {
+  margin: 10px 0;
+}
+
+.apartment .right-part .delete {
+  margin-top: 15px;
+}
+
 .profile-banner {
   background-image: url(data:image/webp;base64,UklGRoQCAABXRUJQVlA4WAoAAAAgAAAAHQAAHQAASUNDUAwCAAAAAAIMbGNtcwIQAABtbnRyUkdCIFhZWiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAAF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAAAANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZWiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYFUXdd7WtwegWJsZp8rGm/fdPD6TD//1ZQOCBSAAAAUAMAnQEqHgAeAD7ZYKpOtiWooygKqsAbCWQAnTLfAiGYXfAA/uw/rDUG/ySry930W5TklUCdPGwZvhShkxmlA5XTMUKtCBVuol3YS6MrvY4AAA==);
   background-repeat: repeat;
@@ -11032,6 +11053,38 @@ a.text-dark:focus {
   padding-block: 70px;
   color: white;
   font-size: 1.4rem;
+}
+
+section {
+  padding: 40px 0;
+}
+
+.list-apartments {
+  padding: 20px 0;
+}
+
+.list-apartments .card-apt {
+  border-radius: 15px;
+  padding-left: 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.list-apartments .card-apt h3 {
+  padding-top: 20px;
+  font-weight: 800;
+}
+
+.list-apartments .card-apt .img-apt img {
+  width: 100%;
+  border-radius: 15px 0 0 15px;
+  margin-left: -15px;
+}
+
+.list-apartments .card-apt .price-apt {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffaC81;
+  padding: 20px 0;
 }
 
 * {
