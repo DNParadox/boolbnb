@@ -22,8 +22,8 @@
         padding-inline: 15px; 
       }
       li:hover{
-        background: rgb(247, 247, 247);
         border-radius: 24px;
+        outline: 4px solid black;
       }
     }
   } 
@@ -81,13 +81,8 @@
     padding-block: 10px;
   }
   .tr {
-    top: 15%;
+    top: 60px;
     right: 1%;
   }
-  .active {
-
-  }
-
-  
 }
 
