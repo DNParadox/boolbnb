@@ -2,3 +2,38 @@
     background-color: $primary-color;
     padding: 40px 0;
 }
+section {
+    padding: 40px 0;
+}
+
+.list-apartments {
+    padding: 20px 0;
+
+    .card-apt {
+        border-radius: 15px;
+        padding-left: 0;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+        h3 {
+            padding-top: 20px;
+            font-weight: 800;
+        }
+
+
+        .img-apt {
+
+            img {
+                width: 100%;
+                border-radius: 15px 0 0 15px;
+                margin-left: -15px;
+            }
+        }
+
+        .price-apt {
+            font-size: 26px;
+            font-weight: 700;
+            color: $primary-color;
+            padding: 20px 0;
+        }
+    }
+}
