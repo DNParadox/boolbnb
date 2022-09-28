@@ -11165,6 +11165,11 @@ h1 {
   width: 100%;
 }
 
+.content-form-apt .media-upload .form-control {
+  padding: 0;
+  height: auto;
+}
+
 * {
   margin: 0;
   padding: 0;

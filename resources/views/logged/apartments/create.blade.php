@@ -110,7 +110,7 @@
               <textarea class="form-control" id="description" name="description" rows="6">{{ old('description') }}</textarea>
           </div>
 
-          <div class="mb-3">
+          <div class="media-upload mb-3">
             <label for="photo" class="form-label">aggiungi un immagine</label>
             <input class="form-control" type="file" id="photo" name="photo">
           </div>
