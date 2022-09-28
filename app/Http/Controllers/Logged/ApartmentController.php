@@ -20,14 +20,18 @@ class ApartmentController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
+        $have_one = true;
         // ricarca degli appartamenti registrati dallo user
-        $apartments = Apartment::where(function ($query) {
-            $query->where('a', '=', 1);
-        });
-        dd($apartments);
+        $apartments = Apartment::Where('users_id', '=', $user->id)->first();
+        
+        if(!$apartments){
+            $have_one = false;
+        };
+
         $data = [
             'apartments' => $apartments,
             'user' => $user,
+            'have_one' => $have_one,
         ];
 
         return view('logged.apartments.index', $data);
@@ -80,17 +84,25 @@ class ApartmentController extends Controller
     public function show($id, Request $request)
     {
         $user = Auth::user();
-        $apartment = Apartment::all();
-        
-        
-        dd($apartment);
-        
+        $have_one = true;
+        // ricarca degli appartamenti registrati dallo user
+        $apartments = Apartment::Where('users_id', '=', $user->id)->first();
 
-        $data = [
-            'apartment' => $apartment,
-        ];
-        
+        if(!$apartments){
+            $have_one = false;
+            
+            $data = [
+                'have_one' => $have_one,
+            ];
 
+        }else {
+            
+            $data = [
+                'have_one' => $have_one,
+                'apartment' => $apartment,
+            ]; 
+        }
+        
         return view('logged.apartments.show', $data);
     }
 
