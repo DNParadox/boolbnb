@@ -21,7 +21,10 @@ class ApartmentController extends Controller
     {
         $user = Auth::user();
         // ricarca degli appartamenti registrati dallo user
-        $apartments = Apartment::Where('users_id', "=", $user->id);
+        $apartments = Apartment::where(function ($query) {
+            $query->where('a', '=', 1);
+        });
+        dd($apartments);
         $data = [
             'apartments' => $apartments,
             'user' => $user,
@@ -35,7 +38,7 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
         $services = Service::all();
@@ -74,16 +77,13 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        try
-        {
-            $apartment = Apartment::Where('users_id', "=", $id);
-        }
-        catch(Exception $e)
-        {
-            dd($e->getMessage());
-        }
+        $user = Auth::user();
+        $apartment = Apartment::all();
+        
+        
+        dd($apartment);
         
 
         $data = [

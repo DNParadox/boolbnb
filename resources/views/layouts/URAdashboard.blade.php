@@ -29,7 +29,7 @@
       </div>
       <ul class="ul_links">
         <li class="links">
-          <a href="apartments">Oggi</a>
+          <a href="#">Oggi</a>
         </li>
         <li class="links">
           <a href="#">Sponsorizza</a> 
@@ -41,7 +41,7 @@
           <div class="pr1 dropdown-btn" href="#">Menu <i class="fa-solid fa-chevron-down icon"></i></div>
           <ul class="dropdown-container tr1">
             <li> 
-              <a href="apartments/create">
+              <a href="create">
                 Aggiungi un Appartamento
               </a>
             </li>
