@@ -1,0 +1,15 @@
+.message_page{
+  display: flex;
+  
+  .apartment_col{
+    width: 45%;
+    padding: 20px;
+    img{
+      border-radius: 20px;
+    }
+  }
+  
+  .message_col{
+    width: 65%;
+  }
+}

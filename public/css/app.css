@@ -11165,6 +11165,23 @@ h1 {
   width: 100%;
 }
 
+.message_page {
+  display: flex;
+}
+
+.message_page .apartment_col {
+  width: 45%;
+  padding: 20px;
+}
+
+.message_page .apartment_col img {
+  border-radius: 20px;
+}
+
+.message_page .message_col {
+  width: 65%;
+}
+
 * {
   margin: 0;
   padding: 0;
