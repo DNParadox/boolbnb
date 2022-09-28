@@ -10962,7 +10962,7 @@ a.text-dark:focus {
 
 .ura_header .nav_menu .ul_links .links:hover {
   border-radius: 24px;
-  background-color: rgb(205, 205, 205);
+  background-color: rgba(205, 205, 205, 0.2);
   opacity: 1;
 }
 
@@ -11020,7 +11020,7 @@ a.text-dark:focus {
   position: absolute;
   padding-inline: 20px 70px;
   padding-block: 10px;
-  box-shadow: 2px 2px rgba(136, 136, 136, 0.168627451);
+  box-shadow: 4px 4px rgba(136, 136, 136, 0.25);
 }
 
 .ura_header .tr {

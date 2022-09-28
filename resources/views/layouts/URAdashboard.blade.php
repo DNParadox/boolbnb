@@ -15,15 +15,21 @@
       {{-- Nav Image --}}
       <div class="image_header">
         <figure>
-          <a href="#">
-            <img src="{{ asset('/storage/' . 'airbnb.png') }}" alt="BoolBnB">
+          {{-- Testing --}}
+          <a href="{{ route( 'logged.apartments.create') }}">
+            <img src="{{ asset('/storage/' . 'airbnb.png') }}" alt="TestingBnB">
           </a>
         </figure>
-       
+        {{-- <figure>
+        <a href="apartments/create">
+          <img src="{{ asset('/storage/' . 'airbnb.png') }}" alt="BoolBnB">
+        </a>
+      </figure> --}}
+       {{-- href="{{ route('register') --}}
       </div>
       <ul class="ul_links">
         <li class="links">
-          <a href="#">Oggi</a>
+          <a href="apartments">Oggi</a>
         </li>
         <li class="links">
           <a href="#">Sponsorizza</a> 
@@ -35,8 +41,8 @@
           <div class="pr1 dropdown-btn" href="#">Menu <i class="fa-solid fa-chevron-down icon"></i></div>
           <ul class="dropdown-container tr1">
             <li> 
-              <a href="">
-                Link 1 
+              <a href="apartments/create">
+                Aggiungi un Appartamento
               </a>
             </li>
             <li> 
@@ -54,12 +60,12 @@
         <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
         <ul class="dropdown-container tr">
           <li> 
-            <a href="">
-              Link 1 
-            </a>
+            {{-- <a href="#">
+              {{$user->name}} {{$user->surname}}
+            </a> --}}
           </li>
           <li> 
-            <a href="">
+            <a href="logout">
               Logout
             </a>
           </li>
