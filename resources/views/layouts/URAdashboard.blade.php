@@ -13,16 +13,29 @@
     <nav class="nav_menu">
       {{-- Nav Image --}}
       <div class="image_header">
-        aaaaaaa
+        <figure>
+          <a href="#">
+            <img src="{{ asset('/storage/' . 'airbnb.png') }}" alt="BoolBnB">
+          </a>
+        </figure>
+       
       </div>
       <ul class="ul_links">
-        <li><a href="">Oggi</a></li>
-        <li><a href="">Sponsorizza</a></li>
-        <li><a href="">Statistiche</a></li>
-        <li><a href="">Menu</a></li>
+        <li>
+          <a href="#">Oggi</a>
+        </li>
+        <li>
+          <a href="#">Sponsorizza</a> 
+        </li>
+        <li>
+          <a href="#">Statistiche</a>
+        </li>
+        <li>
+          <a href="#">Menu</a>
+        </li>
       </ul>
       <div class="profile_header">
-        sssss
+        
       </div>
     </nav>
   </header>
