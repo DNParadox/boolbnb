@@ -12,24 +12,20 @@
 <body>
   <header class="ura_header">
     <nav class="nav_menu">
-      {{-- Nav Image --}}
+      {{-- Nav Logo --}}
       <div class="image_header">
         <figure>
           {{-- Testing --}}
-          <a href="{{ route( 'logged.apartments.create') }}">
-            <img src="{{ asset('/storage/' . 'airbnb.png') }}" alt="TestingBnB">
+          <a href="{{ route( 'logged.apartments.index') }}">
+            <img src="{{ asset('resources/img/' . 'airbnb.png') }}" alt="BoolBnB">
           </a>
         </figure>
-        {{-- <figure>
-        <a href="apartments/create">
-          <img src="{{ asset('/storage/' . 'airbnb.png') }}" alt="BoolBnB">
-        </a>
-      </figure> --}}
        {{-- href="{{ route('register') --}}
       </div>
+      {{-- Nav Center --}}
       <ul class="ul_links">
         <li class="links">
-          <a href="#">Oggi</a>
+          <a href="{{ route( 'logged.apartments.index') }}"> Oggi </a>
         </li>
         <li class="links">
           <a href="#">Sponsorizza</a> 
@@ -40,35 +36,31 @@
         <li class="links">
           <div class="pr1 dropdown-btn" href="#">Menu <i class="fa-solid fa-chevron-down icon"></i></div>
           <ul class="dropdown-container tr1">
-            <li> 
-              <a href="create">
+            <li class="nav-item"> 
+              <a class="nav-link" href="{{ route( 'logged.apartments.create') }}" >
                 Aggiungi un Appartamento
-              </a>
-            </li>
-            <li> 
-              <a href="">
-                Logout
               </a>
             </li>
           </ul>
         </li>
       </ul>
-      <div class="profile_header">
 
-        {{-- Area in testing --}}
-        
+
+      {{-- Nav right side Profile --}}
+      <div class="profile_header">
+ 
         <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
         <ul class="dropdown-container tr">
-          <li> 
-            {{-- <a href="#">
-              {{$user->name}} {{$user->surname}}
-            </a> --}}
+          <li class="nav-item"> 
+            <a class="nav-link" href="#">
+            \ --}}
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
-                Logout
+            Logout
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
