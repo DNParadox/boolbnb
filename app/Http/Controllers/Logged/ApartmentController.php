@@ -53,7 +53,8 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $add_apartment = $request->all();
+        dd($add_apartment);
     }
 
     /**

@@ -39,7 +39,7 @@
 
       <div class="mb-3">
         <label for="price" class="form-label">Prezzo</label>
-        <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
+        <input type="number"  class="form-control" id="price" name="price" min="0" value="0" step="0.001" value="{{ old('price') }}">
       </div>
 
       <div class="mb-3">
@@ -73,10 +73,10 @@
           <textarea class="form-control" id="description" name="description" rows="5">"{{ old('content') }}"</textarea>
       </div>
 
-      <div class="mb-3">
-          <label for="photo" class="form-label">Default file input example</label>
-          <input class="form-control" type="file" id="photo" name="photo">
-        </div>
+      {{-- <div class="mb-3">
+        <label for="photo" class="form-label">Default file input example</label>
+        <input class="form-control" type="file" id="photo" name="photo">
+      </div> --}}
 
       <input type="submit" value="Salva Post">          
   </form>

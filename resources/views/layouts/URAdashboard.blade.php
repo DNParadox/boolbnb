@@ -26,5 +26,8 @@
       </div>
     </nav>
   </header>
+  <main role="main" class="col-9 px-4 py-4">
+      @yield('content')
+  </main>
 </body>
 </html>
