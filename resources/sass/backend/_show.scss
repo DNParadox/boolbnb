@@ -1,0 +1,62 @@
+.register {
+    padding: 50px 0;
+    background: linear-gradient(to right, blue, red);
+
+    .container {
+        display: flex;
+
+        .text {
+            width: 30%;
+            text-align: center;
+            color: white;
+        }
+    
+        .r-button {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+
+}
+.apartment-container {
+    .apartment {
+        display: flex;
+        margin-bottom: 30px;
+    
+            img {
+                border-radius: 15px;
+            }
+    
+            .right-part {
+                margin-left: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+    
+                .services {
+                    margin: 10px 0;
+                }
+    
+                .delete {
+                    margin-top: 15px;
+                }
+            }
+    
+    }
+
+    .info {
+        margin: 10px 0;
+
+        a {
+            margin-right: 20px;
+        }
+    }
+}
+
+

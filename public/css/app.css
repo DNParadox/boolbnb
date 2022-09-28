@@ -10971,25 +10971,62 @@ a.text-dark:focus {
   width: 100%;
 }
 
-.apartment {
+.register {
+  padding: 50px 0;
+  background: linear-gradient(to right, blue, red);
+}
+
+.register .container {
+  display: flex;
+}
+
+.register .container .text {
+  width: 30%;
+  text-align: center;
+  color: white;
+}
+
+.register .container .r-button {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register .container .r-button a {
+  font-size: 20px;
+}
+
+.apartment-container .apartment {
   display: flex;
   margin-bottom: 30px;
 }
 
-.apartment img {
+.apartment-container .apartment img {
   border-radius: 15px;
 }
 
-.apartment .right-part {
+.apartment-container .apartment .right-part {
   margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.apartment .right-part .info {
+.apartment-container .apartment .right-part .services {
   margin: 10px 0;
 }
 
-.apartment .right-part .delete {
+.apartment-container .apartment .right-part .delete {
   margin-top: 15px;
+}
+
+.apartment-container .info {
+  margin: 10px 0;
+}
+
+.apartment-container .info a {
+  margin-right: 20px;
 }
 
 .profile-banner {
