@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.content-form-apt {
+    // max-width: 640px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    .col-left {
+        border-right: 1px solid #e1e1e1;
+    }
+
+
+    .form-check {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .btn-content {
+        padding-top: 20px;
+
+        .btn-apt {
+            width: 100%;
+        }
+    }
+}
