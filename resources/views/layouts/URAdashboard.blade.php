@@ -39,5 +39,8 @@
       </div>
     </nav>
   </header>
+  <main role="main">
+      @yield('content')
+  </main>
 </body>
 </html>

@@ -49,7 +49,7 @@
                     </ul>
                 </div>
             </nav>
-            <main role="main" class="col-9 px-4 py-4">
+            <main role="main">
                 @yield('content')
             </main>
         </div>
