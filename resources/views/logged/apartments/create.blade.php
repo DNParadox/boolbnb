@@ -38,8 +38,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="bathroom" class="form-label">Numero di bagni</label>
-        <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}">
+        <label for="bathroom_number" class="form-label">Numero di bagni</label>
+        <input type="number" class="form-control" id="bathroom_number" name="bathroom_number" value="{{ old('bathroom_number') }}">
       </div>
 
       <div class="mb-3">
@@ -83,10 +83,10 @@
           <textarea class="form-control" id="description" name="description" rows="5">{{ old('content') }}</textarea>
       </div>
 
-      {{-- <div class="mb-3">
-        <label for="photo" class="form-label">Default file input example</label>
+      <div class="mb-3">
+        <label for="photo" class="form-label">aggiungi un immagine</label>
         <input class="form-control" type="file" id="photo" name="photo">
-      </div> --}}
+      </div>
 
       <input type="submit" value="Salva Post">          
   </form>

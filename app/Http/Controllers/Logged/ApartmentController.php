@@ -53,6 +53,7 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->getValidationRules());
         $add_apartment = $request->all();
         dd($add_apartment);
     }
@@ -110,15 +111,17 @@ class ApartmentController extends Controller
         // Creo le Validazioni per i campi nel form
         return [
             'title' => 'required|min:5|max:100',
-            'room_number' => 'required|min:1|max:3',
-            'bed_number' => 'required|min:1|max:3',
-            'bathroom_number' => 'image|max: 1024|nullable',
-            'Address' => 'required|min:10|max:60000',
-            'Price' => 'required|min:5|max:7',
-            'Foto' => 'required|min:10|max:60000',
-            'Visibility' => 'required|Boolean',
+            'room_number' => 'required|min:1|max:999|numeric',
+            'bed_number' => 'required|min:1|max:999|numeric',
+            'cap' => 'required|min:1|max:99999|numeric',
+            'city' => 'required|min:5|max:100',
+            'bathroom_number' => 'required|min:1|max:999|numeric',
+            'address' => 'required|min:10|max:60000',
+            'price' => 'required|min:1|max:9999999|numeric',
+            'photo' => 'image|max: 1024|nullable',
+            // 'visibility' => 'required|Boolean',
             'description' => 'required|min:10|max:60000',
-            'square_meters' => 'required|min:1|max:5',
+            'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
         ];
     }
