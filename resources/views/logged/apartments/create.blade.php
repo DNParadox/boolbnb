@@ -28,12 +28,12 @@
       </div>
 
       <div class="mb-3">
-        <label for="cap" class="form-label">Indirizzo</label>
+        <label for="cap" class="form-label">CAP</label>
         <input type="number" class="form-control" id="cap" name="cap" value="{{ old('cap') }}">
       </div>
 
       <div class="mb-3">
-        <label for="city" class="form-label">Indirizzo</label>
+        <label for="city" class="form-label">Citta</label>
         <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
       </div>
 
@@ -80,7 +80,7 @@
 
       <div class="mb-3">
           <label for="description" class="form-label">Contenuto</label>
-          <textarea class="form-control" id="description" name="description" rows="5">"{{ old('content') }}"</textarea>
+          <textarea class="form-control" id="description" name="description" rows="5">{{ old('content') }}</textarea>
       </div>
 
       {{-- <div class="mb-3">
