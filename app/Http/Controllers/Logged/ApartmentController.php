@@ -58,7 +58,7 @@ class ApartmentController extends Controller
         $form_data = $request->all();
 
         if(isset($form_data['photo'])) {
-            $img_path = Storage::put('apartment-photos', $form_data['photo']);
+            $img_path = Storage::put('apartment-photo', $form_data['photo']);
             $form_data['photo'] = $img_path;
         }
 
