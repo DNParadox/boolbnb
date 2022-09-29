@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Document</title>
       <!-- Styles -->
@@ -17,7 +18,7 @@
     <nav class="nav_menu">
       {{-- Nav Logo --}}
       <div class="image_header">
-        <figure>
+        <figure class="logosize">
           {{-- Testing --}}
           <a href="{{ route( 'logged.apartments.index') }}">
             <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
@@ -80,6 +81,27 @@
   </header>
 
   <main role="main">
+    <div class="register mb-4">
+      <div class="container">
+        <div class="text">
+          @if ($have_one)
+            <h1>Inserisci il tuo appartamento nella sezione in Evidenza</h1>
+          @else
+            <h1>Apri le porte ai viaggiatori</h1>
+          @endif
+        </div>
+    
+        @if ($have_one)
+          <div class="r-button">
+            <a class="btn btn-success" href="#">Sponsorizza</a>
+          </div>
+        @else
+          <div class="r-button">
+            <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
+          </div>
+        @endif
+      </div>
+    </div>
       @yield('content')
   </main>
 

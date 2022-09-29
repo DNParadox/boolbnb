@@ -10989,12 +10989,12 @@ a.text-dark:focus {
   border: 2px solid black;
 }
 
-.ura_header figure {
+.ura_header .logosize {
   width: 30px;
   height: 20px;
 }
 
-.ura_header figure img {
+.ura_header .logosize img {
   width: 100%;
 }
 
@@ -11036,13 +11036,33 @@ a.text-dark:focus {
   border-radius: 20px;
 }
 
+.register_header {
+  height: 80px;
+  font-size: 1.25rem;
+}
+
+.artisanMain .card {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.artisanMain .card .card-header {
+  text-align: center;
+}
+
 .register {
   padding: 50px 0;
-  background: linear-gradient(to right, blue, red);
+  background-image: url(data:image/webp;base64,UklGRoQCAABXRUJQVlA4WAoAAAAgAAAAHQAAHQAASUNDUAwCAAAAAAIMbGNtcwIQAABtbnRyUkdCIFhZWiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAAF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAAAANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZWiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYFUXdd7WtwegWJsZp8rGm/fdPD6TD//1ZQOCBSAAAAUAMAnQEqHgAeAD7ZYKpOtiWooygKqsAbCWQAnTLfAiGYXfAA/uw/rDUG/ySry930W5TklUCdPGwZvhShkxmlA5XTMUKtCBVuol3YS6MrvY4AAA==);
+  background-repeat: repeat;
+  background-size: cover;
 }
 
 .register .container {
   display: flex;
+}
+
+.register .container h1 {
+  padding: 0;
+  text-align: left;
 }
 
 .register .container .text {
@@ -11054,7 +11074,7 @@ a.text-dark:focus {
 .register .container .r-button {
   width: 70%;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
 }
 
@@ -11154,7 +11174,7 @@ section {
 
 h1 {
   text-align: center;
-  padding: 40px 0;
+  padding-bottom: 40px;
 }
 
 .content-form-apt {
@@ -11167,6 +11187,20 @@ h1 {
 
 .content-form-apt .col-left {
   border-right: 1px solid #e1e1e1;
+}
+
+.content-form-apt .required-check {
+  color: red;
+  padding-bottom: 18px;
+}
+
+.content-form-apt .required-check-text {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.content-form-apt .form-label {
+  font-weight: 800;
 }
 
 .content-form-apt .form-check {
@@ -11226,6 +11260,15 @@ h1 {
 .message_page .message_col {
   width: 600px;
   text-align: left;
+}
+
+.logosize {
+  width: 30px;
+  height: 20px;
+}
+
+.logosize img {
+  width: 100%;
 }
 
 * {

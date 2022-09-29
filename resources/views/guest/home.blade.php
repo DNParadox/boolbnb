@@ -12,7 +12,7 @@
     {{-- Aggiungete un file dedicato per l'header utilizzaando Vue  --}}
     {{-- Quindi la struttura avrà main che innesta Header, MainContent, Footer --}}
     <div id="root">
-
+    
     </div>
 
     <script src="{{ asset('js/app.js')}}"></script>

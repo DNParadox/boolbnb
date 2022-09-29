@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware('auth')->namespace('Logged')->name('logged.')->prefix('logged')->group(function(){
+    Route::get('/','ApartmentController@index');
     Route::resource('apartments','ApartmentController');
-    Route::get('/message','MessageController@index')->name('massage');
+    Route::get('/message','MessageController@index')->name('message');
 });
 
 Route::get('{any?}', function () {

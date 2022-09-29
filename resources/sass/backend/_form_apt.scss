@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    padding: 40px 0;
+    padding-bottom: 40px;
 }
 
 .content-form-apt {
@@ -13,6 +13,20 @@ h1 {
 
     .col-left {
         border-right: 1px solid #e1e1e1;
+    }
+
+    .required-check {
+        color: red;
+        padding-bottom: 18px;
+    }
+
+    .required-check-text {
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    .form-label {
+        font-weight: 800;
     }
 
 

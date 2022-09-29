@@ -1,21 +1,6 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
-<div class="register">
-  <div class="container">
-    <div class="text">
-      <h1>Apri le porte ai viaggiatori</h1>
-    </div>
-
-    <div class="r-button">
-      <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
-    </div>
-  </div>
-</div>
-  <div>
-    <h1>Aggiungi un Appartamento</h1>
-  </div>
-    
 
   <div class="row container content-form-apt">
     <form id="create-apartment" action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
@@ -36,13 +21,13 @@
         {{-- Column Left --}}
         <div class="col col-left">
           <div class="mb-3">
-            <label for="title" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+            <label for="title" class="form-label">Nome <span class="required-check">*</span></label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required="required">
           </div>
   
           <div class="mb-3">
             <label for="address" class="form-label">Indirizzo</label>
-            <input type="text" list="addresses" class="form-control" id="address" name="address" value="{{ old('address') }}" autocomplete="off">
+            <input type="text" list="addresses" class="form-control" id="address" name="address" value="{{ old('address') }}" autocomplete="off" required="required">
             <datalist id="addresses"> 
             
             </datalist>
@@ -50,31 +35,31 @@
   
           <div class="row">
             <div class="col mb-3">
-              <label for="bathroom" class="form-label">Numero di bagni</label>
-              <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}">
+              <label for="bathroom" class="form-label">Numero di bagni <span class="required-check">*</span></label>
+              <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="bed_number" class="form-label">Numero di letti</label>
-              <input type="number" class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}">
+              <label for="bed_number" class="form-label">Numero di letti <span class="required-check">*</span></label>
+              <input type="number" class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="room_number" class="form-label">Numero di camere</label>
-              <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}">
+              <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
+              <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
             </div>
           </div>
   
           <div class="row">
             <div class="col mb-3">
-              <label for="square_meters" class="form-label">Metri quadrati</label>
-              <input type="numer" class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}">
+              <label for="square_meters" class="form-label">Metri quadrati <span class="required-check">*</span></label>
+              <input type="numer" class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}" required="required">
             </div>
           
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number"  class="form-control" id="price" name="price" min="0" value="0" step="0.001" value="{{ old('price') }}">
+              <input type="number"  class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
             </div>
           </div>
         </div>
@@ -82,7 +67,7 @@
         {{-- Column right --}} 
         <div class="col">
           <div class="mb3 pb-2">
-            <h4>Services:</h4>
+            <div class="form-label">Servizi:</div>
 
             @foreach($services as $service) 
 
@@ -96,21 +81,25 @@
             @endforeach
           </div>
 
-
           <div class="mb-3">
-              <label for="description" class="form-label">Contenuto</label>
+              <label for="description" class="form-label">Descrizione</label>
               <textarea class="form-control" id="description" name="description" rows="6">{{ old('description') }}</textarea>
           </div>
 
           <div class="media-upload mb-3">
-            <label for="photo" class="form-label">aggiungi un immagine</label>
-            <input class="form-control" type="file" id="photo" name="photo">
+            <label for="photo" class="form-label">Aggiungi un immagine <span class="required-check">*</span></label>
+            <input class="form-control" type="file" id="photo" name="photo" required="required">
           </div>
-
-          
+         
         </div> 
 
       </div> 
+
+      <hr>
+
+      <div class="required-check-text">
+        <span class="required-check">*</span> Campi obbligatori
+      </div>
       
       <div class="btn-content">
         <input class="btn btn-apt btn-primary" type="submit" value="Aggiungi Appartamento">
@@ -151,6 +140,8 @@
         });
     });
 
+
+    // Da finire
     document.getElementById('address').addEventListener('blur',
     async function(e){
       e.preventDefault();
