@@ -11189,12 +11189,8 @@ h1 {
   border-right: 1px solid #e1e1e1;
 }
 
-.content-form-apt :required {
-  background: url(https://cdn0.iconfinder.com/data/icons/fugue/icon/asterisk-small.png) no-repeat;
-  background-position: right top;
-}
-
 .content-form-apt .required-check {
+  color: red;
   padding-bottom: 18px;
 }
 

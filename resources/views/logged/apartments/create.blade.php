@@ -21,35 +21,35 @@
         {{-- Column Left --}}
         <div class="col col-left">
           <div class="mb-3">
-            <label for="title" class="form-label">Nome</label>
+            <label for="title" class="form-label">Nome <span class="required-check">*</span></label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required="required">
           </div>
   
           <div class="mb-3">
-            <label for="address" class="form-label">Indirizzo</label>
+            <label for="address" class="form-label">Indirizzo <span class="required-check">*</span></label>
             <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required="required">
           </div>
   
           <div class="row">
             <div class="col mb-3">
-              <label for="bathroom" class="form-label">Numero di bagni</label>
+              <label for="bathroom" class="form-label">Numero di bagni <span class="required-check">*</span></label>
               <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="bed_number" class="form-label">Numero di letti</label>
+              <label for="bed_number" class="form-label">Numero di letti <span class="required-check">*</span></label>
               <input type="number" class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="room_number" class="form-label">Numero di camere</label>
+              <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
               <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
             </div>
           </div>
   
           <div class="row">
             <div class="col mb-3">
-              <label for="square_meters" class="form-label">Metri quadrati</label>
+              <label for="square_meters" class="form-label">Metri quadrati <span class="required-check">*</span></label>
               <input type="numer" class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}" required="required">
             </div>
           
@@ -64,8 +64,7 @@
         {{-- Column right --}} 
         <div class="col">
           <div class="mb3 pb-2">
-            <div class="form-label">Services:</div>
-
+            <div class="form-label">Servizi:</div>
 
             @foreach($services as $service) 
 
@@ -79,24 +78,24 @@
             @endforeach
           </div>
 
-
           <div class="mb-3">
               <label for="description" class="form-label">Descrizione</label>
               <textarea class="form-control" id="description" name="description" rows="6">{{ old('description') }}</textarea>
           </div>
 
           <div class="media-upload mb-3">
-            <label for="photo" class="form-label">Aggiungi un immagine</label>
+            <label for="photo" class="form-label">Aggiungi un immagine <span class="required-check">*</span></label>
             <input class="form-control" type="file" id="photo" name="photo" required="required">
           </div>
-
-          
+         
         </div> 
 
       </div> 
 
-      <div>
-        <img class="required-check" src="https://cdn0.iconfinder.com/data/icons/fugue/icon/asterisk-small.png" alt=""> <span class="required-check-text">Campi obbligatori</span>
+      <hr>
+
+      <div class="required-check-text">
+        <span class="required-check">*</span> Campi obbligatori
       </div>
       
       <div class="btn-content">
