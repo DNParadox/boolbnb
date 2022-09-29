@@ -4,7 +4,7 @@
     <div class="container d-flex justify-content-between">
       <div>
         <h2>Ciao</h2>
-        {{$user->name}} {{$user->surname}}!
+        {{$user->email}} !
       </div>
       <div>
         <button>Sponsorizza</button>
