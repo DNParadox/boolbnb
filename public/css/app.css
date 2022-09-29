@@ -10989,12 +10989,12 @@ a.text-dark:focus {
   border: 2px solid black;
 }
 
-.ura_header figure {
+.ura_header .logosize {
   width: 30px;
   height: 20px;
 }
 
-.ura_header figure img {
+.ura_header .logosize img {
   width: 100%;
 }
 
@@ -11034,6 +11034,19 @@ a.text-dark:focus {
 
 .ura_header .active {
   border-radius: 20px;
+}
+
+.register_header {
+  height: 80px;
+  font-size: 1.25rem;
+}
+
+.artisanMain .card {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.artisanMain .card .card-header {
+  text-align: center;
 }
 
 .register {
@@ -11251,6 +11264,15 @@ h1 {
 .message_page .message_col {
   width: 600px;
   text-align: left;
+}
+
+.logosize {
+  width: 30px;
+  height: 20px;
+}
+
+.logosize img {
+  width: 100%;
 }
 
 * {
