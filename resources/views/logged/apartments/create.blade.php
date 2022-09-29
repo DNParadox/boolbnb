@@ -42,19 +42,10 @@
   
           <div class="mb-3">
             <label for="address" class="form-label">Indirizzo</label>
-            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
-          </div>
-  
-          <div class="row">
-            <div class="col mb-3">
-              <label for="cap" class="form-label">CAP</label>
-              <input type="number" class="form-control" id="cap" name="cap" value="{{ old('cap') }}">
-            </div>
-      
-            <div class="col mb-3">
-              <label for="city" class="form-label">Citta</label>
-              <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
-            </div>
+            <input type="text" list="addresses" class="form-control" id="address" name="address" value="{{ old('address') }}" autocomplete="off">
+            <datalist id="addresses"> 
+            
+            </datalist>
           </div>
   
           <div class="row">
@@ -131,22 +122,47 @@
 
   <script type="text/javascript">
 
-    document.getElementById('city').addEventListener('input',
+    document.getElementById('address').addEventListener('input',
       function(e) {
 
         const data = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
 
-        console.log(data);
+        let form = document.getElementById('create-apartment');
+        let dataList = document.getElementById('addresses');
+        let suggestions = [];
 
-        form = document.getElementById('create-apartment');
-
-        axios.get(`https://api.tomtom.com/search/2/geocode/${data.city}-${data.address}-${data.cap}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+        axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
         .then((response)=>{
-          console.log(response.data.results[0].position.lat)
 
+          for(let i = 0; i < 4; i++) {
+          
+            let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
+
+            if(response.data.results[i].address.streetName) {
+              suggestions.push(addressHint);
+            }
+          }
+          
+          dataList.innerHTML = "";
+
+          suggestions.forEach((suggestion) => {
+            dataList.innerHTML += `<option>${suggestion}</option>`;
+          });
+        });
+    });
+
+    document.getElementById('address').addEventListener('blur',
+    async function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
+      let form = document.getElementById('create-apartment');
+
+      await axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+        .then((response)=>{ 
           form.innerHTML += `<input type="hidden" id="latitude" name="latitude" value="${response.data.results[0].position.lat}"> <input type="hidden" id="longitude" name="longitude" value="${response.data.results[0].position.lon}">`
-        })
-    })
+        });
+
+    });
     
   </script>
 
