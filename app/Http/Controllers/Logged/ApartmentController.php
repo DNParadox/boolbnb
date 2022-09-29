@@ -92,8 +92,6 @@ class ApartmentController extends Controller
 
         $new_apartment = new Apartment();
         $new_apartment->address = $form_data['address'] . " " .$form_data['cap'] . " " . $form_data['city'];
-        $new_apartment->latitude = 14.444444;
-        $new_apartment->longitude = 40.444444;
         $new_apartment->visibility = 1;
         $new_apartment->fill($form_data);  
         $new_apartment->save();

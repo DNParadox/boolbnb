@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Apartment extends Model
 {
     protected $fillable = [
-        'bathroom', 'bed_number', 'description', 'price', 'photo', 'room_number', 'square_meters', 'title', 'user_id', 'visibility',
+        'bathroom', 'bed_number', 'description', 'price', 'photo', 'room_number', 'square_meters', 'title', 'user_id', 'visibility', 'latitude', 'longitude',
         // mancano latitidine e longitudine e l'indirizzo non va messo perche viene composto nel controller
     ];
 
