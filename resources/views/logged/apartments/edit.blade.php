@@ -3,9 +3,9 @@
 @section('content')
   <h1>Modifica un Appartamento</h1>
     
-  <form action="{{ route('logged.apartments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('logged.apartments.update', ['apartment' => $apartment->id]) }}" method="POST" enctype="multipart/form-data">
       @csrf
-      @method('POST')
+      @method("PUT")
 
       @if ($errors->any())
           <div class="alert alert-danger">
@@ -70,17 +70,17 @@
 
       <div class="mb-3">
           <label for="description" class="form-label">Contenuto</label>
-          <textarea class="form-control" id="description" name="description" rows="5">"{{ old('description', $apartment->description) }}"</textarea>
+          <textarea class="form-control" id="description" name="description" rows="5">{{ old('description', $apartment->description) }}</textarea>
       </div>
 
-      {{-- <div class="mb-3">
+      <div class="mb-3">
           <label for="photo" class="form-label">Default file input example</label>
           <input class="form-control" type="file" id="photo" name="photo">
 
             <div >Foto attuale: 
             <img style="width: 15rem" src=" {{ asset( '/storage/' . $apartment->photo) }} " alt=" {{ $apartment->title }}">
         </div>
-      </div> --}}
+      </div>
 
       <input type="submit" value="Salva Post">          
   </form>

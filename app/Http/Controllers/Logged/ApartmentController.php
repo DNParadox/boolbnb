@@ -161,7 +161,29 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate($this->getValidationRules()); 
+        $form_data = $request->all();
+
+        $old_apartment = Apartment::findOrFail($id);
+        
+        if (isset($form_data['photo'])) {
+            if($old_apartment->cover){
+              Storage::delete($old_apartment->cover);  
+            }
+            
+            $img_path = Storage::put('apartment-photo', $form_data['photo']);
+            $form_data['photo'] = $img_path;
+        }
+
+        $old_apartment->update($form_data);
+
+        if (isset($form_data['services'])) {
+            $old_apartment->service()->sync($form_data['services']);
+        } else {
+            $old_apartment->service()->sync([]);
+        }
+
+        return redirect()->route('logged.apartments.show', ['apartment' => $old_apartment->id]);
     }
 
     /**
@@ -182,14 +204,11 @@ class ApartmentController extends Controller
             'title' => 'required|min:5|max:100',
             'room_number' => 'required|min:1|max:999|numeric',
             'bed_number' => 'required|min:1|max:999|numeric',
-            'cap' => 'required|min:1|max:99999|numeric',
-            'city' => 'required|min:5|max:100',
             'bathroom' => 'required|min:1|max:999|numeric',
             'address' => 'required|min:10|max:60000',
-            'price' => 'required|min:1|max:9999999|numeric',
+            'price' => 'required|min:1|max:9999999|numeric|nullable',
             'photo' => 'image|max: 1024|nullable',
-            // 'visibility' => 'required|Boolean',
-            'description' => 'required|min:10|max:60000',
+            'description' => 'required|min:10|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
         ];
