@@ -1,18 +1,63 @@
 .register_header {
     height: 80px;
     font-size: 1.25rem;
-    .nav-item{
-        
-    }
 }
 
 .artisanMain {
 
-    .card {
+    .boxshadow {
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    
+        border-radius: 24px;
+
+    }
+    .col-md-6{
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+    .card {
+        border: none;
+        border-radius:24px;
         .card-header {
             text-align: center;
         }
     }
+
+    .sx{
+        border-radius: 24px 0px 0px 24px;
+    }
+
+    .dx{
+        border-radius: 0px 24px 24px 0px;
+    }
+
+    input::placeholder {
+        color: lightgrey;
+        text-decoration: underline lightgrey;
+        text-underline-offset: 12px;
+        border-color: white;
+    }
+
+    input {
+        border: none;
+        border-radius: 12px;
+    }
+    
+    input:focus{
+        border: none;
+        box-shadow:rgba(0, 0, 0, 0.15) 0px 4px 10px, rgba(0, 0, 0, 0.11) 0px 6px 4px;
+    }
+
+    .imgregister {
+        width: 316px;
+        height: 100%;
+    }
+
+    .btn {
+        background-color: #ff385c;
+        border-color: #ff385c;
+        color: white;
+    }
 }
+
+
