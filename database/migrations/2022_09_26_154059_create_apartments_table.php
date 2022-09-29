@@ -21,12 +21,12 @@ class CreateApartmentsTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 9);
-            $table->float('price', 7, 2);
-            $table->text('photo')->nullable();
+            $table->float('price', 7, 2)->nullable();
+            $table->text('photo');
             $table->unsignedTinyInteger('room_number');
             $table->unsignedSmallInteger('square_meters');
             $table->char('title',255);
-            $table->boolean('visibility');
+            $table->boolean('visibility')->nullable();
             $table->timestamps();
         });
     }

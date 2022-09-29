@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   <title>Document</title>
       <!-- Styles -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -17,7 +20,7 @@
         <figure>
           {{-- Testing --}}
           <a href="{{ route( 'logged.apartments.index') }}">
-            <img src="{{ asset('storage/app/public/storage/airbnb.png') }}" alt="BoolBnB">
+            <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
           </a>
         </figure>
        {{-- href="{{ route('register') --}}
@@ -48,7 +51,9 @@
 
       {{-- Nav right side Profile --}}
       <div class="profile_header">
- 
+
+        {{-- Area in testing --}}
+        
         <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
         <ul class="dropdown-container tr">
           <li class="nav-item"> 
@@ -77,6 +82,8 @@
   <main role="main">
       @yield('content')
   </main>
+
+  <script src="{{ asset('js/back.js') }}" defer></script>
 </body>
 </html>
 

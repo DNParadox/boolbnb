@@ -19,7 +19,7 @@
   </div>
 
   <div class="row container content-form-apt">
-    <form action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
+    <form id="create-apartment" action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('POST')
 
@@ -48,8 +48,8 @@
   
           <div class="row">
             <div class="col mb-3">
-              <label for="bathroom_number" class="form-label">Numero di bagni</label>
-              <input type="number" class="form-control" id="bathroom_number" name="bathroom_number" value="{{ old('bathroom_number') }}" required="required">
+              <label for="bathroom" class="form-label">Numero di bagni</label>
+              <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
@@ -118,8 +118,30 @@
       <div class="btn-content">
         <input class="btn btn-apt btn-primary" type="submit" value="Aggiungi Appartamento">
       </div>
+
     </form>
     
   </div>
-</section>
+
+  <script type="text/javascript">
+
+    document.getElementById('city').addEventListener('input',
+      function(e) {
+
+        const data = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
+
+        console.log(data);
+
+        form = document.getElementById('create-apartment');
+
+        axios.get(`https://api.tomtom.com/search/2/geocode/${data.city}-${data.address}-${data.cap}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+        .then((response)=>{
+          console.log(response.data.results[0].position.lat)
+
+          form.innerHTML += `<input type="hidden" id="latitude" name="latitude" value="${response.data.results[0].position.lat}"> <input type="hidden" id="longitude" name="longitude" value="${response.data.results[0].position.lon}">`
+        })
+    })
+    
+  </script>
+
 @endsection

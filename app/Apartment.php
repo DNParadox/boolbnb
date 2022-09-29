@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
 {
+    protected $fillable = [
+        'bathroom', 'bed_number', 'description', 'price', 'photo', 'room_number', 'square_meters', 'title', 'user_id', 'visibility', 'latitude', 'longitude',
+        // mancano latitidine e longitudine e l'indirizzo non va messo perche viene composto nel controller
+    ];
+
     public function user() {
         return $this->belongsTo('App\User');
     }
@@ -15,6 +20,10 @@ class Apartment extends Model
     }
 
     public function sponsorship() {
-        return $this->belongsToMany('App\Sponsorship');
+        return $this->belongsToMany('App\Sponsorship')->using('App\ApartmentSponsorship')->withPivot('start_data', 'end_date');
+    }
+    
+    public function message() {
+        return $this->belongsTo('App\Message');
     }
 }

@@ -11101,6 +11101,23 @@ a.text-dark:focus {
   margin-right: 20px;
 }
 
+.banner {
+  background-color: #ff385c;
+  margin-top: 60px;
+  border-radius: 20px;
+  padding: 50px 30px;
+  color: white;
+}
+
+.banner h2 {
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.banner p {
+  font-size: 22px;
+}
+
 .profile-banner {
   background-image: url(data:image/webp;base64,UklGRoQCAABXRUJQVlA4WAoAAAAgAAAAHQAAHQAASUNDUAwCAAAAAAIMbGNtcwIQAABtbnRyUkdCIFhZWiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAAF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAAAANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZWiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYFUXdd7WtwegWJsZp8rGm/fdPD6TD//1ZQOCBSAAAAUAMAnQEqHgAeAD7ZYKpOtiWooygKqsAbCWQAnTLfAiGYXfAA/uw/rDUG/ySry930W5TklUCdPGwZvhShkxmlA5XTMUKtCBVuol3YS6MrvY4AAA==);
   background-repeat: repeat;
@@ -11193,6 +11210,47 @@ h1 {
 .content-form-apt .media-upload .form-control {
   padding: 0;
   height: auto;
+}
+
+.message_page_header {
+  height: 250px;
+  background-color: rgba(205, 205, 205, 0.2);
+  border-bottom: 2px solid rgba(205, 205, 205, 0.5);
+  padding-left: 50px;
+  padding-top: 60px;
+  color: rgb(135, 135, 135);
+}
+
+.message_page_header h2 {
+  font-size: 46px;
+}
+
+.message_page_header p {
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.message_page {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid rgba(205, 205, 205, 0.5);
+}
+
+.message_page .apartment_col {
+  width: 250px;
+  padding: 20px;
+}
+
+.message_page .apartment_col img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.message_page .message_col {
+  width: 600px;
+  text-align: left;
 }
 
 * {
