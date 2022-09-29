@@ -1,0 +1,39 @@
+.message_page_header{
+  height: 250px;
+  background-color: rgba(205, 205, 205, 0.2);
+  border-bottom: 2px solid rgba(205, 205, 205, 0.5);
+  padding-left: 50px;
+  padding-top: 60px;
+  color: rgb(135, 135, 135);
+
+  h2{
+    font-size: 46px;
+  }
+
+  p{
+    font-size: 20px;
+    padding-left: 5px;
+  }
+}
+
+.message_page{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid rgba(205, 205, 205, 0.5);
+  .apartment_col{
+    width: 250px;
+    padding: 20px;
+    
+    img{
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+    }
+  }
+  
+  .message_col{
+    width: 600px;
+    text-align: left;
+  }
+}

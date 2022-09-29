@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::middleware('auth')->namespace('Logged')->name('logged.')->prefix('logged')->group(function(){
     Route::resource('apartments','ApartmentController');
+    Route::get('/message','MessageController@index')->name('massage');
 });
 
 Route::get('{any?}', function () {
