@@ -17,7 +17,7 @@
     <nav class="nav_menu">
       {{-- Nav Logo --}}
       <div class="image_header">
-        <figure>
+        <figure class="logosize">
           {{-- Testing --}}
           <a href="{{ route( 'logged.apartments.index') }}">
             <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
