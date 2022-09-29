@@ -83,7 +83,7 @@ class ApartmentController extends Controller
         $request->validate($this->getValidationRules());
         $form_data = $request->all();
         $user = Auth::user();
-
+        dd($user->id);
         if(isset($form_data['photo'])) {
             $img_path = Storage::put('apartment-photo', $form_data['photo']);
             $form_data['photo'] = $img_path;
