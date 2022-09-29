@@ -3,9 +3,10 @@
 @section('content')
   <h1>Aggiungi un Appartamento</h1>
     
-  <form  method="post" enctype="multipart/form-data">
+  <form action="{{ route('logged.apartments.store') }}"  method="post" enctype="multipart/form-data">
     @csrf
-    {{-- @method('POST') --}}
+    @method('POST')
+
       @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -32,7 +33,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="city" class="form-label">Citta</label>
+        <label for="city" class="form-label">Città</label>
         <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
       </div>
 
@@ -93,35 +94,42 @@
 
   <script type="text/javascript">
 
-    document.querySelector('form').addEventListener('submit',
+    document.getElementById('city').addEventListener('input',
       function(e) {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(e.target).entries());
+        // e.preventDefault();
+        const data = Object.fromEntries(new FormData(document.querySelector('form')).entries());
+
+        // let lat = document.getElementById('latitude').value;
+        // let lon = document.getElementById('longitude').value;
+
+        form = document.querySelector('form');
 
         axios.get(`https://api.tomtom.com/search/2/geocode/${data.city}-${data.address}-${data.cap}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
         .then((response)=>{
-          data.position = response.data.results[0].position;
+          console.log(response.data.results[0].position.lat)
+
+          form.innerHTML += `<input type="hidden" id="latitude" name="latitude" value="${response.data.results[0].position.lat}"> <input type="hidden" id="longitude" name="longitude" value="${response.data.results[0].position.lon}">`
         })
 
-        console.log(data);
-        
+    
+
         // axios.post("{{ route('logged.apartments.store') }}", this.data,{
         //   headers: {
         //     'X-CSRF-TOKEN' : window.Laravel.csrfToken
         //   }
         // });
 
-        axios({
-          method: 'post',
-          url: "{{ route('logged.apartments.store') }}",
-          data: {
-            formData: JSON.stringify(this.data)
-          },
-          headers: {
-            'X-CSRF-TOKEN' : document.querySelector('meta[name=csrf-token]').content,
-            'content-type': 'text/json'
-          }
-        })
+        // axios({
+        //   method: 'post',
+        //   url: "{{ route('logged.apartments.store') }}",
+        //   data: {
+        //     formData: data
+        //   },
+        //   headers: {
+        //     'X-CSRF-TOKEN' : document.querySelector('meta[name=csrf-token]').content,
+        //     'content-type': 'text/json'
+        //   }
+        // })
     })
     
   </script>
