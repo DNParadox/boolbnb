@@ -20,7 +20,7 @@
         <figure>
           {{-- Testing --}}
           <a href="{{ route( 'logged.apartments.index') }}">
-            <img src="{{ asset('storage/app/public/storage/airbnb.png') }}" alt="BoolBnB">
+            <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
           </a>
         </figure>
        {{-- href="{{ route('register') --}}
@@ -51,7 +51,9 @@
 
       {{-- Nav right side Profile --}}
       <div class="profile_header">
- 
+
+        {{-- Area in testing --}}
+        
         <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
         <ul class="dropdown-container tr">
           <li class="nav-item"> 
