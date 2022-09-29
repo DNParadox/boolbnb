@@ -39,7 +39,7 @@
 
       <div class="mb-3">
         <label for="price" class="form-label">Prezzo</label>
-        <input type="number" class="form-control" id="price" name="price" value="{{ old('price', $apartment->price) }}">
+        <input type="number" class="form-control" id="price" name="price" value="{{ $apartment->price }}">
       </div>
 
       <div class="mb-3">
@@ -68,16 +68,16 @@
       </div>
 
 
-      <div class="mb-3">
-          <label for="description" class="form-label">Contenuto</label>
-          <textarea class="form-control" id="description" name="description" rows="5">{{ old('description', $apartment->description) }}</textarea>
+      <div class="mb-2 mt-1">
+          <label for="description" class="form-label">Descrizione</label>
+          <textarea class="form-control" id="description" name="description" rows="5">{{ $apartment->description }}</textarea>
       </div>
 
       <div class="mb-3">
           <label for="photo" class="form-label">Default file input example</label>
           <input class="form-control" type="file" id="photo" name="photo">
 
-            <div >Foto attuale: 
+            <div>Foto attuale:
             <img style="width: 15rem" src=" {{ asset( '/storage/' . $apartment->photo) }} " alt=" {{ $apartment->title }}">
         </div>
       </div>

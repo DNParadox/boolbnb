@@ -98,6 +98,8 @@ class ApartmentController extends Controller
         if(isset($form_data['services'])) {
             $new_apartment->service()->sync($form_data['services']);
         }
+
+        $data = [];
         
         return redirect()->route('logged.apartments.index');
     }
@@ -122,6 +124,7 @@ class ApartmentController extends Controller
             $data = [
                 'have_one' => false,
             ];
+            
         }else {
             
             $data = [
@@ -163,7 +166,6 @@ class ApartmentController extends Controller
     {
         $request->validate($this->getValidationRules()); 
         $form_data = $request->all();
-
         $old_apartment = Apartment::findOrFail($id);
         
         if (isset($form_data['photo'])) {
@@ -206,9 +208,9 @@ class ApartmentController extends Controller
             'bed_number' => 'required|min:1|max:999|numeric',
             'bathroom' => 'required|min:1|max:999|numeric',
             'address' => 'required|min:10|max:60000',
-            'price' => 'required|min:1|max:9999999|numeric|nullable',
-            'photo' => 'image|max: 1024|nullable',
-            'description' => 'required|min:10|max:60000|nullable',
+            'price' => 'min:1|max:9999999|numeric|nullable',
+            'photo' => 'required|image|max: 1024|nullable',
+            'description' => 'min:10|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
         ];
