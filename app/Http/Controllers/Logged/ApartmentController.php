@@ -196,7 +196,14 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apartment_to_delete = Apartment::findOrFail($id);
+        if($apartment_to_delete->photo){
+            Storage::delete($apartment_to_delete->photo);  
+        }
+        $apartment_to_delete->service()->sync([]);
+        $apartment_to_delete->delete();
+
+        return redirect()->route('logged.apartments.index',['deleted' => 'yes']);
     }
 
 
@@ -207,10 +214,10 @@ class ApartmentController extends Controller
             'room_number' => 'required|min:1|max:999|numeric',
             'bed_number' => 'required|min:1|max:999|numeric',
             'bathroom' => 'required|min:1|max:999|numeric',
-            'address' => 'required|min:10|max:60000',
+            'address' => 'required|min:1|max:60000',
             'price' => 'min:1|max:9999999|numeric|nullable',
             'photo' => 'required|image|max: 1024|nullable',
-            'description' => 'min:10|max:60000|nullable',
+            'description' => 'min:1|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
         ];

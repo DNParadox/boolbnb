@@ -34,9 +34,11 @@
               <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn btn-primary">Modifica</a>
             </div>
     
-            <div class="delete">
-              <a class="btn btn-danger" href="#">Cancella</a>
-            </div>
+            <form action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <input class="btn btn-primary" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
+            </form>
           </div>
 
         </div>

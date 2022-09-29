@@ -22,7 +22,11 @@
             <div>
               <a href="{{ route('logged.apartments.show',['apartment' => $apartments->id]) }}" class="btn btn-primary">Visualizza dettagli</a>
               <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn btn-primary">Modifica</a>
-              <button class="btn btn-danger">Cancella</button>
+              <form action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-primary" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
+              </form>
             </div>
 
           </div>

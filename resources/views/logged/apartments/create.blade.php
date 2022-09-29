@@ -56,7 +56,7 @@
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number"  class="form-control" id="price" name="price" min="0" value="0" step="0.001" value="{{ old('price') }}">
+              <input type="number"  class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
             </div>
           </div>
         </div>
