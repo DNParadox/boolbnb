@@ -2,10 +2,26 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Registrati') }}</div>
+    <div class="row justify-content-center boxshadow">
+        <div class="col-md-6 ">
+            {{-- iniziio carta  --}}
+            
+            <div class="card sx">
+                <div class="card-body d-flex justify-content-center">
+                   <figure class="imgregister">
+                        <a href="{{ route( 'logged.apartments.index') }}">
+                            <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
+                        </a>
+                   </figure>
+                </div>
+            </div>            
+        </div>
+
+
+        <div class="col-md-6">
+            {{-- iniziio carta  --}}
+            
+            <div class="card dx">
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -22,40 +38,27 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right"> </label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input placeholder="Nome" id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right"> </label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control" name="surname" value="{{ old('surname') }}"  autocomplete="surname" autofocus>
+                                <input placeholder="Cognome" id="surname" type="text" class="form-control" name="surname" value="{{ old('surname') }}"  autocomplete="surname" autofocus>
                             </div>
                         </div>
+ 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo Email') }}</label>
+                            <label for="born_date" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="born_date" class="col-md-4 col-form-label text-md-right">{{ __('Data di nascita') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="born_date" type="date" class="form-control @error('born_date') is-invalid @enderror" name="born_date" value="{{ old('born_date') }}" autocomplete="born_date" autofocus>
+                                <input placeholder="Data di nascita: gg / mm / aaaa" id="born_date" type="date" class="form-control @error('born_date') is-invalid @enderror" name="born_date" value="{{ old('born_date') }}" autocomplete="born_date" autofocus>
 
                                 @error('born_date')
                                     <span class="invalid-feedback" role="alert">
@@ -66,10 +69,24 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input placeholder="Email *" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right"> </label>
+
+                            <div class="col-md-6">
+                                <input placeholder="Password *" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -80,10 +97,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"> </label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input placeholder="Conferma Password *" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
@@ -97,7 +114,15 @@
                     </form>
                 </div>
             </div>
+
+
+
+
+            
         </div>
+
+
+        
     </div>
 </div>
 @endsection
