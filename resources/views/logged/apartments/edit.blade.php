@@ -3,7 +3,7 @@
 @section('content')
   <h1>Modifica un Appartamento</h1>
     
-  <form action="{{ route('logged.apartments.update', ['apartment' => $aparment->id]) }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('logged.apartments.update', ['apartment' => $apartment->id]) }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('POST')
 
@@ -25,16 +25,6 @@
       <div class="mb-3">
         <label for="address" class="form-label">Indirizzo</label>
         <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $apartment->address) }}">
-      </div>
-
-      <div class="mb-3">
-        <label for="cap" class="form-label">Indirizzo</label>
-        <input type="number" class="form-control" id="cap" name="cap" value="{{ old('cap') }}">
-      </div>
-
-      <div class="mb-3">
-        <label for="city" class="form-label">Indirizzo</label>
-        <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
       </div>
 
       <div class="mb-3">
@@ -68,7 +58,7 @@
           @foreach($services as $service) 
 
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}" name="services[]" {{ $apartment->services->contains($service) ? 'checked' : '' }}>
+                  <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}" name="services[]" {{ $apartment->service->contains($service) ? 'checked' : '' }}>
                   <label class="form-check-label" for="service-{{ $service->id }}">
                   {{ $service->name }}
                   </label>

@@ -89,7 +89,7 @@ class ApartmentController extends Controller
         }
 
         $new_apartment = new Apartment();
-        $new_apartment->address = $form_data['address'] . " " .$form_data['cap'] . " " . $form_data['city'];
+        $new_apartment->address = $form_data['address'];
         $new_apartment->users_id = $user->id;
         $new_apartment->visibility = 1;
         $new_apartment->fill($form_data);  
@@ -141,15 +141,15 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-        // $apartment = Apartment::findOrFail($id);
-        // $services =  Service::all();
+        $apartment = Apartment::findOrFail($id);
+        $services =  Service::all();
 
-        // $data = [
-        //     'apartment' => $apartment,
-        //     'services' => $services,
-        // ];
+        $data = [
+            'apartment' => $apartment,
+            'services' => $services,
+        ];
 
-        return view('logged.apartments.edit');
+        return view('logged.apartments.edit', $data);
     }
 
     /**
