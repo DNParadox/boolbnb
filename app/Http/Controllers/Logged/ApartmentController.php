@@ -80,8 +80,9 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate($this->getValidationRules());
+        $request->validate($this->getValidationRules());
         $form_data = $request->all();
+        $user = Auth::user();
 
         if(isset($form_data['photo'])) {
             $img_path = Storage::put('apartment-photo', $form_data['photo']);
@@ -90,6 +91,7 @@ class ApartmentController extends Controller
 
         $new_apartment = new Apartment();
         $new_apartment->address = $form_data['address'] . " " .$form_data['cap'] . " " . $form_data['city'];
+        $new_apartment->users_id = $user->id;
         $new_apartment->visibility = 1;
         $new_apartment->fill($form_data);  
         $new_apartment->save();
