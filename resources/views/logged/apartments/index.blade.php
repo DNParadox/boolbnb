@@ -11,8 +11,10 @@
       </div>
     </div>
   </div>
-  <section>
+  <section>    
+  @if ($have_one)
     <div class="container">
+
       <h2>
         I tuoi appartamenti
       </h2>
@@ -26,9 +28,9 @@
 
           </div>
           <div class="col">
-            <h3>Titolo dell'appartamento</h3>  
-            <div>Indirizzo dell'appartamento</div>
-            <div><strong>Sponsorizzato:</strong> No</div>
+            <h3>{{$apartments->title}}</h3>  
+            <div>{{$apartments->address}}</div>
+            <div><strong>Sponsorizzato:</strong>{{ $has_sponsorship }}</div>
             
             <div class="price-apt">
               30,00€
@@ -42,7 +44,7 @@
           </div>
         </div>
 
-        <div class="list-apartments">
+        {{-- <div class="list-apartments">
           <div class="row d-flex card-apt">
             <div class="col">
               <div class="img-apt">
@@ -65,12 +67,10 @@
               </div>
   
             </div>
-          </div>
-
-        
-    
+          </div> --}}   
       </div>
     </div>
+    @endif
   </section>
 
 
