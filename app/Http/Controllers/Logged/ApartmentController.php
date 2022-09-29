@@ -26,7 +26,8 @@ class ApartmentController extends Controller
         $last_sponsorship = false;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-
+        // $sponsor = ApartmentSponsorship::all();
+        // dd($sponsor[0]->start_date);
         if($apartments){
             // ricerca dell'ultima sponsorizzazione
             $last_sponsorship = ApartmentSponsorship::Where('apartment_id', '=', $apartments->id)->get();  
@@ -65,6 +66,7 @@ class ApartmentController extends Controller
         $services = Service::all();
 
         $data = [
+            'have_one' => true,
             'services' => $services,
             'user' => $user,
         ];
@@ -98,6 +100,8 @@ class ApartmentController extends Controller
         if(isset($form_data['services'])) {
             $new_apartment->service()->sync($form_data['services']);
         }
+
+        $data = [];
         
         return redirect()->route('logged.apartments.index');
     }
@@ -112,16 +116,15 @@ class ApartmentController extends Controller
     {
         // Take the current user
         $user = Auth::user();
-        
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-        
         // controllo se un utente ha registrato un appartamento
         if($apartments == null){
             
             $data = [
                 'have_one' => false,
             ];
+            
         }else {
             
             $data = [
@@ -145,6 +148,7 @@ class ApartmentController extends Controller
         $services =  Service::all();
 
         $data = [
+            'have_one' => true,
             'apartment' => $apartment,
             'services' => $services,
         ];
@@ -163,7 +167,6 @@ class ApartmentController extends Controller
     {
         $request->validate($this->getValidationRules()); 
         $form_data = $request->all();
-
         $old_apartment = Apartment::findOrFail($id);
         
         if (isset($form_data['photo'])) {
@@ -194,7 +197,18 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $apartment_to_delete = Apartment::findOrFail($id);
+        // $sponsors = ApartmentSponsorship::Where('apartment_id', '=', $id)->get();
+        // dd($sponsors);
+        
+        if($apartment_to_delete->photo){
+            Storage::delete($apartment_to_delete->photo);  
+        }
+        $apartment_to_delete->sponsorship()->sync([]);
+        $apartment_to_delete->service()->sync([]);
+        $apartment_to_delete->delete();
+
+        return redirect()->route('logged.apartments.index',['deleted' => 'yes']);
     }
 
 
@@ -205,10 +219,10 @@ class ApartmentController extends Controller
             'room_number' => 'required|min:1|max:999|numeric',
             'bed_number' => 'required|min:1|max:999|numeric',
             'bathroom' => 'required|min:1|max:999|numeric',
-            'address' => 'required|min:10|max:60000',
-            'price' => 'required|min:1|max:9999999|numeric|nullable',
-            'photo' => 'image|max: 1024|nullable',
-            'description' => 'required|min:10|max:60000|nullable',
+            'address' => 'required|min:1|max:60000',
+            'price' => 'min:1|max:9999999|numeric|nullable',
+            'photo' => 'required|image|max: 1024|nullable',
+            'description' => 'min:1|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
         ];
