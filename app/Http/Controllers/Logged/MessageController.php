@@ -30,11 +30,17 @@ class MessageController extends Controller
             ];
         } else {
             $messages = Message::Where('apartment_id', '=', $apartments->id)->get();
+            if($messages->count() > 0){
+                $have_one_message = true;
+            } else {
+                $have_one_message = false;
+            }
             $data = [
                 'apartments' => $apartments,
                 'user' => $user,
                 'messages' => $messages,
                 'have_one' => $have_one,
+                'have_one_message' => $have_one_message
             ];
         }
     

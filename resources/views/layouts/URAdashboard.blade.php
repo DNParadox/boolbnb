@@ -80,6 +80,27 @@
   </header>
 
   <main role="main">
+    <div class="register mb-4">
+      <div class="container">
+        <div class="text">
+          @if ($have_one)
+            <h1>Inserisci il tuo appartamento nella sezione in Evidenza</h1>
+          @else
+            <h1>Apri le porte ai viaggiatori</h1>
+          @endif
+        </div>
+    
+        @if ($have_one)
+          <div class="r-button">
+            <a class="btn btn-success" href="#">Sponsorizza</a>
+          </div>
+        @else
+          <div class="r-button">
+            <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
+          </div>
+        @endif
+      </div>
+    </div>
       @yield('content')
   </main>
 

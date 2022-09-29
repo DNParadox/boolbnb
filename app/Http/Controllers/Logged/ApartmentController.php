@@ -65,6 +65,7 @@ class ApartmentController extends Controller
         $services = Service::all();
 
         $data = [
+            'have_one' => true,
             'services' => $services,
             'user' => $user,
         ];
@@ -114,10 +115,8 @@ class ApartmentController extends Controller
     {
         // Take the current user
         $user = Auth::user();
-        
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-        
         // controllo se un utente ha registrato un appartamento
         if($apartments == null){
             
@@ -148,6 +147,7 @@ class ApartmentController extends Controller
         $services =  Service::all();
 
         $data = [
+            'have_one' => true,
             'apartment' => $apartment,
             'services' => $services,
         ];
