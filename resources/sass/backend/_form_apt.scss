@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    padding: 40px 0;
+    padding-bottom: 40px;
 }
 
 .content-form-apt {
@@ -13,6 +13,23 @@ h1 {
 
     .col-left {
         border-right: 1px solid #e1e1e1;
+    }
+
+    :required {  
+        background: url(https://cdn0.iconfinder.com/data/icons/fugue/icon/asterisk-small.png) no-repeat;
+        background-position:right top;
+    }
+    .required-check {
+        padding-bottom: 18px;
+    }
+
+    .required-check-text {
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    .form-label {
+        font-weight: 800;
     }
 
 
