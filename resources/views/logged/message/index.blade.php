@@ -1,17 +1,6 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
-  <div class="register">
-    <div class="container">
-      <div class="text">
-        <h1>Apri le porte ai viaggiatori</h1>
-      </div>
-
-      <div class="r-button">
-        <a class="btn btn-primary" href="{{route('logged.apartments.create')}}"> registra il tuo appartamento </a>
-      </div>
-    </div>
-  </div>
 @if ($have_one)
   @if ($have_one_message)
     <div class="message_page_header">

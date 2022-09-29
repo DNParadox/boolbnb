@@ -26,7 +26,8 @@ class ApartmentController extends Controller
         $last_sponsorship = false;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
-
+        // $sponsor = ApartmentSponsorship::all();
+        // dd($sponsor[0]->start_date);
         if($apartments){
             // ricerca dell'ultima sponsorizzazione
             $last_sponsorship = ApartmentSponsorship::Where('apartment_id', '=', $apartments->id)->get();  
@@ -197,9 +198,13 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         $apartment_to_delete = Apartment::findOrFail($id);
+        // $sponsors = ApartmentSponsorship::Where('apartment_id', '=', $id)->get();
+        // dd($sponsors);
+        
         if($apartment_to_delete->photo){
             Storage::delete($apartment_to_delete->photo);  
         }
+        $apartment_to_delete->sponsorship()->sync([]);
         $apartment_to_delete->service()->sync([]);
         $apartment_to_delete->delete();
 
