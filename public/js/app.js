@@ -2104,7 +2104,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("img", {
     attrs: {
-      src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../public/storage/airbnb.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+      src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
       alt: "BoolBnB"
     }
   })])])]), _vm._v(" "), _c("div", {
@@ -54714,6 +54714,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./storage/app/public/airbnb.png":
+/*!***************************************!*\
+  !*** ./storage/app/public/airbnb.png ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 
 /***/ }),
 
