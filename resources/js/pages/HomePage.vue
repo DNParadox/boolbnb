@@ -1,6 +1,6 @@
 <template>
         <!-- Inizio  -->
-        <section class="front-container container">
+        <section class="front-container container-fluid">
             <!-- Row -->
             <div class="row">
                 <!-- Col -->
