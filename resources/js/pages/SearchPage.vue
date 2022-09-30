@@ -4,7 +4,13 @@
       <datalist id="autocomplete">
 
       </datalist>
-      <input type="button" value="submit" @click="printsearch()">
+        <router-link 
+          :to="{
+            name: 'single-apartment', 
+          }" 
+          class="btn btn-primary">Visualizza l'articolo completo
+        </router-link>
+      <input type="button" value="submit" @click="getDistance()">
 
       <div>
         <h2>Servizi aggiuntivi</h2>
@@ -38,16 +44,28 @@ export default {
       })
       } 
     )},
+    getDistance(latitude1,longitude1,latitude2,longitude2){ 
+      // R: raggio della terra (paragonabile ad una sfera) in chilometri
+      let R = 6371;
+      let deltaLat = this.degreeToRadians(latitude1 - latitude2);
+      let deltaLon = this.degreeToRadians(longitude1 - longitude2);
 
-    getServices(){
-      axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
-      console.log(response)
-      response.data.results.forEach((service) =>{
-        this.services.push(service);
-      });
-      } 
-    )},
+      let lat1 = this.degreeToRadians(latitude1);
+      let lat2 = this.degreeToRadians(latitude2);
 
+      var a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
+
+      var c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+      var d = R * c;
+
+      console.log(d);
+    },   
+    degreeToRadians(degrees)
+    {
+      var pi = Math.PI;
+      return degrees * (pi/180);
+    },
     autocomplete(){
       let dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -71,7 +89,7 @@ export default {
             dataList.innerHTML += `<option>${suggestion}</option>`;
           });
 
-          this.searchedPoint = response.data.results[0].position;
+          this.currentSearchPosition = response.data.results[0].position;
         }
 
       });

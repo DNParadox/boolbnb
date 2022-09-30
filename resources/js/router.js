@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 import HomePage from './pages/HomePage.vue';
 import SearchPage from './pages/SearchPage.vue';
 import NotFound from './pages/NotFound.vue';
+import SingleApartment from './pages/SingleApartment.vue';
 
 const router=new VueRouter({
     mode:'history',
@@ -20,6 +21,11 @@ const router=new VueRouter({
             path: '/search',
             name: 'search',
             component: SearchPage
+        },
+        {
+            path: '/single-apartment',
+            name: 'single-apartment',
+            component: SingleApartment
         },
         {
             path: '/*',

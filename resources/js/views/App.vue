@@ -18,4 +18,9 @@ export default {
         HeaderComponent
     }
 }
+
 </script>
+
+<style>
+    @import '../../sass/frontend/_header.scss';
+</style>

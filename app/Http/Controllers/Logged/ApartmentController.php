@@ -225,6 +225,7 @@ class ApartmentController extends Controller
             'description' => 'min:1|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
+            'services' => 'required|min:1'
         ];
     }
 
@@ -241,6 +242,7 @@ class ApartmentController extends Controller
             'description' => 'min:1|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',
+            'services' => 'required|min:1'
         ];
     }
 }
