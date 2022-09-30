@@ -35,6 +35,7 @@ export default {
     )},
 
     printsearch(){
+      
     },
 
     autocomplete(){
@@ -60,7 +61,7 @@ export default {
             dataList.innerHTML += `<option>${suggestion}</option>`;
           });
 
-          this.searchedPoint = response.data.results[0].position;
+          this.currentSearchPosition = response.data.results[0].position;
         }
 
       });

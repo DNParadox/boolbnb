@@ -1993,7 +1993,7 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this2.searchedPoint = response.data.results[0].position;
+          _this2.currentSearchPosition = response.data.results[0].position;
         }
       });
     }
