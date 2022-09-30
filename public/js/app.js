@@ -2105,7 +2105,7 @@ var staticRenderFns = [function () {
   return _c("header", {
     staticClass: "guestheader"
   }, [_c("div", {
-    staticClass: "container h-100"
+    staticClass: "container-fluid h-100"
   }, [_c("div", {
     staticClass: "row d-flex align-items-center h-100"
   }, [_c("div", {
@@ -2181,7 +2181,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "text-center"
   }, [_c("h2", [_vm._v("Ricerca case e appartamenti in affitto")])])])]), _vm._v(" "), _c("section", {
-    staticClass: "front-container container"
+    staticClass: "front-container container-fluid"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -2189,9 +2189,9 @@ var staticRenderFns = [function () {
   }, [_c("h2", {}, [_vm._v("Appartamenti in evidenza")])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col d-flex"
+    staticClass: "col"
   }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
+    staticClass: "card"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2207,9 +2207,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
+    staticClass: "col"
   }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
+    staticClass: "card"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2225,9 +2225,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
+    staticClass: "col"
   }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
+    staticClass: "card"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2243,9 +2243,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
+    staticClass: "col"
   }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
+    staticClass: "card"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2261,9 +2261,45 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
+    staticClass: "col"
   }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
   }, [_c("a", {
     attrs: {
       href: "#"
