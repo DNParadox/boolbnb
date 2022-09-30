@@ -1960,7 +1960,8 @@ __webpack_require__.r(__webpack_exports__);
       currentSearch: '',
       currentApartments: [],
       currentSearchPosition: null,
-      services: []
+      services: [],
+      filteredApartments: []
     };
   },
   methods: {
@@ -1993,7 +1994,7 @@ __webpack_require__.r(__webpack_exports__);
       var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       var d = R * c;
-      console.log(d);
+      return d;
     },
     degreeToRadians: function degreeToRadians(degrees) {
       var pi = Math.PI;
@@ -2020,6 +2021,19 @@ __webpack_require__.r(__webpack_exports__);
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
           _this3.currentSearchPosition = response.data.results[0].position;
+        }
+      });
+    },
+    filterByDistance: function filterByDistance() {
+      var _this4 = this;
+
+      this.currentApartments.forEach(function (apartment) {
+        parseFloat(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
+
+        if (_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 25) {
+          console.log(parseInt(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude))));
+
+          _this4.filteredApartments.push(apartment);
         }
       });
     }
@@ -2356,7 +2370,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
-        return _vm.getDistance();
+        return _vm.filterByDistance();
       }
     }
   }), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
@@ -54735,8 +54749,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
