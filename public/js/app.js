@@ -2077,27 +2077,50 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("header", [_c("div", {
-    staticClass: "logo"
-  }, [_c("span", [_vm._v("BOOLBNB")])]), _vm._v(" "), _c("div", {
-    staticClass: "input"
-  }, [_c("input", {
-    staticClass: "search",
-    attrs: {
-      type: "text",
-      placeholder: "Cerca..."
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "login"
+  return _c("header", {
+    staticClass: "guestheader"
+  }, [_c("div", {
+    staticClass: "container h-100"
+  }, [_c("div", {
+    staticClass: "row d-flex align-items-center h-100"
+  }, [_c("div", {
+    staticClass: "col d-md-flex"
+  }, [_c("figure", {
+    staticClass: "logosize"
   }, [_c("a", {
     attrs: {
-      href: "#"
+      href: "http://localhost:8000/"
     }
-  }, [_vm._v("Registrati")]), _vm._v(" "), _c("a", {
+  }, [_c("img", {
     attrs: {
-      href: "#"
+      src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
+      alt: "BoolBnB"
     }
-  }, [_vm._v("Accedi")])])]);
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col d-none d-lg-flex"
+  }, [_c("div", {
+    staticClass: "inputcontainer pb d-flex"
+  }, [_c("input", {
+    staticClass: "inputmod",
+    attrs: {
+      type: "text",
+      placeholder: "Cerca"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "circle"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-magnifying-glass icon"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "col d-flex justify-content-end"
+  }, [_c("div", {
+    staticClass: "profile_header"
+  }, [_c("div", {
+    staticClass: "icon-container pb dropdown-btn"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user icon"
+  })]), _vm._v(" "), _c("ul", {
+    staticClass: "dropdown-container tr"
+  })])])])])]);
 }];
 render._withStripped = true;
 
@@ -2132,16 +2155,18 @@ var staticRenderFns = [function () {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "text-center"
-  }, [_c("h2", [_vm._v("Ricerca case e appartamenti in affitto")])])])]), _vm._v(" "), _c("h2", {
-    staticClass: "text-center m-5"
-  }, [_vm._v("Appartamenti in evidenza")]), _vm._v(" "), _c("div", {
-    staticClass: "front-container"
+  }, [_c("h2", [_vm._v("Ricerca case e appartamenti in affitto")])])])]), _vm._v(" "), _c("section", {
+    staticClass: "front-container container"
   }, [_c("div", {
-    staticClass: "row row-cols-6"
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "col"
+    staticClass: "col text-center"
+  }, [_c("h2", {}, [_vm._v("Appartamenti in evidenza")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "card mb-5"
+    staticClass: "col d-flex"
+  }, [_c("div", {
+    staticClass: "card mx-sm-auto mx-md-0"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2157,9 +2182,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col d-flex"
   }, [_c("div", {
-    staticClass: "card mb-5"
+    staticClass: "card mx-sm-auto mx-md-0"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2175,9 +2200,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col d-flex"
   }, [_c("div", {
-    staticClass: "card mb-5"
+    staticClass: "card mx-sm-auto mx-md-0"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2193,9 +2218,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col d-flex"
   }, [_c("div", {
-    staticClass: "card mb-5"
+    staticClass: "card mx-sm-auto mx-md-0"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -2211,45 +2236,9 @@ var staticRenderFns = [function () {
   }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col d-flex"
   }, [_c("div", {
-    staticClass: "card mb-5"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
-  }, [_c("div", {
-    staticClass: "card mb-5"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
-  }, [_c("div", {
-    staticClass: "card mb-5"
+    staticClass: "card mx-sm-auto mx-md-0"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -6910,7 +6899,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-153bfd55] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-bottom: 20px;\n}\nheader .logo[data-v-153bfd55] {\n  margin: 30px;\n}\nheader .search[data-v-153bfd55] {\n  margin-top: 10px;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-left: 10px;\n  padding-right: 100px;\n  border-radius: 20px;\n}\nheader .login[data-v-153bfd55] {\n  margin: 30px;\n  font-size: 20px;\n}\nheader .login a[data-v-153bfd55] {\n  margin-right: 15px;\n}", ""]);
+exports.push([module.i, ".guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}", ""]);
 
 // exports
 
@@ -6929,7 +6918,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".f-banner[data-v-04c29797] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-04c29797] {\n  color: white;\n  font-size: 35px;\n}\n.front-container[data-v-04c29797] {\n  width: 90%;\n  margin: 0 auto;\n}\n.front-container .card[data-v-04c29797] {\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 15px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card h4[data-v-04c29797] {\n  font-weight: bold;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, ".f-banner[data-v-04c29797] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-04c29797] {\n  color: white;\n  font-size: 35px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n  width: 250px;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 100%;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 
@@ -6949,6 +6938,44 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n}\n.container .bottom-part .left[data-v-4fd40851] {\n  width: 50%;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right[data-v-4fd40851] {\n  padding-top: 60px;\n  padding-left: 50px;\n  width: 40%;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../sass/frontend/_header.scss */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/sass/frontend/_header.scss"), "");
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/sass/frontend/_header.scss":
+/*!*******************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/sass/frontend/_header.scss ***!
+  \*******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".guestheader{\n    height: 80px;\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\n            border: none !important;\n}\n}\n}\n\n", ""]);
 
 // exports
 
@@ -38259,15 +38286,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/SingleApartment.vue?vue&type=style&index=0&id=4fd40851&lang=scss&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/SingleApartment.vue?vue&type=style&index=0&id=4fd40851&lang=scss&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./SingleApartment.vue?vue&type=style&index=0&id=4fd40851&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/SingleApartment.vue?vue&type=style&index=0&id=4fd40851&lang=scss&scoped=true&");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -54558,7 +54585,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue_vue_type_template_id_91ac6b5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=91ac6b5c& */ "./resources/js/views/App.vue?vue&type=template&id=91ac6b5c&");
 /* harmony import */ var _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js& */ "./resources/js/views/App.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _App_vue_vue_type_style_index_0_id_91ac6b5c_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css& */ "./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -54566,7 +54595,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _App_vue_vue_type_template_id_91ac6b5c___WEBPACK_IMPORTED_MODULE_0__["render"],
   _App_vue_vue_type_template_id_91ac6b5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -54595,6 +54624,22 @@ component.options.__file = "resources/js/views/App.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css& ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_91ac6b5c_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/App.vue?vue&type=style&index=0&id=91ac6b5c&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_91ac6b5c_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_91ac6b5c_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_91ac6b5c_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_id_91ac6b5c_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 
@@ -54627,6 +54672,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./storage/app/public/airbnb.png":
+/*!***************************************!*\
+  !*** ./storage/app/public/airbnb.png ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
+
+/***/ }),
+
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -54634,8 +54690,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

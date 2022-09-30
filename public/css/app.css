@@ -10938,11 +10938,7 @@ a.text-dark:focus {
 }
 
 .ura_header .nav_menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
-  margin: 0 20px;
 }
 
 .ura_header .nav_menu .ul_links {
@@ -10989,15 +10985,6 @@ a.text-dark:focus {
   border: 2px solid black;
 }
 
-.ura_header .logosize {
-  width: 30px;
-  height: 20px;
-}
-
-.ura_header .logosize img {
-  width: 100%;
-}
-
 .ura_header .profile_header {
   display: flex;
 }
@@ -11005,12 +10992,13 @@ a.text-dark:focus {
 .ura_header .pr1 {
   position: relative;
   cursor: pointer;
-  padding: 0 10px;
+  display: flex;
 }
 
 .ura_header .pr2 {
   position: relative;
   cursor: pointer;
+  display: flex;
 }
 
 .ura_header .dropdown-container {
@@ -11021,6 +11009,10 @@ a.text-dark:focus {
   padding-inline: 20px 70px;
   padding-block: 10px;
   box-shadow: 2px 2px 4px 4px rgba(136, 136, 136, 0.25);
+}
+
+.ura_header .links .icon {
+  align-self: center;
 }
 
 .ura_header .tr {
@@ -11328,7 +11320,7 @@ h1 {
 
 .logosize {
   width: 30px;
-  height: 20px;
+  height: 30px;
 }
 
 * {
