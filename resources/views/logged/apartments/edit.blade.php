@@ -22,7 +22,7 @@
         {{-- Column Left --}}
         <div class="col col-left">
           <div class="mb-3">
-            <label for="title" class="form-label">Nome <span class="required-check">*</span></label>
+            <label for="title" class="form-label">Titolo <span class="required-check">*</span></label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $apartment->title) }}" required="required">
           </div>
   
@@ -65,7 +65,7 @@
           </div>
 
           <div class="mb3 pb-2">
-            <div class="form-label">Servizi:</div>
+            <div class="form-label">Servizi <span class="required-check">*</span></div>
 
               @foreach($services as $service) 
 
