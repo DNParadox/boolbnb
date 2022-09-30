@@ -1972,7 +1972,22 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    printsearch: function printsearch() {},
+    getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
+      // R: raggio della terra (paragonabile ad una sfera) in chilometri
+      var R = 6371;
+      var deltaLat = this.degreeToRadians(latitude1 - latitude2);
+      var deltaLon = this.degreeToRadians(longitude1 - longitude2);
+      var lat1 = this.degreeToRadians(latitude1);
+      var lat2 = this.degreeToRadians(latitude2);
+      var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      var d = R * c;
+      console.log(d);
+    },
+    degreeToRadians: function degreeToRadians(degrees) {
+      var pi = Math.PI;
+      return degrees * (pi / 180);
+    },
     autocomplete: function autocomplete() {
       var _this2 = this;
 
@@ -2341,7 +2356,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
-        return _vm.printsearch();
+        return _vm.getDistance();
       }
     }
   })], 1);
