@@ -44,6 +44,14 @@ export default {
       })
       } 
     )},
+    getServices(){
+      axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
+      console.log(response)
+      response.data.results.forEach((service) =>{
+        this.services.push(service);
+      });
+      } 
+    )},
     getDistance(latitude1,longitude1,latitude2,longitude2){ 
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       let R = 6371;
