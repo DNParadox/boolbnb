@@ -95,7 +95,8 @@
   
               <div class="upgrade-photo">
                 <div>Foto attuale:</div>
-                <img style="width: 15rem" src="{{ asset( '/storage/' . $apartments->photo) }}" alt=" {{ $apartment->title }}">
+                <img style="width: 15rem" src="https://a0.muscache.com/im/pictures/miso/Hosting-49806039/original/8b83e14e-1263-404c-b1c1-308f8662cc49.jpeg">
+                {{-- <img style="width: 15rem" src="{{ asset( '/storage/' . $apartment->photo) }}" alt=" {{ $apartment->title }}"> --}}
               </div>
           </div>
          
