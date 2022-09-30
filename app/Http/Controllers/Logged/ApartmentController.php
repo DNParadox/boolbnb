@@ -220,7 +220,7 @@ class ApartmentController extends Controller
             'bed_number' => 'required|min:1|max:999|numeric',
             'bathroom' => 'required|min:1|max:999|numeric',
             'address' => 'required|min:1|max:60000',
-            'price' => 'min:1|max:9999999|numeric|nullable',
+            'price' => 'min:0|max:9999999|numeric|nullable',
             'photo' => 'required|image|max: 1024|nullable',
             'description' => 'min:1|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
