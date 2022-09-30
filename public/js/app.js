@@ -1959,7 +1959,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       currentSearch: '',
       currentApartments: [],
-      currentSearchPosition: null
+      currentSearchPosition: null,
+      services: []
     };
   },
   methods: {
@@ -1972,9 +1973,34 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    printsearch: function printsearch() {},
-    autocomplete: function autocomplete() {
+    getServices: function getServices() {
       var _this2 = this;
+
+      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
+        console.log(response);
+        response.data.results.forEach(function (service) {
+          _this2.services.push(service);
+        });
+      });
+    },
+    getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
+      // R: raggio della terra (paragonabile ad una sfera) in chilometri
+      var R = 6371;
+      var deltaLat = this.degreeToRadians(latitude1 - latitude2);
+      var deltaLon = this.degreeToRadians(longitude1 - longitude2);
+      var lat1 = this.degreeToRadians(latitude1);
+      var lat2 = this.degreeToRadians(latitude2);
+      var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      var d = R * c;
+      console.log(d);
+    },
+    degreeToRadians: function degreeToRadians(degrees) {
+      var pi = Math.PI;
+      return degrees * (pi / 180);
+    },
+    autocomplete: function autocomplete() {
+      var _this3 = this;
 
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -1993,13 +2019,13 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this2.currentSearchPosition = response.data.results[0].position;
+          _this3.currentSearchPosition = response.data.results[0].position;
         }
       });
     }
   },
   mounted: function mounted() {
-    this.getApartment();
+    this.getApartment(), this.getServices();
   }
 });
 
@@ -2366,10 +2392,14 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
-        return _vm.printsearch();
+        return _vm.getDistance();
       }
     }
-  })], 1);
+  }), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
+    return _c("li", {
+      key: service.id
+    }, [_vm._v("\n        " + _vm._s(service.name) + "\n      ")]);
+  }), 0)])], 1);
 };
 
 var staticRenderFns = [];
@@ -6996,7 +7026,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".guestheader{\n    height: 80px;\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\n            border: none !important;\n}\n}\n}\n\n", ""]);
+exports.push([module.i, ".guestheader{\r\n    height: 80px;\r\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\r\n            border: none !important;\n}\n}\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -54741,8 +54771,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
