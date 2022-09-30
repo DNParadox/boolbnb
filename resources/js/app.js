@@ -27,10 +27,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- window.axios = require('axios');
- window.axios.defaults.headers.common = {
-    'X-Requested-With' : 'XMLHttpRequest',
- }
+window.axios = require('axios');
 
 import router from './router';
 import App from './views/App.vue';

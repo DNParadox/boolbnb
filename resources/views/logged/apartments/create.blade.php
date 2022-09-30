@@ -6,7 +6,6 @@
     <form id="create-apartment" action="{{ route('logged.apartments.store') }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('POST')
-
       @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -26,7 +25,7 @@
           </div>
   
           <div class="mb-3">
-            <label for="address" class="form-label">Indirizzo</label>
+            <label for="address" class="form-label">Indirizzo <span class="required-check">*</span></label>
             <input type="text" list="addresses" class="form-control" id="address" name="address" value="{{ old('address') }}" autocomplete="off" required="required">
             <datalist id="addresses"> 
             
@@ -36,30 +35,30 @@
           <div class="row">
             <div class="col mb-3">
               <label for="bathroom" class="form-label">Numero di bagni <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
+              <input type="number" min='0' class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
               <label for="bed_number" class="form-label">Numero di letti <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
+              <input type="number" min='0' class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
             </div>
       
             <div class="col mb-3">
               <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
+              <input type="number" min='0' class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
             </div>
           </div>
   
           <div class="row">
             <div class="col mb-3">
               <label for="square_meters" class="form-label">Metri quadrati <span class="required-check">*</span></label>
-              <input type="numer" class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}" required="required">
+              <input type="numer" min='0' class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}" required="required">
             </div>
           
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number"  class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
+              <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
             </div>
           </div>
         </div>
@@ -92,7 +91,8 @@
           </div>
          
         </div> 
-
+        <input type="hidden" id="latitude" name="latitude" value="">
+        <input type="hidden" id="longitude" name="longitude" value="">
       </div> 
 
       <hr>
@@ -117,6 +117,8 @@
         const data = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
 
         let form = document.getElementById('create-apartment');
+        let latitude = document.getElementById('latitude');
+        let longitude = document.getElementById('longitude');
         let dataList = document.getElementById('addresses');
         let suggestions = [];
 
@@ -137,24 +139,11 @@
           suggestions.forEach((suggestion) => {
             dataList.innerHTML += `<option>${suggestion}</option>`;
           });
+
+          latitude.value = response.data.results[0].position.lat;
+          longitude.value = response.data.results[0].position.lon;
         });
-    });
-
-
-    // Da finire
-    document.getElementById('address').addEventListener('blur',
-    async function(e){
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
-      let form = document.getElementById('create-apartment');
-
-      await axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
-        .then((response)=>{ 
-          form.innerHTML += `<input type="hidden" id="latitude" name="latitude" value="${response.data.results[0].position.lat}"> <input type="hidden" id="longitude" name="longitude" value="${response.data.results[0].position.lon}">`
-        });
-
-    });
-    
+      });
   </script>
 
 @endsection
