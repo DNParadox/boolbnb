@@ -47,7 +47,7 @@
       
             <div class="col mb-3">
               <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
+              <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number', $apartment->room_number) }}" required="required">
             </div>
           </div>
   
@@ -60,7 +60,7 @@
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number" class="form-control" id="price" name="price" value="{{ $apartment->price }}">
+              <input type="number" class="form-control" id="price" name="price" value="{{ old('price', $apartment->price) }}">
             </div>
           </div>
 
@@ -86,7 +86,7 @@
           
           <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control" id="description" name="description" rows="6">{{ old('description') }}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="6">{{ old('description', $apartment->description) }}</textarea>
           </div>
 
           <div class="media-upload mb-3">
@@ -95,8 +95,7 @@
   
               <div class="upgrade-photo">
                 <div>Foto attuale:</div>
-                <img style="width: 15rem" src="https://a0.muscache.com/im/pictures/miso/Hosting-49806039/original/8b83e14e-1263-404c-b1c1-308f8662cc49.jpeg">
-                {{-- <img style="width: 15rem" src="{{ asset( '/storage/' . $apartment->photo) }}" alt=" {{ $apartment->title }}"> --}}
+                <img style="width: 15rem" src="{{ asset( 'storage/' . $apartment->photo) }}" alt=" {{ $apartment->title }}">
               </div>
           </div>
          
