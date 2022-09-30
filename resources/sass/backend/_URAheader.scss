@@ -2,11 +2,7 @@
   height: 80px;
   font-size: 1.25rem;
   .nav_menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 100%;
-    margin: 0 20px;
 
     .ul_links{
       display: flex;
@@ -51,14 +47,6 @@
     border: 2px solid black;
   }
 
-  .logosize{
-    width: 30px;
-    height: 20px;
-
-    img {
-      width: 100%;
-    }
-  }
   .profile_header{
     display: flex;
   }
@@ -66,12 +54,13 @@
   .pr1 {
     position: relative;
     cursor: pointer;
-    padding: 0 10px;
+    display: flex;
   }
 
   .pr2{
     position: relative;
     cursor: pointer;
+    display: flex;
   }
 
   .dropdown-container {
@@ -82,6 +71,13 @@
     padding-inline: 20px 70px;
     padding-block: 10px;
     box-shadow:2px 2px 4px 4px rgba(136, 136, 136, 0.25);
+
+  }
+
+  .links {
+    .icon{
+      align-self: center;
+    }
   }
   .tr {
     top: 70px;

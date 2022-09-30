@@ -15,69 +15,71 @@
 </head>
 <body>
   <header class="ura_header">
-    <nav class="nav_menu">
-      {{-- Nav Logo --}}
-      <div class="image_header">
-        <figure class="logosize">
-          {{-- Testing --}}
-          <a href="{{ route( 'logged.apartments.index') }}">
-            <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
-          </a>
-        </figure>
-       {{-- href="{{ route('register') --}}
-      </div>
-      {{-- Nav Center --}}
-      <ul class="ul_links">
-        <li class="links">
-          <a href="{{ route( 'logged.apartments.index') }}"> Oggi </a>
-        </li>
-        <li class="links">
-          <a href="#">Sponsorizza</a> 
-        </li>
-        <li class="links">
-          <a href="#">Statistiche</a>
-        </li>
-        <li class="links">
-          <div class="pr1 dropdown-btn" href="#">Menu <i class="fa-solid fa-chevron-down icon"></i></div>
-          <ul class="dropdown-container tr1">
-            <li class="nav-item"> 
-              <a class="nav-link" href="{{ route( 'logged.apartments.create') }}" >
-                Aggiungi un Appartamento
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-
-      {{-- Nav right side Profile --}}
-      <div class="profile_header">
-
-        {{-- Area in testing --}}
-        
-        <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
-        <ul class="dropdown-container tr">
-          <li class="nav-item"> 
-            <a class="nav-link" href="#">
-              Messaggi
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-               document.getElementById('logout-form').submit();">
-            Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </li>
-        </ul>
-      </div>
-
-
-      {{-- Area Testing --}}
-    </nav>
+    <div class="container h-100">
+      <nav class="nav_menu">
+        <div class="row d-flex align-items-center h-100" >
+          <div class="col d-md-flex">
+            {{-- Nav Logo --}}
+            <div class="image_header">
+              <figure class="logosize">
+                <a href="{{ route( 'logged.apartments.index') }}">
+                  <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
+                </a>
+              </figure>
+            </div>
+          </div>
+  
+          {{-- Nav Center --}}
+          <div class="col d-none  d-lg-flex">
+            <ul class="ul_links">
+              <li class="links">
+                <a href="{{ route( 'logged.apartments.index') }}"> Oggi </a>
+              </li>
+              <li class="links">
+                <a href="#">Sponsorizza</a> 
+              </li>
+              <li class="links">
+                <a href="#">Statistiche</a>
+              </li>
+              <li class="links">
+                <div class="pr1 dropdown-btn" href="#">Menu <i class="fa-solid fa-chevron-down icon"></i></div>
+                <ul class="dropdown-container tr1">
+                  <li class="nav-item"> 
+                    <a class="nav-link" href="{{ route( 'logged.apartments.create') }}" >
+                      Aggiungi un Appartamento
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+    
+    
+          {{-- Nav right side Profile --}}
+          <div class="col d-flex justify-content-end">
+            <div class="profile_header">
+              <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
+                <ul class="dropdown-container tr">
+                    <li class="nav-item"> 
+                      <a class="nav-link" href="#">
+                        Messaggi
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                      Logout
+                      </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    </li>
+                </ul>
+              </div>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main role="main">

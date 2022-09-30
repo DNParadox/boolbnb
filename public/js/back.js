@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/back.js */"./resources/js/back.js");
 
 
 /***/ })
