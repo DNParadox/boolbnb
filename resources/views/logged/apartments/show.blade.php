@@ -4,41 +4,57 @@
   <div class="container mb-5">
 
     @if ($have_one)
-    <h2 class="mt-4">I TUOI APPARTAMENTI</h2>
+    <h2 class="mt-4">{{$apartments->title}}</h2>
+    <div>
+      {{$apartments->address}}
+    </div>
+    {{-- Info apartments --}}
+    <div>
+      <span>numero di stanze {{$apartments->room_number}} | </span>
+      <span>numero letti {{$apartments->room_number}} | </span>
+      <span>numero bagni {{$apartments->room_number}} | </span>
+      <span>metri quadri {{$apartments->room_number}}</span>
+    </div>
+    
     <hr class="mb-5">
+
       <div class="apartment-container">
         <div class="apartment">
         
-          <img class="w-50" src="https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200" alt="nome appartamento">
+          <img class="w-50" src="{{ asset( 'storage/' . $apartments->photo) }}" alt="{{$apartments->title}}" alt="nome appartamento">
           
           <div class="right-part">
-            <h3>{{$apartments->title}}</h3>
+
+            {{-- Description --}}
             <p>{{$apartments->description}}</p>
-            <h4>{{$apartments->address}}</h4>
-            <div>
-              <span>numero di stanze {{$apartments->room_number}} | </span>
-              <span>numero letti {{$apartments->room_number}} | </span>
-              <span>numero bagni {{$apartments->room_number}} | </span>
-              <span>metri quadri {{$apartments->room_number}}</span>
-            </div>
+
+            {{-- Services --}}
             <div class="services">
-              <h4>Servizi offerti: </h4>
+              <h5>Servizi offerti: </h5>
               @foreach ($apartments->service as $service)
-                <span>{{$service->name}}</span>   
-              @endforeach
-               
-              
+              @if ($loop->last)
+              <span>{{$service->name}}</span>
+              @else
+                <span>{{$service->name}} - </span>  
+              @endif   
+              @endforeach              
             </div>
+
+            {{-- Price --}}
             <h4>80 € a notte</h4>
+
+            {{-- Button --}}
             <div class="modification">
               <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn btn-primary">Modifica</a>
-            </div>
+            
     
-            <form action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
-              @csrf
-              @method('DELETE')
-              <input class="btn btn-primary" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
-            </form>
+              <form action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-primary" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
+              </form>
+            </div>
+
           </div>
 
         </div>
