@@ -1979,7 +1979,8 @@ __webpack_require__.r(__webpack_exports__);
       currentSearch: '',
       currentApartments: [],
       currentSearchPosition: null,
-      services: []
+      services: [],
+      filteredApartments: []
     };
   },
   methods: {
@@ -2011,7 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
       var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       var d = R * c;
-      console.log(d);
+      return d;
     },
     degreeToRadians: function degreeToRadians(degrees) {
       var pi = Math.PI;
@@ -2038,6 +2039,19 @@ __webpack_require__.r(__webpack_exports__);
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
           _this3.currentSearchPosition = response.data.results[0].position;
+        }
+      });
+    },
+    filterByDistance: function filterByDistance() {
+      var _this4 = this;
+
+      this.currentApartments.forEach(function (apartment) {
+        parseFloat(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
+
+        if (_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 25) {
+          console.log(parseInt(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude))));
+
+          _this4.filteredApartments.push(apartment);
         }
       });
     }
@@ -2121,7 +2135,7 @@ var staticRenderFns = [function () {
   return _c("header", {
     staticClass: "guestheader"
   }, [_c("div", {
-    staticClass: "container h-100"
+    staticClass: "container-fluid h-100"
   }, [_c("div", {
     staticClass: "row d-flex align-items-center h-100"
   }, [_c("div", {
@@ -2184,44 +2198,136 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("section", {
-    staticClass: "front-container container"
+    staticClass: "front-container container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col d-flex"
-  }, _vm._l(_vm.currentApartments, function (currentApartment) {
-    return _c("div", {
-      key: currentApartment.id,
-      staticClass: "card mx-sm-auto mx-md-0"
-    }, [_c("router-link", {
-      attrs: {
-        to: {
-          name: "single-apartment"
-        }
-      }
-    }, [_c("img", {
-      staticClass: "card-img-top",
-      attrs: {
-        src: currentApartment.photo,
-        alt: "..."
-      }
-    }), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("h4", [_vm._v(_vm._s(currentApartment.title))]), _vm._v(" "), _c("div", {
-      staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])], 1);
-  }), 0)])]);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "row"
+    staticClass: "col"
   }, [_c("div", {
-    staticClass: "col text-center"
-  }, [_c("h2", {}, [_vm._v("Appartamenti in evidenza")])])]);
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -2299,21 +2405,28 @@ var render = function render() {
     attrs: {
       id: "autocomplete"
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      to: {
+        name: "single-apartment"
+      }
+    }
+  }, [_vm._v("Visualizza l'articolo completo\n    ")]), _vm._v(" "), _c("input", {
     attrs: {
       type: "button",
       value: "submit"
     },
     on: {
       click: function click($event) {
-        return _vm.getDistance();
+        return _vm.filterByDistance();
       }
     }
   }), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
     return _c("li", {
       key: service.id
     }, [_vm._v("\n        " + _vm._s(service.name) + "\n      ")]);
-  }), 0)])]);
+  }), 0)])], 1);
 };
 
 var staticRenderFns = [];
