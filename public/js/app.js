@@ -1967,19 +1967,25 @@ __webpack_require__.r(__webpack_exports__);
   name: 'SearchPage',
   data: function data() {
     return {
-      currentSearch: ''
+      currentSearch: '',
+      currentApartments: [],
+      currentSearchPosition: null
     };
   },
   methods: {
     getApartment: function getApartment() {
+      var _this = this;
+
       axios.get('http://127.0.0.1:8000/api/search').then(function (response) {
-        console.log(response.data.results.data);
+        response.data.results.data.forEach(function (apartment) {
+          _this.currentApartments.push(apartment);
+        });
       });
     },
-    printsearch: function printsearch() {
-      console.log(this.currentSearch);
-    },
+    printsearch: function printsearch() {},
     autocomplete: function autocomplete() {
+      var _this2 = this;
+
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
@@ -1997,6 +2003,7 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
+          _this2.searchedPoint = response.data.results[0].position;
         }
       });
     }
@@ -54311,8 +54318,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./resources/js/pages/SearchPage.vue ***!
   \*******************************************/
+<<<<<<< HEAD
 >>>>>>> 35d558ef6e4e6b3a5528d08565dc4f442c5e14cd
 /*! exports provided: default */
+=======
+/*! no static exports found */
+>>>>>>> 7da8cb541069e0568f5a21add7999f0410f31b87
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54326,8 +54337,13 @@ __webpack_require__.r(__webpack_exports__);
 =======
 /* harmony import */ var _SearchPage_vue_vue_type_template_id_483e11c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchPage.vue?vue&type=template&id=483e11c0& */ "./resources/js/pages/SearchPage.vue?vue&type=template&id=483e11c0&");
 /* harmony import */ var _SearchPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchPage.vue?vue&type=script&lang=js& */ "./resources/js/pages/SearchPage.vue?vue&type=script&lang=js&");
+<<<<<<< HEAD
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 >>>>>>> 35d558ef6e4e6b3a5528d08565dc4f442c5e14cd
+=======
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SearchPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SearchPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+>>>>>>> 7da8cb541069e0568f5a21add7999f0410f31b87
 
 
 
@@ -54377,8 +54393,12 @@ component.options.__file = "resources/js/pages/SearchPage.vue"
 /*!********************************************************************!*\
   !*** ./resources/js/pages/SearchPage.vue?vue&type=script&lang=js& ***!
   \********************************************************************/
+<<<<<<< HEAD
 >>>>>>> 35d558ef6e4e6b3a5528d08565dc4f442c5e14cd
 /*! exports provided: default */
+=======
+/*! no static exports found */
+>>>>>>> 7da8cb541069e0568f5a21add7999f0410f31b87
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54580,8 +54600,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 7da8cb541069e0568f5a21add7999f0410f31b87
 
 
 /***/ })

@@ -14,18 +14,24 @@ export default {
   data() {
     return{
       currentSearch: '',
+      currentApartments: [],
+      currentSearchPosition: null
     }
   },
   methods:{
     getApartment(){ 
       axios.get('http://127.0.0.1:8000/api/search').then((response)=>{
         
-        console.log(response.data.results.data)
+      response.data.results.data.forEach((apartment) =>{
+        this.currentApartments.push(apartment);
+      })
       } 
     )},
+
     printsearch(){
-      console.log(this.currentSearch)
+      
     },
+
     autocomplete(){
       let dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -43,12 +49,13 @@ export default {
             }
           }
           
-          
           dataList.innerHTML = "";
 
           suggestions.forEach((suggestion) => {
             dataList.innerHTML += `<option>${suggestion}</option>`;
           });
+
+          this.searchedPoint = response.data.results[0].position;
         }
 
       });
