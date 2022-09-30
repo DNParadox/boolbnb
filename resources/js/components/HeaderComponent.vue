@@ -38,7 +38,7 @@
                 </div>
 
                 <!-- Col Center-->
-                <div class="col d-none  d-lg-flex">
+                <div class="col d-none d-lg-flex">
                     <div class="inputcontainer pb d-flex">
                         <input class="inputmod" type="text" placeholder="Cerca">
                         <div class="circle">

@@ -4,12 +4,6 @@
       <datalist id="autocomplete">
 
       </datalist>
-        <router-link 
-          :to="{
-            name: 'single-apartment', 
-          }" 
-          class="btn btn-primary">Visualizza l'articolo completo
-        </router-link>
       <input type="button" value="submit" @click="filterByDistance()">
 
       <div>
@@ -19,6 +13,16 @@
             {{ service.name }}
           </li>
         </ul>
+      </div>
+      <div v-if="filteredApartments.length > 0">
+        <div v-for="filteredApartment in filteredApartments" :key="filteredApartment.id">
+          {{filteredApartment.title}} dawdwadwadwa
+        </div>
+      </div>
+      <div v-else>
+        <div v-for="currentApartment in currentApartments" :key="currentApartment.id">
+          {{currentApartment.title}}
+        </div>
       </div>
     </div>
 </template>

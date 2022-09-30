@@ -91,8 +91,8 @@
           </div>
          
         </div> 
-        <input type="hidden" id="latitude" name="latitude" value="">
-        <input type="hidden" id="longitude" name="longitude" value="">
+        <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}">
+        <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude') }}">
       </div> 
 
       <hr>
