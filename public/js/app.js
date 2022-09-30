@@ -1959,7 +1959,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       currentSearch: '',
       currentApartments: [],
-      currentSearchPosition: null
+      currentSearchPosition: null,
+      services: []
     };
   },
   methods: {
@@ -1972,9 +1973,18 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    printsearch: function printsearch() {},
-    autocomplete: function autocomplete() {
+    getServices: function getServices() {
       var _this2 = this;
+
+      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
+        console.log(response);
+        response.data.results.forEach(function (service) {
+          _this2.services.push(service);
+        });
+      });
+    },
+    autocomplete: function autocomplete() {
+      var _this3 = this;
 
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -1993,13 +2003,13 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this2.searchedPoint = response.data.results[0].position;
+          _this3.searchedPoint = response.data.results[0].position;
         }
       });
     }
   },
   mounted: function mounted() {
-    this.getApartment();
+    this.getApartment(), this.getServices();
   }
 });
 
@@ -2322,7 +2332,11 @@ var render = function render() {
         return _vm.printsearch();
       }
     }
-  })]);
+  }), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
+    return _c("li", {
+      key: service.id
+    }, [_vm._v("\n        " + _vm._s(service.name) + "\n      ")]);
+  }), 0)])]);
 };
 
 var staticRenderFns = [];
@@ -54122,15 +54136,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./resources/js/pages/SearchPage.vue ***!
   \*******************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchPage_vue_vue_type_template_id_483e11c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchPage.vue?vue&type=template&id=483e11c0& */ "./resources/js/pages/SearchPage.vue?vue&type=template&id=483e11c0&");
 /* harmony import */ var _SearchPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchPage.vue?vue&type=script&lang=js& */ "./resources/js/pages/SearchPage.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SearchPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SearchPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -54160,7 +54173,7 @@ component.options.__file = "resources/js/pages/SearchPage.vue"
 /*!********************************************************************!*\
   !*** ./resources/js/pages/SearchPage.vue?vue&type=script&lang=js& ***!
   \********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

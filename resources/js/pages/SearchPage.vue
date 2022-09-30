@@ -5,6 +5,15 @@
 
       </datalist>
       <input type="button" value="submit" @click="printsearch()">
+
+      <div>
+        <h2>Servizi aggiuntivi</h2>
+        <ul>
+          <li v-for="service in services" :key="service.id" >
+            {{ service.name }}
+          </li>
+        </ul>
+      </div>
     </div>
 </template>
 
@@ -15,22 +24,29 @@ export default {
     return{
       currentSearch: '',
       currentApartments: [],
-      currentSearchPosition: null
+      currentSearchPosition: null,
+      services: []
     }
   },
   methods:{
     getApartment(){ 
       axios.get('http://127.0.0.1:8000/api/search').then((response)=>{
-        
+      
+      
       response.data.results.data.forEach((apartment) =>{
         this.currentApartments.push(apartment);
       })
       } 
     )},
 
-    printsearch(){
-      
-    },
+    getServices(){
+      axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
+      console.log(response)
+      response.data.results.forEach((service) =>{
+        this.services.push(service);
+      });
+      } 
+    )},
 
     autocomplete(){
       let dataList = document.getElementById('autocomplete');
@@ -62,7 +78,8 @@ export default {
     }
   },
   mounted(){
-    this.getApartment();
+    this.getApartment(),
+    this.getServices()
   }
 }
 </script>
