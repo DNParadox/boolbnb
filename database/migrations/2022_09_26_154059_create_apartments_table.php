@@ -27,6 +27,7 @@ class CreateApartmentsTable extends Migration
             $table->unsignedSmallInteger('square_meters');
             $table->char('title',255);
             $table->boolean('visibility')->nullable();
+            $table->boolean('is_sponsored');
             $table->timestamps();
         });
     }

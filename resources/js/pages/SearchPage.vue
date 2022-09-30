@@ -4,12 +4,6 @@
       <datalist id="autocomplete">
 
       </datalist>
-        <router-link 
-          :to="{
-            name: 'single-apartment', 
-          }" 
-          class="btn btn-primary">Visualizza l'articolo completo
-        </router-link>
       <input type="button" value="submit" @click="getDistance()">
 
       <div>
@@ -37,16 +31,13 @@ export default {
   methods:{
     getApartment(){ 
       axios.get('http://127.0.0.1:8000/api/search').then((response)=>{
-      
-      
-      response.data.results.data.forEach((apartment) =>{
+      response.data.results.forEach((apartment) =>{
         this.currentApartments.push(apartment);
       })
       } 
     )},
     getServices(){
       axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
-      console.log(response)
       response.data.results.forEach((service) =>{
         this.services.push(service);
       });

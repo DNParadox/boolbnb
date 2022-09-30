@@ -1,4 +1,5 @@
 <template>
+<div>
     <!-- <header class="register_header">
         <div class="row">
             <div class="logo">
@@ -79,6 +80,15 @@
             </div>
         </div>
     </header>
+    <div class="f-banner">
+        <div class="container">
+            <div class="text-center">
+                    <router-link :to="{name: 'search'}"><h2>Ricerca case e appartamenti in affitto</h2></router-link>
+            </div>
+        </div>
+    </div>
+</div>
+    
 
 </template> 
 
@@ -92,7 +102,18 @@ export default {
 
 
 <style lang="scss" scoped>
-    .guestheader{
+.f-banner {
+    background: linear-gradient(to right, blue, red);
+    padding: 60px 0;
+
+    .container {
+        h2 {
+            color: white;
+            font-size: 35px;
+        }
+    }
+}
+.guestheader{
         height: 80px;
         font-size: 1.25rem;
         .pb {

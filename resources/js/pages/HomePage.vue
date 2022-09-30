@@ -1,13 +1,4 @@
 <template>
-    <div>
-        <div class="f-banner">
-            <div class="container">
-                <div class="text-center">
-                    <h2>Ricerca case e appartamenti in affitto</h2>
-                </div>
-            </div>
-        </div>
-
         <!-- Inizio  -->
         <section class="front-container container">
             <!-- Row -->
@@ -23,92 +14,20 @@
                 <!-- Col -->
                 <div class="col d-flex">
                     <!-- Card -->
-                    <div class="card mx-sm-auto mx-md-0">
+                    <div class="card mx-sm-auto mx-md-0" v-for="currentApartment in currentApartments" :key="currentApartment.id">
                         <!-- Inside Card -->
-                        <a href="#">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200" class="card-img-top" alt="...">
+                        <router-link :to="{name: 'single-apartment', }">
+                            <img :src="currentApartment.photo" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h4>Villa torre delle stelle</h4>
+                                <h4>{{ currentApartment.title }}</h4>
                                 <div class="description">
-                                    <div>Via della torre, Napoli</div>
+                                    <div>{{ currentApartment.address }}</div>
                                     <span>80 € a notte</span>
                                 </div>
                             </div>
-                        </a>
+                        </router-link>
                     </div>
-                </div>
-
-                <div class="col d-flex">
-                    <!-- Card -->
-                    <div class="card mx-sm-auto mx-md-0">
-                        <!-- Inside Card -->
-                        <a href="#">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4>Villa torre delle stelle</h4>
-                                <div class="description">
-                                    <div>Via della torre, Napoli</div>
-                                    <span>80 € a notte</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col d-flex">
-                    <!-- Card -->
-                    <div class="card mx-sm-auto mx-md-0">
-                        <!-- Inside Card -->
-                        <a href="#">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4>Villa torre delle stelle</h4>
-                                <div class="description">
-                                    <div>Via della torre, Napoli</div>
-                                    <span>80 € a notte</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col d-flex">
-                    <!-- Card -->
-                    <div class="card mx-sm-auto mx-md-0">
-                        <!-- Inside Card -->
-                        <a href="#">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4>Villa torre delle stelle</h4>
-                                <div class="description">
-                                    <div>Via della torre, Napoli</div>
-                                    <span>80 € a notte</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col d-flex">
-                    <!-- Card -->
-                    <div class="card mx-sm-auto mx-md-0">
-                        <!-- Inside Card -->
-                        <a href="#">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4>Villa torre delle stelle</h4>
-                                <div class="description">
-                                    <div>Via della torre, Napoli</div>
-                                    <span>80 € a notte</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-          
-
-          
+                </div>          
             </div>
         </section>
     </div>
@@ -116,23 +35,28 @@
 
 <script>
 export default {
-    name: 'Homepage'
+    name: 'Homepage',
+    data() {
+        return{
+            currentApartments: [],
+        }
+    },
+    methods:{
+        getApartment(){ 
+        axios.get('http://127.0.0.1:8000/api/sponsored').then((response)=>{
+            response.data.results.forEach((apartment) =>{
+                this.currentApartments.push(apartment);
+            })
+
+        })},
+    },
+    mounted(){
+        this.getApartment();
+    },
 }
 </script>
 
 <style lang="scss" scoped>
-.f-banner {
-    background: linear-gradient(to right, blue, red);
-    padding: 60px 0;
-
-    .container {
-        h2 {
-            color: white;
-            font-size: 35px;
-        }
-    }
-}
-
 .front-container{
     .card {
         margin-top: 3rem;;
@@ -141,7 +65,8 @@ export default {
         width: 250px;
         img {
             border-radius: 24px;
-            width: 100%;
+            width: 300px;
+            height: 280px;
         }
         .card-body {
             padding-left: 0;

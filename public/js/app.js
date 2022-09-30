@@ -1924,7 +1924,26 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Homepage'
+  name: 'Homepage',
+  data: function data() {
+    return {
+      currentApartments: []
+    };
+  },
+  methods: {
+    getApartment: function getApartment() {
+      var _this = this;
+
+      axios.get('http://127.0.0.1:8000/api/sponsored').then(function (response) {
+        response.data.results.forEach(function (apartment) {
+          _this.currentApartments.push(apartment);
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getApartment();
+  }
 });
 
 /***/ }),
@@ -1968,7 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('http://127.0.0.1:8000/api/search').then(function (response) {
-        response.data.results.data.forEach(function (apartment) {
+        response.data.results.forEach(function (apartment) {
           _this.currentApartments.push(apartment);
         });
       });
@@ -1977,7 +1996,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
-        console.log(response);
         response.data.results.forEach(function (service) {
           _this2.services.push(service);
         });
@@ -2081,7 +2099,19 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("div", [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "f-banner"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "text-center"
+  }, [_c("router-link", {
+    attrs: {
+      to: {
+        name: "search"
+      }
+    }
+  }, [_c("h2", [_vm._v("Ricerca case e appartamenti in affitto")])])], 1)])])]);
 };
 
 var staticRenderFns = [function () {
@@ -2153,118 +2183,45 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("section", {
+    staticClass: "front-container container"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col d-flex"
+  }, _vm._l(_vm.currentApartments, function (currentApartment) {
+    return _c("div", {
+      key: currentApartment.id,
+      staticClass: "card mx-sm-auto mx-md-0"
+    }, [_c("router-link", {
+      attrs: {
+        to: {
+          name: "single-apartment"
+        }
+      }
+    }, [_c("img", {
+      staticClass: "card-img-top",
+      attrs: {
+        src: currentApartment.photo,
+        alt: "..."
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h4", [_vm._v(_vm._s(currentApartment.title))]), _vm._v(" "), _c("div", {
+      staticClass: "description"
+    }, [_c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])], 1);
+  }), 0)])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", {
-    staticClass: "f-banner"
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "text-center"
-  }, [_c("h2", [_vm._v("Ricerca case e appartamenti in affitto")])])])]), _vm._v(" "), _c("section", {
-    staticClass: "front-container container"
-  }, [_c("div", {
+  return _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col text-center"
-  }, [_c("h2", {}, [_vm._v("Appartamenti in evidenza")])])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col d-flex"
-  }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
-  }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
-  }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
-  }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-flex"
-  }, [_c("div", {
-    staticClass: "card mx-sm-auto mx-md-0"
-  }, [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-631564783833927857/original/42232fae-ee5a-40c9-b24b-24571763df7b.jpeg?im_w=1200",
-      alt: "..."
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("h4", [_vm._v("Villa torre delle stelle")]), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("div", [_vm._v("Via della torre, Napoli")]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])])])])])]);
+  }, [_c("h2", {}, [_vm._v("Appartamenti in evidenza")])])]);
 }];
 render._withStripped = true;
 
@@ -2342,14 +2299,7 @@ var render = function render() {
     attrs: {
       id: "autocomplete"
     }
-  }), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-primary",
-    attrs: {
-      to: {
-        name: "single-apartment"
-      }
-    }
-  }, [_vm._v("Visualizza l'articolo completo\n    ")]), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("input", {
     attrs: {
       type: "button",
       value: "submit"
@@ -2363,7 +2313,7 @@ var render = function render() {
     return _c("li", {
       key: service.id
     }, [_vm._v("\n        " + _vm._s(service.name) + "\n      ")]);
-  }), 0)])], 1);
+  }), 0)])]);
 };
 
 var staticRenderFns = [];
@@ -6914,7 +6864,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}", ""]);
+exports.push([module.i, ".f-banner[data-v-153bfd55] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-153bfd55] {\n  color: white;\n  font-size: 35px;\n}\n.guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}", ""]);
 
 // exports
 
@@ -6933,7 +6883,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".f-banner[data-v-04c29797] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-04c29797] {\n  color: white;\n  font-size: 35px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n  width: 250px;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 100%;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, ".front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n  width: 250px;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 
