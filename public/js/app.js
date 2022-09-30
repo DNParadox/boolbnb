@@ -1959,7 +1959,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       currentSearch: '',
       currentApartments: [],
-      currentSearchPosition: null
+      currentSearchPosition: null,
+      services: []
     };
   },
   methods: {
@@ -1969,6 +1970,16 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('http://127.0.0.1:8000/api/search').then(function (response) {
         response.data.results.data.forEach(function (apartment) {
           _this.currentApartments.push(apartment);
+        });
+      });
+    },
+    getServices: function getServices() {
+      var _this2 = this;
+
+      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
+        console.log(response);
+        response.data.results.forEach(function (service) {
+          _this2.services.push(service);
         });
       });
     },
@@ -1989,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
       return degrees * (pi / 180);
     },
     autocomplete: function autocomplete() {
-      var _this2 = this;
+      var _this3 = this;
 
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -2008,13 +2019,13 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this2.currentSearchPosition = response.data.results[0].position;
+          _this3.currentSearchPosition = response.data.results[0].position;
         }
       });
     }
   },
   mounted: function mounted() {
-    this.getApartment();
+    this.getApartment(), this.getServices();
   }
 });
 
@@ -2348,7 +2359,11 @@ var render = function render() {
         return _vm.getDistance();
       }
     }
-  })], 1);
+  }), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
+    return _c("li", {
+      key: service.id
+    }, [_vm._v("\n        " + _vm._s(service.name) + "\n      ")]);
+  }), 0)])], 1);
 };
 
 var staticRenderFns = [];

@@ -11,6 +11,15 @@
           class="btn btn-primary">Visualizza l'articolo completo
         </router-link>
       <input type="button" value="submit" @click="getDistance()">
+
+      <div>
+        <h2>Servizi aggiuntivi</h2>
+        <ul>
+          <li v-for="service in services" :key="service.id" >
+            {{ service.name }}
+          </li>
+        </ul>
+      </div>
     </div>
 </template>
 
@@ -21,16 +30,26 @@ export default {
     return{
       currentSearch: '',
       currentApartments: [],
-      currentSearchPosition: null
+      currentSearchPosition: null,
+      services: []
     }
   },
   methods:{
     getApartment(){ 
       axios.get('http://127.0.0.1:8000/api/search').then((response)=>{
-        
+      
+      
       response.data.results.data.forEach((apartment) =>{
         this.currentApartments.push(apartment);
       })
+      } 
+    )},
+    getServices(){
+      axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
+      console.log(response)
+      response.data.results.forEach((service) =>{
+        this.services.push(service);
+      });
       } 
     )},
     getDistance(latitude1,longitude1,latitude2,longitude2){ 
@@ -85,7 +104,8 @@ export default {
     }
   },
   mounted(){
-    this.getApartment();
+    this.getApartment(),
+    this.getServices()
   }
 }
 </script>
