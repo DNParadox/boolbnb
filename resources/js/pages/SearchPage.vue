@@ -4,6 +4,12 @@
       <datalist id="autocomplete">
 
       </datalist>
+        <router-link 
+          :to="{
+            name: 'single-apartment', 
+          }" 
+          class="btn btn-primary">Visualizza l'articolo completo
+        </router-link>
       <input type="button" value="submit" @click="printsearch()">
     </div>
 </template>
@@ -29,7 +35,6 @@ export default {
     )},
 
     printsearch(){
-      
     },
 
     autocomplete(){
