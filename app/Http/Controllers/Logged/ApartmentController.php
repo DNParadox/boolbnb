@@ -82,10 +82,9 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->getValidationRules());
+        $request->validate($this->getValidationRulesCreate());
         $form_data = $request->all();
         $user = Auth::user();
-        dd($form_data);
         if(isset($form_data['photo'])) {
             $img_path = Storage::put('apartment-photo', $form_data['photo']);
             $form_data['photo'] = $img_path;
@@ -166,7 +165,7 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate($this->getValidationRules()); 
+        $request->validate($this->getValidationRulesEdit()); 
         $form_data = $request->all();
         $old_apartment = Apartment::findOrFail($id);
         
@@ -213,16 +212,32 @@ class ApartmentController extends Controller
     }
 
 
-    protected function getValidationRules() {
+    protected function getValidationRulesCreate() {
         // Creo le Validazioni per i campi nel form
         return [
             'title' => 'required|min:5|max:100',
-            'room_number' => 'required|min:1|max:999|numeric',
-            'bed_number' => 'required|min:1|max:999|numeric',
-            'bathroom' => 'required|min:1|max:999|numeric',
+            'room_number' => 'required|min:0|max:999|numeric',
+            'bed_number' => 'required|min:0|max:999|numeric',
+            'bathroom' => 'required|min:0|max:999|numeric',
             'address' => 'required|min:1|max:60000',
-            'price' => 'min:1|max:9999999|numeric|nullable',
-            'photo' => 'required|image|max: 1024|nullable',
+            'price' => 'min:0|max:9999999|numeric|nullable',
+            'photo' => 'required|image|max: 1024',
+            'description' => 'min:1|max:60000|nullable',
+            'square_meters' => 'required|min:1|max:99999|numeric',
+            'users_id' => 'nullable|exists:users,id',
+        ];
+    }
+
+    protected function getValidationRulesEdit() {
+        // Creo le Validazioni per i campi nel form
+        return [
+            'title' => 'required|min:5|max:100',
+            'room_number' => 'required|min:0|max:999|numeric',
+            'bed_number' => 'required|min:0|max:999|numeric',
+            'bathroom' => 'required|min:0|max:999|numeric',
+            'address' => 'required|min:1|max:60000',
+            'price' => 'min:0|max:9999999|numeric|nullable',
+            'photo' => 'image|max: 1024|nullable',
             'description' => 'min:1|max:60000|nullable',
             'square_meters' => 'required|min:1|max:99999|numeric',
             'users_id' => 'nullable|exists:users,id',

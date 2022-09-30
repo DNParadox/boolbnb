@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 
 import HomePage from './pages/HomePage.vue';
+import SearchPage from './pages/SearchPage.vue';
 import NotFound from './pages/NotFound.vue';
 import SingleApartment from './pages/SingleApartment.vue';
 
@@ -15,6 +16,11 @@ const router=new VueRouter({
             path: '/',
             name: 'home',
             component: HomePage
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: SearchPage
         },
         {
             path: '/single-apartment',

@@ -35,30 +35,30 @@
           <div class="row">
             <div class="col mb-3">
               <label for="bathroom" class="form-label">Numero di bagni <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
+              <input type="number" min='0' class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
               <label for="bed_number" class="form-label">Numero di letti <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
+              <input type="number" min='0' class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
             </div>
       
             <div class="col mb-3">
               <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
-              <input type="number" class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
+              <input type="number" min='0' class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
             </div>
           </div>
   
           <div class="row">
             <div class="col mb-3">
               <label for="square_meters" class="form-label">Metri quadrati <span class="required-check">*</span></label>
-              <input type="numer" class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}" required="required">
+              <input type="numer" min='0' class="form-control" id="square_meters" name="square_meters" value="{{ old('square_meters') }}" required="required">
             </div>
           
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number"  class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
+              <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
             </div>
           </div>
         </div>
