@@ -216,9 +216,9 @@ class ApartmentController extends Controller
         // Creo le Validazioni per i campi nel form
         return [
             'title' => 'required|min:5|max:100',
-            'room_number' => 'required|min:1|max:999|numeric',
-            'bed_number' => 'required|min:1|max:999|numeric',
-            'bathroom' => 'required|min:1|max:999|numeric',
+            'room_number' => 'required|min:0|max:999|numeric',
+            'bed_number' => 'required|min:0|max:999|numeric',
+            'bathroom' => 'required|min:0|max:999|numeric',
             'address' => 'required|min:1|max:60000',
             'price' => 'min:0|max:9999999|numeric|nullable',
             'photo' => 'required|image|max: 1024',
@@ -232,9 +232,9 @@ class ApartmentController extends Controller
         // Creo le Validazioni per i campi nel form
         return [
             'title' => 'required|min:5|max:100',
-            'room_number' => 'required|min:1|max:999|numeric',
-            'bed_number' => 'required|min:1|max:999|numeric',
-            'bathroom' => 'required|min:1|max:999|numeric',
+            'room_number' => 'required|min:0|max:999|numeric',
+            'bed_number' => 'required|min:0|max:999|numeric',
+            'bathroom' => 'required|min:0|max:999|numeric',
             'address' => 'required|min:1|max:60000',
             'price' => 'min:0|max:9999999|numeric|nullable',
             'photo' => 'image|max: 1024|nullable',
