@@ -24,7 +24,7 @@
 
     <header class="guestheader">
         <!-- Container -->
-        <div class="container h-100">
+        <div class="container-fluid h-100">
             <!-- Row -->
             <div class="row d-flex align-items-center h-100">
                 <!-- Col Left -->
