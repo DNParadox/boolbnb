@@ -10,11 +10,19 @@ class ApartmentController extends Controller
 {
     public function index(){
         
-        $apartment = Apartment::Paginate(12);
+        
+        $apartments = Apartment::Paginate(12);
+
+        foreach ($apartments as $apartment) {
+            if($apartment->photo){
+                $apartment->photo = asset('storage/'. $apartment->photo);
+            }
+        }
 
         $data = [
-            
-        ]
-
+            'success' => true,
+            'results' => $apartments,
+        ];
+        return response()->json($data);
     }
 }
