@@ -10,7 +10,7 @@
           }" 
           class="btn btn-primary">Visualizza l'articolo completo
         </router-link>
-      <input type="button" value="submit" @click="getDistance()">
+      <input type="button" value="submit" @click="filterByDistance()">
 
       <div>
         <h2>Servizi aggiuntivi</h2>
@@ -31,7 +31,8 @@ export default {
       currentSearch: '',
       currentApartments: [],
       currentSearchPosition: null,
-      services: []
+      services: [],
+      filteredApartments: []
     }
   },
   methods:{
@@ -67,7 +68,7 @@ export default {
       var c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
       var d = R * c;
 
-      console.log(d);
+      return d;
     },   
     degreeToRadians(degrees)
     {
@@ -101,6 +102,20 @@ export default {
         }
 
       });
+
+      
+    },
+    filterByDistance(){
+
+      this.currentApartments.forEach((apartment)=> {
+        parseFloat(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
+        if(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 25) {
+          
+          console.log(parseInt(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude))))
+
+          this.filteredApartments.push(apartment);
+        }
+      })
     }
   },
   mounted(){
