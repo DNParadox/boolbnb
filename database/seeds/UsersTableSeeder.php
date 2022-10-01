@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -54,6 +55,16 @@ class UsersTableSeeder extends Seeder
             $new_user_info->email = $user_info['email'];
             $new_user_info->name = $user_info['name'];
             $new_user_info->surname = $user_info['surname'];
+            $new_user_info->save();
+        }
+
+        for($i = 0; $i < 30; $i++) {
+            $new_user_info = new User();
+            $new_user_info->password = Hash::make('admin1234');
+            $new_user_info->born_date = '1999-01-01';
+            $new_user_info->email = 'test' . $i . '@email.it';
+            $new_user_info->name = 'test' . $i;
+            $new_user_info->surname = 'test' . $i;
             $new_user_info->save();
         }
     }
