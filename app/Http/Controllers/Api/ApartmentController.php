@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
-use App\ApartmentSponsorship;
-use App\Sponsorship;
 
 class ApartmentController extends Controller
 {
     public function index(){
           
-        $apartments = Apartment::all();
+        $apartments = Apartment::with(['service', 'sponsorship'])->get();
 
         foreach ($apartments as $apartment) {
             if($apartment->photo){
@@ -23,14 +21,13 @@ class ApartmentController extends Controller
         $data = [
             'success' => true,
             'results' => $apartments,
-
         ];
         return response()->json($data);
     }
 
     public function sponsored(){
           
-        $apartments = Apartment::Where('is_sponsored', false)->get();
+        $apartments = Apartment::where('is_sponsored', 1)->get();
 
         foreach ($apartments as $apartment) {
             if($apartment->photo){

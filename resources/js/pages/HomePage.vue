@@ -17,9 +17,14 @@
         </div>
     </div>
     <div v-if="filteredApartments.length > 0">
-        <div v-for="filteredApartment in filteredApartments" :key="filteredApartment.id">
-          {{filteredApartment.title}} dawdwadwadwa
-        </div>
+        {{this.$router.push({
+                name: 'search', 
+                params: {
+                    filtered: filteredApartments, 
+                    currentPosition: currentSearchPosition,
+                }
+            }) 
+        }}
     </div>
     <!-- Inizio  -->
     <section class="front-container container-fluid" v-else>
@@ -35,9 +40,11 @@
             <!-- Col -->
             <div class="col d-flex">
                 <!-- Card -->
-                <div class="card mx-sm-auto mx-md-0" v-for="currentApartment in currentApartments" :key="currentApartment.id">
+                <div class="card mx-sm-auto mx-md-0" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
                     <!-- Inside Card -->
-                    <router-link :to="{name: 'single-apartment', }">
+                    <router-link :to="{name: 'single-apartment', 
+                    params: { id: currentApartment.id }
+                    }">
                         <img :src="currentApartment.photo" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4>{{ currentApartment.title }}</h4>
@@ -60,6 +67,7 @@ export default {
     data() {
         return{
             currentSearch: '',
+            currentApartmentsSponsored: [],
             currentApartments: [],
             currentSearchPosition: null,
             services: [],
@@ -67,9 +75,17 @@ export default {
         }
     },
     methods:{
-        getApartment(){ 
+        getApartmentSponsored(){ 
         axios.get('http://127.0.0.1:8000/api/sponsored').then((response)=>{
             response.data.results.forEach((apartment) =>{
+                this.currentApartmentsSponsored.push(apartment);
+            })
+
+        })},
+        getApartment(){ 
+        axios.get('http://127.0.0.1:8000/api/search').then((response)=>{
+            response.data.results.forEach((apartment) =>{
+                
                 this.currentApartments.push(apartment);
             })
 
@@ -111,22 +127,22 @@ export default {
             .then((response)=>{
                 if(response.data.results.length > 0){
                 
-                for(let i = 0; i < 4; i++) {
-                
-                    let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
+                    for(let i = 0; i < 4; i++) {
+                    
+                        let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
 
-                    if(response.data.results[i].address.streetName) {
-                    suggestions.push(addressHint);
+                        if(response.data.results[i].address.streetName) {
+                        suggestions.push(addressHint);
+                        }
                     }
-                }
                 
-                dataList.innerHTML = "";
+                    dataList.innerHTML = "";
 
-                suggestions.forEach((suggestion) => {
-                    dataList.innerHTML += `<option>${suggestion}</option>`;
-                });
+                    suggestions.forEach((suggestion) => {
+                        dataList.innerHTML += `<option>${suggestion}</option>`;
+                    });
 
-                this.currentSearchPosition = response.data.results[0].position;
+                    this.currentSearchPosition = response.data.results[0].position;
                 }
 
             });
@@ -137,18 +153,16 @@ export default {
             this.filteredApartments = [];
             this.currentApartments.forEach((apartment)=> {
                 parseFloat(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
-                if(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 25) {
-                
-                console.log(parseInt(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude))))
-
-                this.filteredApartments.push(apartment);
+                if(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
+                    this.filteredApartments.push(apartment);
                 }
             })
         }
     },
     mounted(){
-        this.getApartment();
+        this.getApartmentSponsored();
         this.getServices();
+        this.getApartment();
     },
 }
 </script>
@@ -159,7 +173,6 @@ export default {
         margin-top: 3rem;;
         border: none;
         background-color: inherit;
-        width: 250px;
         img {
             border-radius: 24px;
             width: 300px;

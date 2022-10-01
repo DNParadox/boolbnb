@@ -40,7 +40,7 @@
                     <hr>
                 </div>
 
-                <!-- <div class="right">
+                <div class="right">
                     <div class="contact">
                         <h2>Contatta l'host</h2>
                         <form>
@@ -56,7 +56,7 @@
                             <input type="submit" class="btn btn-primary">
                         </form>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <Map />
@@ -69,7 +69,20 @@ export default {
     name: 'SingleApartment',
     components: {
         Map
-    }
+    },
+    methods: {
+        getSinglePost() {
+        axios.get('http://127.0.0.1:8000//contact_us/' + this.$route.params.id)
+        .then((response) => {
+            if(response.data.success){
+            this.post = response.data.results;
+            } else {
+            this.$router.push({name: '404'})
+            }
+            
+        })
+        }
+    },
 }
 </script>
 
