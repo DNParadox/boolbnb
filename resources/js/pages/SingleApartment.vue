@@ -40,7 +40,7 @@
                     <hr>
                 </div>
 
-                <div class="right">
+                <!-- <div class="right">
                     <div class="contact">
                         <h2>Contatta l'host</h2>
                         <form>
@@ -56,18 +56,20 @@
                             <input type="submit" class="btn btn-primary">
                         </form>
                     </div>
-                </div>
-
+                </div> -->
             </div>
-
-            
         </div>
+        <Map />
     </div>
 </template>
 
 <script>
+import Map from '../components/MapPage.vue' 
 export default {
     name: 'SingleApartment',
+    components: {
+        Map
+    }
 }
 </script>
 
@@ -89,7 +91,7 @@ export default {
         justify-content: space-between;
 
         .left {
-            width: 50%;
+            width: 75%;
 
             .info {
                 margin-top: 25px;
