@@ -2097,7 +2097,73 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'SearchPage',
+  data: function data() {
+    return {
+      distanceFilter: 20,
+      advancedFilter: [],
+      currentPosition: this.$route.params.currentPosition,
+      allSearchedAparments: this.$route.params.filtered,
+      services: this.$route.params.services
+    };
+  },
+  computed: {
+    filteredApartments: function filteredApartments() {
+      var _this = this;
+
+      var filteredArray = [];
+      this.allSearchedAparments.forEach(function (apartment) {
+        if (_this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < _this.distanceFilter) {
+          _this.filteredArray.push(apartment);
+        }
+      });
+
+      if (this.advancedFilter.length > 0) {
+        var advancedFilteredArray = [];
+        filteredArray.forEach(function (apartment) {
+          if (!_this.checkElementsinArray(apartment.service.name, _this.advancedFilter)) {
+            advancedFilteredArray.push(apartment);
+          }
+        });
+        return advancedFilteredArray;
+      }
+
+      ;
+      return filteredArray;
+    }
+  },
+  methods: {
+    getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
+      // R: raggio della terra (paragonabile ad una sfera) in chilometri
+      var R = 6371;
+      var deltaLat = this.degreeToRadians(latitude1 - latitude2);
+      var deltaLon = this.degreeToRadians(longitude1 - longitude2);
+      var lat1 = this.degreeToRadians(latitude1);
+      var lat2 = this.degreeToRadians(latitude2);
+      var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      var d = R * c;
+      return d;
+    },
+    checkElementsinArray: function checkElementsinArray(fixedArray, inputArray) {
+      var fixedArraylen = fixedArray.length;
+      var inputArraylen = inputArray.length;
+
+      if (fixedArraylen <= inputArraylen) {
+        for (var i = 0; i < fixedArraylen; i++) {
+          if (!(inputArray.indexOf(fixedArray[i]) >= 0)) {
+            return false;
+          }
+        }
+      } else {
+        return false;
+      }
+
+      return true;
+    }
+  }
+});
 
 /***/ }),
 
@@ -2330,15 +2396,12 @@ var render = function render() {
         return _vm.filterByDistance();
       }
     }
-  }), _vm._v(" "), _c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
-    return _c("li", {
-      key: service.id
-    }, [_vm._v("\r\n                " + _vm._s(service.name) + "\r\n            ")]);
-  }), 0)])]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
+  })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
       filtered: _vm.filteredApartments,
-      currentPosition: _vm.currentSearchPosition
+      currentPosition: _vm.currentSearchPosition,
+      services: _vm.services
     }
   })) + "\r\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
@@ -2432,7 +2495,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\n  dwadawdwadwa\n")]);
+  return _c("div", [_c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
+    return _c("li", {
+      key: service.id
+    }, [_vm._v("\n          " + _vm._s(service.name) + "\n      ")]);
+  }), 0)])]);
 };
 
 var staticRenderFns = [];
@@ -54920,8 +54987,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

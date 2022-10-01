@@ -7,14 +7,6 @@
       </datalist>
       <input type="button" value="submit" @click="filterByDistance()">
 
-        <div>
-            <h2>Servizi aggiuntivi</h2>
-            <ul>
-            <li v-for="service in services" :key="service.id" >
-                {{ service.name }}
-            </li>
-            </ul>
-        </div>
     </div>
     <div v-if="filteredApartments.length > 0">
         {{this.$router.push({
@@ -22,6 +14,7 @@
                 params: {
                     filtered: filteredApartments, 
                     currentPosition: currentSearchPosition,
+                    services: services
                 }
             }) 
         }}
