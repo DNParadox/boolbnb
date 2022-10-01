@@ -89,6 +89,16 @@ export default {
 
     isTrue(arr, arr2){
       return arr.every(i => arr2.includes(i));
+    },
+
+    clickHandler() {
+      e.target.classList.toggle('active');
+      
+      if(this.advancedFilter.includes(trim(e.target.innerHtml))) {
+        this.advancedFilter = this.advancedFilter.filter(val => val !== trim(e.target.innerHtml));        
+      } else {
+        this.advancedFilter.push(trim(e.target.innerHtml))
+      }
     }
 
   }
