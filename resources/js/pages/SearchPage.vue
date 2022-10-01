@@ -38,7 +38,13 @@ export default {
         let advancedFilteredArray = [];
 
         filteredArray.forEach((apartment) => {
-          if(!this.checkElementsinArray(apartment.service.name, this.advancedFilter)){
+
+          let apartmentServices;
+          apartment.service.forEach((singleService)=>{
+            apartmentServices.push(singleService.name);
+          });
+
+          if(!this.checkElementsinArray(apartmentServices, this.advancedFilter)){
             advancedFilteredArray.push(apartment);
           }
         });

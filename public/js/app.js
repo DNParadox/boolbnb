@@ -2122,7 +2122,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.advancedFilter.length > 0) {
         var advancedFilteredArray = [];
         filteredArray.forEach(function (apartment) {
-          if (!_this.checkElementsinArray(apartment.service.name, _this.advancedFilter)) {
+          var apartmentServices;
+          apartment.service.forEach(function (singleService) {
+            apartmentServices.push(singleService.name);
+          });
+
+          if (!_this.checkElementsinArray(apartmentServices, _this.advancedFilter)) {
             advancedFilteredArray.push(apartment);
           }
         });
