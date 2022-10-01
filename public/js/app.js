@@ -2151,6 +2151,10 @@ __webpack_require__.r(__webpack_exports__);
       var d = R * c;
       return d;
     },
+    degreeToRadians: function degreeToRadians(degrees) {
+      var pi = Math.PI;
+      return degrees * (pi / 180);
+    },
     checkElementsinArray: function checkElementsinArray(fixedArray, inputArray) {
       var fixedArraylen = fixedArray.length;
       var inputArraylen = inputArray.length;

@@ -73,6 +73,11 @@ export default {
 
       return d;
     },
+    degreeToRadians(degrees)
+    {
+        var pi = Math.PI;
+        return degrees * (pi/180);
+    },
 
     checkElementsinArray(fixedArray,inputArray){
     var fixedArraylen = fixedArray.length;
