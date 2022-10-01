@@ -35,16 +35,16 @@ export default {
       })
 
       if(this.advancedFilter.length > 0) {
-        let advancedFilteredArray = [];
+        const advancedFilteredArray = [];
 
         filteredArray.forEach((apartment) => {
 
-          let apartmentServices;
+          let apartmentServices = [];
           apartment.service.forEach((singleService)=>{
             apartmentServices.push(singleService.name);
           });
 
-          if(!this.checkElementsinArray(apartmentServices, this.advancedFilter)){
+          if(this.isTrue(this.advancedFilter, apartmentServices)){
             advancedFilteredArray.push(apartment);
           }
         });
@@ -79,25 +79,9 @@ export default {
         return degrees * (pi/180);
     },
 
-    checkElementsinArray(fixedArray,inputArray){
-    var fixedArraylen = fixedArray.length;
-    var inputArraylen = inputArray.length;
-    if(fixedArraylen<=inputArraylen)
-    {
-        for(var i=0;i<fixedArraylen;i++)
-        {
-            if(!(inputArray.indexOf(fixedArray[i])>=0))
-            {
-                return false;
-            }
-        }
+    isTrue(arr, arr2){
+      return arr.every(i => arr2.includes(i));
     }
-    else
-    {
-        return false;
-    }
-    return true;
-  }
 
   }
 }
