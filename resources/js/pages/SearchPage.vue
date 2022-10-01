@@ -31,12 +31,16 @@ export default {
       let filteredArray = [];
 
       this.allSearchedAparments.forEach((apartment)=> {
-        if(this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < this.distanceFilter ||
+        let distanceFromSearch = this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
+        if( distanceFromSearch < this.distanceFilter ||
         apartment.room_number >= this.roomsNumber ||
         apartment.bed_number >= this.bedsNumber) {
+          apartment.distance = distanceFromSearch;
           filteredArray.push(apartment);
         }
       });
+
+      filteredArray = filteredArray.sort((a, b) => a.distance - b.distance);
 
       if(this.advancedFilter.length > 0) {
         const advancedFilteredArray = [];
