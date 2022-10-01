@@ -30,7 +30,7 @@ export default {
 
       this.allSearchedAparments.forEach((apartment)=> {
         if(this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < this.distanceFilter) {
-            this.filteredArray.push(apartment);
+            filteredArray.push(apartment);
         }
       })
 

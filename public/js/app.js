@@ -2115,7 +2115,7 @@ __webpack_require__.r(__webpack_exports__);
       var filteredArray = [];
       this.allSearchedAparments.forEach(function (apartment) {
         if (_this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < _this.distanceFilter) {
-          _this.filteredArray.push(apartment);
+          filteredArray.push(apartment);
         }
       });
 
