@@ -53,16 +53,17 @@ class ApartmentController extends Controller
     */
     public function show(Request $request, $id)
     {
-        $user = Auth::user();
+        // $currentuser = User::find($ids);
         $apartment = Apartment::findOrFail($id); 
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }
 
         $data = [
+            'user' =>  $request->user('api'),
             'success' => true,
             'results' => $apartment,
-            'user' => $user,
+            
         ];
         
         return response()->json($data);

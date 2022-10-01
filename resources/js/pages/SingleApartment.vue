@@ -72,7 +72,7 @@ export default {
     },
     data() {
         return{
-            
+
             apartment: [],
         }
     },
@@ -80,11 +80,11 @@ export default {
         getSinglePost() {
         axios.get('http://127.0.0.1:8000/api/contact/' + this.$route.params.id)
         .then((response) => {
-            console.log(response);
             if(response.data.success){
+                console.log(response);
                 this.apartment = response.data.results;
             } else {
-                this.$router.push({name: '404'})
+                this.$router.push({name: 'not-found'})
             }
             
         })

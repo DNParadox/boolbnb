@@ -2198,13 +2198,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('http://127.0.0.1:8000/api/contact/' + this.$route.params.id).then(function (response) {
-        console.log(response);
-
         if (response.data.success) {
+          console.log(response);
           _this.apartment = response.data.results;
         } else {
           _this.$router.push({
-            name: '404'
+            name: 'not-found'
           });
         }
       });
