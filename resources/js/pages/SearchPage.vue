@@ -17,6 +17,8 @@ export default {
   data() {
     return {
       distanceFilter: 20,
+      roomsNumber: 1,
+      bedsNumber: 1,
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
@@ -29,10 +31,12 @@ export default {
       let filteredArray = [];
 
       this.allSearchedAparments.forEach((apartment)=> {
-        if(this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < this.distanceFilter) {
-            filteredArray.push(apartment);
+        if(this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < this.distanceFilter ||
+        apartment.room_number >= this.roomsNumber ||
+        apartment.bed_number >= this.bedsNumber) {
+          filteredArray.push(apartment);
         }
-      })
+      });
 
       if(this.advancedFilter.length > 0) {
         const advancedFilteredArray = [];
