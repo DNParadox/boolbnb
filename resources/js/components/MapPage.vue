@@ -32,13 +32,26 @@ export default {
 
       map.addControl(new tt.FullscreenControl()); 
 
-      map.addControl(new tt.NavigationControl()); 
-      
-      var marker = new tt.Marker().setLngLat(center).addTo(map); 
-      var popup = new tt.Popup({ offset: popupOffset }).setHTML("Your address!");
-      marker.setPopup(popup).togglePopup();  
+      map.addControl(new tt.NavigationControl());  
 
     })
+    function addMarker(map) { 
+
+      const tt = window.tt; 
+
+      var location = [-121.91595, 37.36729]; 
+
+      var popupOffset = 25; 
+
+
+
+      var marker = new tt.Marker().setLngLat(location).addTo(map); 
+
+      var popup = new tt.Popup({ offset: popupOffset }).setHTML("Your address!"); 
+
+      marker.setPopup(popup).togglePopup(); 
+
+    }
     return { 
 
       mapRef, 

@@ -1941,12 +1941,19 @@ __webpack_require__.r(__webpack_exports__);
       });
       map.addControl(new tt.FullscreenControl());
       map.addControl(new tt.NavigationControl());
-      var marker = new tt.Marker().setLngLat(center).addTo(map);
+    });
+
+    function addMarker(map) {
+      var tt = window.tt;
+      var location = [-121.91595, 37.36729];
+      var popupOffset = 25;
+      var marker = new tt.Marker().setLngLat(location).addTo(map);
       var popup = new tt.Popup({
         offset: popupOffset
       }).setHTML("Your address!");
       marker.setPopup(popup).togglePopup();
-    });
+    }
+
     return {
       mapRef: mapRef
     };
@@ -2110,13 +2117,20 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Map: _components_MapPage_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      apartment: []
+    };
+  },
   methods: {
     getSinglePost: function getSinglePost() {
       var _this = this;
 
-      axios.get('http://127.0.0.1:8000//contact_us/' + this.$route.params.id).then(function (response) {
+      axios.get('http://127.0.0.1:8000/api/contact/' + this.$route.params.id).then(function (response) {
+        console.log(response);
+
         if (response.data.success) {
-          _this.post = response.data.results;
+          _this.apartment = response.data.results;
         } else {
           _this.$router.push({
             name: '404'
@@ -2124,6 +2138,9 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
+  },
+  mounted: function mounted() {
+    this.getSinglePost();
   }
 });
 
@@ -2446,9 +2463,9 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
-  }, [_vm._v("Appartamento 38. Nuovissimo appartamento esclusivo per famiglie")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.apartment.title))]), _vm._v(" "), _c("div", {
     staticClass: "address"
-  }, [_vm._v("Via Wörtherberg, Salisburgo")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.apartment.address))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "bottom-part"
   }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "right"
@@ -2462,55 +2479,15 @@ var render = function render() {
       "for": "user-mail"
     }
   }, [_vm._v("Mail")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.userMail,
-      expression: "userMail"
-    }],
     staticClass: "form-control",
     attrs: {
       type: "email",
       id: "user-mail"
     },
     domProps: {
-      value: _vm.userMail
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.userMail = $event.target.value;
-      }
+      value: _vm.$user = !null ? "" : _vm.$user.email
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "mb-3"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "user-message"
-    }
-  }, [_vm._v("Messaggio")]), _vm._v(" "), _c("textarea", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.userMessage,
-      expression: "userMessage"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      id: "user-message",
-      rows: "5"
-    },
-    domProps: {
-      value: _vm.userMessage
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.userMessage = $event.target.value;
-      }
-    }
-  })]), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
@@ -2559,6 +2536,24 @@ var staticRenderFns = [function () {
   }), _vm._v(" Palestra")]), _vm._v(" "), _c("span", [_c("i", {
     staticClass: "fas fa-dog"
   }), _vm._v(" Animali ammessi")])]), _vm._v(" "), _c("hr")]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "user-message"
+    }
+  }, [_vm._v("Messaggio")]), _vm._v(" "), _c("textarea", {
+    staticClass: "form-control",
+    attrs: {
+      id: "user-message",
+      rows: "5"
+    }
+  })]);
 }];
 render._withStripped = true;
 
@@ -54218,7 +54213,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// window.axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+
 
 
 var app = new Vue({

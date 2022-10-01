@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\User;
 
 class ApartmentController extends Controller
 {
@@ -46,17 +47,24 @@ class ApartmentController extends Controller
     /**
     * Display the specified resource.
     *
-    *
+    * @param  \Illuminate\Http\Request  $request
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $user = Auth::user();
         $apartment = Apartment::findOrFail($id); 
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }
+
+        $data = [
+            'success' => true,
+            'results' => $apartment,
+            'user' => $user,
+        ];
         
-        return view('logged.apartments.show', $data);
+        return response()->json($data);
     }
 }

@@ -1,8 +1,8 @@
 <template>
     <div class="single">
         <div class="container">
-            <h2 class="mt-3">Appartamento 38. Nuovissimo appartamento esclusivo per famiglie</h2>
-            <div class="address">Via Wörtherberg, Salisburgo</div>
+            <h2 class="mt-3">{{apartment.title}}</h2>
+            <div class="address">{{apartment.address}}</div>
             <div class="image">
                 <img class="w-75" src="https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720" alt="immagine">
             </div>
@@ -46,11 +46,11 @@
                         <form>
                             <div class="mb-3">
                                 <label for="user-mail" class="form-label">Mail</label>
-                                <input v-model="userMail" type="email" class="form-control" id="user-mail">
+                                <input type="email" class="form-control" id="user-mail" :value="$user =! null ? '' : $user.email">
                             </div>
                             <div class="mb-3">
                                 <label for="user-message" class="form-label">Messaggio</label>
-                                <textarea v-model="userMessage" class="form-control" id="user-message" rows="5"></textarea>
+                                <textarea class="form-control" id="user-message" rows="5"></textarea>
                             </div>
 
                             <input type="submit" class="btn btn-primary">
@@ -70,19 +70,30 @@ export default {
     components: {
         Map
     },
+    data() {
+        return{
+            
+            apartment: [],
+        }
+    },
     methods: {
         getSinglePost() {
-        axios.get('http://127.0.0.1:8000//contact_us/' + this.$route.params.id)
+        axios.get('http://127.0.0.1:8000/api/contact/' + this.$route.params.id)
         .then((response) => {
+            console.log(response);
             if(response.data.success){
-            this.post = response.data.results;
+                this.apartment = response.data.results;
             } else {
-            this.$router.push({name: '404'})
+                this.$router.push({name: '404'})
             }
             
         })
         }
     },
+    mounted(){
+        this.getSinglePost();
+    }
+
 }
 </script>
 
