@@ -2,7 +2,7 @@
 @section('content') 
   @if ($have_one)
     <div class="container">
-
+      
       <h2>
         I tuoi appartamenti
       </h2>

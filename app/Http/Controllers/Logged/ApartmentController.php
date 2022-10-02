@@ -209,7 +209,7 @@ class ApartmentController extends Controller
         $apartment_to_delete->service()->sync([]);
         $apartment_to_delete->delete();
 
-        return redirect()->route('logged.apartments.index',['deleted' => 'yes']);
+        return redirect()->route('logged.apartments.index');
     }
 
 

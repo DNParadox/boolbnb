@@ -2111,7 +2111,8 @@ __webpack_require__.r(__webpack_exports__);
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services
+      services: this.$route.params.services,
+      filterdToPrint: []
     };
   },
   computed: {
@@ -2147,6 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       ;
+      this.filterdToPrint = filteredArray;
       return filteredArray;
     }
   },
@@ -2633,10 +2635,37 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])])])]);
+  })])])])]), _vm._v(" "), _vm._l(_vm.filterdToPrint, function (Print) {
+    return _c("div", {
+      key: Print.id,
+      staticClass: "container"
+    }, [_c("h2", {
+      staticClass: "mt-3"
+    }, [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
+      staticClass: "address"
+    }, [_c("i", {
+      staticClass: "fa-solid fa-location-dot"
+    }), _vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(0, true)]);
+  })], 2);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-6 mb-3"
+  }, [_c("div", {
+    staticClass: "image"
+  }, [_c("img", {
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720",
+      alt: "immagine"
+    }
+  })])])]);
+}];
 render._withStripped = true;
 
 

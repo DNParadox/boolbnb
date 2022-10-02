@@ -19,6 +19,22 @@
         <div><h5>Distanza</h5><div class="slidecontainer"><input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange"></div></div>
       </div> 
     </div>
+
+     <div class="container" v-for="Print in filterdToPrint" :key="Print.id">
+      <!-- <h2 class="mt-3">{{apartment.title}}</h2> -->
+      <h2 class="mt-3">{{Print.title}}</h2>
+      <!-- <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div> -->
+      <div class="address"><i class="fa-solid fa-location-dot"></i>{{Print.address}}</div>
+
+      <hr>
+      <div class="row">
+          <div class="col-md-6 mb-3">
+              <div class="image">
+                  <img class="" src="https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720" alt="immagine">
+              </div>
+          </div>             
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,7 +49,8 @@ export default {
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services
+      services: this.$route.params.services,
+      filterdToPrint: [],
     }
   },
   computed: {
@@ -68,6 +85,7 @@ export default {
         });
         return advancedFilteredArray;
       };
+      this.filterdToPrint = filteredArray;
       return filteredArray;
     }
   },
