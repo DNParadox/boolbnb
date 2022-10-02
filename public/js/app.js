@@ -2633,37 +2633,31 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _vm._l(_vm.filteredApartments, function (Print) {
-    return _c("div", {
-      key: Print.id,
-      staticClass: "container"
-    }, [_c("h2", {
-      staticClass: "mt-3"
-    }, [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
-      staticClass: "address"
-    }, [_c("i", {
-      staticClass: "fa-solid fa-location-dot"
-    }), _vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(0, true)]);
-  })], 2);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-md-6 mb-3"
-  }, [_c("div", {
-    staticClass: "image"
-  }, [_c("img", {
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720",
-      alt: "immagine"
-    }
-  })])])]);
-}];
+    staticClass: "col d-flex"
+  }, _vm._l(_vm.filteredApartments, function (Print) {
+    return _c("div", {
+      key: Print.id,
+      staticClass: "card mx-sm-auto mx-md-0"
+    }, [_c("img", {
+      staticClass: "card-img-top",
+      attrs: {
+        src: Print.photo,
+        alt: "..."
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h4", [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
+      staticClass: "description"
+    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])]);
+  }), 0)])])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -7243,7 +7237,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 100%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 100%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 100%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 100%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
 
 // exports
 

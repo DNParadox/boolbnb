@@ -20,20 +20,24 @@
       </div> 
     </div>
 
-     <div class="container" v-for="Print in filteredApartments" :key="Print.id">
-      <!-- <h2 class="mt-3">{{apartment.title}}</h2> -->
-      <h2 class="mt-3">{{Print.title}}</h2>
-      <!-- <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div> -->
-      <div class="address"><i class="fa-solid fa-location-dot"></i>{{Print.address}}</div>
-
-      <hr>
+    <div class="container" >
       <div class="row">
-          <div class="col-md-6 mb-3">
-              <div class="image">
-                  <img class="" src="https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720" alt="immagine">
-              </div>
-          </div>             
-      </div>
+            <!-- Col -->
+            <div class="col d-flex">
+                <!-- Card -->
+              <div class="card mx-sm-auto mx-md-0" v-for="Print in filteredApartments" :key="Print.id">
+                  <!-- Inside Card -->
+                <img :src="Print.photo" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4>{{ Print.title }}</h4>
+                    <div class="description">
+                        <div>{{ Print.address }}</div>
+                        <span>80 € a notte</span>
+                    </div>
+                </div>  
+              </div> 
+            </div>          
+        </div>
     </div>
   </div>
 </template>
@@ -131,6 +135,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .card {
+    margin-top: 3rem;;
+    border: none;
+    background-color: inherit;
+    img {
+      border-radius: 24px;
+      width: 300px;
+      height: 280px;
+    }
+    .card-body {
+      padding-left: 0;
+    }
+
+    // h4 {
+    //     font-weight: bold;
+    // }
+
+    .description {
+      color: grey;
+    }
+
+    a {
+      margin-top: 7px;
+    }
+  }
 
   h2{
 	  margin: 30px 80px;
