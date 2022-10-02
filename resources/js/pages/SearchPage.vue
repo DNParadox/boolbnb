@@ -91,7 +91,7 @@ export default {
       return arr.every(i => arr2.includes(i));
     },
 
-    clickHandler() {
+    clickHandler(e) {
       e.target.classList.toggle('active');
       
       if(this.advancedFilter.includes(trim(e.target.innerHtml))) {
