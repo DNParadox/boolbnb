@@ -1,13 +1,23 @@
 <template>
   <div>
-    <div>
-      <h2>Servizi aggiuntivi</h2>
-      <ul>
-        <li v-for="service in services" :key="service.id" >
-            <input type="checkbox" @change="clickHandler($event)" :value="service.name" :id="service.name">
+    <h2>Filtri per la ricerca aggiuntiva</h2>
+    <div class="container m-3 d-flex">  
+      <div class="mr-4">
+        <h4>Servizi</h4>
+        <ul class="ul-service">
+          <li v-for="service in services" :key="service.id" @change="clickHandler($event,advancedFilter)">
+            <input type="checkbox"  :value="service.name" :id="service.name">
             <label :for="service.name">{{service.name}}</label>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="d-none">{{ advancedFilter }}</div>
+      <div>
+        <h4>Stanze e letti</h4>
+        <div class="alignment"><span class="serch-text">Letti</span><div><span class="circle" @click="bedsNumber--" :class="bedsNumber == 0 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}</span><span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
+        <div class="alignment"><span class="serch-text">Camere</span><div><span class="circle" @click="roomsNumber--" :class="roomsNumber == 0 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ roomsNumber }}</span><span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
+        <div><h5>Distanza</h5><div class="slidecontainer"><input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange"></div></div>
+      </div> 
     </div>
   </div>
 </template>
@@ -27,8 +37,7 @@ export default {
     }
   },
   computed: {
-    filteredApartments() {
-      
+    filteredApartments() {  
       let filteredArray = [];
 
       this.allSearchedAparments.forEach((apartment)=> {
@@ -57,10 +66,8 @@ export default {
             advancedFilteredArray.push(apartment);
           }
         });
-
         return advancedFilteredArray;
       };
-
       return filteredArray;
     }
   },
@@ -84,29 +91,84 @@ export default {
     },
     degreeToRadians(degrees)
     {
-        var pi = Math.PI;
-        return degrees * (pi/180);
+      var pi = Math.PI;
+      return degrees * (pi/180);
     },
 
     isTrue(arr, arr2){
       return arr.every(i => arr2.includes(i));
     },
 
-    clickHandler(e) {
+    clickHandler(e,advancedFilter) {
+      let arr = this.advancedFilter;
       // e.target.classList.toggle('active');
-      if(this.advancedFilter.includes(e.target.value)) {
-        this.advancedFilter = this.advancedFilter.filter(item => item !== e.target.value);    
-         vm.$forceUpdate();    
+      if(arr.includes(e.target.value)) {
+        arr = arr.filter(item => item !== e.target.value);    
       } else {
-        this.advancedFilter.push(e.target.value);
-         vm.$forceUpdate();
+        arr.push(e.target.value);
       }
-    }
 
+      this.advancedFilter = arr;
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
+  h2{
+	  margin: 30px 80px;
+  }
+  .ul-service {
+    display: flex;
+    width: 290px;
+    flex-direction: column;
+    height: 200px;
+    flex-wrap: wrap;
+
+    li{
+      margin-right: 16px;
+    }
+  }
+
+  .circle{
+    border: 2px solid black;
+    padding: 5px 10px;
+    border-radius: 50%;
+    width: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .serch-text{
+    font-size: 18px;
+  }
+
+  .number-search{
+    margin-inline: 12px;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .alignment{
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    margin-bottom: 15px;
+  }
+
+  .slidecontainer{
+    width: 100%;
+    
+    #myRange{
+      width: 100%;
+    }
+  }
+
+  .disabled{
+    color : darkGray;
+    font-style: italic;
+    border: 2px solid darkGray;
+    /*property for disable input element like*/
+    pointer-events: none;
+  }
 </style>

@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div>
+                    <div v-if="center">
                         <Map :center="center" />
                     </div>
                 </div>
@@ -89,7 +89,7 @@ export default {
     data() {
         return{
             apartment: [],
-            center: [],
+            center: null,
         }
     },
     methods: {
@@ -99,13 +99,13 @@ export default {
             if(response.data.success){
                 console.log(response);
                 this.apartment = response.data.results;
-                this.center = [response.data.results.latitude, response.data.results.longitude];
+                this.center = {lng: parseFloat(response.data.results.longitude), lat: parseFloat(response.data.results.latitude)};
             } else {
                 this.$router.push({name: 'not-found'})
             }
             
         })
-        }
+        },
     },
     created(){
         this.getSinglePost();
