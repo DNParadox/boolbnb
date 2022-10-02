@@ -2111,8 +2111,7 @@ __webpack_require__.r(__webpack_exports__);
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services,
-      filterdToPrint: []
+      services: this.$route.params.services
     };
   },
   computed: {
@@ -2148,7 +2147,6 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       ;
-      this.filterdToPrint = filteredArray;
       return filteredArray;
     }
   },
@@ -2635,7 +2633,7 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _vm._l(_vm.filterdToPrint, function (Print) {
+  })])])])]), _vm._v(" "), _vm._l(_vm.filteredApartments, function (Print) {
     return _c("div", {
       key: Print.id,
       staticClass: "container"

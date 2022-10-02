@@ -20,7 +20,7 @@
       </div> 
     </div>
 
-     <div class="container" v-for="Print in filterdToPrint" :key="Print.id">
+     <div class="container" v-for="Print in filteredApartments" :key="Print.id">
       <!-- <h2 class="mt-3">{{apartment.title}}</h2> -->
       <h2 class="mt-3">{{Print.title}}</h2>
       <!-- <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div> -->
@@ -50,7 +50,6 @@ export default {
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
       services: this.$route.params.services,
-      filterdToPrint: [],
     }
   },
   computed: {
@@ -85,7 +84,6 @@ export default {
         });
         return advancedFilteredArray;
       };
-      this.filterdToPrint = filteredArray;
       return filteredArray;
     }
   },
