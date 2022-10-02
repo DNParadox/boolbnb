@@ -10,7 +10,9 @@ import { onMounted, ref } from 'vue'
 
 export default {
   name: 'Map', 
-
+  props: {
+    center: Array,
+  },
   setup() { 
 
     const mapRef = ref('mapRef'); 
@@ -24,7 +26,7 @@ export default {
         key: 'lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq', 
 
         container: mapRef.value, 
-        center: [14.44444,41.044444],
+        center: this.center,
         style: 'tomtom://vector/1/basic-main',
         zoom: 15, 
 
@@ -39,7 +41,7 @@ export default {
 
       const tt = window.tt; 
 
-      var location = [-121.91595, 37.36729]; 
+      var location = this.center; 
 
       var popupOffset = 25; 
 

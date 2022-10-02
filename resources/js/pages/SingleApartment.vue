@@ -2,7 +2,7 @@
     <div class="single">
         <div class="container">
             <!-- <h2 class="mt-3">{{apartment.title}}</h2> -->
-            <h2 class="mt-3">Titolo Appartamento</h2>
+            <h2 class="mt-3">{{apartment.title}}</h2>
             <!-- <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div> -->
             <div class="address"><i class="fa-solid fa-location-dot"></i> Via Olbia, San Teodoro, Sardegna</div>
 
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <Map />
+                        <Map :center="center" />
                     </div>
                 </div>
             </div>
@@ -88,8 +88,8 @@ export default {
     },
     data() {
         return{
-
             apartment: [],
+            center: [],
         }
     },
     methods: {
@@ -99,6 +99,7 @@ export default {
             if(response.data.success){
                 console.log(response);
                 this.apartment = response.data.results;
+                this.center = [response.data.results.latitude, response.data.results.longitude];
             } else {
                 this.$router.push({name: 'not-found'})
             }
@@ -106,7 +107,7 @@ export default {
         })
         }
     },
-    mounted(){
+    created(){
         this.getSinglePost();
     }
 

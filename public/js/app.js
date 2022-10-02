@@ -1928,14 +1928,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Map',
+  props: {
+    center: Array
+  },
   setup: function setup() {
+    var _this = this;
+
     var mapRef = Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])('mapRef');
     Object(vue__WEBPACK_IMPORTED_MODULE_0__["onMounted"])(function () {
       var tt = window.tt;
       var map = tt.map({
         key: 'lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq',
         container: mapRef.value,
-        center: [14.44444, 41.044444],
+        center: _this.center,
         style: 'tomtom://vector/1/basic-main',
         zoom: 15
       });
@@ -1945,7 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 
     function addMarker(map) {
       var tt = window.tt;
-      var location = [-121.91595, 37.36729];
+      var location = this.center;
       var popupOffset = 25;
       var marker = new tt.Marker().setLngLat(location).addTo(map);
       var popup = new tt.Popup({
@@ -2174,8 +2179,10 @@ __webpack_require__.r(__webpack_exports__);
         this.advancedFilter = this.advancedFilter.filter(function (item) {
           return item !== e.target.value;
         });
+        vm.$forceUpdate();
       } else {
         this.advancedFilter.push(e.target.value);
+        vm.$forceUpdate();
       }
     }
   }
@@ -2201,7 +2208,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      apartment: []
+      apartment: [],
+      center: []
     };
   },
   methods: {
@@ -2212,6 +2220,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.success) {
           console.log(response);
           _this.apartment = response.data.results;
+          _this.center = [response.data.results.latitude, response.data.results.longitude];
         } else {
           _this.$router.push({
             name: 'not-found'
@@ -2220,7 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     this.getSinglePost();
   }
 });
@@ -2567,11 +2576,15 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
-  }, [_vm._v("Titolo Appartamento")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.apartment.title))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
-  }, [_c("div", [_c("Map")], 1)])]), _vm._v(" "), _c("div", {
+  }, [_c("div", [_c("Map", {
+    attrs: {
+      center: _vm.center
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
   }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
