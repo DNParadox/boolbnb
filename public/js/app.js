@@ -2118,7 +2118,7 @@ __webpack_require__.r(__webpack_exports__);
       this.allSearchedAparments.forEach(function (apartment) {
         var distanceFromSearch = _this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
 
-        if (distanceFromSearch < _this.distanceFilter || apartment.room_number >= _this.roomsNumber || apartment.bed_number >= _this.bedsNumber) {
+        if (distanceFromSearch < _this.distanceFilter && apartment.room_number >= _this.roomsNumber && apartment.bed_number >= _this.bedsNumber) {
           apartment.distance = distanceFromSearch;
           filteredArray.push(apartment);
         }
@@ -2528,7 +2528,7 @@ var render = function render() {
         value: service.name
       },
       on: {
-        click: function click($event) {
+        change: function change($event) {
           return _vm.clickHandler($event);
         }
       }

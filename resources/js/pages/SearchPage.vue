@@ -4,7 +4,7 @@
       <h2>Servizi aggiuntivi</h2>
       <ul>
         <li v-for="service in services" :key="service.id" >
-            <input type="checkbox" @click="clickHandler($event)" :value="service.name" :id="service.name">
+            <input type="checkbox" @change="clickHandler($event)" :value="service.name" :id="service.name">
             <label :for="service.name">{{service.name}}</label>
         </li>
       </ul>
@@ -33,8 +33,8 @@ export default {
 
       this.allSearchedAparments.forEach((apartment)=> {
         let distanceFromSearch = this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
-        if( distanceFromSearch < this.distanceFilter ||
-        apartment.room_number >= this.roomsNumber ||
+        if( distanceFromSearch < this.distanceFilter &&
+        apartment.room_number >= this.roomsNumber &&
         apartment.bed_number >= this.bedsNumber) {
           apartment.distance = distanceFromSearch;
           filteredArray.push(apartment);
