@@ -2122,12 +2122,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.advancedFilter.length > 0) {
         var advancedFilteredArray = [];
         filteredArray.forEach(function (apartment) {
-          var apartmentServices;
+          var apartmentServices = [];
           apartment.service.forEach(function (singleService) {
             apartmentServices.push(singleService.name);
           });
 
-          if (!_this.checkElementsinArray(apartmentServices, _this.advancedFilter)) {
+          if (_this.isTrue(_this.advancedFilter, apartmentServices)) {
             advancedFilteredArray.push(apartment);
           }
         });
@@ -2155,21 +2155,10 @@ __webpack_require__.r(__webpack_exports__);
       var pi = Math.PI;
       return degrees * (pi / 180);
     },
-    checkElementsinArray: function checkElementsinArray(fixedArray, inputArray) {
-      var fixedArraylen = fixedArray.length;
-      var inputArraylen = inputArray.length;
-
-      if (fixedArraylen <= inputArraylen) {
-        for (var i = 0; i < fixedArraylen; i++) {
-          if (!(inputArray.indexOf(fixedArray[i]) >= 0)) {
-            return false;
-          }
-        }
-      } else {
-        return false;
-      }
-
-      return true;
+    isTrue: function isTrue(arr, arr2) {
+      return arr.every(function (i) {
+        return arr2.includes(i);
+      });
     }
   }
 });
@@ -54996,8 +54985,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

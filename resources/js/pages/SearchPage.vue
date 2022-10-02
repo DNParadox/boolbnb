@@ -17,6 +17,8 @@ export default {
   data() {
     return {
       distanceFilter: 20,
+      roomsNumber: 1,
+      bedsNumber: 1,
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
@@ -29,22 +31,28 @@ export default {
       let filteredArray = [];
 
       this.allSearchedAparments.forEach((apartment)=> {
-        if(this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < this.distanceFilter) {
-            filteredArray.push(apartment);
+        let distanceFromSearch = this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
+        if( distanceFromSearch < this.distanceFilter ||
+        apartment.room_number >= this.roomsNumber ||
+        apartment.bed_number >= this.bedsNumber) {
+          apartment.distance = distanceFromSearch;
+          filteredArray.push(apartment);
         }
-      })
+      });
+
+      filteredArray = filteredArray.sort((a, b) => a.distance - b.distance);
 
       if(this.advancedFilter.length > 0) {
-        let advancedFilteredArray = [];
+        const advancedFilteredArray = [];
 
         filteredArray.forEach((apartment) => {
 
-          let apartmentServices;
+          let apartmentServices = [];
           apartment.service.forEach((singleService)=>{
             apartmentServices.push(singleService.name);
           });
 
-          if(!this.checkElementsinArray(apartmentServices, this.advancedFilter)){
+          if(this.isTrue(this.advancedFilter, apartmentServices)){
             advancedFilteredArray.push(apartment);
           }
         });
@@ -79,25 +87,19 @@ export default {
         return degrees * (pi/180);
     },
 
-    checkElementsinArray(fixedArray,inputArray){
-    var fixedArraylen = fixedArray.length;
-    var inputArraylen = inputArray.length;
-    if(fixedArraylen<=inputArraylen)
-    {
-        for(var i=0;i<fixedArraylen;i++)
-        {
-            if(!(inputArray.indexOf(fixedArray[i])>=0))
-            {
-                return false;
-            }
-        }
+    isTrue(arr, arr2){
+      return arr.every(i => arr2.includes(i));
+    },
+
+    clickHandler(e) {
+      e.target.classList.toggle('active');
+      
+      if(this.advancedFilter.includes(trim(e.target.innerHtml))) {
+        this.advancedFilter = this.advancedFilter.filter(val => val !== trim(e.target.innerHtml));        
+      } else {
+        this.advancedFilter.push(trim(e.target.innerHtml))
+      }
     }
-    else
-    {
-        return false;
-    }
-    return true;
-  }
 
   }
 }
