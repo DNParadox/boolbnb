@@ -1,14 +1,30 @@
 <template>
     <div class="single">
         <div class="container">
-            <h2 class="mt-3">{{apartment.title}}</h2>
-            <div class="address">{{apartment.address}}</div>
-            <div class="image">
-                <img class="w-75" src="https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720" alt="immagine">
+            <!-- <h2 class="mt-3">{{apartment.title}}</h2> -->
+            <h2 class="mt-3">Titolo Appartamento</h2>
+            <!-- <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div> -->
+            <div class="address"><i class="fa-solid fa-location-dot"></i> Via Olbia, San Teodoro, Sardegna</div>
+
+            <hr>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="image">
+                        <img class="" src="https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720" alt="immagine">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <Map />
+                    </div>
+                </div>
             </div>
 
-            <div class="bottom-part">
-                <div class="left">
+            <div class="row bottom-part">
+                <div class="col-md-8 left">
+
+                    <hr>
+
                     <div class="info">
                         <span>2 camere da letto</span>
                         <span>5 letti</span>
@@ -40,7 +56,7 @@
                     <hr>
                 </div>
 
-                <div class="right">
+                <div class="col-md-4 right">
                     <div class="contact">
                         <h2>Contatta l'host</h2>
                         <form>
@@ -59,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <Map />
+        
     </div>
 </template>
 
@@ -107,16 +123,33 @@ export default {
     .image {
         img{
             border-radius: 15px;
+            object-fit: cover;
+            height: 400px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         } 
+    }
+
+    /* .mapboxgl-canvas {
+        width: 100%;
+        height: 400px;
+    } */
+
+    .map {
+        width: 100%;
+        height: 100%;
+        
+        
+    }
+    .mapboxgl-map {
+        border-radius: 15px;
     }
 
     .bottom-part {
         display: flex;
         justify-content: space-between;
+        padding: 30px 0;
 
         .left {
-            width: 75%;
-
             .info {
                 margin-top: 25px;
                 font-size: 18px; 
@@ -142,20 +175,17 @@ export default {
                 span {
                     flex-basis: 50%;
                     margin-bottom: 15px;
-                }
-                
+                }             
             }
         }
 
         .right {
-            padding-top: 60px;
-            padding-left: 50px;
-            width: 40%;
 
             .contact {
                 border: 1px solid lightgray;
                 border-radius: 15px;
                 padding: 10px;
+                box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
             }
         }
     }

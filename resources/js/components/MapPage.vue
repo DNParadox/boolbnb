@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id='map' ref="mapRef"></div> 
+    <div id='map' class="map" style="width:100%;height:400px" ref="mapRef"></div> 
   </div> 
 </template>
 
@@ -65,11 +65,8 @@ export default {
 <style> 
 
 #map { 
-
-  height: 50vh; 
-
-  width: 50vw; 
-
-} 
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
 
 </style>
