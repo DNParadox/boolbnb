@@ -4,7 +4,8 @@
       <h2>Servizi aggiuntivi</h2>
       <ul>
         <li v-for="service in services" :key="service.id" >
-            {{ service.name }}
+            <input type="checkbox" @click="clickHandler($event)" :value="service.name" :id="service.name">
+            <label :for="service.name">{{service.name}}</label>
         </li>
       </ul>
     </div>
@@ -92,12 +93,11 @@ export default {
     },
 
     clickHandler(e) {
-      e.target.classList.toggle('active');
-      
-      if(this.advancedFilter.includes(trim(e.target.innerHtml))) {
-        this.advancedFilter = this.advancedFilter.filter(val => val !== trim(e.target.innerHtml));        
+      // e.target.classList.toggle('active');
+      if(this.advancedFilter.includes(e.target.value)) {
+        this.advancedFilter = this.advancedFilter.filter(item => item !== e.target.value);        
       } else {
-        this.advancedFilter.push(trim(e.target.innerHtml))
+        this.advancedFilter.push(e.target.value)
       }
     }
 

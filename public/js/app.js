@@ -2102,6 +2102,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       distanceFilter: 20,
+      roomsNumber: 1,
+      bedsNumber: 1,
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
@@ -2114,9 +2116,15 @@ __webpack_require__.r(__webpack_exports__);
 
       var filteredArray = [];
       this.allSearchedAparments.forEach(function (apartment) {
-        if (_this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < _this.distanceFilter) {
+        var distanceFromSearch = _this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
+
+        if (distanceFromSearch < _this.distanceFilter || apartment.room_number >= _this.roomsNumber || apartment.bed_number >= _this.bedsNumber) {
+          apartment.distance = distanceFromSearch;
           filteredArray.push(apartment);
         }
+      });
+      filteredArray = filteredArray.sort(function (a, b) {
+        return a.distance - b.distance;
       });
 
       if (this.advancedFilter.length > 0) {
@@ -2159,6 +2167,16 @@ __webpack_require__.r(__webpack_exports__);
       return arr.every(function (i) {
         return arr2.includes(i);
       });
+    },
+    clickHandler: function clickHandler(e) {
+      // e.target.classList.toggle('active');
+      if (this.advancedFilter.includes(e.target.value)) {
+        this.advancedFilter = this.advancedFilter.filter(function (item) {
+          return item !== e.target.value;
+        });
+      } else {
+        this.advancedFilter.push(e.target.value);
+      }
     }
   }
 });
@@ -2330,6 +2348,11 @@ var render = function render() {
 
   return _c("div", [_c("div", {
     ref: "mapRef",
+    staticClass: "map",
+    staticStyle: {
+      width: "100%",
+      height: "400px"
+    },
     attrs: {
       id: "map"
     }
@@ -2496,7 +2519,24 @@ var render = function render() {
   return _c("div", [_c("div", [_c("h2", [_vm._v("Servizi aggiuntivi")]), _vm._v(" "), _c("ul", _vm._l(_vm.services, function (service) {
     return _c("li", {
       key: service.id
-    }, [_vm._v("\n          " + _vm._s(service.name) + "\n      ")]);
+    }, [_c("input", {
+      attrs: {
+        type: "checkbox",
+        id: service.name
+      },
+      domProps: {
+        value: service.name
+      },
+      on: {
+        click: function click($event) {
+          return _vm.clickHandler($event);
+        }
+      }
+    }), _vm._v(" "), _c("label", {
+      attrs: {
+        "for": service.name
+      }
+    }, [_vm._v(_vm._s(service.name))])]);
   }), 0)])]);
 };
 
@@ -2527,12 +2567,14 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
-  }, [_vm._v(_vm._s(_vm.apartment.title))]), _vm._v(" "), _c("div", {
-    staticClass: "address"
-  }, [_vm._v(_vm._s(_vm.apartment.address))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "bottom-part"
+  }, [_vm._v("Titolo Appartamento")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "row"
   }, [_vm._m(1), _vm._v(" "), _c("div", {
-    staticClass: "right"
+    staticClass: "col-md-6"
+  }, [_c("div", [_c("Map")], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "row bottom-part"
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
   }, [_c("h2", [_vm._v("Contatta l'host")]), _vm._v(" "), _c("form", [_c("div", {
@@ -2551,12 +2593,12 @@ var render = function render() {
     domProps: {
       value: _vm.$user = !null ? "" : _vm.$user.email
     }
-  })]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  })])])])])]), _vm._v(" "), _c("Map")], 1);
+  })])])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -2564,21 +2606,31 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "image"
-  }, [_c("img", {
-    staticClass: "w-75",
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720",
-      alt: "immagine"
-    }
-  })]);
+    staticClass: "address"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-location-dot"
+  }), _vm._v(" Via Olbia, San Teodoro, Sardegna")]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "left"
+    staticClass: "col-md-6 mb-3"
   }, [_c("div", {
+    staticClass: "image"
+  }, [_c("img", {
+    attrs: {
+      src: "https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720",
+      alt: "immagine"
+    }
+  })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-md-8 left"
+  }, [_c("hr"), _vm._v(" "), _c("div", {
     staticClass: "info"
   }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "description"
@@ -7064,7 +7116,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n}\n.container .bottom-part .left[data-v-4fd40851] {\n  width: 75%;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right[data-v-4fd40851] {\n  padding-top: 60px;\n  padding-left: 50px;\n  width: 40%;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
 
 // exports
 
@@ -7083,7 +7135,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map { \r\n\r\n  height: 50vh; \r\n\r\n  width: 50vw;\n} \r\n\r\n", ""]);
+exports.push([module.i, "\n#map { \r\n  border-radius: 15px;\r\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\r\n\r\n", ""]);
 
 // exports
 
