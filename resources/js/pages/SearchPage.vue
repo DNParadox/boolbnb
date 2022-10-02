@@ -95,9 +95,11 @@ export default {
     clickHandler(e) {
       // e.target.classList.toggle('active');
       if(this.advancedFilter.includes(e.target.value)) {
-        this.advancedFilter = this.advancedFilter.filter(item => item !== e.target.value);        
+        this.advancedFilter = this.advancedFilter.filter(item => item !== e.target.value);    
+         vm.$forceUpdate();    
       } else {
-        this.advancedFilter.push(e.target.value)
+        this.advancedFilter.push(e.target.value);
+         vm.$forceUpdate();
       }
     }
 
