@@ -2101,9 +2101,9 @@ __webpack_require__.r(__webpack_exports__);
       roomsNumber: 1,
       bedsNumber: 1,
       advancedFilter: [],
+      services: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: [],
-      services: []
+      allSearchedAparments: []
     };
   },
   methods: {
@@ -2123,8 +2123,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.filerByApi();
     this.getServices();
+    this.filerByApi();
   }
 });
 

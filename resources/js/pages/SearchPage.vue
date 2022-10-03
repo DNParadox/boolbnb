@@ -105,9 +105,9 @@ export default {
       roomsNumber: 1,
       bedsNumber: 1,
       advancedFilter: [],
+      services: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: [],
-      services: [],
     }
   },
   methods: {
@@ -123,8 +123,9 @@ export default {
     },
   },
   mounted(){
-    this.filerByApi();
     this.getServices();
+    this.filerByApi();
+ 
   }
 }
 </script>
