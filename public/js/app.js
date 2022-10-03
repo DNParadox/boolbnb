@@ -1983,7 +1983,6 @@ __webpack_require__.r(__webpack_exports__);
       currentApartmentsSponsored: [],
       currentApartments: [],
       currentSearchPosition: null,
-      services: [],
       filteredApartments: []
     };
   },
@@ -2006,15 +2005,6 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    getServices: function getServices() {
-      var _this3 = this;
-
-      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
-        response.data.results.forEach(function (service) {
-          _this3.services.push(service);
-        });
-      });
-    },
     getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       var R = 6371;
@@ -2032,7 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
       return degrees * (pi / 180);
     },
     autocomplete: function autocomplete() {
-      var _this4 = this;
+      var _this3 = this;
 
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -2051,26 +2041,25 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this4.currentSearchPosition = response.data.results[0].position;
+          _this3.currentSearchPosition = response.data.results[0].position;
         }
       });
     },
     filterByDistance: function filterByDistance() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.filteredApartments = [];
       this.currentApartments.forEach(function (apartment) {
-        parseFloat(_this5.getDistance(parseFloat(_this5.currentSearchPosition.lat), parseFloat(_this5.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
+        parseFloat(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
 
-        if (_this5.getDistance(parseFloat(_this5.currentSearchPosition.lat), parseFloat(_this5.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
-          _this5.filteredApartments.push(apartment);
+        if (_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
+          _this4.filteredApartments.push(apartment);
         }
       });
     }
   },
   mounted: function mounted() {
     this.getApartmentSponsored();
-    this.getServices();
     this.getApartment();
   }
 });
@@ -2101,6 +2090,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchPage',
   data: function data() {
@@ -2111,7 +2103,7 @@ __webpack_require__.r(__webpack_exports__);
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services
+      services: []
     };
   },
   computed: {
@@ -2151,6 +2143,18 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    getServices: function getServices() {
+      var _this2 = this;
+
+      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
+        _this2.services = response.data.results;
+      });
+    },
+    filerByApi: function filerByApi() {
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+        console.log(response);
+      });
+    },
     getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       var R = 6371;
@@ -2185,6 +2189,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.advancedFilter = arr;
     }
+  },
+  mounted: function mounted() {
+    this.filerByApi();
+    this.getServices();
   }
 });
 
@@ -2414,17 +2422,22 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", [_c("input", {
+  return _c("div", [_c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Trova l'alloggio che fa per te...")]), _vm._v(" "), _c("div", {
+    staticClass: "search"
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentSearch,
       expression: "currentSearch"
     }],
+    staticClass: "bar",
     attrs: {
       list: "autocomplete",
       type: "text",
-      placeholder: "Search..."
+      placeholder: "Inserisci una città o un indirizzo..."
     },
     domProps: {
       value: _vm.currentSearch
@@ -2441,24 +2454,25 @@ var render = function render() {
     attrs: {
       id: "autocomplete"
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("button", {
+    staticClass: "ms_btn",
     attrs: {
-      type: "button",
-      value: "submit"
+      type: "submit"
     },
     on: {
       click: function click($event) {
         return _vm.filterByDistance();
       }
     }
-  })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\n        " + _vm._s(this.$router.push({
+  }, [_c("i", {
+    staticClass: "fa-solid fa-magnifying-glass icon"
+  })])]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
       filtered: _vm.filteredApartments,
-      currentPosition: _vm.currentSearchPosition,
-      services: _vm.services
+      currentPosition: _vm.currentSearchPosition
     }
-  })) + "\n    ")]) : _c("section", {
+  })) + "\r\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row"
@@ -2655,7 +2669,13 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", [_c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.filerByApi();
+      }
+    }
+  }, [_vm._v("submit filter")])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
@@ -7240,7 +7260,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 
@@ -7297,7 +7317,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map { \n  border-radius: 15px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n\n", ""]);
+exports.push([module.i, "\n#map { \r\n  border-radius: 15px;\r\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -7335,7 +7355,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".guestheader{\n    height: 80px;\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\n            border: none !important;\n}\n}\n}\n\n", ""]);
+exports.push([module.i, ".guestheader{\r\n    height: 80px;\r\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\r\n            border: none !important;\n}\n}\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -55247,8 +55267,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
