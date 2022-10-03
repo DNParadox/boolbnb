@@ -1,6 +1,6 @@
 <template>
     <div class="single">
-        <div class="container">
+        <div class="container" v-if="apartment">
             <h2 class="mt-3">{{apartment.title}}</h2>
             <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div>
 
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="image">
-                        <img src="apartment.photo" class="card-img-top" alt="apartment.title">
+                        <img :src="apartment.photo" class="card-img-top" alt="apartment.title">
                     </div>
                 </div>
                 <div class="col-md-6">
