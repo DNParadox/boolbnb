@@ -63,10 +63,12 @@
           </div>
 
           <div class="mb-3">
-            <div class="form-label">Visibilità</div>
-            <div class="toogle-bb">             
-              <input type="checkbox" id="visibility" name="visibility" value="{{ old('visibility') }}">
-              <label for="visibility"><h6>OFF</h6><h5>ON</h5></label>
+            <div class="form-label">Visibilità <span class="required-check">*</span></div>
+            <div>
+              <input type="radio" id="visibility" name="visibility" value="1" required="required">
+              <label for="html">si</label>
+              <input type="radio" id="visibility" name="visibility" value="0" required="required">
+              <label for="css">no</label>
             </div>
           </div>
         </div>
