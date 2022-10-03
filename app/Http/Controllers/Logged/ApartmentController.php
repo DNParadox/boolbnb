@@ -93,7 +93,6 @@ class ApartmentController extends Controller
         $new_apartment = new Apartment();
         $new_apartment->address = $form_data['address'];
         $new_apartment->users_id = $user->id;
-        $new_apartment->visibility = 1;
         $new_apartment->is_sponsored = 0;
         $new_apartment->fill($form_data);  
         $new_apartment->save();

@@ -1983,7 +1983,6 @@ __webpack_require__.r(__webpack_exports__);
       currentApartmentsSponsored: [],
       currentApartments: [],
       currentSearchPosition: null,
-      services: [],
       filteredApartments: []
     };
   },
@@ -2006,15 +2005,6 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    getServices: function getServices() {
-      var _this3 = this;
-
-      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
-        response.data.results.forEach(function (service) {
-          _this3.services.push(service);
-        });
-      });
-    },
     getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       var R = 6371;
@@ -2032,7 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
       return degrees * (pi / 180);
     },
     autocomplete: function autocomplete() {
-      var _this4 = this;
+      var _this3 = this;
 
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
@@ -2051,26 +2041,25 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this4.currentSearchPosition = response.data.results[0].position;
+          _this3.currentSearchPosition = response.data.results[0].position;
         }
       });
     },
     filterByDistance: function filterByDistance() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.filteredApartments = [];
       this.currentApartments.forEach(function (apartment) {
-        parseFloat(_this5.getDistance(parseFloat(_this5.currentSearchPosition.lat), parseFloat(_this5.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
+        parseFloat(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
 
-        if (_this5.getDistance(parseFloat(_this5.currentSearchPosition.lat), parseFloat(_this5.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
-          _this5.filteredApartments.push(apartment);
+        if (_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
+          _this4.filteredApartments.push(apartment);
         }
       });
     }
   },
   mounted: function mounted() {
     this.getApartmentSponsored();
-    this.getServices();
     this.getApartment();
   }
 });
@@ -2101,6 +2090,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchPage',
   data: function data() {
@@ -2111,7 +2103,7 @@ __webpack_require__.r(__webpack_exports__);
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services
+      services: []
     };
   },
   computed: {
@@ -2151,6 +2143,18 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    getServices: function getServices() {
+      var _this2 = this;
+
+      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
+        _this2.services = response.data.results;
+      });
+    },
+    filerByApi: function filerByApi() {
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+        console.log(response);
+      });
+    },
     getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       var R = 6371;
@@ -2185,6 +2189,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.advancedFilter = arr;
     }
+  },
+  mounted: function mounted() {
+    this.filerByApi();
+    this.getServices();
   }
 });
 
@@ -2433,8 +2441,7 @@ var render = function render() {
     name: "search",
     params: {
       filtered: _vm.filteredApartments,
-      currentPosition: _vm.currentSearchPosition,
-      services: _vm.services
+      currentPosition: _vm.currentSearchPosition
     }
   })) + "\r\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
@@ -2633,7 +2640,13 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", [_c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.filerByApi();
+      }
+    }
+  }, [_vm._v("submit filter")])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
@@ -55225,8 +55238,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

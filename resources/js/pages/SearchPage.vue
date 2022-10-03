@@ -18,6 +18,7 @@
         <div class="alignment"><span class="serch-text">Camere</span><div><span class="circle" @click="roomsNumber--" :class="roomsNumber == 1 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ roomsNumber }}</span><span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
         <div><h5>Distanza</h5><div class="slidecontainer"><input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange"></div></div>
       </div> 
+      <div><button @click="filerByApi()">submit filter</button></div>
     </div>
 
     <div class="container-fluid">
@@ -47,6 +48,7 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
 export default {
   name: 'SearchPage',
   data() {
@@ -57,7 +59,7 @@ export default {
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
       allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services,
+      services: [],
     }
   },
   computed: {
@@ -96,6 +98,16 @@ export default {
     }
   },
   methods: {
+    getServices(){
+      axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
+      this.services = response.data.results;
+    } 
+    )},
+    filerByApi(){
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then((response)=>{
+        console.log(response);
+      })
+    },
     getDistance(latitude1,longitude1,latitude2,longitude2){ 
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       let R = 6371;
@@ -134,7 +146,12 @@ export default {
 
       this.advancedFilter = arr;
     }
+  },
+  mounted(){
+    this.filerByApi();
+    this.getServices();
   }
+
 }
 </script>
 
