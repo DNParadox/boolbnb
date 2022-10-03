@@ -122,7 +122,7 @@
         let dataList = document.getElementById('addresses');
         let suggestions = [];
 
-        axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+        axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
         .then((response)=>{
 
           for(let i = 0; i < 4; i++) {

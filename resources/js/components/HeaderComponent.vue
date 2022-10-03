@@ -106,7 +106,7 @@
                 width: 30px;
                 height: 30px;
                 border-radius: 50%;
-                background-color: #ff385c;;
+                background-color: #ff385c;
                 border: 1px solid black;
                 cursor: pointer;
             }
