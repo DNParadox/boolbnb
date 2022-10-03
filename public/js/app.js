@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
-      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=Lok7BxBRtdDtQaxvidxzHskGKxFF6ML4")).then(function (response) {
+      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
         if (response.data.results.length > 0) {
           for (var i = 0; i < 4; i++) {
             var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
@@ -2101,9 +2101,9 @@ __webpack_require__.r(__webpack_exports__);
       roomsNumber: 1,
       bedsNumber: 1,
       advancedFilter: [],
+      services: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: [],
-      services: []
+      allSearchedAparments: []
     };
   },
   methods: {
@@ -2114,17 +2114,40 @@ __webpack_require__.r(__webpack_exports__);
         _this.services = response.data.results;
       });
     },
-    filerByApi: function filerByApi() {
+    filterByApi: function filterByApi() {
       var _this2 = this;
 
-      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+      axios.get('http://127.0.0.1:8000/api/filterby/', {
+        params: {
+          distance: this.distanceFilter,
+          room_number: this.roomsNumber,
+          bed_number: this.bedsNumber,
+          latitude: this.currentPosition.lat,
+          longitude: this.currentPosition.lon,
+          services: JSON.stringify(this.advancedFilter)
+        }
+      }).then(function (response) {
+        console.log(JSON.stringify(_this2.advancedFilter));
         _this2.allSearchedAparments = response.data.apartments;
       });
+    },
+    clickHandler: function clickHandler(e) {
+      var arr = this.advancedFilter;
+
+      if (arr.includes(e.target.value)) {
+        arr = arr.filter(function (item) {
+          return item !== e.target.value;
+        });
+      } else {
+        arr.push(e.target.value);
+      }
+
+      this.advancedFilter = arr;
     }
   },
   mounted: function mounted() {
-    this.filerByApi();
     this.getServices();
+    this.filterByApi();
   }
 });
 
@@ -2495,10 +2518,18 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h2", [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
+  return _c("div", {
+    staticClass: "container-fluid"
+  }, [_c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
     staticClass: "container m-3 d-flex"
   }, [_c("div", {
-    staticClass: "mr-4"
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "mr-4 card"
   }, [_c("h4", [_vm._v("Servizi")]), _vm._v(" "), _c("ul", {
     staticClass: "ul-service"
   }, _vm._l(_vm.services, function (service) {
@@ -2506,7 +2537,7 @@ var render = function render() {
       key: service.id,
       on: {
         change: function change($event) {
-          return _vm.clickHandler($event, _vm.advancedFilter);
+          return _vm.clickHandler($event);
         }
       }
     }, [_c("input", {
@@ -2522,13 +2553,17 @@ var render = function render() {
         "for": service.name
       }
     }, [_vm._v(_vm._s(service.name))])]);
-  }), 0)]), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "d-none"
-  }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
     staticClass: "alignment"
   }, [_c("span", {
     staticClass: "serch-text"
-  }, [_vm._v("Letti")]), _c("div", [_c("span", {
+  }, [_vm._v("Letti")]), _vm._v(" "), _c("div", [_c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 1 ? "disabled" : "",
     on: {
@@ -2540,7 +2575,7 @@ var render = function render() {
     staticClass: "fa-solid fa-minus"
   })]), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.bedsNumber))]), _c("span", {
+  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n              ")]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 20 ? "disabled" : "",
     on: {
@@ -2554,7 +2589,7 @@ var render = function render() {
     staticClass: "alignment"
   }, [_c("span", {
     staticClass: "serch-text"
-  }, [_vm._v("Camere")]), _c("div", [_c("span", {
+  }, [_vm._v("Camere")]), _vm._v(" "), _c("div", [_c("span", {
     staticClass: "circle",
     "class": _vm.roomsNumber == 1 ? "disabled" : "",
     on: {
@@ -2564,9 +2599,9 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-minus"
-  })]), _c("span", {
+  })]), _vm._v(" "), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.roomsNumber))]), _c("span", {
+  }, [_vm._v(_vm._s(_vm.roomsNumber))]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.roomsNumber == 20 ? "disabled" : "",
     on: {
@@ -2576,7 +2611,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-plus"
-  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _c("div", {
+  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _vm._v(" "), _c("div", {
     staticClass: "slidecontainer"
   }, [_c("input", {
     directives: [{
@@ -2603,10 +2638,10 @@ var render = function render() {
   })])])]), _vm._v(" "), _c("div", [_c("button", {
     on: {
       click: function click($event) {
-        return _vm.filerByApi();
+        return _vm.filterByApi();
       }
     }
-  }, [_vm._v("submit filter")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
@@ -7208,7 +7243,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 100%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 100%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 80%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 70%;\n  margin-inline: 10px;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -55196,8 +55231,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
