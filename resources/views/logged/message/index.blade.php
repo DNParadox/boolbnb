@@ -14,7 +14,6 @@
       </div>
       <div class="message_col">
         <div>
-          <h3>{{ $messages[0]->name }}</h3>
           <p>{{ $messages[0]->email }}</p>
           <p>{{ $messages[0]->message }}</p>
         </div>
