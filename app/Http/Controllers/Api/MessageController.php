@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Message;
-use Carbon\Carbon;
+
 
 class MessageController extends Controller
 {
-    public function save($email,$apartment,$message)
+    public function message(Request $request)
     {
-        $message = new Message();
-        $message->apartment_id = $apartment;
-        $message->email = $email;
-        $message->message = $message;
-        $message->save();
+        $data = $request->all();
 
-        $data = [
-            'success' => true,
-        ];
-        return response()->json($data);
+        $message_to_save = new Message();
+        $message_to_save->fill($data);
+        $message_to_save->send_date = '2022-10-10';
+        $message_to_save->save();
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }

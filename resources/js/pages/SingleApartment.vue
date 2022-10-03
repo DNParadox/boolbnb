@@ -48,17 +48,18 @@
 
                 <div class="col-md-4 right">
                     <div class="contact">
-                        <h2>Contatta l'host</h2>
-                        <div class="mb-3">
-                            <label for="user-mail" class="form-label">Mail</label>
-                            <input type="email" class="form-control" id="user-mail" v-model="email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="user-message" class="form-label">Messaggio</label>
-                            <textarea class="form-control" id="user-message" v-model="note" rows="5"></textarea>
-                        </div>
-
-                        <input type="submit" class="btn btn-primary" @click="sendMessage()">
+                        <form @submit.prevent="sendMessage">
+                            <h2>Contatta l'host</h2>
+                            <div class="mb-3">
+                                <label for="user-mail" class="form-label">Mail *</label>
+                                <input type="email" class="form-control" id="user-mail" v-model="email" required="required">
+                            </div>
+                            <div class="mb-3">
+                                <label for="user-message" class="form-label">Messaggio *</label>
+                                <textarea class="form-control" id="user-message" v-model="note" rows="5" required="required"></textarea>
+                            </div>
+                            <input type="submit" class="btn btn-primary">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -96,12 +97,20 @@ export default {
         })
         },
         sendMessage(){
-           axios.get('http://127.0.0.1:8000/api/sendmessage/'+ this.email + '/' + this.$route.params.id + '/' + this.note )
-        .then((response) => {
-            if(response.data.success){
-                console.log(response);
-            }          
-        }) 
+            axios.post('http://127.0.0.1:8000/api/sendmessage/',{
+                apartment_id: this.apartment.id,
+                message: this.note,
+                email: this.email,
+            })
+            .then((response) => {
+                if(response.data.success){
+                    console.log(response);
+                    this.clearMessage();
+                }          
+            }) 
+        },
+        clearMessage(){
+            this.note = '';
         }
     },
     created(){

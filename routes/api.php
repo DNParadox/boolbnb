@@ -23,6 +23,6 @@ Route::get('/sponsored','Api\ApartmentController@sponsored');
 Route::get('/services','Api\ServiceController@index');
 Route::get('/contact/{id}','Api\ApartmentController@show');
 Route::get('/filterby/{distance}/{room}/{bed}/{latitude}/{longitude}/{services}','Api\ApartmentController@filterby');
-Route::get('/sendmessage/{email}/{apartment_id}/{message}','Api\MessageController@save');
+Route::post('/sendmessage','Api\MessageController@message');
 
 

@@ -2172,7 +2172,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       apartment: null,
-      center: null
+      center: null,
+      email: '',
+      note: ''
     };
   },
   methods: {
@@ -2193,6 +2195,24 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    sendMessage: function sendMessage() {
+      var _this2 = this;
+
+      axios.post('http://127.0.0.1:8000/api/sendmessage/', {
+        apartment_id: this.apartment.id,
+        message: this.note,
+        email: this.email
+      }).then(function (response) {
+        if (response.data.success) {
+          console.log(response);
+
+          _this2.clearMessage();
+        }
+      });
+    },
+    clearMessage: function clearMessage() {
+      this.note = '';
     }
   },
   created: function created() {
@@ -2731,33 +2751,82 @@ var render = function render() {
     staticClass: "description"
   }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
     staticClass: "services"
-  }, [_vm._l(_vm.apartment.service, function (service) {
+  }, _vm._l(_vm.apartment.service, function (service) {
     return _c("div", {
       key: service.id
     }, [_c("i", {
       "class": service.icon
-    }), _vm._v(_vm._s(service.name))]);
-  }), _vm._v(" "), _vm._m(1)], 2), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
+    }), _vm._v(" " + _vm._s(service.name))]);
+  }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
-  }, [_c("h2", [_vm._v("Contatta l'host")]), _vm._v(" "), _c("form", [_c("div", {
+  }, [_c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.sendMessage.apply(null, arguments);
+      }
+    }
+  }, [_c("h2", [_vm._v("Contatta l'host")]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
       "for": "user-mail"
     }
-  }, [_vm._v("Mail")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Mail *")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.email,
+      expression: "email"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "email",
-      id: "user-mail"
+      id: "user-mail",
+      required: "required"
     },
     domProps: {
-      value: _vm.$user = !null ? "" : _vm.$user.email
+      value: _vm.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.email = $event.target.value;
+      }
     }
-  })]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "user-message"
+    }
+  }, [_vm._v("Messaggio *")]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.note,
+      expression: "note"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      id: "user-message",
+      rows: "5",
+      required: "required"
+    },
+    domProps: {
+      value: _vm.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.note = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
@@ -2772,31 +2841,6 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "info"
   }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("span", [_c("i", {
-    staticClass: "fa-solid fa-taxi"
-  })]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "mb-3"
-  }, [_c("label", {
-    staticClass: "form-label",
-    attrs: {
-      "for": "user-message"
-    }
-  }, [_vm._v("Messaggio")]), _vm._v(" "), _c("textarea", {
-    staticClass: "form-control",
-    attrs: {
-      id: "user-message",
-      rows: "5"
-    }
-  })]);
 }];
 render._withStripped = true;
 
@@ -7262,7 +7306,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
+exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
 
 // exports
 
@@ -55231,8 +55275,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
