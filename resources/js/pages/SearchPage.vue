@@ -26,7 +26,7 @@
             <!-- Col -->
             <div class="col d-flex">
                 <!-- Card -->
-              <div class="card mx-sm-auto mx-md-0" v-for="Print in filteredApartments" :key="Print.id">
+              <div class="card mx-sm-auto mx-md-0" v-for="Print in allSearchedAparments" :key="Print.id">
                   <!-- Inside Card -->
                 <img :src="Print.photo" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -58,43 +58,8 @@ export default {
       bedsNumber: 1,
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: this.$route.params.filtered,
+      allSearchedAparments: [],
       services: [],
-    }
-  },
-  computed: {
-    filteredApartments() {  
-      let filteredArray = [];
-
-      this.allSearchedAparments.forEach((apartment)=> {
-        let distanceFromSearch = this.getDistance(parseFloat(this.currentPosition.lat), parseFloat(this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
-        if( distanceFromSearch < this.distanceFilter &&
-        apartment.room_number >= this.roomsNumber &&
-        apartment.bed_number >= this.bedsNumber) {
-          apartment.distance = distanceFromSearch;
-          filteredArray.push(apartment);
-        }
-      });
-
-      filteredArray = filteredArray.sort((a, b) => a.distance - b.distance);
-
-      if(this.advancedFilter.length > 0) {
-        const advancedFilteredArray = [];
-
-        filteredArray.forEach((apartment) => {
-
-          let apartmentServices = [];
-          apartment.service.forEach((singleService)=>{
-            apartmentServices.push(singleService.name);
-          });
-
-          if(this.isTrue(this.advancedFilter, apartmentServices)){
-            advancedFilteredArray.push(apartment);
-          }
-        });
-        return advancedFilteredArray;
-      };
-      return filteredArray;
     }
   },
   methods: {
@@ -105,53 +70,14 @@ export default {
     )},
     filerByApi(){
       axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then((response)=>{
-        console.log(response);
+        this.allSearchedAparments = response.data.apartments;
       })
     },
-    getDistance(latitude1,longitude1,latitude2,longitude2){ 
-      // R: raggio della terra (paragonabile ad una sfera) in chilometri
-      let R = 6371;
-      let deltaLat = this.degreeToRadians(latitude1 - latitude2);
-      let deltaLon = this.degreeToRadians(longitude1 - longitude2);
-
-      let lat1 = this.degreeToRadians(latitude1);
-      let lat2 = this.degreeToRadians(latitude2);
-
-      var a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
-      Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
-
-      var c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-      var d = R * c;
-
-      return d;
-    },
-    degreeToRadians(degrees)
-    {
-      var pi = Math.PI;
-      return degrees * (pi/180);
-    },
-
-    isTrue(arr, arr2){
-      return arr.every(i => arr2.includes(i));
-    },
-
-    clickHandler(e,advancedFilter) {
-      let arr = this.advancedFilter;
-      // e.target.classList.toggle('active');
-      if(arr.includes(e.target.value)) {
-        arr = arr.filter(item => item !== e.target.value);    
-      } else {
-        arr.push(e.target.value);
-      }
-
-      this.advancedFilter = arr;
-    }
   },
   mounted(){
     this.filerByApi();
     this.getServices();
   }
-
 }
 </script>
 

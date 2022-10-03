@@ -12,7 +12,6 @@
         {{this.$router.push({
                 name: 'search', 
                 params: {
-                    filtered: filteredApartments, 
                     currentPosition: currentSearchPosition,
                 }
             }) 
@@ -107,7 +106,7 @@ export default {
             let dataList = document.getElementById('autocomplete');
             console.log(this.currentSearch);
             let suggestions = [];
-            axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+            axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=Lok7BxBRtdDtQaxvidxzHskGKxFF6ML4`)
             .then((response)=>{
                 if(response.data.results.length > 0){
                 

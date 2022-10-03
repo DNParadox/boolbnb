@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
-      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq")).then(function (response) {
+      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=Lok7BxBRtdDtQaxvidxzHskGKxFF6ML4")).then(function (response) {
         if (response.data.results.length > 0) {
           for (var i = 0; i < 4; i++) {
             var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
@@ -2102,92 +2102,24 @@ __webpack_require__.r(__webpack_exports__);
       bedsNumber: 1,
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: this.$route.params.filtered,
+      allSearchedAparments: [],
       services: []
     };
   },
-  computed: {
-    filteredApartments: function filteredApartments() {
-      var _this = this;
-
-      var filteredArray = [];
-      this.allSearchedAparments.forEach(function (apartment) {
-        var distanceFromSearch = _this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
-
-        if (distanceFromSearch < _this.distanceFilter && apartment.room_number >= _this.roomsNumber && apartment.bed_number >= _this.bedsNumber) {
-          apartment.distance = distanceFromSearch;
-          filteredArray.push(apartment);
-        }
-      });
-      filteredArray = filteredArray.sort(function (a, b) {
-        return a.distance - b.distance;
-      });
-
-      if (this.advancedFilter.length > 0) {
-        var advancedFilteredArray = [];
-        filteredArray.forEach(function (apartment) {
-          var apartmentServices = [];
-          apartment.service.forEach(function (singleService) {
-            apartmentServices.push(singleService.name);
-          });
-
-          if (_this.isTrue(_this.advancedFilter, apartmentServices)) {
-            advancedFilteredArray.push(apartment);
-          }
-        });
-        return advancedFilteredArray;
-      }
-
-      ;
-      return filteredArray;
-    }
-  },
   methods: {
     getServices: function getServices() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
-        _this2.services = response.data.results;
+        _this.services = response.data.results;
       });
     },
     filerByApi: function filerByApi() {
+      var _this2 = this;
+
       axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
-        console.log(response);
+        _this2.allSearchedAparments = response.data.apartments;
       });
-    },
-    getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
-      // R: raggio della terra (paragonabile ad una sfera) in chilometri
-      var R = 6371;
-      var deltaLat = this.degreeToRadians(latitude1 - latitude2);
-      var deltaLon = this.degreeToRadians(longitude1 - longitude2);
-      var lat1 = this.degreeToRadians(latitude1);
-      var lat2 = this.degreeToRadians(latitude2);
-      var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      var d = R * c;
-      return d;
-    },
-    degreeToRadians: function degreeToRadians(degrees) {
-      var pi = Math.PI;
-      return degrees * (pi / 180);
-    },
-    isTrue: function isTrue(arr, arr2) {
-      return arr.every(function (i) {
-        return arr2.includes(i);
-      });
-    },
-    clickHandler: function clickHandler(e, advancedFilter) {
-      var arr = this.advancedFilter; // e.target.classList.toggle('active');
-
-      if (arr.includes(e.target.value)) {
-        arr = arr.filter(function (item) {
-          return item !== e.target.value;
-        });
-      } else {
-        arr.push(e.target.value);
-      }
-
-      this.advancedFilter = arr;
     }
   },
   mounted: function mounted() {
@@ -2440,7 +2372,6 @@ var render = function render() {
   })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
-      filtered: _vm.filteredApartments,
       currentPosition: _vm.currentSearchPosition
     }
   })) + "\r\n    ")]) : _c("section", {
@@ -2652,7 +2583,7 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col d-flex"
-  }, _vm._l(_vm.filteredApartments, function (Print) {
+  }, _vm._l(_vm.allSearchedAparments, function (Print) {
     return _c("div", {
       key: Print.id,
       staticClass: "card mx-sm-auto mx-md-0"
@@ -2712,17 +2643,7 @@ var render = function render() {
     staticClass: "fa-solid fa-location-dot"
   }), _vm._v(" " + _vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-6 mb-3"
-  }, [_c("div", {
-    staticClass: "image"
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: _vm.apartment.photo,
-      alt: _vm.apartment.title
-    }
-  })])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
   }, [_vm.center ? _c("div", [_c("Map", {
     attrs: {
@@ -2730,7 +2651,7 @@ var render = function render() {
     }
   })], 1) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2750,7 +2671,7 @@ var render = function render() {
     domProps: {
       value: _vm.$user = !null ? "" : _vm.$user.email
     }
-  })]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
@@ -2759,6 +2680,21 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-md-6 mb-3"
+  }, [_c("div", {
+    staticClass: "image"
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "apartment.photo",
+      alt: "apartment.title"
+    }
+  })])]);
+}, function () {
   var _vm = this,
       _c = _vm._self._c;
 

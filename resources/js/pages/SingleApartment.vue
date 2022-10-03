@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="image">
-                        <img :src="apartment.photo" class="card-img-top" :alt="apartment.title">
+                        <img src="apartment.photo" class="card-img-top" alt="apartment.title">
                     </div>
                 </div>
                 <div class="col-md-6">
