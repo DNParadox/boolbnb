@@ -2759,7 +2759,19 @@ var render = function render() {
     }
   })], 1) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-8 left"
+  }, [_c("hr"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
+    staticClass: "services"
+  }, _vm._l(_vm.apartment.service, function (service) {
+    return _c("div", {
+      key: service.id
+    }, [_c("i", {
+      staticClass: "fa-solid fa-wifi"
+    }), _vm._v(_vm._s(service.name))]);
+  }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2792,29 +2804,8 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-md-8 left"
-  }, [_c("hr"), _vm._v(" "), _c("div", {
     staticClass: "info"
-  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("p", [_vm._v("\n                        Meraviglioso ed esclusivo appartamento adatto alle famiglie con ampia terrazza coperta e giardino privato, con vista sulle montagne panoramiche.\n                        Goditi la serenità a pochi passi dal bellissimo borgo di Rauris e dai suoi negozi e ristoranti tradizionali.\n                    ")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
-    staticClass: "services"
-  }, [_c("span", [_c("i", {
-    staticClass: "fa-solid fa-wifi"
-  }), _vm._v(" wi-fi")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fa fa-car",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Posto macchina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-swimming-pool"
-  }), _vm._v(" Piscina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-water"
-  }), _vm._v(" Sauna")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dumbbell"
-  }), _vm._v(" Palestra")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dog"
-  }), _vm._v(" Animali ammessi")])]), _vm._v(" "), _c("hr")]);
+  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
