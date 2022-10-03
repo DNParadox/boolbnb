@@ -88,7 +88,7 @@ export default {
     },
     data() {
         return{
-            apartment: [],
+            apartment: null,
             center: null,
         }
     },

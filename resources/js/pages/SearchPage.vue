@@ -14,8 +14,8 @@
       <div class="d-none">{{ advancedFilter }}</div>
       <div>
         <h4>Stanze e letti</h4>
-        <div class="alignment"><span class="serch-text">Letti</span><div><span class="circle" @click="bedsNumber--" :class="bedsNumber == 0 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}</span><span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
-        <div class="alignment"><span class="serch-text">Camere</span><div><span class="circle" @click="roomsNumber--" :class="roomsNumber == 0 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ roomsNumber }}</span><span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
+        <div class="alignment"><span class="serch-text">Letti</span><div><span class="circle" @click="bedsNumber--" :class="bedsNumber == 1 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}</span><span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
+        <div class="alignment"><span class="serch-text">Camere</span><div><span class="circle" @click="roomsNumber--" :class="roomsNumber == 1 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ roomsNumber }}</span><span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
         <div><h5>Distanza</h5><div class="slidecontainer"><input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange"></div></div>
       </div> 
     </div>
@@ -29,11 +29,15 @@
                   <!-- Inside Card -->
                 <img :src="Print.photo" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h4>{{ Print.title }}</h4>
-                    <div class="description">
-                        <div>{{ Print.address }}</div>
-                        <span>80 € a notte</span>
-                    </div>
+                    <router-link :to="{name: 'single-apartment', 
+                    params: { id: Print.id }
+                    }">
+                      <h4>{{ Print.title }}</h4>
+                      <div class="description">
+                          <div>{{ Print.address }}</div>
+                          <span>{{Print.price}} € a notte</span>
+                      </div>
+                    </router-link>
                 </div>  
               </div> 
             </div>          
