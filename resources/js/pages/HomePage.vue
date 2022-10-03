@@ -122,10 +122,10 @@ export default {
                 
                     for(let i = 0; i < 4; i++) {
                     
-                        let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
+                        let addressHint = `${response.data.results[i].address.streetName ? `${response.data.results[i].address.streetName},` : ""} ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber}` : ""} ${response.data.results[i].address.municipality ? `${response.data.results[i].address.municipality},` : ""} ${response.data.results[i].address.countrySubdivision ? `${response.data.results[i].address.countrySubdivision}` : ""}`;
 
-                        if(response.data.results[i].address.streetName) {
-                        suggestions.push(addressHint);
+                        if(response.data.results[i].address) {
+                            suggestions.push(addressHint);
                         }
                     }
                 

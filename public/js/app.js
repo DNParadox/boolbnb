@@ -2040,9 +2040,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq")).then(function (response) {
         if (response.data.results.length > 0) {
           for (var i = 0; i < 4; i++) {
-            var addressHint = "".concat(response.data.results[i].address.streetName, ", ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber, ",") : "", " ").concat(response.data.results[i].address.municipality, ", ").concat(response.data.results[i].address.countrySubdivision);
+            var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
 
-            if (response.data.results[i].address.streetName) {
+            if (response.data.results[i].address) {
               suggestions.push(addressHint);
             }
           }
