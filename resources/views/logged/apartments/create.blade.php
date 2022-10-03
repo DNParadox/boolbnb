@@ -58,7 +58,7 @@
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
+              <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}" required="required">
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
             <input class="form-control" type="file" id="photo" name="photo" required="required">
           </div>
          
-        </div> 
+      </div> 
         <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}">
         <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude') }}">
       </div> 
@@ -102,7 +102,7 @@
       </div>
       
       <div class="btn-content">
-        <input class="btn btn-apt btn-primary" type="submit" value="Aggiungi Appartamento">
+        <input id="submit-button" class="btn btn-apt btn-primary" type="submit" value="Aggiungi Appartamento">
       </div>
 
     </form>
@@ -144,6 +144,24 @@
           longitude.value = response.data.results[0].position.lon;
         });
       });
+
+    const input = document.getElementById('submit-button');
+    
+    input.addEventListener('click', 
+    function(e) {
+        const formData = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
+        console.log(formData);
+
+        if(!('services[]' in formData)) {
+          e.preventDefault();
+          document.querySelector('#service-10').setCustomValidity('Selezionare almeno un servizio');
+          document.querySelector('#service-10').reportValidity();
+        } else { 
+          document.querySelector('#service-10').setCustomValidity('')
+          document.querySelector('#service-10').reportValidity();
+        }
+
+    });
   </script>
 
 @endsection
