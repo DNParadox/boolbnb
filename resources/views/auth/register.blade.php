@@ -34,7 +34,7 @@
                 @endif
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form id="register-form" method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -104,9 +104,11 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6" id="password-error"></div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="submit-button" type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -125,4 +127,35 @@
         
     </div>
 </div>
+
+
+<script>
+    const input = document.getElementById('submit-button');
+    
+    input.addEventListener('click', 
+    function(e) {
+        const password = document.getElementById('password');
+        const passwordConfirm = document.getElementById('password-confirm');
+    
+
+        if(password.value.length < 8) {
+            e.preventDefault();
+            password.setCustomValidity('La password deve essere lunga almeno 8 caratteri');
+            password.reportValidity();
+        } else { 
+            password.setCustomValidity('')
+            password.reportValidity();
+        }
+        
+        if(password.value != passwordConfirm.value) {
+            e.preventDefault();
+            passwordConfirm.setCustomValidity('Le password non corrispondono');
+            passwordConfirm.reportValidity();
+        } else { 
+            passwordConfirm.setCustomValidity('')
+            passwordConfirm.reportValidity();
+        }
+
+    })
+</script>
 @endsection
