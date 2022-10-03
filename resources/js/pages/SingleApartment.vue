@@ -1,6 +1,6 @@
 <template>
     <div class="single">
-        <div class="container">
+        <div class="container" v-if="apartment">
             <h2 class="mt-3">{{apartment.title}}</h2>
             <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div>
 
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="image">
-                        <img :src="apartment.photo" class="card-img-top" :alt="apartment.title">
+                        <img :src="apartment.photo" class="card-img-top" alt="apartment.title">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -33,22 +33,14 @@
                     <hr>
 
                     <div class="description">
-                        <p>
-                            Meraviglioso ed esclusivo appartamento adatto alle famiglie con ampia terrazza coperta e giardino privato, con vista sulle montagne panoramiche.
-                            Goditi la serenità a pochi passi dal bellissimo borgo di Rauris e dai suoi negozi e ristoranti tradizionali.
-                        </p>
+                        <p>{{apartment.description}}</p>
                     </div>
 
                     <hr>
 
                     <h4>Cosa troverai</h4>
                     <div class="services">
-                        <span><i class="fa-solid fa-wifi"></i> wi-fi</span>
-                        <span><i class="fa fa-car" aria-hidden="true"></i> Posto macchina</span>
-                        <span><i class="fas fa-swimming-pool"></i> Piscina</span>
-                        <span><i class="fas fa-water"></i> Sauna</span>
-                        <span><i class="fas fa-dumbbell"></i> Palestra</span>
-                        <span><i class="fas fa-dog"></i> Animali ammessi</span>
+                        <div v-for="service in apartment.service" :key="service.id"><i :class="service.icon"></i> {{ service.name }}</div>
                     </div>
 
                     <hr>
@@ -57,7 +49,7 @@
                 <div class="col-md-4 right">
                     <div class="contact">
                         <h2>Contatta l'host</h2>
-                        <form>
+                        <form >
                             <div class="mb-3">
                                 <label for="user-mail" class="form-label">Mail</label>
                                 <input type="email" class="form-control" id="user-mail" :value="$user =! null ? '' : $user.email">
@@ -168,13 +160,16 @@ export default {
             .services {
                 font-size: 18px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 flex-wrap: wrap;
 
                 span {
                     flex-basis: 50%;
-                    margin-bottom: 15px;
-                }             
+                    margin-bottom: 15px;     
+                } 
+                div{
+                    margin-right: 16px; 
+                }            
             }
         }
 

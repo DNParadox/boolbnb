@@ -1,20 +1,19 @@
 <template>
 <div>
-    <div>
-      <input list="autocomplete" type="text" placeholder="Search..." v-model="currentSearch" @input="autocomplete()">
+    <h2 class="text-center">Trova l'alloggio che fa per te...</h2>
+    <div class="search">
+      <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo..." v-model="currentSearch" @input="autocomplete()">
       <datalist id="autocomplete">
 
       </datalist>
-      <input type="button" value="submit" @click="filterByDistance()">
+      <button class="ms_btn" type="submit" @click="filterByDistance()"><i class="fa-solid fa-magnifying-glass icon"></i></button>
 
     </div>
     <div v-if="filteredApartments.length > 0">
         {{this.$router.push({
                 name: 'search', 
                 params: {
-                    filtered: filteredApartments, 
                     currentPosition: currentSearchPosition,
-                    services: services
                 }
             }) 
         }}
@@ -63,7 +62,6 @@ export default {
             currentApartmentsSponsored: [],
             currentApartments: [],
             currentSearchPosition: null,
-            services: [],
             filteredApartments: []
         }
     },
@@ -83,13 +81,6 @@ export default {
             })
 
         })},
-        getServices(){
-            axios.get('http://127.0.0.1:8000/api/services').then((response)=>{
-            response.data.results.forEach((service) =>{
-                this.services.push(service);
-            });
-        } 
-        )},
         getDistance(latitude1,longitude1,latitude2,longitude2){ 
             // R: raggio della terra (paragonabile ad una sfera) in chilometri
             let R = 6371;
@@ -116,7 +107,7 @@ export default {
             let dataList = document.getElementById('autocomplete');
             console.log(this.currentSearch);
             let suggestions = [];
-            axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
+            axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
             .then((response)=>{
                 if(response.data.results.length > 0){
                 
@@ -154,13 +145,35 @@ export default {
     },
     mounted(){
         this.getApartmentSponsored();
-        this.getServices();
         this.getApartment();
     },
 }
 </script>
 
 <style lang="scss" scoped>
+h2 {
+    margin-top: 30px;
+}
+.search {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    
+    .bar {
+        width: 300px;
+        padding: 10px;
+        border-radius: 7px 0 0 7px;
+        border: 1px solid lightgray;
+    }
+
+    .ms_btn {
+        padding: 10px 15px;
+        background-color: #ff385c;
+        color: white;
+        border: none;
+        border-radius: 0 7px 7px 0;
+    }
+}
 .front-container{
     .card {
         margin-top: 3rem;;
@@ -174,10 +187,6 @@ export default {
         .card-body {
             padding-left: 0;
         }
-
-        // h4 {
-        //     font-weight: bold;
-        // }
 
         .description {
             color: grey;

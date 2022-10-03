@@ -1983,7 +1983,6 @@ __webpack_require__.r(__webpack_exports__);
       currentApartmentsSponsored: [],
       currentApartments: [],
       currentSearchPosition: null,
-      services: [],
       filteredApartments: []
     };
   },
@@ -2006,15 +2005,6 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    getServices: function getServices() {
-      var _this3 = this;
-
-      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
-        response.data.results.forEach(function (service) {
-          _this3.services.push(service);
-        });
-      });
-    },
     getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
       // R: raggio della terra (paragonabile ad una sfera) in chilometri
       var R = 6371;
@@ -2032,12 +2022,12 @@ __webpack_require__.r(__webpack_exports__);
       return degrees * (pi / 180);
     },
     autocomplete: function autocomplete() {
-      var _this4 = this;
+      var _this3 = this;
 
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
-      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq")).then(function (response) {
+      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
         if (response.data.results.length > 0) {
           for (var i = 0; i < 4; i++) {
             var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
@@ -2051,26 +2041,25 @@ __webpack_require__.r(__webpack_exports__);
           suggestions.forEach(function (suggestion) {
             dataList.innerHTML += "<option>".concat(suggestion, "</option>");
           });
-          _this4.currentSearchPosition = response.data.results[0].position;
+          _this3.currentSearchPosition = response.data.results[0].position;
         }
       });
     },
     filterByDistance: function filterByDistance() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.filteredApartments = [];
       this.currentApartments.forEach(function (apartment) {
-        parseFloat(_this5.getDistance(parseFloat(_this5.currentSearchPosition.lat), parseFloat(_this5.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
+        parseFloat(_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
 
-        if (_this5.getDistance(parseFloat(_this5.currentSearchPosition.lat), parseFloat(_this5.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
-          _this5.filteredApartments.push(apartment);
+        if (_this4.getDistance(parseFloat(_this4.currentSearchPosition.lat), parseFloat(_this4.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
+          _this4.filteredApartments.push(apartment);
         }
       });
     }
   },
   mounted: function mounted() {
     this.getApartmentSponsored();
-    this.getServices();
     this.getApartment();
   }
 });
@@ -2101,6 +2090,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchPage',
   data: function data() {
@@ -2109,82 +2101,30 @@ __webpack_require__.r(__webpack_exports__);
       roomsNumber: 1,
       bedsNumber: 1,
       advancedFilter: [],
+      services: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: this.$route.params.filtered,
-      services: this.$route.params.services
+      allSearchedAparments: []
     };
   },
-  computed: {
-    filteredApartments: function filteredApartments() {
+  methods: {
+    getServices: function getServices() {
       var _this = this;
 
-      var filteredArray = [];
-      this.allSearchedAparments.forEach(function (apartment) {
-        var distanceFromSearch = _this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
-
-        if (distanceFromSearch < _this.distanceFilter && apartment.room_number >= _this.roomsNumber && apartment.bed_number >= _this.bedsNumber) {
-          apartment.distance = distanceFromSearch;
-          filteredArray.push(apartment);
-        }
+      axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
+        _this.services = response.data.results;
       });
-      filteredArray = filteredArray.sort(function (a, b) {
-        return a.distance - b.distance;
+    },
+    filerByApi: function filerByApi() {
+      var _this2 = this;
+
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+        _this2.allSearchedAparments = response.data.apartments;
       });
-
-      if (this.advancedFilter.length > 0) {
-        var advancedFilteredArray = [];
-        filteredArray.forEach(function (apartment) {
-          var apartmentServices = [];
-          apartment.service.forEach(function (singleService) {
-            apartmentServices.push(singleService.name);
-          });
-
-          if (_this.isTrue(_this.advancedFilter, apartmentServices)) {
-            advancedFilteredArray.push(apartment);
-          }
-        });
-        return advancedFilteredArray;
-      }
-
-      ;
-      return filteredArray;
     }
   },
-  methods: {
-    getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
-      // R: raggio della terra (paragonabile ad una sfera) in chilometri
-      var R = 6371;
-      var deltaLat = this.degreeToRadians(latitude1 - latitude2);
-      var deltaLon = this.degreeToRadians(longitude1 - longitude2);
-      var lat1 = this.degreeToRadians(latitude1);
-      var lat2 = this.degreeToRadians(latitude2);
-      var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      var d = R * c;
-      return d;
-    },
-    degreeToRadians: function degreeToRadians(degrees) {
-      var pi = Math.PI;
-      return degrees * (pi / 180);
-    },
-    isTrue: function isTrue(arr, arr2) {
-      return arr.every(function (i) {
-        return arr2.includes(i);
-      });
-    },
-    clickHandler: function clickHandler(e, advancedFilter) {
-      var arr = this.advancedFilter; // e.target.classList.toggle('active');
-
-      if (arr.includes(e.target.value)) {
-        arr = arr.filter(function (item) {
-          return item !== e.target.value;
-        });
-      } else {
-        arr.push(e.target.value);
-      }
-
-      this.advancedFilter = arr;
-    }
+  mounted: function mounted() {
+    this.getServices();
+    this.filerByApi();
   }
 });
 
@@ -2331,12 +2271,34 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "profile_header"
   }, [_c("div", {
-    staticClass: "icon-container pb dropdown-btn"
+    staticClass: "dropdown"
+  }, [_c("button", {
+    staticClass: "icon-container pb dropdown-btn",
+    attrs: {
+      type: "button",
+      id: "dropdownMenuButton",
+      "data-toggle": "dropdown",
+      "aria-haspopup": "true",
+      "aria-expanded": "false"
+    }
   }, [_c("i", {
     staticClass: "fa-solid fa-user icon"
-  })]), _vm._v(" "), _c("ul", {
-    staticClass: "dropdown-container tr"
-  })])])])])]);
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "dropdown-menu",
+    attrs: {
+      "aria-labelledby": "dropdownMenuButton"
+    }
+  }, [_c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Accedi")]), _vm._v(" "), _c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Registrati")])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -2392,17 +2354,22 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", [_c("input", {
+  return _c("div", [_c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Trova l'alloggio che fa per te...")]), _vm._v(" "), _c("div", {
+    staticClass: "search"
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentSearch,
       expression: "currentSearch"
     }],
+    staticClass: "bar",
     attrs: {
       list: "autocomplete",
       type: "text",
-      placeholder: "Search..."
+      placeholder: "Inserisci una città o un indirizzo..."
     },
     domProps: {
       value: _vm.currentSearch
@@ -2419,22 +2386,22 @@ var render = function render() {
     attrs: {
       id: "autocomplete"
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("button", {
+    staticClass: "ms_btn",
     attrs: {
-      type: "button",
-      value: "submit"
+      type: "submit"
     },
     on: {
       click: function click($event) {
         return _vm.filterByDistance();
       }
     }
-  })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
+  }, [_c("i", {
+    staticClass: "fa-solid fa-magnifying-glass icon"
+  })])]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
-      filtered: _vm.filteredApartments,
-      currentPosition: _vm.currentSearchPosition,
-      services: _vm.services
+      currentPosition: _vm.currentSearchPosition
     }
   })) + "\r\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
@@ -2528,10 +2495,18 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h2", [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
+  return _c("div", {
+    staticClass: "container-fluid"
+  }, [_c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
     staticClass: "container m-3 d-flex"
   }, [_c("div", {
-    staticClass: "mr-4"
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "mr-4 card"
   }, [_c("h4", [_vm._v("Servizi")]), _vm._v(" "), _c("ul", {
     staticClass: "ul-service"
   }, _vm._l(_vm.services, function (service) {
@@ -2555,13 +2530,17 @@ var render = function render() {
         "for": service.name
       }
     }, [_vm._v(_vm._s(service.name))])]);
-  }), 0)]), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "d-none"
-  }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
     staticClass: "alignment"
   }, [_c("span", {
     staticClass: "serch-text"
-  }, [_vm._v("Letti")]), _c("div", [_c("span", {
+  }, [_vm._v("Letti")]), _vm._v(" "), _c("div", [_c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 1 ? "disabled" : "",
     on: {
@@ -2573,7 +2552,7 @@ var render = function render() {
     staticClass: "fa-solid fa-minus"
   })]), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.bedsNumber))]), _c("span", {
+  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n              ")]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 20 ? "disabled" : "",
     on: {
@@ -2587,7 +2566,7 @@ var render = function render() {
     staticClass: "alignment"
   }, [_c("span", {
     staticClass: "serch-text"
-  }, [_vm._v("Camere")]), _c("div", [_c("span", {
+  }, [_vm._v("Camere")]), _vm._v(" "), _c("div", [_c("span", {
     staticClass: "circle",
     "class": _vm.roomsNumber == 1 ? "disabled" : "",
     on: {
@@ -2597,9 +2576,9 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-minus"
-  })]), _c("span", {
+  })]), _vm._v(" "), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.roomsNumber))]), _c("span", {
+  }, [_vm._v(_vm._s(_vm.roomsNumber))]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.roomsNumber == 20 ? "disabled" : "",
     on: {
@@ -2609,7 +2588,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-plus"
-  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _c("div", {
+  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _vm._v(" "), _c("div", {
     staticClass: "slidecontainer"
   }, [_c("input", {
     directives: [{
@@ -2633,13 +2612,19 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", [_c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.filerByApi();
+      }
+    }
+  }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col d-flex"
-  }, _vm._l(_vm.filteredApartments, function (Print) {
+  }, _vm._l(_vm.allSearchedAparments, function (Print) {
     return _c("div", {
       key: Print.id,
       staticClass: "card mx-sm-auto mx-md-0"
@@ -2689,7 +2674,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "single"
-  }, [_c("div", {
+  }, [_vm.apartment ? _c("div", {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
@@ -2707,7 +2692,7 @@ var render = function render() {
     staticClass: "card-img-top",
     attrs: {
       src: _vm.apartment.photo,
-      alt: _vm.apartment.title
+      alt: "apartment.title"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
@@ -2717,7 +2702,19 @@ var render = function render() {
     }
   })], 1) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-8 left"
+  }, [_c("hr"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
+    staticClass: "services"
+  }, _vm._l(_vm.apartment.service, function (service) {
+    return _c("div", {
+      key: service.id
+    }, [_c("i", {
+      "class": service.icon
+    }), _vm._v(" " + _vm._s(service.name))]);
+  }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2742,7 +2739,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  })])])])])])]);
+  })])])])])]) : _vm._e()]);
 };
 
 var staticRenderFns = [function () {
@@ -2750,29 +2747,8 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-md-8 left"
-  }, [_c("hr"), _vm._v(" "), _c("div", {
     staticClass: "info"
-  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("p", [_vm._v("\n                        Meraviglioso ed esclusivo appartamento adatto alle famiglie con ampia terrazza coperta e giardino privato, con vista sulle montagne panoramiche.\n                        Goditi la serenità a pochi passi dal bellissimo borgo di Rauris e dai suoi negozi e ristoranti tradizionali.\n                    ")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
-    staticClass: "services"
-  }, [_c("span", [_c("i", {
-    staticClass: "fa-solid fa-wifi"
-  }), _vm._v(" wi-fi")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fa fa-car",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Posto macchina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-swimming-pool"
-  }), _vm._v(" Piscina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-water"
-  }), _vm._v(" Sauna")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dumbbell"
-  }), _vm._v(" Palestra")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dog"
-  }), _vm._v(" Animali ammessi")])]), _vm._v(" "), _c("hr")]);
+  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -7199,7 +7175,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".f-banner[data-v-153bfd55] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-153bfd55] {\n  color: white;\n  font-size: 35px;\n}\n.guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}", ""]);
+exports.push([module.i, ".f-banner[data-v-153bfd55] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-153bfd55] {\n  color: white;\n  font-size: 35px;\n}\n.guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}\n.guestheader .dropdown-menu.show[data-v-153bfd55] {\n  left: -150px;\n}", ""]);
 
 // exports
 
@@ -7218,7 +7194,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 
@@ -7237,7 +7213,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 100%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 100%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 80%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 70%;\n  margin-inline: 10px;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -7256,7 +7232,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
+exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
 
 // exports
 
@@ -55225,8 +55201,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
