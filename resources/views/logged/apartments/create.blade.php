@@ -18,7 +18,7 @@
 
       <div class="row">
         {{-- Column Left --}}
-        <div class="col col-left">
+        <div class="col-lg-6 col-left">
           <div class="mb-3">
             <label for="title" class="form-label">Titolo <span class="required-check">*</span></label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required="required">
@@ -34,17 +34,17 @@
   
           <div class="row">
             <div class="col mb-3">
-              <label for="bathroom" class="form-label">Numero di bagni <span class="required-check">*</span></label>
+              <label for="bathroom" class="form-label">N° di bagni <span class="required-check">*</span></label>
               <input type="number" min='0' class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="bed_number" class="form-label">Numero di letti <span class="required-check">*</span></label>
+              <label for="bed_number" class="form-label">N° di letti <span class="required-check">*</span></label>
               <input type="number" min='0' class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
+              <label for="room_number" class="form-label">N° di camere <span class="required-check">*</span></label>
               <input type="number" min='0' class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
             </div>
           </div>
@@ -58,13 +58,21 @@
     
             <div class="col mb-3">
               <label for="price" class="form-label">Prezzo</label>
-              <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}" required="required">
+              <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-label">Visibilità</div>
+            <div class="toogle-bb">             
+              <input type="checkbox" id="visibility" name="visibility" value="{{ old('visibility') }}">
+              <label for="visibility"><h6>OFF</h6><h5>ON</h5></label>
             </div>
           </div>
         </div>
 
         {{-- Column right --}} 
-        <div class="col">
+        <div class="col-lg-6">
           <div class="mb3 pb-2">
             <div class="form-label">Servizi <span class="required-check">*</span></div>
 
