@@ -55,8 +55,7 @@ class ApartmentController extends Controller
     {
         $id_user = Auth::id();
         $currentuser = User::find($id_user);
-        $apartment = Apartment::findOrFail($id); 
-        
+        $apartment = Apartment::findOrFail($id)->with('service')->first(); 
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }
