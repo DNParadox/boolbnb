@@ -69,4 +69,22 @@ class ApartmentController extends Controller
         
         return response()->json($data);
     }
+    /**
+    * Display the specified resource.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function filterby($distance,$room,$bed,$latitude,$longitude)
+    {
+        $apartment = Apartment::where('bed_number',$bed)
+        ->where('room_number',$room)->get();
+        $data = [
+            'success' => true,   
+            'apartment' => $apartment      
+        ];
+        
+        return response()->json($data);
+    }
 }
