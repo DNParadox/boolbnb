@@ -29,23 +29,59 @@ h1 {
         font-weight: 800;
     }
 
+
+    .check-visibility {
+        display: flex;
+        margin-bottom: 36px;
+        overflow: hidden;
+    }
+    
+    .check-visibility input {
+        position: absolute !important;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
+    }
+    
+    .check-visibility label {
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+    }
+    
+    .check-visibility label:hover {
+        cursor: pointer;
+    }
+    
+    .check-visibility input:checked + label {
+        background-color: #ff385c;
+        color: white;
+        box-shadow: none;
+    }
+    
+    .check-visibility label:first-of-type {
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .check-visibility label:last-of-type {
+        border-radius: 0 4px 4px 0;
+    }
+    
+
     .toogle-bb {
         display: block;
         position: relative;
         background: none;
         margin: 0 0 0.5em 0;
-        /* width: 100%; */
-        /* height: calc(1.6em + 0.75rem + 2px); */
-        /* padding: 0.375rem 0.75rem;
-        font-size: 0.9rem;
-        font-weight: 400;
-        line-height: 1.6;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: 0.25rem;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s */
 
         input {
             opacity: 0;

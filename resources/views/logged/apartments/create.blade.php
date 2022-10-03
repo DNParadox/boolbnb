@@ -64,11 +64,18 @@
 
           <div class="mb-3">
             <div class="form-label">Visibilità <span class="required-check">*</span></div>
-            <div>
+            {{-- <div>
               <input type="radio" id="visibility" name="visibility" value="1" required="required">
               <label for="html">si</label>
               <input type="radio" id="visibility" name="visibility" value="0" required="required">
               <label for="css">no</label>
+            </div> --}}
+
+            <div class="check-visibility">
+              <input type="radio" id="visibility" name="visibility" value="0" checked required="required"/>
+              <label for="visibility">SI</label>
+              <input type="radio" id="visibility" name="visibility" value="1" required="required"/>
+              <label for="visibility">NO</label>
             </div>
           </div>
         </div>

@@ -34,10 +34,10 @@
             </datalist>
           </div>
 
-        </div> 
-          <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude'), $apartment->latitude }}">
-          <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude'), $apartment->longitude }}">
-        </div> 
+          <div> 
+            <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude'), $apartment->latitude }}">
+            <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude'), $apartment->longitude }}">
+          </div> 
   
           <div class="row">
             <div class="col mb-3">
@@ -82,6 +82,16 @@
                 </div>
 
               @endforeach
+          </div>
+
+          <div class="mb-3">
+            <div class="form-label">Visibilità <span class="required-check">*</span></div>
+            <div>
+              <input type="radio" id="visibility" name="visibility" value="1" required="required">
+              <label for="html">si</label>
+              <input type="radio" id="visibility" name="visibility" value="0" required="required">
+              <label for="css">no</label>
+            </div>
           </div>
 
         </div>
