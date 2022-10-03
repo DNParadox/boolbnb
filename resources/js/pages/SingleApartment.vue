@@ -33,22 +33,19 @@
                     <hr>
 
                     <div class="description">
-                        <p>
-                            Meraviglioso ed esclusivo appartamento adatto alle famiglie con ampia terrazza coperta e giardino privato, con vista sulle montagne panoramiche.
-                            Goditi la serenità a pochi passi dal bellissimo borgo di Rauris e dai suoi negozi e ristoranti tradizionali.
-                        </p>
+                        <p>{{apartment.description}}</p>
                     </div>
 
                     <hr>
 
                     <h4>Cosa troverai</h4>
                     <div class="services">
-                        <span><i class="fa-solid fa-wifi"></i> wi-fi</span>
-                        <span><i class="fa fa-car" aria-hidden="true"></i> Posto macchina</span>
+                        <div v-for="service in apartment.service" :key="service.id"><i class="fa-solid fa-wifi"></i>{{ service.name }}</div>
+                        <!-- <span><i class="fa fa-car" aria-hidden="true"></i> Posto macchina</span>
                         <span><i class="fas fa-swimming-pool"></i> Piscina</span>
                         <span><i class="fas fa-water"></i> Sauna</span>
                         <span><i class="fas fa-dumbbell"></i> Palestra</span>
-                        <span><i class="fas fa-dog"></i> Animali ammessi</span>
+                        <span><i class="fas fa-dog"></i> Animali ammessi</span> -->
                     </div>
 
                     <hr>
