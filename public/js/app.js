@@ -2208,7 +2208,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      apartment: [],
+      apartment: null,
       center: null
     };
   },
@@ -2563,7 +2563,7 @@ var render = function render() {
     staticClass: "serch-text"
   }, [_vm._v("Letti")]), _c("div", [_c("span", {
     staticClass: "circle",
-    "class": _vm.bedsNumber == 0 ? "disabled" : "",
+    "class": _vm.bedsNumber == 1 ? "disabled" : "",
     on: {
       click: function click($event) {
         _vm.bedsNumber--;
@@ -2589,7 +2589,7 @@ var render = function render() {
     staticClass: "serch-text"
   }, [_vm._v("Camere")]), _c("div", [_c("span", {
     staticClass: "circle",
-    "class": _vm.roomsNumber == 0 ? "disabled" : "",
+    "class": _vm.roomsNumber == 1 ? "disabled" : "",
     on: {
       click: function click($event) {
         _vm.roomsNumber--;
@@ -2651,9 +2651,18 @@ var render = function render() {
       }
     }), _vm._v(" "), _c("div", {
       staticClass: "card-body"
+    }, [_c("router-link", {
+      attrs: {
+        to: {
+          name: "single-apartment",
+          params: {
+            id: Print.id
+          }
+        }
+      }
     }, [_c("h4", [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])]);
+    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.price) + " € a notte")])])])], 1)]);
   }), 0)])])]);
 };
 
@@ -55216,8 +55225,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
