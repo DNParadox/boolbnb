@@ -2331,12 +2331,34 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "profile_header"
   }, [_c("div", {
-    staticClass: "icon-container pb dropdown-btn"
+    staticClass: "dropdown"
+  }, [_c("button", {
+    staticClass: "icon-container pb dropdown-btn",
+    attrs: {
+      type: "button",
+      id: "dropdownMenuButton",
+      "data-toggle": "dropdown",
+      "aria-haspopup": "true",
+      "aria-expanded": "false"
+    }
   }, [_c("i", {
     staticClass: "fa-solid fa-user icon"
-  })]), _vm._v(" "), _c("ul", {
-    staticClass: "dropdown-container tr"
-  })])])])])]);
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "dropdown-menu",
+    attrs: {
+      "aria-labelledby": "dropdownMenuButton"
+    }
+  }, [_c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Accedi")]), _vm._v(" "), _c("a", {
+    staticClass: "dropdown-item",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Registrati")])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -2429,14 +2451,14 @@ var render = function render() {
         return _vm.filterByDistance();
       }
     }
-  })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
+  })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
       filtered: _vm.filteredApartments,
       currentPosition: _vm.currentSearchPosition,
       services: _vm.services
     }
-  })) + "\r\n    ")]) : _c("section", {
+  })) + "\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row"
@@ -7199,7 +7221,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".f-banner[data-v-153bfd55] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-153bfd55] {\n  color: white;\n  font-size: 35px;\n}\n.guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}", ""]);
+exports.push([module.i, ".f-banner[data-v-153bfd55] {\n  background: linear-gradient(to right, blue, red);\n  padding: 60px 0;\n}\n.f-banner .container h2[data-v-153bfd55] {\n  color: white;\n  font-size: 35px;\n}\n.guestheader[data-v-153bfd55] {\n  height: 80px;\n  font-size: 1.25rem;\n}\n.guestheader .pb[data-v-153bfd55] {\n  padding-block: 8px;\n}\n.guestheader .inputcontainer[data-v-153bfd55] {\n  border: 1px solid black;\n  padding-inline: 10px;\n  border-radius: 24px;\n  background-color: white;\n  padding-block: 10px;\n}\n.guestheader .inputcontainer .circle[data-v-153bfd55] {\n  height: 28px;\n  width: 28px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  color: white;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55] {\n  border: none;\n  padding-left: 3px;\n  line-height: 0;\n}\n.guestheader .inputcontainer .inputmod[data-v-153bfd55]:focus {\n  border: none;\n}\n.guestheader .icon-container[data-v-153bfd55] {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  background-color: #ff385c;\n  border: 1px solid black;\n  cursor: pointer;\n}\n.guestheader .icon-container[data-v-153bfd55]:active {\n  border: 2px solid black;\n}\n.guestheader .icon[data-v-153bfd55] {\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  height: 100%;\n  width: 100%;\n  align-items: center;\n  justify-content: center;\n  font-size: 1rem;\n}\n.guestheader .dropdown-menu.show[data-v-153bfd55] {\n  left: -150px;\n}", ""]);
 
 // exports
 
@@ -7275,7 +7297,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map { \r\n  border-radius: 15px;\r\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n#map { \n  border-radius: 15px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n\n", ""]);
 
 // exports
 
@@ -7313,7 +7335,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".guestheader{\r\n    height: 80px;\r\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\r\n            border: none !important;\n}\n}\n}\r\n\r\n", ""]);
+exports.push([module.i, ".guestheader{\n    height: 80px;\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\n            border: none !important;\n}\n}\n}\n\n", ""]);
 
 // exports
 
@@ -55225,8 +55247,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

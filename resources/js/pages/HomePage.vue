@@ -175,10 +175,6 @@ export default {
             padding-left: 0;
         }
 
-        // h4 {
-        //     font-weight: bold;
-        // }
-
         .description {
             color: grey;
         }
