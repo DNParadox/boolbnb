@@ -2662,7 +2662,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "single"
-  }, [_c("div", {
+  }, [_vm.apartment ? _c("div", {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
@@ -2672,7 +2672,17 @@ var render = function render() {
     staticClass: "fa-solid fa-location-dot"
   }), _vm._v(" " + _vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-6 mb-3"
+  }, [_c("div", {
+    staticClass: "image"
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: _vm.apartment.photo,
+      alt: "apartment.title"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
   }, [_vm.center ? _c("div", [_c("Map", {
     attrs: {
@@ -2680,7 +2690,19 @@ var render = function render() {
     }
   })], 1) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-8 left"
+  }, [_c("hr"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
+    staticClass: "services"
+  }, [_vm._l(_vm.apartment.service, function (service) {
+    return _c("div", {
+      key: service.id
+    }, [_c("i", {
+      "class": service.icon
+    }), _vm._v(_vm._s(service.name))]);
+  }), _vm._v(" "), _vm._m(1)], 2), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2705,7 +2727,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  })])])])])])]);
+  })])])])])]) : _vm._e()]);
 };
 
 var staticRenderFns = [function () {
@@ -2713,44 +2735,15 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-md-6 mb-3"
-  }, [_c("div", {
-    staticClass: "image"
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: "apartment.photo",
-      alt: "apartment.title"
-    }
-  })])]);
+    staticClass: "info"
+  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "col-md-8 left"
-  }, [_c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "info"
-  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("p", [_vm._v("\n                        Meraviglioso ed esclusivo appartamento adatto alle famiglie con ampia terrazza coperta e giardino privato, con vista sulle montagne panoramiche.\n                        Goditi la serenità a pochi passi dal bellissimo borgo di Rauris e dai suoi negozi e ristoranti tradizionali.\n                    ")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
-    staticClass: "services"
-  }, [_c("span", [_c("i", {
-    staticClass: "fa-solid fa-wifi"
-  }), _vm._v(" wi-fi")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fa fa-car",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Posto macchina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-swimming-pool"
-  }), _vm._v(" Piscina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-water"
-  }), _vm._v(" Sauna")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dumbbell"
-  }), _vm._v(" Palestra")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dog"
-  }), _vm._v(" Animali ammessi")])]), _vm._v(" "), _c("hr")]);
+  return _c("span", [_c("i", {
+    staticClass: "fa-solid fa-taxi"
+  })]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -55203,8 +55196,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

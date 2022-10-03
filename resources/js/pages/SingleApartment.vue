@@ -40,12 +40,13 @@
 
                     <h4>Cosa troverai</h4>
                     <div class="services">
-                        <div v-for="service in apartment.service" :key="service.id"><i class="fa-solid fa-wifi"></i>{{ service.name }}</div>
+                        <div v-for="service in apartment.service" :key="service.id"><i :class="service.icon"></i>{{ service.name }}</div>
                         <!-- <span><i class="fa fa-car" aria-hidden="true"></i> Posto macchina</span>
                         <span><i class="fas fa-swimming-pool"></i> Piscina</span>
                         <span><i class="fas fa-water"></i> Sauna</span>
                         <span><i class="fas fa-dumbbell"></i> Palestra</span>
                         <span><i class="fas fa-dog"></i> Animali ammessi</span> -->
+                        <span><i class="fa-solid fa-taxi"></i></span>
                     </div>
 
                     <hr>
