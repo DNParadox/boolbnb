@@ -2114,17 +2114,40 @@ __webpack_require__.r(__webpack_exports__);
         _this.services = response.data.results;
       });
     },
-    filerByApi: function filerByApi() {
+    filterByApi: function filterByApi() {
       var _this2 = this;
 
-      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+      axios.get('http://127.0.0.1:8000/api/filterby/', {
+        params: {
+          distance: this.distanceFilter,
+          room_number: this.roomsNumber,
+          bed_number: this.bedsNumber,
+          latitude: this.currentPosition.lat,
+          longitude: this.currentPosition.lon,
+          services: JSON.stringify(this.advancedFilter)
+        }
+      }).then(function (response) {
+        console.log(JSON.stringify(_this2.advancedFilter));
         _this2.allSearchedAparments = response.data.apartments;
       });
+    },
+    clickHandler: function clickHandler(e) {
+      var arr = this.advancedFilter;
+
+      if (arr.includes(e.target.value)) {
+        arr = arr.filter(function (item) {
+          return item !== e.target.value;
+        });
+      } else {
+        arr.push(e.target.value);
+      }
+
+      this.advancedFilter = arr;
     }
   },
   mounted: function mounted() {
     this.getServices();
-    this.filerByApi();
+    this.filterByApi();
   }
 });
 
@@ -2514,7 +2537,7 @@ var render = function render() {
       key: service.id,
       on: {
         change: function change($event) {
-          return _vm.clickHandler($event, _vm.advancedFilter);
+          return _vm.clickHandler($event);
         }
       }
     }, [_c("input", {
@@ -2615,7 +2638,7 @@ var render = function render() {
   })])])]), _vm._v(" "), _c("div", [_c("button", {
     on: {
       click: function click($event) {
-        return _vm.filerByApi();
+        return _vm.filterByApi();
       }
     }
   }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _c("div", {
@@ -2708,13 +2731,13 @@ var render = function render() {
     staticClass: "description"
   }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
     staticClass: "services"
-  }, _vm._l(_vm.apartment.service, function (service) {
+  }, [_vm._l(_vm.apartment.service, function (service) {
     return _c("div", {
       key: service.id
     }, [_c("i", {
       "class": service.icon
-    }), _vm._v(" " + _vm._s(service.name))]);
-  }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
+    }), _vm._v(_vm._s(service.name))]);
+  }), _vm._v(" "), _vm._m(1)], 2), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2734,7 +2757,7 @@ var render = function render() {
     domProps: {
       value: _vm.$user = !null ? "" : _vm.$user.email
     }
-  })]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
@@ -2749,6 +2772,13 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "info"
   }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", [_c("i", {
+    staticClass: "fa-solid fa-taxi"
+  })]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -7232,7 +7262,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
+exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
 
 // exports
 
@@ -55201,8 +55231,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\angel\Boolean\final_project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
