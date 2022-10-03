@@ -1,24 +1,72 @@
 <template>
-  <div>
-    <h2>Filtri per la ricerca aggiuntiva</h2>
+
+
+  <div class="container-fluid">
+
+    <h2 class="text-center">Filtri per la ricerca aggiuntiva</h2>
     <div class="container m-3 d-flex">  
-      <div class="mr-4">
-        <h4>Servizi</h4>
-        <ul class="ul-service">
-          <li v-for="service in services" :key="service.id" @change="clickHandler($event,advancedFilter)">
-            <input type="checkbox"  :value="service.name" :id="service.name">
-            <label :for="service.name">{{service.name}}</label>
-          </li>
-        </ul>
-      </div>
+      <!-- Row -->
+      <div class="row">
+        <!-- Col -->
+        <div class="col">
+          <div class="mr-4 card">
+            <h4>Servizi</h4>
+            <ul class="ul-service">
+              <li v-for="service in services" :key="service.id" @change="clickHandler($event,advancedFilter)">
+                <input type="checkbox"  :value="service.name" :id="service.name">
+                <label :for="service.name">{{service.name}}</label>
+              </li>
+            </ul>
+         </div>
+        </div>
+
+
       <div class="d-none">{{ advancedFilter }}</div>
-      <div>
-        <h4>Stanze e letti</h4>
-        <div class="alignment"><span class="serch-text">Letti</span><div><span class="circle" @click="bedsNumber--" :class="bedsNumber == 1 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}</span><span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
-        <div class="alignment"><span class="serch-text">Camere</span><div><span class="circle" @click="roomsNumber--" :class="roomsNumber == 1 ? 'disabled' : ''"><i class="fa-solid fa-minus"></i></span><span class="number-search">{{ roomsNumber }}</span><span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span></div></div>
-        <div><h5>Distanza</h5><div class="slidecontainer"><input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange"></div></div>
-      </div> 
-      <div><button @click="filerByApi()">submit filter</button></div>
+
+      <!-- Col -->
+        <div class="col">
+          <div class="card">
+            <h4>Stanze e letti</h4>
+            <div class="alignment">
+              <span class="serch-text">Letti</span>
+              <div>
+                <span class="circle" @click="bedsNumber--" :class="bedsNumber == 1 ? 'disabled' : ''">
+                  <i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}
+                </span>
+                <span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+              </div>
+            </div>
+
+
+            <div class="alignment">
+                <span class="serch-text">Camere</span>
+                <div>
+                    <span class="circle" @click="roomsNumber--" :class="roomsNumber == 1 ? 'disabled' : ''">
+                      <i class="fa-solid fa-minus"></i>
+                    </span>
+                    <span class="number-search">{{ roomsNumber }}</span>
+                    <span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span>
+                  </div>
+            </div>
+
+
+            <div>
+              <h5>Distanza</h5>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange">
+              </div>
+            </div>
+
+          </div> 
+
+          <div>
+            <button @click="filerByApi()">Aggiungi filtri</button>
+          </div>
+          </div>
+        </div>
+
     </div>
 
     <div class="container-fluid">
@@ -169,10 +217,6 @@ export default {
       padding-left: 0;
     }
 
-    // h4 {
-    //     font-weight: bold;
-    // }
-
     .description {
       color: grey;
     }
@@ -223,10 +267,11 @@ export default {
   }
 
   .slidecontainer{
-    width: 100%;
+    width: 80%;
     
     #myRange{
-      width: 100%;
+      width: 70%;
+      margin-inline: 10px;
     }
   }
 
