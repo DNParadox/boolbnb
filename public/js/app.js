@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
-      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=Lok7BxBRtdDtQaxvidxzHskGKxFF6ML4")).then(function (response) {
+      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
         if (response.data.results.length > 0) {
           for (var i = 0; i < 4; i++) {
             var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
@@ -2101,9 +2101,9 @@ __webpack_require__.r(__webpack_exports__);
       roomsNumber: 1,
       bedsNumber: 1,
       advancedFilter: [],
+      services: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: [],
-      services: []
+      allSearchedAparments: []
     };
   },
   methods: {
@@ -2123,8 +2123,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.filerByApi();
     this.getServices();
+    this.filerByApi();
   }
 });
 
@@ -2495,10 +2495,18 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h2", [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
+  return _c("div", {
+    staticClass: "container-fluid"
+  }, [_c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
     staticClass: "container m-3 d-flex"
   }, [_c("div", {
-    staticClass: "mr-4"
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "mr-4 card"
   }, [_c("h4", [_vm._v("Servizi")]), _vm._v(" "), _c("ul", {
     staticClass: "ul-service"
   }, _vm._l(_vm.services, function (service) {
@@ -2522,13 +2530,17 @@ var render = function render() {
         "for": service.name
       }
     }, [_vm._v(_vm._s(service.name))])]);
-  }), 0)]), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "d-none"
-  }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
     staticClass: "alignment"
   }, [_c("span", {
     staticClass: "serch-text"
-  }, [_vm._v("Letti")]), _c("div", [_c("span", {
+  }, [_vm._v("Letti")]), _vm._v(" "), _c("div", [_c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 1 ? "disabled" : "",
     on: {
@@ -2540,7 +2552,7 @@ var render = function render() {
     staticClass: "fa-solid fa-minus"
   })]), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.bedsNumber))]), _c("span", {
+  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n              ")]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 20 ? "disabled" : "",
     on: {
@@ -2554,7 +2566,7 @@ var render = function render() {
     staticClass: "alignment"
   }, [_c("span", {
     staticClass: "serch-text"
-  }, [_vm._v("Camere")]), _c("div", [_c("span", {
+  }, [_vm._v("Camere")]), _vm._v(" "), _c("div", [_c("span", {
     staticClass: "circle",
     "class": _vm.roomsNumber == 1 ? "disabled" : "",
     on: {
@@ -2564,9 +2576,9 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-minus"
-  })]), _c("span", {
+  })]), _vm._v(" "), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.roomsNumber))]), _c("span", {
+  }, [_vm._v(_vm._s(_vm.roomsNumber))]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.roomsNumber == 20 ? "disabled" : "",
     on: {
@@ -2576,7 +2588,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-plus"
-  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _c("div", {
+  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _vm._v(" "), _c("div", {
     staticClass: "slidecontainer"
   }, [_c("input", {
     directives: [{
@@ -2606,7 +2618,7 @@ var render = function render() {
         return _vm.filerByApi();
       }
     }
-  }, [_vm._v("submit filter")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
@@ -2696,13 +2708,13 @@ var render = function render() {
     staticClass: "description"
   }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
     staticClass: "services"
-  }, [_vm._l(_vm.apartment.service, function (service) {
+  }, _vm._l(_vm.apartment.service, function (service) {
     return _c("div", {
       key: service.id
     }, [_c("i", {
       "class": service.icon
-    }), _vm._v(_vm._s(service.name))]);
-  }), _vm._v(" "), _vm._m(1)], 2), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
+    }), _vm._v(" " + _vm._s(service.name))]);
+  }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2722,7 +2734,7 @@ var render = function render() {
     domProps: {
       value: _vm.$user = !null ? "" : _vm.$user.email
     }
-  })]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
@@ -2737,13 +2749,6 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "info"
   }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("span", [_c("i", {
-    staticClass: "fa-solid fa-taxi"
-  })]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -7208,7 +7213,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 100%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 100%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 80%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 70%;\n  margin-inline: 10px;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -7227,7 +7232,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
+exports.push([module.i, ".container[data-v-4fd40851] {\n  /* .mapboxgl-canvas {\n      width: 100%;\n      height: 400px;\n  } */\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  margin-top: 25px;\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" | \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 18px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}", ""]);
 
 // exports
 
@@ -55196,8 +55201,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Jacopo Nardelli\boolean classe#66\laravel-projects\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
