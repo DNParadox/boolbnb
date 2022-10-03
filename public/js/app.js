@@ -2634,7 +2634,7 @@ var render = function render() {
       }
     }
   })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "container"
+    staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -2693,9 +2693,23 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
-  }, [_vm._v(_vm._s(_vm.apartment.title))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.apartment.title))]), _vm._v(" "), _c("div", {
+    staticClass: "address"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-location-dot"
+  }), _vm._v(" " + _vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-6 mb-3"
+  }, [_c("div", {
+    staticClass: "image"
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: _vm.apartment.photo,
+      alt: _vm.apartment.title
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
   }, [_vm.center ? _c("div", [_c("Map", {
     attrs: {
@@ -2703,7 +2717,7 @@ var render = function render() {
     }
   })], 1) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
-  }, [_vm._m(2), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2723,7 +2737,7 @@ var render = function render() {
     domProps: {
       value: _vm.$user = !null ? "" : _vm.$user.email
     }
-  })]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("input", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
@@ -2732,29 +2746,6 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "address"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-location-dot"
-  }), _vm._v(" Via Olbia, San Teodoro, Sardegna")]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "col-md-6 mb-3"
-  }, [_c("div", {
-    staticClass: "image"
-  }, [_c("img", {
-    attrs: {
-      src: "https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720",
-      alt: "immagine"
-    }
-  })])]);
-}, function () {
   var _vm = this,
       _c = _vm._self._c;
 

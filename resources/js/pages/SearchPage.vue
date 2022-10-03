@@ -20,7 +20,7 @@
       </div> 
     </div>
 
-    <div class="container" >
+    <div class="container-fluid">
       <div class="row">
             <!-- Col -->
             <div class="col d-flex">

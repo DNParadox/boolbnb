@@ -1,16 +1,14 @@
 <template>
     <div class="single">
         <div class="container">
-            <!-- <h2 class="mt-3">{{apartment.title}}</h2> -->
             <h2 class="mt-3">{{apartment.title}}</h2>
-            <!-- <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div> -->
-            <div class="address"><i class="fa-solid fa-location-dot"></i> Via Olbia, San Teodoro, Sardegna</div>
+            <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div>
 
             <hr>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="image">
-                        <img class="" src="https://a0.muscache.com/im/pictures/miso/Hosting-52831868/original/fc07e2be-ff78-425f-8e35-1d0bda1fd9ac.jpeg?im_w=720" alt="immagine">
+                        <img :src="apartment.photo" class="card-img-top" :alt="apartment.title">
                     </div>
                 </div>
                 <div class="col-md-6">
