@@ -49,18 +49,16 @@
                 <div class="col-md-4 right">
                     <div class="contact">
                         <h2>Contatta l'host</h2>
-                        <form >
-                            <div class="mb-3">
-                                <label for="user-mail" class="form-label">Mail</label>
-                                <input type="email" class="form-control" id="user-mail" :value="$user =! null ? '' : $user.email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="user-message" class="form-label">Messaggio</label>
-                                <textarea class="form-control" id="user-message" rows="5"></textarea>
-                            </div>
+                        <div class="mb-3">
+                            <label for="user-mail" class="form-label">Mail</label>
+                            <input type="email" class="form-control" id="user-mail" v-model="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-message" class="form-label">Messaggio</label>
+                            <textarea class="form-control" id="user-message" v-model="note" rows="5"></textarea>
+                        </div>
 
-                            <input type="submit" class="btn btn-primary">
-                        </form>
+                        <input type="submit" class="btn btn-primary" @click="sendMessage()">
                     </div>
                 </div>
             </div>
@@ -80,6 +78,8 @@ export default {
         return{
             apartment: null,
             center: null,
+            email: '',
+            note: '',
         }
     },
     methods: {
@@ -92,13 +92,21 @@ export default {
                 this.center = {lng: parseFloat(response.data.results.longitude), lat: parseFloat(response.data.results.latitude)};
             } else {
                 this.$router.push({name: 'not-found'})
-            }
-            
+            }           
         })
         },
+        sendMessage(){
+           axios.get('http://127.0.0.1:8000/api/sendmessage/'+ this.email + '/' + this.$route.params.id + '/' + this.note )
+        .then((response) => {
+            if(response.data.success){
+                console.log(response);
+            }          
+        }) 
+        }
     },
     created(){
         this.getSinglePost();
+
     }
 
 }
