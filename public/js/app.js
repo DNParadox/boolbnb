@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
-      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq")).then(function (response) {
+      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
         if (response.data.results.length > 0) {
           for (var i = 0; i < 4; i++) {
             var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
@@ -2102,92 +2102,24 @@ __webpack_require__.r(__webpack_exports__);
       bedsNumber: 1,
       advancedFilter: [],
       currentPosition: this.$route.params.currentPosition,
-      allSearchedAparments: this.$route.params.filtered,
+      allSearchedAparments: [],
       services: []
     };
   },
-  computed: {
-    filteredApartments: function filteredApartments() {
-      var _this = this;
-
-      var filteredArray = [];
-      this.allSearchedAparments.forEach(function (apartment) {
-        var distanceFromSearch = _this.getDistance(parseFloat(_this.currentPosition.lat), parseFloat(_this.currentPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude));
-
-        if (distanceFromSearch < _this.distanceFilter && apartment.room_number >= _this.roomsNumber && apartment.bed_number >= _this.bedsNumber) {
-          apartment.distance = distanceFromSearch;
-          filteredArray.push(apartment);
-        }
-      });
-      filteredArray = filteredArray.sort(function (a, b) {
-        return a.distance - b.distance;
-      });
-
-      if (this.advancedFilter.length > 0) {
-        var advancedFilteredArray = [];
-        filteredArray.forEach(function (apartment) {
-          var apartmentServices = [];
-          apartment.service.forEach(function (singleService) {
-            apartmentServices.push(singleService.name);
-          });
-
-          if (_this.isTrue(_this.advancedFilter, apartmentServices)) {
-            advancedFilteredArray.push(apartment);
-          }
-        });
-        return advancedFilteredArray;
-      }
-
-      ;
-      return filteredArray;
-    }
-  },
   methods: {
     getServices: function getServices() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get('http://127.0.0.1:8000/api/services').then(function (response) {
-        _this2.services = response.data.results;
+        _this.services = response.data.results;
       });
     },
     filerByApi: function filerByApi() {
+      var _this2 = this;
+
       axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
-        console.log(response);
+        _this2.allSearchedAparments = response.data.apartments;
       });
-    },
-    getDistance: function getDistance(latitude1, longitude1, latitude2, longitude2) {
-      // R: raggio della terra (paragonabile ad una sfera) in chilometri
-      var R = 6371;
-      var deltaLat = this.degreeToRadians(latitude1 - latitude2);
-      var deltaLon = this.degreeToRadians(longitude1 - longitude2);
-      var lat1 = this.degreeToRadians(latitude1);
-      var lat2 = this.degreeToRadians(latitude2);
-      var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      var d = R * c;
-      return d;
-    },
-    degreeToRadians: function degreeToRadians(degrees) {
-      var pi = Math.PI;
-      return degrees * (pi / 180);
-    },
-    isTrue: function isTrue(arr, arr2) {
-      return arr.every(function (i) {
-        return arr2.includes(i);
-      });
-    },
-    clickHandler: function clickHandler(e, advancedFilter) {
-      var arr = this.advancedFilter; // e.target.classList.toggle('active');
-
-      if (arr.includes(e.target.value)) {
-        arr = arr.filter(function (item) {
-          return item !== e.target.value;
-        });
-      } else {
-        arr.push(e.target.value);
-      }
-
-      this.advancedFilter = arr;
     }
   },
   mounted: function mounted() {
@@ -2422,17 +2354,22 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", [_c("input", {
+  return _c("div", [_c("h2", {
+    staticClass: "text-center"
+  }, [_vm._v("Trova l'alloggio che fa per te...")]), _vm._v(" "), _c("div", {
+    staticClass: "search"
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.currentSearch,
       expression: "currentSearch"
     }],
+    staticClass: "bar",
     attrs: {
       list: "autocomplete",
       type: "text",
-      placeholder: "Search..."
+      placeholder: "Inserisci una città o un indirizzo..."
     },
     domProps: {
       value: _vm.currentSearch
@@ -2449,20 +2386,21 @@ var render = function render() {
     attrs: {
       id: "autocomplete"
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("button", {
+    staticClass: "ms_btn",
     attrs: {
-      type: "button",
-      value: "submit"
+      type: "submit"
     },
     on: {
       click: function click($event) {
         return _vm.filterByDistance();
       }
     }
-  })]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\n        " + _vm._s(this.$router.push({
+  }, [_c("i", {
+    staticClass: "fa-solid fa-magnifying-glass icon"
+  })])]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
-      filtered: _vm.filteredApartments,
       currentPosition: _vm.currentSearchPosition
     }
   })) + "\n    ")]) : _c("section", {
@@ -2686,7 +2624,7 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col d-flex"
-  }, _vm._l(_vm.filteredApartments, function (Print) {
+  }, _vm._l(_vm.allSearchedAparments, function (Print) {
     return _c("div", {
       key: Print.id,
       staticClass: "card mx-sm-auto mx-md-0"
@@ -2736,7 +2674,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "single"
-  }, [_c("div", {
+  }, [_vm.apartment ? _c("div", {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-3"
@@ -2754,7 +2692,7 @@ var render = function render() {
     staticClass: "card-img-top",
     attrs: {
       src: _vm.apartment.photo,
-      alt: _vm.apartment.title
+      alt: "apartment.title"
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-6"
@@ -2764,7 +2702,19 @@ var render = function render() {
     }
   })], 1) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "row bottom-part"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-8 left"
+  }, [_c("hr"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "description"
+  }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
+    staticClass: "services"
+  }, _vm._l(_vm.apartment.service, function (service) {
+    return _c("div", {
+      key: service.id
+    }, [_c("i", {
+      staticClass: "fa-solid fa-wifi"
+    }), _vm._v(_vm._s(service.name))]);
+  }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
   }, [_c("div", {
     staticClass: "contact"
@@ -2789,7 +2739,7 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  })])])])])])]);
+  })])])])])]) : _vm._e()]);
 };
 
 var staticRenderFns = [function () {
@@ -2797,29 +2747,8 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-md-8 left"
-  }, [_c("hr"), _vm._v(" "), _c("div", {
     staticClass: "info"
-  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "description"
-  }, [_c("p", [_vm._v("\n                        Meraviglioso ed esclusivo appartamento adatto alle famiglie con ampia terrazza coperta e giardino privato, con vista sulle montagne panoramiche.\n                        Goditi la serenità a pochi passi dal bellissimo borgo di Rauris e dai suoi negozi e ristoranti tradizionali.\n                    ")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
-    staticClass: "services"
-  }, [_c("span", [_c("i", {
-    staticClass: "fa-solid fa-wifi"
-  }), _vm._v(" wi-fi")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fa fa-car",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Posto macchina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-swimming-pool"
-  }), _vm._v(" Piscina")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-water"
-  }), _vm._v(" Sauna")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dumbbell"
-  }), _vm._v(" Palestra")]), _vm._v(" "), _c("span", [_c("i", {
-    staticClass: "fas fa-dog"
-  }), _vm._v(" Animali ammessi")])]), _vm._v(" "), _c("hr")]);
+  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -7265,7 +7194,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 
