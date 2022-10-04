@@ -35,8 +35,8 @@
           </div>
 
           <div> 
-            <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude'), $apartment->latitude }}">
-            <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude'), $apartment->longitude }}">
+            <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude',$apartment->latitude)}}">
+            <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude',$apartment->longitude)  }}">
           </div> 
   
           <div class="row">
@@ -71,16 +71,13 @@
 
           <div class="mb3 pb-2">
             <div class="form-label">Servizi <span class="required-check">*</span></div>
-
               @foreach($services as $service) 
-
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}" name="services[]" {{ $apartment->service->contains($service) ? 'checked' : '' }}>
                   <label class="form-check-label" for="service-{{ $service->id }}">
                     {{ $service->name }}
                   </label>
                 </div>
-
               @endforeach
           </div>
 
@@ -93,7 +90,6 @@
               <label for="css">no</label>
             </div>
           </div>
-
         </div>
 
         {{-- Column right --}} 
@@ -112,12 +108,9 @@
                 <div>Foto attuale:</div>
                 <img style="width: 15rem" src="{{ asset( 'storage/' . $apartment->photo) }}" alt=" {{ $apartment->title }}">
               </div>
-          </div>
-         
+          </div>       
         </div> 
-
       </div> 
-
       <hr>
 
       <div class="required-check-text">
