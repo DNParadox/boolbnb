@@ -4,11 +4,12 @@
   <div class="container-fluid">
 
     <h2 class="text-center">Filtri per la ricerca aggiuntiva</h2>
-    <div class="container m-3 d-flex">  
+    <div class="container d-flex">  
       <!-- Row -->
-      <div class="row">
+      <div class="row row-cols-">
+
         <!-- Col -->
-        <div class="col">
+        <div class="col-lg-6 col-md-12">
           <div class="mr-4 card">
             <h4>Servizi</h4>
             <ul class="ul-service">
@@ -24,7 +25,7 @@
       <div class="d-none">{{ advancedFilter }}</div>
 
       <!-- Col -->
-        <div class="col">
+        <div class="col-lg-6 col-md-12">
           <div class="card">
             <h4>Stanze e letti</h4>
             <div class="alignment">
@@ -186,7 +187,8 @@ export default {
   }
 
   .circle{
-    border: 2px solid black;
+    color: black;
+    border: #ff385c 2px solid;
     padding: 5px 10px;
     border-radius: 50%;
     width: 20px;
@@ -225,5 +227,24 @@ export default {
     border: 2px solid darkGray;
     /*property for disable input element like*/
     pointer-events: none;
+  }
+
+  .btn{
+    background-color: #ff385c;
+    color:white;
+    font-weight: bold;
+  }
+
+  input[type="range"]::-moz-range-progress {
+    background-color:  #ff385c;
+  } 
+
+
+  input[type="range"]::-moz-range-track {  
+    background-color: black
+  }
+  
+  .card {
+    background-color: lightblue;
   }
 </style>

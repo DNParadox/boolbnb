@@ -14,15 +14,6 @@
                         </figure>
                     </div>
     
-                    <!-- Col Center-->
-                    <div class="col d-none d-lg-flex">
-                        <div class="inputcontainer pb d-flex">
-                            <input class="inputmod" type="text" placeholder="Cerca">
-                            <div class="circle">
-                                <i class="fa-solid fa-magnifying-glass icon"></i>
-                            </div>
-                        </div>
-                    </div>
     
                     <!-- Col Right -->
                     <div class="col d-flex justify-content-end">
