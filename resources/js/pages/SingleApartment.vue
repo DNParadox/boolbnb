@@ -24,10 +24,10 @@
                     <hr>
 
                     <div class="info">
-                        <span>2 camere da letto</span>
-                        <span>5 letti</span>
-                        <span>1 bagno</span>
-                        <span>80 metri quadri</span>
+                        <span>Camere da letto: {{ apartment.room_number }}</span>
+                        <span>Letti: {{ apartment.bed_number }}</span>
+                        <span>Bagni: {{ apartment.bathroom }}</span>
+                        <span>{{ apartment.square_meters }} metri quadri</span>
                     </div>
 
                     <hr>
@@ -40,12 +40,7 @@
 
                     <h4>Cosa troverai</h4>
                     <div class="services">
-                        <div v-for="service in apartment.service" :key="service.id"><i class="fa-solid fa-wifi"></i>{{ service.name }}</div>
-                        <!-- <span><i class="fa fa-car" aria-hidden="true"></i> Posto macchina</span>
-                        <span><i class="fas fa-swimming-pool"></i> Piscina</span>
-                        <span><i class="fas fa-water"></i> Sauna</span>
-                        <span><i class="fas fa-dumbbell"></i> Palestra</span>
-                        <span><i class="fas fa-dog"></i> Animali ammessi</span> -->
+                        <div v-for="service in apartment.service" :key="service.id"><i :class="service.icon"></i> {{ service.name }}</div>
                     </div>
 
                     <hr>
@@ -53,17 +48,16 @@
 
                 <div class="col-md-4 right">
                     <div class="contact">
-                        <h2>Contatta l'host</h2>
-                        <form>
+                        <form @submit.prevent="sendMessage">
+                            <h2>Contatta l'host</h2>
                             <div class="mb-3">
-                                <label for="user-mail" class="form-label">Mail</label>
-                                <input type="email" class="form-control" id="user-mail" :value="$user =! null ? '' : $user.email">
+                                <label for="user-mail" class="form-label">Mail *</label>
+                                <input type="email" class="form-control" id="user-mail" v-model="email" required="required">
                             </div>
                             <div class="mb-3">
-                                <label for="user-message" class="form-label">Messaggio</label>
-                                <textarea class="form-control" id="user-message" rows="5"></textarea>
+                                <label for="user-message" class="form-label">Messaggio *</label>
+                                <textarea class="form-control" id="user-message" v-model="note" rows="5" required="required"></textarea>
                             </div>
-
                             <input type="submit" class="btn btn-primary">
                         </form>
                     </div>
@@ -85,6 +79,8 @@ export default {
         return{
             apartment: null,
             center: null,
+            email: '',
+            note: '',
         }
     },
     methods: {
@@ -97,15 +93,37 @@ export default {
                 this.center = {lng: parseFloat(response.data.results.longitude), lat: parseFloat(response.data.results.latitude)};
             } else {
                 this.$router.push({name: 'not-found'})
-            }
-            
+            }           
         })
         },
+        sendMessage(){
+            axios.post('http://127.0.0.1:8000/api/sendmessage/',{
+                apartment_id: this.apartment.id,
+                message: this.note,
+                email: this.email,
+            })
+            .then((response) => {
+                if(response.data.success){
+                    console.log(response);
+                    this.clearMessage();
+                }          
+            }) 
+        },
+        getCurrentUser(){
+            axios.get('http://127.0.0.1:8000/api/user')
+            .then((response) => {
+                console.log(response);       
+            })
+        },
+        clearMessage(){
+            this.note = '';
+        }
     },
     created(){
         this.getSinglePost();
-    }
+        this.getCurrentUser();
 
+    },
 }
 </script>
 
@@ -165,13 +183,16 @@ export default {
             .services {
                 font-size: 18px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 flex-wrap: wrap;
 
                 span {
                     flex-basis: 50%;
-                    margin-bottom: 15px;
-                }             
+                    margin-bottom: 15px;     
+                } 
+                div{
+                    margin-right: 16px; 
+                }            
             }
         }
 

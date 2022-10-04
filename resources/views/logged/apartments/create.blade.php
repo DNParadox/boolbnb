@@ -18,7 +18,7 @@
 
       <div class="row">
         {{-- Column Left --}}
-        <div class="col col-left">
+        <div class="col-lg-6 col-left">
           <div class="mb-3">
             <label for="title" class="form-label">Titolo <span class="required-check">*</span></label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required="required">
@@ -34,17 +34,17 @@
   
           <div class="row">
             <div class="col mb-3">
-              <label for="bathroom" class="form-label">Numero di bagni <span class="required-check">*</span></label>
+              <label for="bathroom" class="form-label">N° di bagni <span class="required-check">*</span></label>
               <input type="number" min='0' class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="bed_number" class="form-label">Numero di letti <span class="required-check">*</span></label>
+              <label for="bed_number" class="form-label">N° di letti <span class="required-check">*</span></label>
               <input type="number" min='0' class="form-control" id="bed_number" name="bed_number" value="{{ old('bed_number') }}" required="required">
             </div>
       
             <div class="col mb-3">
-              <label for="room_number" class="form-label">Numero di camere <span class="required-check">*</span></label>
+              <label for="room_number" class="form-label">N° di camere <span class="required-check">*</span></label>
               <input type="number" min='0' class="form-control" id="room_number" name="room_number" value="{{ old('room_number') }}" required="required">
             </div>
           </div>
@@ -61,10 +61,27 @@
               <input type="number" min='0' class="form-control" id="price" name="price" step="0.01" value="{{ old('price') }}">
             </div>
           </div>
+
+          <div class="mb-3">
+            <div class="form-label">Visibilità <span class="required-check">*</span></div>
+            {{-- <div>
+              <input type="radio" id="visibility" name="visibility" value="1" required="required">
+              <label for="html">si</label>
+              <input type="radio" id="visibility" name="visibility" value="0" required="required">
+              <label for="css">no</label>
+            </div> --}}
+
+            <div class="check-visibility">
+              <input type="radio" id="visibility" name="visibility" value="0" checked required="required"/>
+              <label for="visibility">SI</label>
+              <input type="radio" id="visibility" name="visibility" value="1" required="required"/>
+              <label for="visibility">NO</label>
+            </div>
+          </div>
         </div>
 
         {{-- Column right --}} 
-        <div class="col">
+        <div class="col-lg-6">
           <div class="mb3 pb-2">
             <div class="form-label">Servizi <span class="required-check">*</span></div>
 
@@ -90,7 +107,7 @@
             <input class="form-control" type="file" id="photo" name="photo" required="required">
           </div>
          
-        </div> 
+      </div> 
         <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude') }}">
         <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude') }}">
       </div> 
@@ -102,7 +119,7 @@
       </div>
       
       <div class="btn-content">
-        <input class="btn btn-apt btn-primary" type="submit" value="Aggiungi Appartamento">
+        <input id="submit-button" class="btn btn-apt btn-primary" type="submit" value="Aggiungi Appartamento">
       </div>
 
     </form>
@@ -144,6 +161,24 @@
           longitude.value = response.data.results[0].position.lon;
         });
       });
+
+    const input = document.getElementById('submit-button');
+    
+    input.addEventListener('click', 
+    function(e) {
+        const formData = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
+        console.log(formData);
+
+        if(!('services[]' in formData)) {
+          e.preventDefault();
+          document.querySelector('#service-10').setCustomValidity('Selezionare almeno un servizio');
+          document.querySelector('#service-10').reportValidity();
+        } else { 
+          document.querySelector('#service-10').setCustomValidity('')
+          document.querySelector('#service-10').reportValidity();
+        }
+
+    });
   </script>
 
 @endsection

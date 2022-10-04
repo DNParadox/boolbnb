@@ -13,7 +13,7 @@
           <div class="mr-4 card">
             <h4>Servizi</h4>
             <ul class="ul-service">
-              <li v-for="service in services" :key="service.id" @change="clickHandler($event,advancedFilter)">
+              <li v-for="service in services" :key="service.id" @change="clickHandler($event)">
                 <input type="checkbox"  :value="service.name" :id="service.name">
                 <label :for="service.name">{{service.name}}</label>
               </li>
@@ -63,7 +63,7 @@
           </div> 
 
           <div>
-            <button class="btn" @click="filerByApi()">Aggiungi filtri</button>
+            <button @click="filterByApi()">Aggiungi filtri</button>
           </div>
           </div>
         </div>
@@ -117,15 +117,34 @@ export default {
       this.services = response.data.results;
     } 
     )},
-    filerByApi(){
-      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then((response)=>{
+    filterByApi(){
+      axios.get('http://127.0.0.1:8000/api/filterby/', {
+        params : {
+          distance: this.distanceFilter,
+          room_number: this.roomsNumber,
+          bed_number: this.bedsNumber,
+          latitude: this.currentPosition.lat,
+          longitude: this.currentPosition.lon,
+          services: JSON.stringify(this.advancedFilter)
+        }
+      }).then((response)=>{
+        console.log(JSON.stringify(this.advancedFilter))
         this.allSearchedAparments = response.data.apartments;
       })
     },
+    clickHandler(e) {
+      let arr = this.advancedFilter;
+      if(arr.includes(e.target.value)) {
+        arr = arr.filter(item => item !== e.target.value);    
+      } else {
+        arr.push(e.target.value);
+      }
+      this.advancedFilter = arr;
+    }
   },
   mounted(){
     this.getServices();
-    this.filerByApi();
+    this.filterByApi();
  
   }
 }

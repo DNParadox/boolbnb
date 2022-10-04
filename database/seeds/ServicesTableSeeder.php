@@ -12,24 +12,62 @@ class ServicesTableSeeder extends Seeder
      */
     public function run()
     {
+
         $services = [
-            'WiFi',
-            'Posto macchina',
-            'Piscina',
-            'Portineria',
-            'Sauna',
-            'Vista mare',
-            'BBQ',
-            'Colazione in camera',
-            'Palestra',
-            'Animali ammessi',
-            'Camera non fumatori',
-            'Navetta',
+            [
+                'name' => 'WiFi',
+                'icon' => 'fa fa-car'
+            ],
+            [
+                'name' => 'Posto macchina',
+                'icon' => 'fa fa-car'
+            ],
+            [
+                'name' => 'Piscina',
+                'icon' => 'fas fa-swimming-pool'
+            ],
+            [
+                'name' => 'Portineria',
+                'icon' => 'fas fa-door-open'
+            ],
+            [
+                'name' => 'Sauna',
+                'icon' => 'fas fa-water'
+            ],
+            [
+                'name' => 'Vista mare',
+                'icon' => 'fa-solid fa-umbrella-beach'
+            ],
+            [
+                'name' => 'BBQ',
+                'icon' => 'fa-solid fa-utensils'
+            ],
+            [
+                'name' => 'Colazione in camera',
+                'icon' => 'fa-solid fa-mug-saucer'
+            ],
+            [
+                'name' => 'Palestra',
+                'icon' => 'fas fa-dumbbell'
+            ],
+            [
+                'name' => 'Animali ammessi',
+                'icon' => 'fas fa-dog'
+            ],
+            [
+                'name' => 'Camera non fumatori',
+                'icon' => 'fa-solid fa-ban-smoking'
+            ],
+            [
+                'name' => 'Navetta',
+                'icon' => 'fa-solid fa-taxi'
+            ]
         ];
 
         foreach($services as $service) {
             $serviced = new Service();
-            $serviced->name = $service;
+            $serviced->name = $service['name'];
+            $serviced->icon = $service['icon'];
             $serviced->save();
         }
     }
