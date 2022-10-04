@@ -14,8 +14,8 @@
       </div>
       <div class="message_col">
         <div>
-          <p>{{ $messages[0]->email }}</p>
-          <p>{{ $messages[0]->message }}</p>
+          <p>{{ $messages->email }}</p>
+          <p>{{ $messages->message }}</p>
         </div>
       </div>
     </div>   
