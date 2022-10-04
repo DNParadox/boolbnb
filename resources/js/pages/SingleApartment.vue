@@ -109,12 +109,19 @@ export default {
                 }          
             }) 
         },
+        getCurrentUser(){
+            axios.get('http://127.0.0.1:8000/api/user')
+            .then((response) => {
+                console.log(response);       
+            })
+        },
         clearMessage(){
             this.note = '';
         }
     },
     created(){
         this.getSinglePost();
+        this.getCurrentUser();
 
     },
 }

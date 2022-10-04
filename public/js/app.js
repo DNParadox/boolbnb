@@ -2211,12 +2211,18 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
+    getCurrentUser: function getCurrentUser() {
+      axios.get('http://127.0.0.1:8000/api/user').then(function (response) {
+        console.log(response);
+      });
+    },
     clearMessage: function clearMessage() {
       this.note = '';
     }
   },
   created: function created() {
     this.getSinglePost();
+    this.getCurrentUser();
   }
 });
 
