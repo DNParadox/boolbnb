@@ -124,7 +124,8 @@ export default {
           bed_number: this.bedsNumber,
           latitude: this.currentPosition.lat,
           longitude: this.currentPosition.lon,
-          services: JSON.stringify(this.advancedFilter)}
+          services: JSON.stringify(this.advancedFilter)
+        }
       }).then((response)=>{
         console.log(JSON.stringify(this.advancedFilter))
         this.allSearchedAparments = response.data.apartments;

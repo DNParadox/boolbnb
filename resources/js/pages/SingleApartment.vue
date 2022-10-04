@@ -116,8 +116,7 @@ export default {
     created(){
         this.getSinglePost();
 
-    }
-
+    },
 }
 </script>
 
