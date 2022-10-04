@@ -2029,6 +2029,8 @@ __webpack_require__.r(__webpack_exports__);
       var suggestions = [];
       axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
         if (response.data.results.length > 0) {
+          console.log(response);
+
           for (var i = 0; i < 4; i++) {
             var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
 
@@ -2123,11 +2125,9 @@ __webpack_require__.r(__webpack_exports__);
           room_number: this.roomsNumber,
           bed_number: this.bedsNumber,
           latitude: this.currentPosition.lat,
-          longitude: this.currentPosition.lon,
-          services: JSON.stringify(this.advancedFilter)
+          longitude: this.currentPosition.lon
         }
       }).then(function (response) {
-        console.log(JSON.stringify(_this2.advancedFilter));
         _this2.allSearchedAparments = response.data.apartments;
       });
     },
@@ -2456,7 +2456,7 @@ var render = function render() {
     staticClass: "front-container container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row"
-  }, [_c("div", {
+  }, [_vm.currentApartmentsSponsored ? _c("div", {
     staticClass: "col d-flex"
   }, _vm._l(_vm.currentApartmentsSponsored, function (currentApartment) {
     return _c("div", {
@@ -2482,7 +2482,7 @@ var render = function render() {
     }, [_c("h4", [_vm._v(_vm._s(currentApartment.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
     }, [_c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])], 1);
-  }), 0)])])]);
+  }), 0) : _c("div", [_c("h3", [_vm._v("non ci sono appartamenti")])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -2731,7 +2731,7 @@ var render = function render() {
     staticClass: "address"
   }, [_c("i", {
     staticClass: "fa-solid fa-location-dot"
-  }), _vm._v(" " + _vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }), _vm._v(_vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-6 mb-3"
@@ -2753,7 +2753,9 @@ var render = function render() {
     staticClass: "row bottom-part"
   }, [_c("div", {
     staticClass: "col-md-8 left"
-  }, [_c("hr"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }, [_c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "info"
+  }, [_c("span", [_vm._v("Camere da letto: " + _vm._s(_vm.apartment.room_number))]), _vm._v(" "), _c("span", [_vm._v("Letti: " + _vm._s(_vm.apartment.bed_number))]), _vm._v(" "), _c("span", [_vm._v("Bagni: " + _vm._s(_vm.apartment.bathroom))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.apartment.square_meters) + " metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
     staticClass: "services"
@@ -2840,14 +2842,7 @@ var render = function render() {
   })])])])])]) : _vm._e()]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "info"
-  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 

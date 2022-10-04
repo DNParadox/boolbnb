@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index(){
         
-        $user = Auth::user()->id;
+        $user = Auth::user();
         $current = User::find($user);
         $data = [
             'success' => true,

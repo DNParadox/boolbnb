@@ -72,7 +72,7 @@ class ApartmentController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function filterby($distance,$room,$bed,$latitude,$longitude,$services)
+    public function filterby($distance,$room,$bed,$latitude,$longitude)
     {
         $filered_apartment = array();
         $apartments = Apartment::where('bed_number',$bed)
