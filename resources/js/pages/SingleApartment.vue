@@ -24,10 +24,10 @@
                     <hr>
 
                     <div class="info">
-                        <span>2 camere da letto</span>
-                        <span>5 letti</span>
-                        <span>1 bagno</span>
-                        <span>80 metri quadri</span>
+                        <span>Camere da letto: {{ apartment.room_number }}</span>
+                        <span>Letti: {{ apartment.bed_number }}</span>
+                        <span>Bagni: {{ apartment.bathroom }}</span>
+                        <span>{{ apartment.square_meters }} metri quadri</span>
                     </div>
 
                     <hr>
