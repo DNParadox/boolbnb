@@ -2027,25 +2027,30 @@ __webpack_require__.r(__webpack_exports__);
       var dataList = document.getElementById('autocomplete');
       console.log(this.currentSearch);
       var suggestions = [];
-      axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
-        if (response.data.results.length > 0) {
-          console.log(response);
 
-          for (var i = 0; i < 4; i++) {
-            var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
+      if (this.currentSearch.length > 12) {
+        axios.get("https://api.tomtom.com/search/2/geocode/".concat(this.currentSearch, ".json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF")).then(function (response) {
+          if (response.data.results.length > 0) {
+            console.log(response);
 
-            if (response.data.results[i].address) {
-              suggestions.push(addressHint);
+            for (var i = 0; i < 4; i++) {
+              var addressHint = "".concat(response.data.results[i].address.streetName ? "".concat(response.data.results[i].address.streetName, ",") : "", " ").concat(response.data.results[i].address.streetNumber ? "".concat(response.data.results[i].address.streetNumber) : "", " ").concat(response.data.results[i].address.municipality ? "".concat(response.data.results[i].address.municipality, ",") : "", " ").concat(response.data.results[i].address.countrySubdivision ? "".concat(response.data.results[i].address.countrySubdivision) : "");
+
+              if (response.data.results[i].address) {
+                suggestions.push(addressHint);
+              }
             }
-          }
 
-          dataList.innerHTML = "";
-          suggestions.forEach(function (suggestion) {
-            dataList.innerHTML += "<option>".concat(suggestion, "</option>");
-          });
-          _this3.currentSearchPosition = response.data.results[0].position;
-        }
-      });
+            dataList.innerHTML = "";
+            suggestions.forEach(function (suggestion) {
+              dataList.innerHTML += "<option>".concat(suggestion, "</option>");
+            });
+            _this3.currentSearchPosition = response.data.results[0].position;
+          }
+        });
+      }
+
+      ;
     },
     filterByDistance: function filterByDistance() {
       var _this4 = this;
@@ -2119,7 +2124,11 @@ __webpack_require__.r(__webpack_exports__);
     filterByApi: function filterByApi() {
       var _this2 = this;
 
-      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon, {
+        params: {
+          service: this.advancedFilter
+        }
+      }).then(function (response) {
         console.log(response);
         _this2.allSearchedAparments = response.data.apartments;
       });

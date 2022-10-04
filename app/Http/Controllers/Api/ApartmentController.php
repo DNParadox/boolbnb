@@ -70,25 +70,33 @@ class ApartmentController extends Controller
         
         return response()->json($data);
     }
-
-    public function filterby($distance,$room,$bed,$latitude,$longitude)
+    /**
+    * Display the specified resource.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function filterby($distance,$room,$bed,$latitude,$longitude,Request $request)
     {
+        $data = $request->all();
         $filered_apartment = array();
         $apartments = Apartment::where('bed_number',$bed)
-        ->where('room_number',$room)->get();
+        ->where('room_number',$room)->with('service')->get();
         foreach($apartments as $apartment) {
             if($this->getDistances(floatval($latitude),floatval($longitude),floatval($apartment->lat),floatval($apartment->lon)) < $distance){
-                $filered_apartment[] = $apartment;
+                $filered_apartment[] = $apartment;   
             }
             if($apartment->photo){
                 $apartment->photo = asset('storage/'. $apartment->photo);
             }
         }
+
         
 
         $data = [
             'success' => true,   
-            'apartments' => $filered_apartment,     
+            'apartments' => $filered_apartment,   
         ];
         
         return response()->json($data);

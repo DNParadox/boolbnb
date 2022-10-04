@@ -118,7 +118,11 @@ export default {
     } 
     )},
     filterByApi(){
-      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter +'/'+ this.roomsNumber +'/'+ this.bedsNumber +'/'+ this.currentPosition.lat +'/'+ this.currentPosition.lon)
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter +'/'+ this.roomsNumber +'/'+ this.bedsNumber +'/'+ this.currentPosition.lat +'/'+ this.currentPosition.lon ,{
+        params:{
+          service : this.advancedFilter,
+        },
+      })
       .then((response)=>{
         console.log(response);
         this.allSearchedAparments = response.data.apartments;
@@ -136,8 +140,7 @@ export default {
   },
   mounted(){
     this.getServices();
-    this.filterByApi();
- 
+    this.filterByApi(); 
   }
 }
 </script>
