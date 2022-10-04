@@ -29,7 +29,7 @@ class MessageController extends Controller
                 'have_one' => $have_one,
             ];
         } else {
-            $messages = Message::Where('apartment_id', '=', $apartments->id)->get();
+            $messages = Message::Where('apartment_id', '=', $apartments->id)->latest()->first();
             if($messages->count() > 0){
                 $have_one_message = true;
             } else {
