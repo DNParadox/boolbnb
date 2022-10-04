@@ -53,25 +53,24 @@ class ApartmentController extends Controller
     */
     public function show(Request $request, $id)
     {
-        $apartment = Apartment::findOrFail($id)->with('service')->first(); 
+        $id_user = Auth::id();
+        $currentuser = User::find($id_user);
+        $apartment = Apartment::findOrFail($id); 
+        
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }
 
         $data = [
+            'user' =>  $currentuser,
             'success' => true,
-            'results' => $apartment,       
+            'results' => $apartment,
+            
         ];
         
         return response()->json($data);
     }
-    /**
-    * Display the specified resource.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
+
     public function filterby($distance,$room,$bed,$latitude,$longitude)
     {
         $filered_apartment = array();

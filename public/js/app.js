@@ -2119,15 +2119,8 @@ __webpack_require__.r(__webpack_exports__);
     filterByApi: function filterByApi() {
       var _this2 = this;
 
-      axios.get('http://127.0.0.1:8000/api/filterby/', {
-        params: {
-          distance: this.distanceFilter,
-          room_number: this.roomsNumber,
-          bed_number: this.bedsNumber,
-          latitude: this.currentPosition.lat,
-          longitude: this.currentPosition.lon
-        }
-      }).then(function (response) {
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter + '/' + this.roomsNumber + '/' + this.bedsNumber + '/' + this.currentPosition.lat + '/' + this.currentPosition.lon).then(function (response) {
+        console.log(response);
         _this2.allSearchedAparments = response.data.apartments;
       });
     },
@@ -2301,20 +2294,6 @@ var staticRenderFns = [function () {
       src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
       alt: "BoolBnB"
     }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-none d-lg-flex"
-  }, [_c("div", {
-    staticClass: "inputcontainer pb d-flex"
-  }, [_c("input", {
-    staticClass: "inputmod",
-    attrs: {
-      type: "text",
-      placeholder: "Cerca"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "circle"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-magnifying-glass icon"
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "col d-flex justify-content-end"
   }, [_c("div", {
@@ -2549,11 +2528,11 @@ var render = function render() {
   }, [_c("h2", {
     staticClass: "text-center"
   }, [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
-    staticClass: "container m-3 d-flex"
+    staticClass: "container d-flex"
   }, [_c("div", {
-    staticClass: "row"
+    staticClass: "row row-cols-"
   }, [_c("div", {
-    staticClass: "col"
+    staticClass: "col-lg-6 col-md-12"
   }, [_c("div", {
     staticClass: "mr-4 card"
   }, [_c("h4", [_vm._v("Servizi")]), _vm._v(" "), _c("ul", {
@@ -2582,7 +2561,7 @@ var render = function render() {
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "d-none"
   }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col-lg-6 col-md-12"
   }, [_c("div", {
     staticClass: "card"
   }, [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
@@ -7288,7 +7267,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 80%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 70%;\n  margin-inline: 10px;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  color: black;\n  border: #ff385c 2px solid;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 80%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 70%;\n  margin-inline: 10px;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}\n.btn[data-v-483e11c0] {\n  background-color: #ff385c;\n  color: white;\n  font-weight: bold;\n}\ninput[type=range][data-v-483e11c0]::-moz-range-progress {\n  background-color: #ff385c;\n}\ninput[type=range][data-v-483e11c0]::-moz-range-track {\n  background-color: black;\n}\n.card[data-v-483e11c0] {\n  background-color: lightblue;\n}", ""]);
 
 // exports
 
