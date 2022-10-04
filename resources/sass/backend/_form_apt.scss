@@ -29,134 +29,46 @@ h1 {
         font-weight: 800;
     }
 
-
     .check-visibility {
-        display: flex;
-        margin-bottom: 36px;
+        display: inline-flex;
         overflow: hidden;
-    }
-    
-    .check-visibility input {
-        position: absolute !important;
-        clip: rect(0, 0, 0, 0);
-        height: 1px;
-        width: 1px;
-        border: 0;
-        overflow: hidden;
-    }
-    
-    .check-visibility label {
-        background-color: #e4e4e4;
-        color: rgba(0, 0, 0, 0.6);
-        font-size: 14px;
-        line-height: 1;
-        text-align: center;
-        padding: 8px 16px;
-        margin-right: -1px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-        transition: all 0.1s ease-in-out;
-    }
-    
-    .check-visibility label:hover {
-        cursor: pointer;
-    }
-    
-    .check-visibility input:checked + label {
-        background-color: #ff385c;
-        color: white;
-        box-shadow: none;
-    }
-    
-    .check-visibility label:first-of-type {
-        border-radius: 4px 0 0 4px;
-    }
-    
-    .check-visibility label:last-of-type {
-        border-radius: 0 4px 4px 0;
-    }
-    
+        border-radius: 15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 
-    .toogle-bb {
-        display: block;
-        position: relative;
-        background: none;
-        margin: 0 0 0.5em 0;
-
-        input {
-            opacity: 0;
-
-            + label:before {
-                box-sizing: border-box;
-                position: absolute;
-                top: 0.25em;
-                left: 1px;
-                content: '';
-                width: 70px;
-                height: 34px;
-                transition: background-color 0.4 ease;
-                border-radius: 70px;
-                box-shadow: inset 2px 2px 8px rgba(255, 56, 96, 10%),
-                inset -2px -2px 8px rgba(255, 56, 96, 40%);
-                
-            }
-
-            + label:after {
-                box-sizing: border-box;
-                position: absolute;
-                top: 5px;
-                left: 3px;
-                width: 30px;
-                height: 30px;
-                content: '';
-                cursor: pointer;
-                background-color: #ebebeb;
-                border-radius: 500rem;
-                box-shadow:5px 5px 12px #bdbdbd, 0px 0px 0px #ebebeb;
-                transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
-            }
-
-            &:checked + label:before {
-                background: rgba(255, 56, 96, 60%);
-                box-shadow: inset 2px 2px 8px rgba(255, 56, 96, 10%),
-                inset -2px -2px 8px rgba(255, 56, 96, 40%);    
-            }
-
-            &:checked + label:after {
-                transform: translateX(36px);
-                background: linear-gradient(145deg, #a5344a, #e74565);
-                box-shadow: inset 2px 2px 8px rgba(255, 56, 96, 10%),
-                inset -2px -2px 8px rgba(255, 56, 96, 40%);    
-            }
-
-            
+        .form-check {
+            margin-right: 0;
+            padding-left: 0;
         }
 
-        label {
-            h6 {
-                position: absolute;
-                top: 13px;
-                left: 40px;
-                font-size: 12px;
-                font-weight: bold;
-                color: #aaaaaa;
-                /* text-shadow: 0px 2px 0px #f6f6f6; */
-            }
+        .radio__label {
+            margin-bottom: 0;
+            width: 55px;
+            padding: 6px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 800;
+            background-color: #d0d0d0;
+            /* background-image: linear-gradient(270deg, #c7c7c7 45%, #989898 100%); */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            cursor: pointer;
+            transition: background 0.1s;
 
-            h5 {
-                position: absolute;
-                top: 13px;
-                left: 10px;
-                font-size: 12px;
-                font-weight: bold;
-                color: $primary-color;
-                /* text-shadow: 0px 2px 0px #ff3860; */
+            &:not(:last-of-type) {
+                border-right: 1px solid #630226;
+            }
+        }
+
+        .radio__input {
+            display: none;
+
+            &:checked + label {
+                background-color: $primary-color;
+                background-image: linear-gradient(135deg, $primary-color 45%, #9a162e 100%);
+                color: white;
             }
         }
     }
    
-
-
 
     .form-check {
         display: inline-block;
@@ -168,6 +80,11 @@ h1 {
 
         .btn-apt {
             width: 100%;
+            background-color: $primary-color;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            border: 1px solid $primary-color;
+            font-weight: 800;
+            border-radius: 20px;
         }
     }
 
