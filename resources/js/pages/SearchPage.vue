@@ -6,15 +6,15 @@
     <h2 class="text-center">Filtri per la ricerca aggiuntiva</h2>
     <div class="container d-flex">  
       <!-- Row -->
-      <div class="row row-cols-">
+      <div class="row">
 
         <!-- Col -->
-        <div class="col-lg-6 col-md-12">
-          <div class="mr-4 card">
+        <div class="col  d-flex justify-content-center">
+          <div class="card d-flex">
             <h4>Servizi</h4>
             <ul class="ul-service">
               <li v-for="service in services" :key="service.id" @change="clickHandler($event)">
-                <input type="checkbox"  :value="service.name" :id="service.name">
+                <input class="checkbox" type="checkbox"  :value="service.name" :id="service.name">
                 <label :for="service.name">{{service.name}}</label>
               </li>
             </ul>
@@ -22,49 +22,47 @@
         </div>
 
 
-      <div class="d-none">{{ advancedFilter }}</div>
+        <div class="d-none">{{ advancedFilter }}</div>
 
-      <!-- Col -->
-        <div class="col-lg-6 col-md-12">
-          <div class="card">
-            <h4>Stanze e letti</h4>
-            <div class="alignment">
-              <span class="serch-text">Letti</span>
-              <div>
-                <span class="circle" @click="bedsNumber--" :class="bedsNumber == 1 ? 'disabled' : ''">
-                  <i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}
-                </span>
-                <span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''">
-                  <i class="fa-solid fa-plus"></i>
-                </span>
-              </div>
-            </div>
-
-
-            <div class="alignment">
-                <span class="serch-text">Camere</span>
+          <!-- Col -->
+          <div class="col d-flex justify-content-center">
+            <div class="card d-flex">
+              <h4>Stanze e letti</h4>
+              <div class="alignment">
+                <span class="serch-text">Letti</span>
                 <div>
-                    <span class="circle" @click="roomsNumber--" :class="roomsNumber == 1 ? 'disabled' : ''">
-                      <i class="fa-solid fa-minus"></i>
-                    </span>
-                    <span class="number-search">{{ roomsNumber }}</span>
-                    <span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span>
-                  </div>
-            </div>
-
-
-            <div>
-              <h5>Distanza</h5>
-              <div class="slidecontainer">
-                <input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange">
+                  <span class="circle" @click="bedsNumber--" :class="bedsNumber == 1 ? 'disabled' : ''">
+                    <i class="fa-solid fa-minus"></i></span><span class="number-search">{{ bedsNumber }}
+                  </span>
+                  <span class="circle" @click="bedsNumber++" :class="bedsNumber == 20 ? 'disabled' : ''">
+                    <i class="fa-solid fa-plus"></i>
+                  </span>
+                </div>
               </div>
-            </div>
 
-          </div> 
 
-          <div>
-            <button @click="filterByApi()">Aggiungi filtri</button>
-          </div>
+              <div class="alignment">
+                  <span class="serch-text">Camere</span>
+                  <div>
+                      <span class="circle" @click="roomsNumber--" :class="roomsNumber == 1 ? 'disabled' : ''">
+                        <i class="fa-solid fa-minus"></i>
+                      </span>
+                      <span class="number-search">{{ roomsNumber }}</span>
+                      <span class="circle" @click="roomsNumber++" :class="roomsNumber == 20 ? 'disabled' : ''"><i class="fa-solid fa-plus"></i></span>
+                    </div>
+              </div>
+
+
+              <div class="alignment">
+                <span class="serch-text">Distanza</span>
+                <div class="slidecontainer">
+                  <input type="range" min="1" max="50" v-model="distanceFilter" class="slider" id="myRange">
+                </div>
+              </div>
+              <div id="contenitore-filter">
+                <button class="btn" @click="filterByApi()">Aggiungi filtri</button>
+              </div>
+            </div> 
           </div>
         </div>
 
@@ -152,9 +150,17 @@ export default {
 
 <style lang="scss" scoped>
   .card {
-    margin-top: 3rem;;
-    border: none;
-    background-color: inherit;
+    margin-top: 0.2rem;
+    border: #D8D8D8 1px solid;
+    background-color:  	#F0F0F0;
+    border-radius: 24px;
+    padding-block: 10px;
+    padding-inline: 30px;
+    width: 330px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    h4{
+      text-align: center;
+    }
     img {
       border-radius: 24px;
       width: 300px;
@@ -193,12 +199,11 @@ export default {
     border: #ff385c 2px solid;
     padding: 5px 10px;
     border-radius: 50%;
-    width: 20px;
     vertical-align: middle;
     cursor: pointer;
   }
   .serch-text{
-    font-size: 18px;
+    font-size: 1.1rem;
   }
 
   .number-search{
@@ -210,16 +215,13 @@ export default {
   .alignment{
     display: flex;
     justify-content: space-between;
-    width: 250px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 
   .slidecontainer{
-    width: 80%;
     
     #myRange{
-      width: 70%;
-      margin-inline: 10px;
+      width: 90%;
     }
   }
 
@@ -237,16 +239,10 @@ export default {
     font-weight: bold;
   }
 
-  input[type="range"]::-moz-range-progress {
-    background-color:  #ff385c;
-  } 
-
-
-  input[type="range"]::-moz-range-track {  
-    background-color: black
+  .checkbox{
+    accent-color:#ff385c;
   }
-  
-  .card {
-    background-color: lightblue;
-  }
+
+ 
+
 </style>

@@ -22,8 +22,8 @@
                                 <button class="icon-container pb dropdown-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-solid fa-user icon"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Accedi</a>
-                                    <a class="dropdown-item" href="#">Registrati</a>
+                                    <a class="dropdown-item" href="/login">Accedi</a>
+                                    <a class="dropdown-item" href="/register">Registrati</a>
                                 </div>
                             </div>
                         </div>

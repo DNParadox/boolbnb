@@ -2302,20 +2302,6 @@ var staticRenderFns = [function () {
       alt: "BoolBnB"
     }
   })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col d-none d-lg-flex"
-  }, [_c("div", {
-    staticClass: "inputcontainer pb d-flex"
-  }, [_c("input", {
-    staticClass: "inputmod",
-    attrs: {
-      type: "text",
-      placeholder: "Cerca"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "circle"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-magnifying-glass icon"
-  })])])]), _vm._v(" "), _c("div", {
     staticClass: "col d-flex justify-content-end"
   }, [_c("div", {
     staticClass: "profile_header"
@@ -2340,12 +2326,12 @@ var staticRenderFns = [function () {
   }, [_c("a", {
     staticClass: "dropdown-item",
     attrs: {
-      href: "#"
+      href: "/login"
     }
   }, [_vm._v("Accedi")]), _vm._v(" "), _c("a", {
     staticClass: "dropdown-item",
     attrs: {
-      href: "#"
+      href: "/register"
     }
   }, [_vm._v("Registrati")])])])])])])])]);
 }];
@@ -2447,12 +2433,12 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-magnifying-glass icon"
-  })])]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\r\n        " + _vm._s(this.$router.push({
+  })])]), _vm._v(" "), _vm.filteredApartments.length > 0 ? _c("div", [_vm._v("\n        " + _vm._s(this.$router.push({
     name: "search",
     params: {
       currentPosition: _vm.currentSearchPosition
     }
-  })) + "\r\n    ")]) : _c("section", {
+  })) + "\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row"
@@ -2549,13 +2535,13 @@ var render = function render() {
   }, [_c("h2", {
     staticClass: "text-center"
   }, [_vm._v("Filtri per la ricerca aggiuntiva")]), _vm._v(" "), _c("div", {
-    staticClass: "container m-3 d-flex"
+    staticClass: "container d-flex"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col"
+    staticClass: "col d-flex justify-content-center"
   }, [_c("div", {
-    staticClass: "mr-4 card"
+    staticClass: "card d-flex"
   }, [_c("h4", [_vm._v("Servizi")]), _vm._v(" "), _c("ul", {
     staticClass: "ul-service"
   }, _vm._l(_vm.services, function (service) {
@@ -2567,6 +2553,7 @@ var render = function render() {
         }
       }
     }, [_c("input", {
+      staticClass: "checkbox",
       attrs: {
         type: "checkbox",
         id: service.name
@@ -2582,9 +2569,9 @@ var render = function render() {
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "d-none"
   }, [_vm._v(_vm._s(_vm.advancedFilter))]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col d-flex justify-content-center"
   }, [_c("div", {
-    staticClass: "card"
+    staticClass: "card d-flex"
   }, [_c("h4", [_vm._v("Stanze e letti")]), _vm._v(" "), _c("div", {
     staticClass: "alignment"
   }, [_c("span", {
@@ -2601,7 +2588,7 @@ var render = function render() {
     staticClass: "fa-solid fa-minus"
   })]), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n              ")]), _vm._v(" "), _c("span", {
+  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n                ")]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 20 ? "disabled" : "",
     on: {
@@ -2637,7 +2624,11 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-plus"
-  })])])]), _vm._v(" "), _c("div", [_c("h5", [_vm._v("Distanza")]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "alignment"
+  }, [_c("span", {
+    staticClass: "serch-text"
+  }, [_vm._v("Distanza")]), _vm._v(" "), _c("div", {
     staticClass: "slidecontainer"
   }, [_c("input", {
     directives: [{
@@ -2661,13 +2652,18 @@ var render = function render() {
         _vm.distanceFilter = $event.target.value;
       }
     }
-  })])])]), _vm._v(" "), _c("div", [_c("button", {
+  })])]), _vm._v(" "), _c("div", {
+    attrs: {
+      id: "contenitore-filter"
+    }
+  }, [_c("button", {
+    staticClass: "btn",
     on: {
       click: function click($event) {
         return _vm.filterByApi();
       }
     }
-  }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Aggiungi filtri")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
@@ -2753,7 +2749,9 @@ var render = function render() {
     staticClass: "row bottom-part"
   }, [_c("div", {
     staticClass: "col-md-8 left"
-  }, [_c("hr"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }, [_c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "info"
+  }, [_c("span", [_vm._v("Camere da letto: " + _vm._s(_vm.apartment.room_number))]), _vm._v(" "), _c("span", [_vm._v("Letti: " + _vm._s(_vm.apartment.bed_number))]), _vm._v(" "), _c("span", [_vm._v("Bagni: " + _vm._s(_vm.apartment.bathroom))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.apartment.square_meters) + " metri quadri")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
     staticClass: "services"
@@ -2840,14 +2838,7 @@ var render = function render() {
   })])])])])]) : _vm._e()]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "info"
-  }, [_c("span", [_vm._v("2 camere da letto")]), _vm._v(" "), _c("span", [_vm._v("5 letti")]), _vm._v(" "), _c("span", [_vm._v("1 bagno")]), _vm._v(" "), _c("span", [_vm._v("80 metri quadri")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -7293,7 +7284,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  border: 2px solid black;\n  padding: 5px 10px;\n  border-radius: 50%;\n  width: 20px;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 18px;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  width: 250px;\n  margin-bottom: 15px;\n}\n.slidecontainer[data-v-483e11c0] {\n  width: 80%;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 70%;\n  margin-inline: 10px;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".card[data-v-483e11c0] {\n  margin-top: 0.2rem;\n  border: #D8D8D8 1px solid;\n  background-color: #F0F0F0;\n  border-radius: 24px;\n  padding-block: 10px;\n  padding-inline: 30px;\n  width: 330px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.card h4[data-v-483e11c0] {\n  text-align: center;\n}\n.card img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.card .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.card .description[data-v-483e11c0] {\n  color: grey;\n}\n.card a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  color: black;\n  border: #ff385c 2px solid;\n  padding: 5px 10px;\n  border-radius: 50%;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 1.1rem;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 90%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}\n.btn[data-v-483e11c0] {\n  background-color: #ff385c;\n  color: white;\n  font-weight: bold;\n}\n.checkbox[data-v-483e11c0] {\n  accent-color: #ff385c;\n}", ""]);
 
 // exports
 
@@ -7331,7 +7322,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#map { \r\n  border-radius: 15px;\r\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n#map { \n  border-radius: 15px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n\n", ""]);
 
 // exports
 
@@ -7369,7 +7360,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".guestheader{\r\n    height: 80px;\r\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\r\n            border: none !important;\n}\n}\n}\r\n\r\n", ""]);
+exports.push([module.i, ".guestheader{\n    height: 80px;\n    font-size: 1.25rem;\n.inputcontainer {\n.inputmod{\n            border: none !important;\n}\n}\n}\n\n", ""]);
 
 // exports
 
@@ -55281,8 +55272,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
