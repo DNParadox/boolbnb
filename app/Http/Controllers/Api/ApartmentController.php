@@ -78,8 +78,8 @@ class ApartmentController extends Controller
         $service_check = $request->all();
         $filered_apartment = array();
         $filered_apartment_service = array();
-        $apartments = Apartment::where('bed_number',$bed)
-        ->where('room_number',$room)->with('service')->get();
+        $apartments = Apartment::where('bed_number','>=',$bed)
+        ->where('room_number','>=',$room)->with('service')->get();
         foreach($apartments as $apartment) {
             if($this->getDistances(floatval($latitude),floatval($longitude),floatval($apartment->lat),floatval($apartment->lon)) < $distance){
                 $filered_apartment[] = $apartment;   

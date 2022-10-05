@@ -4,13 +4,13 @@
   <div class="container-fluid">
 
     <h2 class="text-center">Filtri per la ricerca aggiuntiva</h2>
-    <div class="container d-flex">  
+    <div class="container d-flex justify-content-center">  
       <!-- Row -->
       <div class="row">
 
         <!-- Col -->
-        <div class="col  d-flex justify-content-center">
-          <div class="card d-flex">
+        <div class="col d-flex justify-content-center">
+          <div class="card style_filer d-flex">
             <h4>Servizi</h4>
             <ul class="ul-service">
               <li v-for="service in services" :key="service.id" @change="clickHandler($event)">
@@ -26,7 +26,7 @@
 
           <!-- Col -->
           <div class="col d-flex justify-content-center">
-            <div class="card d-flex">
+            <div class="card style_filer d-flex">
               <h4>Stanze e letti</h4>
               <div class="alignment">
                 <span class="serch-text">Letti</span>
@@ -69,11 +69,11 @@
     </div>
 
     <div class="container-fluid" v-if="allSearchedAparments.length > 0">
-      <div class="row">
+      <div class="row row-cols-lg-5 row-cols-md-2 row-cols-sm-1 mt-4">
             <!-- Col -->
-            <div class="col d-flex">
+            <div class="col d-flex" v-for="Print in allSearchedAparments" :key="Print.id">
                 <!-- Card -->
-              <div class="card mx-sm-auto mx-md-0" v-for="Print in allSearchedAparments" :key="Print.id">
+              <div class="card bnb_style style-apartment">
                   <!-- Inside Card -->
                 <router-link :to="{name: 'single-apartment', 
                     params: { id: Print.id }
@@ -91,8 +91,8 @@
             </div>          
         </div>
     </div>
-    <div v-else>
-      <h2>non ci sono appartamenti con questi filtri</h2>
+    <div v-else class="not_found">
+      <h2>Non ci sono appartamenti con questi filtri</h2>
     </div>
   </div>
 </template>
@@ -147,7 +147,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .card {
+  .not_found{
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    box-shadow: rgba(0, 0, 0, 0.3);
+    border: #D8D8D8 1px solid;
+    border-radius: 24px;
+  }
+  .bnb_style {
+    margin-top: 3rem;;
+    border: none;
+    background-color: inherit;
+    img {
+        border-radius: 24px;
+        width: 300px;
+        height: 280px;
+    }
+    .card-body {
+        padding-left: 0;
+    }
+
+    .description {
+        color: grey;
+    }
+
+    a {
+        margin-top: 7px;
+    }
+  }
+  .style_filer {
     margin-top: 0.2rem;
     border: #D8D8D8 1px solid;
     background-color:  	#F0F0F0;
