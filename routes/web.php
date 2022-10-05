@@ -21,6 +21,10 @@ Route::middleware('auth')->namespace('Logged')->name('logged.')->prefix('logged'
     Route::get('/message','MessageController@index')->name('message');
 });
 
+Route::middleware('auth')->get('/users', function () {
+    return response()->json(Auth::user());
+});
+
 Route::get('{any?}', function () {
     return view('guest.home'); 
 })->where('any','.*');

@@ -2214,8 +2214,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getCurrentUser: function getCurrentUser() {
-      axios.get('http://127.0.0.1:8000/api/user').then(function (response) {
-        console.log(response);
+      var _this3 = this;
+
+      axios.get('http://127.0.0.1:8000/users').then(function (response) {
+        if (response.data.email) {
+          _this3.email = response.data.email;
+        }
       });
     },
     clearMessage: function clearMessage() {
