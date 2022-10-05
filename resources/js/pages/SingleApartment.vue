@@ -110,9 +110,11 @@ export default {
             }) 
         },
         getCurrentUser(){
-            axios.get('http://127.0.0.1:8000/api/user')
+            axios.get('http://127.0.0.1:8000/users')
             .then((response) => {
-                console.log(response);       
+                if(response.data.email){
+                    this.email = response.data.email;
+                }   
             })
         },
         clearMessage(){
