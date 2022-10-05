@@ -2655,7 +2655,7 @@ var render = function render() {
         return _vm.filterByApi();
       }
     }
-  }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Aggiungi filtri")])])])])]), _vm._v(" "), _vm.allSearchedAparments.length > 0 ? _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
@@ -2665,14 +2665,6 @@ var render = function render() {
     return _c("div", {
       key: Print.id,
       staticClass: "card mx-sm-auto mx-md-0"
-    }, [_c("img", {
-      staticClass: "card-img-top",
-      attrs: {
-        src: Print.photo,
-        alt: "..."
-      }
-    }), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
     }, [_c("router-link", {
       attrs: {
         to: {
@@ -2682,10 +2674,18 @@ var render = function render() {
           }
         }
       }
+    }, [_c("img", {
+      staticClass: "card-img-top",
+      attrs: {
+        src: Print.photo,
+        alt: "..."
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
     }, [_c("h4", [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.price) + " € a notte")])])])], 1)]);
-  }), 0)])])]);
+    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.price) + " € a notte")])])])])], 1);
+  }), 0)])]) : _c("div", [_c("h2", [_vm._v("non ci sono appartamenti con questi filtri")])])]);
 };
 
 var staticRenderFns = [];

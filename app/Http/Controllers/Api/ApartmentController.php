@@ -79,8 +79,9 @@ class ApartmentController extends Controller
     */
     public function filterby($distance,$room,$bed,$latitude,$longitude,Request $request)
     {
-        $data = $request->all();
+        $service_check = $request->all();
         $filered_apartment = array();
+        $filered_apartment_service = array();
         $apartments = Apartment::where('bed_number',$bed)
         ->where('room_number',$room)->with('service')->get();
         foreach($apartments as $apartment) {
@@ -92,12 +93,35 @@ class ApartmentController extends Controller
             }
         }
 
-        
+        if($service_check){
+            foreach($filered_apartment as $filered){
+                $checking = 0;
+                foreach ($filered->service as $service) {
+                    if(in_array($service['name'] ,$service_check['service'])){
+                        ++$checking;
+                    }
+                }
+                if($checking == count($service_check['service'])){
+                    $filered_apartment_service[] = $filered;
+                }
+            }
+        }
 
-        $data = [
-            'success' => true,   
-            'apartments' => $filered_apartment,   
-        ];
+
+        if($service_check){
+            $data = [
+                'success' => true,   
+                'apartments' => $filered_apartment_service, 
+                'data' => $service_check['service'], 
+                'check' => $checking,
+            ];
+        } else {
+            $data = [
+                'success' => true,   
+                'apartments' => $filered_apartment, 
+            ];
+        }
+
         
         return response()->json($data);
     }

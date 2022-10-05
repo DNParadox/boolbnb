@@ -28,7 +28,7 @@
   
           <div class="mb-3">
             <label for="address" class="form-label">Indirizzo <span class="required-check">*</span></label>
-            <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $apartment->address) }}" required="required">
+            <input type="text" list="addresses" class="form-control" id="address" name="address" value="{{ old('address', $apartment->address) }}" autocomplete="off" required="required">
             <datalist id="addresses"> 
             
             </datalist>
@@ -36,7 +36,7 @@
 
           <div> 
             <input type="hidden" id="latitude" name="latitude" value="{{ old('latitude',$apartment->latitude)}}">
-            <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude',$apartment->longitude)  }}">
+            <input type="hidden" id="longitude" name="longitude" value="{{ old('longitude',$apartment->longitude)}}">
           </div> 
   
           <div class="row">
@@ -118,14 +118,14 @@
       </div>
       
       <div class="btn-content">
-        <input class="btn btn-apt btn-primary" type="submit" value="Modifica Appartamento">
+        <input id="submit-button" class="btn btn-apt btn-primary" type="submit" value="Modifica Appartamento">
       </div>
                 
   </form>
 </div>
 
 <script>
-  document.getElementById('address').addEventListener('input',
+  document.getElementById('address').addEventListener('keydown',
     function(e) {
 
       const data = Object.fromEntries(new FormData(document.getElementById('edit-apartment')).entries());
@@ -135,35 +135,38 @@
       let longitude = document.getElementById('longitude');
       let dataList = document.getElementById('addresses');
       let suggestions = [];
+      if(data.address.length > 11){
+        axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
+        .then((response)=>{
+          console.log(response);
+          console.log(data.address);
+          for(let i = 0; i < 4; i++) {
+          
+            let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
 
-      axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=lktzYJVNxK8wkz5eqXTI2g6PVqM9Gcmq`)
-      .then((response)=>{
-
-        for(let i = 0; i < 4; i++) {
-        
-          let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
-
-          if(response.data.results[i].address.streetName) {
-            suggestions.push(addressHint);
+            if(response.data.results[i].address.streetName) {
+              suggestions.push(addressHint);
+            }
           }
-        }
-        
-        dataList.innerHTML = "";
+          
+          dataList.innerHTML = "";
 
-        suggestions.forEach((suggestion) => {
-          dataList.innerHTML += `<option>${suggestion}</option>`;
+          suggestions.forEach((suggestion) => {
+            dataList.innerHTML += `<option>${suggestion}</option>`;
+          });
+
+          latitude.value = response.data.results[0].position.lat;
+          longitude.value = response.data.results[0].position.lon;
         });
-
-        latitude.value = response.data.results[0].position.lat;
-        longitude.value = response.data.results[0].position.lon;
-      });
+      }
+     
     });
 
   const input = document.getElementById('submit-button');
 
   input.addEventListener('click', 
     function(e) {
-        const formData = Object.fromEntries(new FormData(document.getElementById('create-apartment')).entries());
+        const formData = Object.fromEntries(new FormData(document.getElementById('edit-apartment')).entries());
         console.log(formData);
 
         if(!('services[]' in formData)) {

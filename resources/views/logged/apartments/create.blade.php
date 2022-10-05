@@ -131,28 +131,29 @@
         let longitude = document.getElementById('longitude');
         let dataList = document.getElementById('addresses');
         let suggestions = [];
+        if(data.address.length > 11){
+          axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
+          .then((response)=>{
 
-        axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
-        .then((response)=>{
+            for(let i = 0; i < 4; i++) {
+            
+              let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
 
-          for(let i = 0; i < 4; i++) {
-          
-            let addressHint = `${response.data.results[i].address.streetName}, ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber},` : ""} ${response.data.results[i].address.municipality}, ${response.data.results[i].address.countrySubdivision}`;
-
-            if(response.data.results[i].address.streetName) {
-              suggestions.push(addressHint);
+              if(response.data.results[i].address.streetName) {
+                suggestions.push(addressHint);
+              }
             }
-          }
-          
-          dataList.innerHTML = "";
+            
+            dataList.innerHTML = "";
 
-          suggestions.forEach((suggestion) => {
-            dataList.innerHTML += `<option>${suggestion}</option>`;
+            suggestions.forEach((suggestion) => {
+              dataList.innerHTML += `<option>${suggestion}</option>`;
+            });
+
+            latitude.value = response.data.results[0].position.lat;
+            longitude.value = response.data.results[0].position.lon;
           });
-
-          latitude.value = response.data.results[0].position.lat;
-          longitude.value = response.data.results[0].position.lon;
-        });
+        }
       });
 
     const input = document.getElementById('submit-button');
