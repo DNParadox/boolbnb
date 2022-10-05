@@ -28,11 +28,12 @@
             </div>
         </div>
         <!-- Row -->
-        <div class="row">
+        <div class="container-bb">
             <!-- Col -->
-            <div class="col d-flex" v-if="currentApartmentsSponsored">
+            <div class="row d-flex" v-if="currentApartmentsSponsored">
                 <!-- Card -->
-                <div class="card mx-sm-auto mx-md-0" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
+                <div class="col col-xl-2 col-lg-3 col-md-4 col-sm-12" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
+                    <div class="card mx-sm-auto mx-md-0">
                     <!-- Inside Card -->
                     <router-link :to="{name: 'single-apartment', 
                     params: { id: currentApartment.id }
@@ -46,6 +47,7 @@
                             </div>
                         </div>
                     </router-link>
+                </div>
                 </div>
             </div>
             <div v-else>
@@ -177,14 +179,19 @@ h2 {
     }
 }
 .front-container{
+
+    .container-bb {
+        margin: 0 20px;
+    }
     .card {
         margin-top: 3rem;;
         border: none;
         background-color: inherit;
         img {
             border-radius: 24px;
-            width: 300px;
-            height: 280px;
+            aspect-ratio: 1 / 1;
+            /* width: 300px;
+            height: 280px; */
         }
         .card-body {
             padding-left: 0;
