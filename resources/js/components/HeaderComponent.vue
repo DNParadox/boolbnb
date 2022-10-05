@@ -8,7 +8,7 @@
                     <!-- Col Left -->
                     <div class="col d-md-flex">
                         <figure class="logosize">
-                            <a href="http://localhost:8000/">
+                            <a href="http://127.0.0.1:8000">
                                 <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
                             </a>
                         </figure>

@@ -22,7 +22,7 @@
             {{-- Nav Logo --}}
             <div class="image_header">
               <figure class="logosize">
-                <a href="{{ route( 'logged.apartments.index') }}">
+                <a href="http://127.0.0.1:8000/">
                   <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
                 </a>
               </figure>

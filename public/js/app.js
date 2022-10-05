@@ -2300,7 +2300,7 @@ var staticRenderFns = [function () {
     staticClass: "logosize"
   }, [_c("a", {
     attrs: {
-      href: "http://localhost:8000/"
+      href: "http://127.0.0.1:8000"
     }
   }, [_c("img", {
     attrs: {
@@ -2672,11 +2672,11 @@ var render = function render() {
   }, [_vm._v("Aggiungi filtri")])])])])])]), _vm._v(" "), _vm.allSearchedAparments.length > 0 ? _c("div", {
     staticClass: "container-fluid"
   }, [_c("div", {
-    staticClass: "row mt-4"
+    staticClass: "row row-cols-lg-5 row-cols-md-2 row-cols-sm-1 mt-4"
   }, _vm._l(_vm.allSearchedAparments, function (Print) {
     return _c("div", {
       key: Print.id,
-      staticClass: "col col-2 d-flex"
+      staticClass: "col d-flex"
     }, [_c("div", {
       staticClass: "card bnb_style style-apartment"
     }, [_c("router-link", {
