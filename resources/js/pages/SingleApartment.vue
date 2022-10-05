@@ -2,7 +2,7 @@
     <div class="single">
         <div class="container" v-if="apartment">
             <h2 class="mt-3">{{apartment.title}}</h2>
-            <div class="address"><i class="fa-solid fa-location-dot"></i> {{apartment.address}}</div>
+            <div class="address"><i class="fa-solid fa-location-dot"></i>{{apartment.address}}</div>
 
             <hr>
             <div class="row">

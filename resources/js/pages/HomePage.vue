@@ -30,7 +30,7 @@
         <!-- Row -->
         <div class="row">
             <!-- Col -->
-            <div class="col d-flex">
+            <div class="col d-flex" v-if="currentApartmentsSponsored">
                 <!-- Card -->
                 <div class="card mx-sm-auto mx-md-0" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
                     <!-- Inside Card -->
@@ -47,6 +47,9 @@
                         </div>
                     </router-link>
                 </div>
+            </div>
+            <div v-else>
+                <h3>non ci sono appartamenti</h3>
             </div>          
         </div>
     </section>
@@ -107,10 +110,11 @@ export default {
             let dataList = document.getElementById('autocomplete');
             console.log(this.currentSearch);
             let suggestions = [];
+            if(this.currentSearch.length > 12){
             axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
             .then((response)=>{
                 if(response.data.results.length > 0){
-                
+                    console.log(response);
                     for(let i = 0; i < 4; i++) {
                     
                         let addressHint = `${response.data.results[i].address.streetName ? `${response.data.results[i].address.streetName},` : ""} ${response.data.results[i].address.streetNumber ? `${response.data.results[i].address.streetNumber}` : ""} ${response.data.results[i].address.municipality ? `${response.data.results[i].address.municipality},` : ""} ${response.data.results[i].address.countrySubdivision ? `${response.data.results[i].address.countrySubdivision}` : ""}`;
@@ -128,10 +132,8 @@ export default {
 
                     this.currentSearchPosition = response.data.results[0].position;
                 }
-
-            });
-
-        
+            })
+        };
         },
         filterByDistance(){
             this.filteredApartments = [];

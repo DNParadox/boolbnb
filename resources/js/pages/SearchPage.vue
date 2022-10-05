@@ -68,28 +68,31 @@
 
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" v-if="allSearchedAparments.length > 0">
       <div class="row">
             <!-- Col -->
             <div class="col d-flex">
                 <!-- Card -->
               <div class="card mx-sm-auto mx-md-0" v-for="Print in allSearchedAparments" :key="Print.id">
                   <!-- Inside Card -->
-                <img :src="Print.photo" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <router-link :to="{name: 'single-apartment', 
+                <router-link :to="{name: 'single-apartment', 
                     params: { id: Print.id }
-                    }">
-                      <h4>{{ Print.title }}</h4>
-                      <div class="description">
-                          <div>{{ Print.address }}</div>
-                          <span>{{Print.price}} € a notte</span>
-                      </div>
-                    </router-link>
-                </div>  
+                }">
+                  <img :src="Print.photo" class="card-img-top" alt="...">
+                  <div class="card-body">               
+                    <h4>{{ Print.title }}</h4>
+                    <div class="description">
+                        <div>{{ Print.address }}</div>
+                        <span>{{Print.price}} € a notte</span>
+                    </div> 
+                  </div>
+                </router-link>  
               </div> 
             </div>          
         </div>
+    </div>
+    <div v-else>
+      <h2>non ci sono appartamenti con questi filtri</h2>
     </div>
   </div>
 </template>
@@ -116,17 +119,13 @@ export default {
     } 
     )},
     filterByApi(){
-      axios.get('http://127.0.0.1:8000/api/filterby/', {
-        params : {
-          distance: this.distanceFilter,
-          room_number: this.roomsNumber,
-          bed_number: this.bedsNumber,
-          latitude: this.currentPosition.lat,
-          longitude: this.currentPosition.lon,
-          services: JSON.stringify(this.advancedFilter)
-        }
-      }).then((response)=>{
-        console.log(JSON.stringify(this.advancedFilter))
+      axios.get('http://127.0.0.1:8000/api/filterby/' + this.distanceFilter +'/'+ this.roomsNumber +'/'+ this.bedsNumber +'/'+ this.currentPosition.lat +'/'+ this.currentPosition.lon ,{
+        params:{
+          service : this.advancedFilter,
+        },
+      })
+      .then((response)=>{
+        console.log(response);
         this.allSearchedAparments = response.data.apartments;
       })
     },
@@ -142,8 +141,7 @@ export default {
   },
   mounted(){
     this.getServices();
-    this.filterByApi();
- 
+    this.filterByApi(); 
   }
 }
 </script>

@@ -53,14 +53,19 @@ class ApartmentController extends Controller
     */
     public function show(Request $request, $id)
     {
-        $apartment = Apartment::findOrFail($id)->with('service')->first(); 
+        $id_user = Auth::id();
+        $currentuser = User::find($id_user);
+        $apartment = Apartment::findOrFail($id); 
+        
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }
 
         $data = [
+            'user' =>  $currentuser,
             'success' => true,
-            'results' => $apartment,       
+            'results' => $apartment,
+            
         ];
         
         return response()->json($data);
@@ -72,25 +77,51 @@ class ApartmentController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function filterby($distance,$room,$bed,$latitude,$longitude,$services)
+    public function filterby($distance,$room,$bed,$latitude,$longitude,Request $request)
     {
+        $service_check = $request->all();
         $filered_apartment = array();
+        $filered_apartment_service = array();
         $apartments = Apartment::where('bed_number',$bed)
-        ->where('room_number',$room)->get();
+        ->where('room_number',$room)->with('service')->get();
         foreach($apartments as $apartment) {
             if($this->getDistances(floatval($latitude),floatval($longitude),floatval($apartment->lat),floatval($apartment->lon)) < $distance){
-                $filered_apartment[] = $apartment;
+                $filered_apartment[] = $apartment;   
             }
             if($apartment->photo){
                 $apartment->photo = asset('storage/'. $apartment->photo);
             }
         }
-        
 
-        $data = [
-            'success' => true,   
-            'apartments' => $filered_apartment,     
-        ];
+        if($service_check){
+            foreach($filered_apartment as $filered){
+                $checking = 0;
+                foreach ($filered->service as $service) {
+                    if(in_array($service['name'] ,$service_check['service'])){
+                        ++$checking;
+                    }
+                }
+                if($checking == count($service_check['service'])){
+                    $filered_apartment_service[] = $filered;
+                }
+            }
+        }
+
+
+        if($service_check){
+            $data = [
+                'success' => true,   
+                'apartments' => $filered_apartment_service, 
+                'data' => $service_check['service'], 
+                'check' => $checking,
+            ];
+        } else {
+            $data = [
+                'success' => true,   
+                'apartments' => $filered_apartment, 
+            ];
+        }
+
         
         return response()->json($data);
     }
