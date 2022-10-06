@@ -2176,7 +2176,8 @@ __webpack_require__.r(__webpack_exports__);
       apartment: null,
       center: null,
       email: '',
-      note: ''
+      note: '',
+      send: false
     };
   },
   methods: {
@@ -2208,6 +2209,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         if (response.data.success) {
           console.log(response);
+          _this2.send = true;
+          setTimeout(_this2.sendInfo, 7000);
 
           _this2.clearMessage();
         }
@@ -2224,6 +2227,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     clearMessage: function clearMessage() {
       this.note = '';
+    },
+    sendInfo: function sendInfo() {
+      this.send = false;
     }
   },
   created: function created() {
@@ -2447,12 +2453,14 @@ var render = function render() {
   })) + "\r\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "row"
+    staticClass: "container-bb"
   }, [_vm.currentApartmentsSponsored ? _c("div", {
-    staticClass: "col d-flex"
+    staticClass: "row d-flex"
   }, _vm._l(_vm.currentApartmentsSponsored, function (currentApartment) {
     return _c("div", {
       key: currentApartment.id,
+      staticClass: "col col-xl-2 col-lg-3 col-md-4 col-sm-12"
+    }, [_c("div", {
       staticClass: "card mx-sm-auto mx-md-0"
     }, [_c("router-link", {
       attrs: {
@@ -2473,7 +2481,7 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("h4", [_vm._v(_vm._s(currentApartment.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])], 1);
+    }, [_c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])], 1)]);
   }), 0) : _c("div", [_c("h3", [_vm._v("non ci sono appartamenti")])])])])]);
 };
 
@@ -2771,7 +2779,12 @@ var render = function render() {
     }), _vm._v(" " + _vm._s(service.name))]);
   }), 0), _vm._v(" "), _c("hr")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4 right"
-  }, [_c("div", {
+  }, [_vm.send ? _c("div", [_c("div", {
+    staticClass: "alert alert-success",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v("\n                        Messaggio inviato con successo\n                    ")])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "contact"
   }, [_c("form", {
     on: {
@@ -7273,7 +7286,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .container-bb[data-v-04c29797] {\n  margin: 0 20px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n  /* width: 300px;\n  height: 280px; */\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 

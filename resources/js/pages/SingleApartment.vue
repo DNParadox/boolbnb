@@ -47,6 +47,11 @@
                 </div>
 
                 <div class="col-md-4 right">
+                    <div v-if="send">
+                        <div class="alert alert-success" role="alert">
+                            Messaggio inviato con successo
+                        </div>  
+                    </div>
                     <div class="contact">
                         <form @submit.prevent="sendMessage">
                             <h2>Contatta l'host</h2>
@@ -59,12 +64,12 @@
                                 <textarea class="form-control" id="user-message" v-model="note" rows="5" required="required"></textarea>
                             </div>
                             <input type="submit" class="btn btn-primary">
-                        </form>
+                        </form>        
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </template>
 
@@ -81,6 +86,7 @@ export default {
             center: null,
             email: '',
             note: '',
+            send: false,
         }
     },
     methods: {
@@ -105,6 +111,8 @@ export default {
             .then((response) => {
                 if(response.data.success){
                     console.log(response);
+                    this.send = true;
+                    setTimeout(this.sendInfo, 7000);
                     this.clearMessage();
                 }          
             }) 
@@ -119,6 +127,9 @@ export default {
         },
         clearMessage(){
             this.note = '';
+        },
+        sendInfo(){
+            this.send = false;
         }
     },
     created(){

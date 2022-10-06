@@ -84,9 +84,9 @@
           <div class="mb-3">
             <div class="form-label">Visibilità <span class="required-check">*</span></div>
             <div>
-              <input type="radio" id="visibility" name="visibility" value="1" required="required">
+              <input type="radio" {{ $apartment->visibility == 1 ? 'checked' : '' }} id="visibility" name="visibility" value="1" required="required">
               <label for="html">si</label>
-              <input type="radio" id="visibility" name="visibility" value="0" required="required">
+              <input type="radio" {{ $apartment->visibility == 0 ? 'checked' : '' }}  id="visibility" name="visibility" value="0" required="required">
               <label for="css">no</label>
             </div>
           </div>
