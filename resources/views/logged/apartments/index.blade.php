@@ -3,7 +3,7 @@
 
   @if ($show_deleted_message == 'yes')
     <div class="alert alert-danger" role="alert">
-        Post Cancellato correttamente
+        Post cancellato correttamente
     </div>
   @endif
 
