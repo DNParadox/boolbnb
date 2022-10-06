@@ -22,8 +22,7 @@ class ApartmentController extends Controller
      */
     public function index(Request $request)
     {
-        // Costrutto inizio
-    
+        // Permette di dare una risposta quando cancelli un appartamento
         $request_info = $request->all();
         $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
         $show_created_message = isset($request_info['created']) ? $request_info['created'] : null;
@@ -161,6 +160,7 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
         $services =  Service::all();
+        
 
         $data = [
             'have_one' => true,
