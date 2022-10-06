@@ -32,7 +32,7 @@
             <!-- Col -->
             <div class="row d-flex" v-if="currentApartmentsSponsored">
                 <!-- Card -->
-                <div class="col col-xl-2 col-lg-3 col-md-4 col-sm-12" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
                     <div class="card mx-sm-auto mx-md-0">
                     <!-- Inside Card -->
                     <router-link :to="{name: 'single-apartment', 
@@ -190,8 +190,6 @@ h2 {
         img {
             border-radius: 24px;
             aspect-ratio: 1 / 1;
-            /* width: 300px;
-            height: 280px; */
         }
         .card-body {
             padding-left: 0;
