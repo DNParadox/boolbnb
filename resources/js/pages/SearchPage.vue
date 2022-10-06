@@ -83,7 +83,11 @@
                   <h4>{{ Print.title }}</h4>
                   <div class="description">
                       <div>{{ Print.address }}</div>
-                      <span>{{Print.price}} € a notte</span>
+                      <span>Camere: {{ Print.room_number }} | </span>
+                      <span>Letti: {{ Print.bed_number }} | </span>
+                      <span>Bagni: {{ Print.bathroom }}</span>
+                      <span>{{ Print.square_meters }} metri quadri</span>
+                      <div>{{Print.price}} € a notte</div>
                   </div> 
                 </div>
               </router-link>  
