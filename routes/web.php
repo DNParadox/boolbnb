@@ -19,7 +19,12 @@ Route::middleware('auth')->namespace('Logged')->name('logged.')->prefix('logged'
     Route::get('/','ApartmentController@index');
     Route::resource('apartments','ApartmentController');
     Route::get('/message','MessageController@index')->name('message');
+
+
 });
+
+Route::get('/generate','Orders\OrderController@generate');
+Route::get('/make/payment','Orders\OrderController@makePayment');
 
 Route::middleware('auth')->get('/users', function () {
     return response()->json(Auth::user());
