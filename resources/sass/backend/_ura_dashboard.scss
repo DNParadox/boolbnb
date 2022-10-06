@@ -32,12 +32,19 @@ section {
                 margin-left: -15px;
             }
         }
-
-        .price-apt {
-            font-size: 26px;
-            font-weight: 700;
-            color: $primary-color;
-            padding: 20px 0;
-        }
     }
+.ms-btn {
+    background-color: $primary_color;
+    color: white;
+}
+}
+
+.sponsor-btn {
+    background-color: white;
+    color: $primary_color;
+}
+
+.sponsor-btn:hover {
+    background-color: $primary_color;
+    color: white;
 }

@@ -95,7 +95,7 @@
     
         @if ($have_one)
           <div class="r-button">
-            <a class="btn btn-success" href="#">Sponsorizza</a>
+            <a class="btn sponsor-btn" href="#">Sponsorizza</a>
           </div>
         @else
           <div class="r-button">
