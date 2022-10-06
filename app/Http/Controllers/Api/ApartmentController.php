@@ -53,8 +53,7 @@ class ApartmentController extends Controller
     */
     public function show(Request $request, $id)
     {
-        $apartment = Apartment::findOrFail($id)->with('service')->first(); 
-        
+        $apartment = Apartment::where('id', $id)->with('service')->first();
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }

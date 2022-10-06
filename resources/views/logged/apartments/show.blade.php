@@ -1,8 +1,14 @@
 @extends('layouts.URAdashboard')
 @section('content')
 
-  <div class="container mb-5">
+  
 
+  <div class="container mb-5">  
+    @if($show_updated_message == 'yes')
+      <div class="alert alert-success" role="alert">
+        Appartamento modificato con successo !
+      </div>
+    @endif
     @if ($have_one)
     <h2 class="mt-4">{{$apartments->title}}</h2>
     <div>

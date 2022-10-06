@@ -76,7 +76,7 @@
             <div class="card bnb_style style-apartment">
                 <!-- Inside Card -->
               <router-link :to="{name: 'single-apartment', 
-                  params: { id: Print.id }
+                params: { id: Print.id }
               }">
                 <img :src="Print.photo" class="card-img-top" alt="...">
                 <div class="card-body">               

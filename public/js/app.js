@@ -2459,7 +2459,7 @@ var render = function render() {
   }, _vm._l(_vm.currentApartmentsSponsored, function (currentApartment) {
     return _c("div", {
       key: currentApartment.id,
-      staticClass: "col col-xl-2 col-lg-3 col-md-4 col-sm-12"
+      staticClass: "col-xl-2 col-lg-3 col-md-4 col-sm-12"
     }, [_c("div", {
       staticClass: "card mx-sm-auto mx-md-0"
     }, [_c("router-link", {
@@ -2677,14 +2677,14 @@ var render = function render() {
         return _vm.filterByApi();
       }
     }
-  }, [_vm._v("Aggiungi filtri")])])])])])]), _vm._v(" "), _vm.allSearchedAparments.length > 0 ? _c("div", {
+  }, [_vm._v("Aggiungi filtri")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
-  }, [_c("div", {
-    staticClass: "row row-cols-lg-5 row-cols-md-2 row-cols-sm-1 mt-4"
+  }, [_vm.allSearchedAparments.length > 0 ? _c("div", {
+    staticClass: "row d-flex"
   }, _vm._l(_vm.allSearchedAparments, function (Print) {
     return _c("div", {
       key: Print.id,
-      staticClass: "col d-flex"
+      staticClass: "col-xl-2 col-lg-3 col-md-4 col-sm-12"
     }, [_c("div", {
       staticClass: "card bnb_style style-apartment"
     }, [_c("router-link", {
@@ -2707,9 +2707,9 @@ var render = function render() {
     }, [_c("h4", [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
     }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.price) + " € a notte")])])])])], 1)]);
-  }), 0)]) : _c("div", {
+  }), 0) : _c("div", {
     staticClass: "not_found"
-  }, [_c("h2", [_vm._v("Non ci sono appartamenti con questi filtri")])])]);
+  }, [_c("h2", [_vm._v("Non ci sono appartamenti con questi filtri")])])])]);
 };
 
 var staticRenderFns = [];
@@ -7286,7 +7286,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .container-bb[data-v-04c29797] {\n  margin: 0 20px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n  /* width: 300px;\n  height: 280px; */\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .container-bb[data-v-04c29797] {\n  margin: 0 20px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
 
 // exports
 
@@ -7305,7 +7305,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".not_found[data-v-483e11c0] {\n  display: flex;\n  justify-content: center;\n  margin: 40px;\n  box-shadow: rgba(0, 0, 0, 0.3);\n  border: #D8D8D8 1px solid;\n  border-radius: 24px;\n}\n.bnb_style[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.bnb_style img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.bnb_style .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.bnb_style .description[data-v-483e11c0] {\n  color: grey;\n}\n.bnb_style a[data-v-483e11c0] {\n  margin-top: 7px;\n}\n.style_filer[data-v-483e11c0] {\n  margin-top: 0.2rem;\n  border: #D8D8D8 1px solid;\n  background-color: #F0F0F0;\n  border-radius: 24px;\n  padding-block: 10px;\n  padding-inline: 30px;\n  width: 330px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.style_filer h4[data-v-483e11c0] {\n  text-align: center;\n}\n.style_filer img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.style_filer .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.style_filer .description[data-v-483e11c0] {\n  color: grey;\n}\n.style_filer a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  color: black;\n  border: #ff385c 2px solid;\n  padding: 5px 10px;\n  border-radius: 50%;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 1.1rem;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 90%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}\n.btn[data-v-483e11c0] {\n  background-color: #ff385c;\n  color: white;\n  font-weight: bold;\n}\n.checkbox[data-v-483e11c0] {\n  accent-color: #ff385c;\n}", ""]);
+exports.push([module.i, ".not_found[data-v-483e11c0] {\n  display: flex;\n  justify-content: center;\n  margin: 40px;\n  box-shadow: rgba(0, 0, 0, 0.3);\n  border: #D8D8D8 1px solid;\n  border-radius: 24px;\n}\n.bnb_style[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.bnb_style img[data-v-483e11c0] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n}\n.bnb_style .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.bnb_style .description[data-v-483e11c0] {\n  color: grey;\n}\n.bnb_style a[data-v-483e11c0] {\n  margin-top: 7px;\n}\n.style_filer[data-v-483e11c0] {\n  margin-top: 0.2rem;\n  border: #D8D8D8 1px solid;\n  background-color: #F0F0F0;\n  border-radius: 24px;\n  padding-block: 10px;\n  padding-inline: 30px;\n  width: 330px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.style_filer h4[data-v-483e11c0] {\n  text-align: center;\n}\n.style_filer img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.style_filer .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.style_filer .description[data-v-483e11c0] {\n  color: grey;\n}\n.style_filer a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  color: black;\n  border: #ff385c 2px solid;\n  padding: 5px 10px;\n  border-radius: 50%;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 1.1rem;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 90%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}\n.btn[data-v-483e11c0] {\n  background-color: #ff385c;\n  color: white;\n  font-weight: bold;\n}\n.checkbox[data-v-483e11c0] {\n  accent-color: #ff385c;\n}", ""]);
 
 // exports
 

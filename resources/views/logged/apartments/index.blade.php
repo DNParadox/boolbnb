@@ -1,5 +1,11 @@
 @extends('layouts.URAdashboard')
-@section('content') 
+@section('content')
+  
+  @if($show_created_message == 'yes')
+  <div class="alert alert-success" role="alert">
+    Appartamento creato con successo !
+  </div>
+  @endif
   @if ($have_one)
     <div class="container">
       

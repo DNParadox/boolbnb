@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\User;
 use App\Service;
+use App\Message;
 Use App\ApartmentSponsorship;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -25,7 +26,7 @@ class ApartmentController extends Controller
     
         $request_info = $request->all();
         $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
-
+        $show_created_message = isset($request_info['created']) ? $request_info['created'] : null;
 
         // Costrutto Fine
 
@@ -59,7 +60,8 @@ class ApartmentController extends Controller
             'user' => $user,
             'have_one' => $have_one,
             'has_sponsorship' => $has_sponsorship,
-            'show_deleted_message' => $show_deleted_message
+            'show_deleted_message' => $show_deleted_message,
+            'show_created_message' => $show_created_message,
         ];
 
         return view('logged.apartments.index', $data);
@@ -113,7 +115,7 @@ class ApartmentController extends Controller
 
         $data = [];
         
-        return redirect()->route('logged.apartments.index');
+        return redirect()->route('logged.apartments.index', ['created' => 'yes']);
     }
 
     /**
@@ -126,6 +128,8 @@ class ApartmentController extends Controller
     {
         // Take the current user
         $user = Auth::user();
+        $form_data = $request->all();
+        $show_updated_message = isset($form_data['updated']) ? $form_data['updated'] : null;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
         // controllo se un utente ha registrato un appartamento
@@ -138,6 +142,7 @@ class ApartmentController extends Controller
         }else {
             
             $data = [
+                'show_updated_message' => $show_updated_message,
                 'have_one' => true,
                 'apartments' => $apartments,
             ]; 
@@ -180,8 +185,8 @@ class ApartmentController extends Controller
         $old_apartment = Apartment::findOrFail($id);
         
         if (isset($form_data['photo'])) {
-            if($old_apartment->cover){
-              Storage::delete($old_apartment->cover);  
+            if($old_apartment->photo){
+              Storage::delete($old_apartment->photo);  
             }
             
             $img_path = Storage::put('apartment-photo', $form_data['photo']);
@@ -196,7 +201,7 @@ class ApartmentController extends Controller
             $old_apartment->service()->sync([]);
         }
 
-        return redirect()->route('logged.apartments.show', ['apartment' => $old_apartment->id]);
+        return redirect()->route('logged.apartments.show', ['apartment' => $old_apartment->id,'updated' => 'yes']);
     }
 
     /**
@@ -216,6 +221,7 @@ class ApartmentController extends Controller
         }
         $apartment_to_delete->sponsorship()->sync([]);
         $apartment_to_delete->service()->sync([]);
+        $messages = Message::where('apartment_id', $apartment_to_delete->id)->delete();
         $apartment_to_delete->delete();
 
         return redirect()->route('logged.apartments.index', ['deleted' => 'yes']);
