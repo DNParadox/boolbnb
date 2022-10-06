@@ -68,32 +68,33 @@
 
     </div>
 
-    <div class="container-fluid" v-if="allSearchedAparments.length > 0">
-      <div class="row row-cols-lg-5 row-cols-md-2 row-cols-sm-1 mt-4">
-            <!-- Col -->
-            <div class="col d-flex" v-for="Print in allSearchedAparments" :key="Print.id">
-                <!-- Card -->
-              <div class="card bnb_style style-apartment">
-                  <!-- Inside Card -->
-                <router-link :to="{name: 'single-apartment', 
-                    params: { id: Print.id }
-                }">
-                  <img :src="Print.photo" class="card-img-top" alt="...">
-                  <div class="card-body">               
-                    <h4>{{ Print.title }}</h4>
-                    <div class="description">
-                        <div>{{ Print.address }}</div>
-                        <span>{{Print.price}} € a notte</span>
-                    </div> 
-                  </div>
-                </router-link>  
-              </div> 
-            </div>          
-        </div>
+    <div class="container-fluid">
+      <div class="row d-flex" v-if="allSearchedAparments.length > 0">
+          <!-- Col -->
+          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12" v-for="Print in allSearchedAparments" :key="Print.id">
+              <!-- Card -->
+            <div class="card bnb_style style-apartment">
+                <!-- Inside Card -->
+              <router-link :to="{name: 'single-apartment', 
+                  params: { id: Print.id }
+              }">
+                <img :src="Print.photo" class="card-img-top" alt="...">
+                <div class="card-body">               
+                  <h4>{{ Print.title }}</h4>
+                  <div class="description">
+                      <div>{{ Print.address }}</div>
+                      <span>{{Print.price}} € a notte</span>
+                  </div> 
+                </div>
+              </router-link>  
+            </div> 
+          </div>          
+      </div>
+      <div v-else class="not_found">
+        <h2>Non ci sono appartamenti con questi filtri</h2>
+      </div>
     </div>
-    <div v-else class="not_found">
-      <h2>Non ci sono appartamenti con questi filtri</h2>
-    </div>
+    
   </div>
 </template>
 
@@ -161,8 +162,7 @@ export default {
     background-color: inherit;
     img {
         border-radius: 24px;
-        width: 300px;
-        height: 280px;
+        aspect-ratio: 1 / 1;
     }
     .card-body {
         padding-left: 0;
