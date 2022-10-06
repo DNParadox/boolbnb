@@ -21,6 +21,15 @@ class ApartmentController extends Controller
      */
     public function index(Request $request)
     {
+        // Costrutto inizio
+    
+        $request_info = $request->all();
+        $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
+
+
+        // Costrutto Fine
+
+
         $user = Auth::user();
         $have_one = true;
         $last_sponsorship = false;
@@ -50,6 +59,7 @@ class ApartmentController extends Controller
             'user' => $user,
             'have_one' => $have_one,
             'has_sponsorship' => $has_sponsorship,
+            'show_deleted_message' => $show_deleted_message
         ];
 
         return view('logged.apartments.index', $data);
@@ -208,7 +218,7 @@ class ApartmentController extends Controller
         $apartment_to_delete->service()->sync([]);
         $apartment_to_delete->delete();
 
-        return redirect()->route('logged.apartments.index');
+        return redirect()->route('logged.apartments.index', ['deleted' => 'yes']);
     }
 
 

@@ -7,6 +7,18 @@
         I tuoi appartamenti
       </h2>
       
+      @if ($show_deleted_message == 'yes')
+        <div class="alert alert-danger" role="alert">
+            Post Cancellato correttamente
+        </div>
+      @endif
+
+      {{-- @if ($created)
+        <div class="alert alert-danger" role="alert">
+            Post Creato correttamente
+        </div>
+      @endif --}}
+
       <div class="list-apartments">
         <div class="row d-flex card-apt">
           <div class="col">

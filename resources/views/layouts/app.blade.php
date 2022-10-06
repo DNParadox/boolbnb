@@ -42,9 +42,7 @@
                 <ul class="navbar-nav mr-auto">
 
                 </ul>
-
-              
-            </div>
+           </div>
         </div>
     </nav>
   </header>
