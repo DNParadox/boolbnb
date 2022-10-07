@@ -51,13 +51,13 @@
 
             {{-- Button --}}
             <div class="modification">
-              <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn btn-primary">Modifica</a>
+              <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn ms-btn">Modifica</a>
             
     
               <form action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <input class="btn btn-primary" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
+                <input class="btn ms-btn mt-2" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
               </form>
             </div>
 
@@ -66,14 +66,8 @@
         </div>
 
         <div class="info">
-          <a href="{{ route('logged.message') }}" class="btn btn-primary">Vedi Messaggi</a>
-          <a class="btn btn-info" href="/logged/apartments/statistics">Statistiche</a>
-
-          <div class="container">
-            <canvas id="myChart"></canvas>
-          </div>
-
-       
+          <a href="{{ route('logged.message') }}" class="btn ms-btn">Vedi Messaggi</a>
+          <a class="btn ms-btn" href="#">Statistiche</a>
         </div>
         <hr m-5>
       </div> 
