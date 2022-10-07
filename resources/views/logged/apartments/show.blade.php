@@ -67,7 +67,13 @@
 
         <div class="info">
           <a href="{{ route('logged.message') }}" class="btn btn-primary">Vedi Messaggi</a>
-          <a class="btn btn-info" href="#">Statistiche</a>
+          <a class="btn btn-info" href="/logged/apartments/statistics">Statistiche</a>
+
+          <div class="container">
+            <canvas id="myChart"></canvas>
+          </div>
+
+       
         </div>
         <hr m-5>
       </div> 
@@ -78,7 +84,21 @@
       </div>
     @endif
 
-    
-
   </div>
 @endsection
+
+
+    
+
+ 
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+
+ 
+
+
+ 
