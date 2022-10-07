@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,8 @@ Route::middleware('auth')->namespace('Logged')->name('logged.')->prefix('logged'
     Route::get('/','ApartmentController@index');
     Route::resource('apartments','ApartmentController');
     Route::get('/message','MessageController@index')->name('message');
-
-
+    Route::get('/sponsorship','ProductController@index')->name('sponsorship');
 });
-
-Route::get('/generate','Orders\OrderController@generate');
-Route::get('/make/payment','Orders\OrderController@makePayment');
 
 Route::middleware('auth')->get('/users', function () {
     return response()->json(Auth::user());

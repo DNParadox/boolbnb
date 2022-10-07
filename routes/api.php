@@ -26,3 +26,6 @@ Route::get('/filterby/{distance}/{room}/{bed}/{latitude}/{longitude}','Api\Apart
 Route::post('/sendmessage','Api\MessageController@message');
 Route::get('/user', 'Api\UserController@index');
 
+Route::get('orders/generate', 'Api\Orders\OrderController@generate'); 
+Route::post('orders/make/payment', 
+'Api\Orders\OrderController@makePayment');
