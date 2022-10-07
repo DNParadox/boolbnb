@@ -45,6 +45,7 @@
                 @method('DELETE')
                 <input class="btn ms-btn mt-2" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
               </form>
+              <a href="{{ route('logged.sponsorship',['apartment' => $apartments->id]) }}" class="btn btn-primary">Sponsorizza</a>
             </div>
 
           </div>
