@@ -1,14 +1,13 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
-{{ $apartment }}
 <div class="payment-options">
   @foreach ($sponsorships as $sponsorship)
     <div class="payment-row">    
       <div>Nome: {{$sponsorship->name}}</div> 
       <div>Ore: {{$sponsorship->hour}}</div>
       <div>Prezzo: {{$sponsorship->price}} €</div>
-      <div class="pointer" onclick="cretePayment({{$sponsorship->id}}, '{{$tokenAutorization}}')">Paga</div>
+      <div class="pointer" onclick="cretePayment({{$sponsorship->id}}, '{{$tokenAutorization}}', {{ $apartment }})">Paga</div>
     </div>
   @endforeach 
 </div>
@@ -24,7 +23,7 @@
   <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
   <script>
     
-    function cretePayment(id,tokenAutorization){
+    function cretePayment(id,tokenAutorization,apartment){
       $('#dropin-container').html("");
       var button = document.querySelector('#submit-button');
       
@@ -43,7 +42,8 @@
               url: 'http://127.0.0.1:8000/api/orders/make/payment',
               data: {
                       "token": payload.nonce,
-                      "product" : id
+                      "product" : id,
+                      "apartment" : apartment
                     }
             }).done(function(result) {
               console.log(result);
