@@ -23,7 +23,7 @@
             <div class="image_header">
               <figure class="logosize">
                 <a href="http://127.0.0.1:8000/">
-                  <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
+                  <img src="{{ asset('storage/' . 'logo-boolbnb.png') }}" alt="BoolBnB">
                 </a>
               </figure>
             </div>

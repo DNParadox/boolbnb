@@ -9,7 +9,7 @@
                     <div class="col d-md-flex">
                         <figure class="logosize">
                             <a href="http://127.0.0.1:8000">
-                                <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
+                                <img src="../../../public/storage/logo-boolbnb.png" alt="BoolBnB">
                             </a>
                         </figure>
                     </div>
@@ -41,83 +41,82 @@
         </div>
     </div>
         
-    
-    </template> 
-    
+</template> 
     
     
-    <script>
-    export default {
-        name: 'HeaderComponent',
-    }
-    </script>
+    
+<script>
+export default {
+    name: 'HeaderComponent',
+}
+</script>
     
     
-    <style lang="scss" scoped>
-    .f-banner {
-        background: linear-gradient(to right, blue, red);
-        padding: 60px 0;
-    
-        .container {
-            h2 {
-                color: white;
-                font-size: 35px;
-            }
+<style lang="scss" scoped>
+.f-banner {
+    background: linear-gradient(to right, blue, red);
+    padding: 60px 0;
+
+    .container {
+        h2 {
+            color: white;
+            font-size: 35px;
         }
     }
-    .guestheader{
-            height: 80px;
-            font-size: 1.25rem;
-            .pb {
-                padding-block: 8px;
-            }
-            .inputcontainer {
-                border: 1px solid black;
-                padding-inline: 10px;
-                border-radius: 24px;
-                background-color: white;
-                padding-block: 10px;
-                .circle {
-                    height: 28px;
-                    width: 28px;
-                    border-radius: 50%;
-                    background-color: #ff385c;
-                    color: white;
-                }
-                .inputmod{
-                    border: none;
-                    padding-left: 3px;
-                    line-height: 0; 
-                }
-                .inputmod:focus{
-                    border: none;
-                }
-            }
-            .icon-container {
-                width: 30px;
-                height: 30px;
+}
+.guestheader{
+        height: 80px;
+        font-size: 1.25rem;
+        .pb {
+            padding-block: 8px;
+        }
+        .inputcontainer {
+            border: 1px solid black;
+            padding-inline: 10px;
+            border-radius: 24px;
+            background-color: white;
+            padding-block: 10px;
+            .circle {
+                height: 28px;
+                width: 28px;
                 border-radius: 50%;
                 background-color: #ff385c;
-                border: 1px solid black;
-                cursor: pointer;
-            }
-            .icon-container:active{
-                border: 2px solid black;
-            }
-    
-            .icon {
                 color: white;
-                border-radius: 50%;
-                display: flex;
-                height: 100%;
-                width: 100%;
-                align-items: center;
-                justify-content: center;
-                font-size: 1rem;
-            } 
+            }
+            .inputmod{
+                border: none;
+                padding-left: 3px;
+                line-height: 0; 
+            }
+            .inputmod:focus{
+                border: none;
+            }
+        }
+        .icon-container {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff385c;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .icon-container:active{
+            border: 2px solid black;
+        }
 
-           .dropdown-menu.show{
-                left: -150px;
-           }
-    }
-    </style>
+        .icon {
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        } 
+
+        .dropdown-menu.show{
+            left: -150px;
+        }
+}
+</style>

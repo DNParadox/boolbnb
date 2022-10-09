@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\Users\Andrea\Boolean Project classe66\PROGETTO FINALE\boolbnb\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })

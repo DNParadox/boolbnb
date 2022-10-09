@@ -30,7 +30,7 @@
             <figure class="logosize">
                 {{-- Testing --}}
                 <a href="http://localhost:8000/">
-                  <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
+                  <img src="{{ asset('storage/' . 'logo-boolbnb.png') }}" alt="BoolBnB">
                 </a>
               </figure>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
