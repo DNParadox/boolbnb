@@ -24,8 +24,8 @@ class OrderController extends Controller
         $product = Sponsorship::findOrFail($request->product);
         
         $result = $gateway->transaction()->sale([
-            'amount' => $product->price,
-            'paymentMethodNonce' => "fake-valid-nonce",
+            'amount' => $product->price, 
+            'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true,
             ]
@@ -44,7 +44,7 @@ class OrderController extends Controller
                 'message' => 'transazione fallita',
             ];
 
-            return response()->json($data,404);
+            return response()->json($data,402);
         }
     }
 }
