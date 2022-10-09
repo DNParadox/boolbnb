@@ -1,21 +1,30 @@
 @extends('layouts.URAdashboard')
 
 @section('content')
-<div class="payment-options">
-  @foreach ($sponsorships as $sponsorship)
-    <div class="payment-row">    
-      <div>Nome: {{$sponsorship->name}}</div> 
-      <div>Ore: {{$sponsorship->hour}}</div>
-      <div>Prezzo: {{$sponsorship->price}} €</div>
-      <div class="pointer" onclick="cretePayment({{$sponsorship->id}}, '{{$tokenAutorization}}', {{ $apartment }})">Paga</div>
-    </div>
-  @endforeach 
-</div>
+<div class="container">
+  <div class="row payment-options">
+    @foreach ($sponsorships as $sponsorship)
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">    
+        <div class="card payment-col mx-sm-auto mx-md-0">
+          <div class="sponsorship-name {{$sponsorship->name}}">{{$sponsorship->name}}</div> 
+          <div class="payment-info">
+            <div class="my-2">
+              <div>Ore: {{$sponsorship->hour}}</div>
+              <div>Prezzo: {{$sponsorship->price}} €</div>
+            </div>
+            <div class="pointer" onclick="cretePayment({{$sponsorship->id}}, '{{$tokenAutorization}}', {{ $apartment }})">Paga</div>
+          </div>
+        </div>
+      </div>
+    @endforeach 
+  </div>
+
   <div id="dropin-wrapper" class="payment-wrapper">
     <div id="checkout-message"></div>
     <div id="dropin-container"></div>
     <button id="submit-button">Submit payment</button>
   </div>
+</div>
   <!-- includes the Braintree JS client SDK -->
   <script src="https://js.braintreegateway.com/web/dropin/1.33.4/js/dropin.min.js"></script>
 
