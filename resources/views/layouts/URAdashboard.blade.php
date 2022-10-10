@@ -23,7 +23,7 @@
             <div class="image_header">
               <figure class="logosize">
                 <a href="http://127.0.0.1:8000/">
-                  <img src="{{ asset('storage/' . 'airbnb.png') }}" alt="BoolBnB">
+                  <img src="{{ asset('storage/' . 'logo-boolbnb.png') }}" alt="BoolBnB">
                 </a>
               </figure>
             </div>
@@ -106,6 +106,50 @@
     </div>
       @yield('content')
   </main>
+
+  <footer class="text-center mt-5">
+    <div class="footer-top pt-5 pb-5">
+        <div class="container text-white d-flex flex-wrap align-items-center justify-content-between">
+            <div class="logo-footer">
+                <a class="navbar-brand" href="http://127.0.0.1:8000">
+                    <img class="logo" src="{{ asset('storage/' . 'logo-boolbnb-white.png') }}" alt="Logo BoolBnb">
+                </a>
+            </div>
+            <div class="contact-footer d-flex justify-content-around flex-wrap align-items-center">
+                <p class="mr-3 mt-3">
+                    <a class="text-white" href="https://github.com/andrea-mangiapia">
+                        <i class="fab fa-github mr-2"></i>Andrea Mangiapia
+                    </a>
+                </p>
+                <p class="mr-3 mt-3">
+                    <a class="text-white" href="https://github.com/LorenzoVeropalumbo">
+                        <i class="fab fa-github mr-2"></i>Lorenzo Veropalumbo
+                    </a>
+                </p>
+                <p class="mr-3 mt-3">
+                    <a class="text-white" href="https://github.com/AngeloDalicandro">
+                        <i class="fab fa-github mr-2"></i>Angelo d'Alicandro
+                    </a>
+                </p>
+                <p class="mr-3 mt-3">
+                    <a class="text-white" href="https://github.com/DNParadox">
+                        <i class="fab fa-github mr-2"></i>Francesco Marra
+                    </a>
+                </p>
+                <p class="mt-3">
+                    <a class="text-white" href="https://github.com/JacopoNa">
+                        <i class="fab fa-github mr-2"></i>Jacopo Nardelli
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom pt-2 pb-2">
+        <div class="container text-white text center">
+            &copy; Boolean Careers | Team 2 - Classe 66
+        </div>
+    </div>
+  </footer>
 
   <script src="{{ asset('js/back.js') }}" defer></script>
 </body>
