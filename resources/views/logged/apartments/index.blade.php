@@ -1,18 +1,21 @@
 @extends('layouts.URAdashboard')
 @section('content')
 
+<div class="container">
   @if ($show_deleted_message == 'yes')
-    <div class="alert alert-danger" role="alert">
-        Post cancellato correttamente
-    </div>
-  @endif
+  <div class="alert alert-danger" role="alert">
+      Post cancellato correttamente
+  </div>
+@endif
 
-  
-  @if($show_created_message == 'yes')
+
+@if($show_created_message == 'yes')
   <div class="alert alert-success" role="alert">
     Appartamento creato con successo !
   </div>
-  @endif
+@endif
+</div>
+
   @if ($have_one)
     <div class="container">
       <div class="pb-4">

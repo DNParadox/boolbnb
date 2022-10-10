@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('logged.apartments');
     }
+
+    public function statistics()
+    {
+    
+    }
 }
