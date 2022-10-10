@@ -2706,7 +2706,7 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("h4", [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.price) + " € a notte")])])])])], 1)]);
+    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v("Camere: " + _vm._s(Print.room_number) + " | ")]), _vm._v(" "), _c("span", [_vm._v("Letti: " + _vm._s(Print.bed_number) + " | ")]), _vm._v(" "), _c("span", [_vm._v("Bagni: " + _vm._s(Print.bathroom))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.square_meters) + " metri quadri")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(Print.price) + " € a notte")])])])])], 1)]);
   }), 0) : _c("div", {
     staticClass: "not_found"
   }, [_c("h2", [_vm._v("Non ci sono appartamenti con questi filtri")])])])]);
