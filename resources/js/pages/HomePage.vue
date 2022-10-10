@@ -9,7 +9,7 @@
       <button class="ms_btn" type="submit" @click="filterByDistance()"><i class="fa-solid fa-magnifying-glass icon"></i></button>
 
     </div>
-    <div v-if="filteredApartments.length > 0">
+    <div>
         {{this.$router.push({
                 name: 'search', 
                 params: {
