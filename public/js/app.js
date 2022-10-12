@@ -2313,13 +2313,7 @@ var staticRenderFns = [function () {
     attrs: {
       href: "http://127.0.0.1:8000"
     }
-  }, [_c("img", {
-    staticClass: "logo",
-    attrs: {
-      src: __webpack_require__(/*! ../../../public/storage/logo-boolbnb-white.png */ "./storage/app/public/logo-boolbnb-white.png"),
-      alt: "Logo BoolBnb"
-    }
-  })])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "contact-footer d-flex justify-content-around flex-wrap align-items-center"
   }, [_c("p", {
     staticClass: "mr-3 mt-3"
@@ -2330,7 +2324,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fab fa-github mr-2"
-  }), _vm._v("Andrea Mangiapia\r\n                    ")])]), _vm._v(" "), _c("p", {
+  }), _vm._v("Andrea Mangiapia\n                    ")])]), _vm._v(" "), _c("p", {
     staticClass: "mr-3 mt-3"
   }, [_c("a", {
     staticClass: "text-white",
@@ -2339,7 +2333,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fab fa-github mr-2"
-  }), _vm._v("Lorenzo Veropalumbo\r\n                    ")])]), _vm._v(" "), _c("p", {
+  }), _vm._v("Lorenzo Veropalumbo\n                    ")])]), _vm._v(" "), _c("p", {
     staticClass: "mr-3 mt-3"
   }, [_c("a", {
     staticClass: "text-white",
@@ -2348,7 +2342,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fab fa-github mr-2"
-  }), _vm._v("Angelo d'Alicandro\r\n                    ")])]), _vm._v(" "), _c("p", {
+  }), _vm._v("Angelo d'Alicandro\n                    ")])]), _vm._v(" "), _c("p", {
     staticClass: "mr-3 mt-3"
   }, [_c("a", {
     staticClass: "text-white",
@@ -2357,7 +2351,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fab fa-github mr-2"
-  }), _vm._v("Francesco Marra\r\n                    ")])]), _vm._v(" "), _c("p", {
+  }), _vm._v("Francesco Marra\n                    ")])]), _vm._v(" "), _c("p", {
     staticClass: "mt-3"
   }, [_c("a", {
     staticClass: "text-white",
@@ -2366,11 +2360,11 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fab fa-github mr-2"
-  }), _vm._v("Jacopo Nardelli\r\n                    ")])])])])]), _vm._v(" "), _c("div", {
+  }), _vm._v("Jacopo Nardelli\n                    ")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "footer-bottom pt-2 pb-2"
   }, [_c("div", {
     staticClass: "container text-white text center"
-  }, [_vm._v("\r\n            © Boolean Careers | Team 2 - Classe 66\r\n        ")])])]);
+  }, [_vm._v("\n            © Boolean Careers | Team 2 - Classe 66\n        ")])])]);
 }];
 render._withStripped = true;
 
@@ -2425,12 +2419,7 @@ var staticRenderFns = [function () {
     attrs: {
       href: "http://127.0.0.1:8000"
     }
-  }, [_c("img", {
-    attrs: {
-      src: __webpack_require__(/*! ../../../public/storage/logo-boolbnb.png */ "./storage/app/public/logo-boolbnb.png"),
-      alt: "BoolBnB"
-    }
-  })])])]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col d-flex justify-content-end"
   }, [_c("div", {
     staticClass: "profile_header"
@@ -7384,7 +7373,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".footer-top[data-v-abfbddf2] {\n  background-image: url(data:image/webp;base64,UklGRoQCAABXRUJQVlA4WAoAAAAgAAAAHQAAHQAASUNDUAwCAAAAAAIMbGNtcwIQAABtbnRyUkdCIFhZWiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAAF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAAAANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZWiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYFUXdd7WtwegWJsZp8rGm/fdPD6TD//1ZQOCBSAAAAUAMAnQEqHgAeAD7ZYKpOtiWooygKqsAbCWQAnTLfAiGYXfAA/uw/rDUG/ySry930W5TklUCdPGwZvhShkxmlA5XTMUKtCBVuol3YS6MrvY4AAA==);\n  background-repeat: repeat;\n  background-size: cover;\n}\n.footer-top .logo-footer img[data-v-abfbddf2] {\n  width: 150px;\n}\n.footer-top .contact-footer[data-v-abfbddf2] {\n  text-align: center;\n}\n.footer-bottom[data-v-abfbddf2] {\n  background-color: #252525;\n}\n@media screen and (max-width: 991.98px) {\n.logo-footer[data-v-abfbddf2] {\n    margin: 0 auto;\n}\n}", ""]);
+exports.push([module.i, ".footer-top[data-v-abfbddf2] {\n  background-repeat: repeat;\n  background-size: cover;\n}\n.footer-top .logo-footer img[data-v-abfbddf2] {\n  width: 150px;\n}\n.footer-top .contact-footer[data-v-abfbddf2] {\n  text-align: center;\n}\n.footer-bottom[data-v-abfbddf2] {\n  background-color: #252525;\n}\n@media screen and (max-width: 991.98px) {\n.logo-footer[data-v-abfbddf2] {\n    margin: 0 auto;\n}\n}", ""]);
 
 // exports
 
@@ -55528,28 +55517,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./storage/app/public/logo-boolbnb-white.png":
-/*!***************************************************!*\
-  !*** ./storage/app/public/logo-boolbnb-white.png ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo-boolbnb-white.png?31fa8977e73f8220a193a2ff94ef6b67";
-
-/***/ }),
-
-/***/ "./storage/app/public/logo-boolbnb.png":
-/*!*********************************************!*\
-  !*** ./storage/app/public/logo-boolbnb.png ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo-boolbnb.png?d34261645dcaeaafa0c0a1e61f56eb1a";
-
-/***/ }),
-
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -55557,13 +55524,8 @@ module.exports = "/images/logo-boolbnb.png?d34261645dcaeaafa0c0a1e61f56eb1a";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /Users/dnp/VSC/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\Users\Andrea\Boolean Project classe66\PROGETTO FINALE\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Andrea\Boolean Project classe66\PROGETTO FINALE\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> origin/main
 
 
 /***/ })

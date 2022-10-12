@@ -93,19 +93,19 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var statistics = getRandomStats();
-console.log(statistics);
+var ctx = document.getElementById('myChart').getContext('2d'); // let statistics = getRandomStats();
+// console.log(statistics)
+
 var myChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
     datasets: [{
       label: 'Views mensili',
-      data: statistics,
-      backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
-      borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
-      borderWidth: 1
+      data: [30, 25, 45, 80, 120, 140, 120, 160, 130, 110, 70, 100],
+      fill: false,
+      borderColor: ' #ff385c',
+      tension: 0.2
     }]
   },
   options: {
@@ -115,17 +115,13 @@ var myChart = new Chart(ctx, {
       }
     }
   }
-});
-
-function getRandomStats() {
-  var stats = [];
-
-  for (var i = 0; i < 12; i++) {
-    stats.push(Math.random() * (200 - 0 + 1)) + 0;
-  }
-
-  return stats;
-}
+}); // function getRandomStats() {
+//     let stats = [];
+//     for (let i = 0; i < 12; i++) {
+//        stats.push(Math.floor((Math.random() * 200) + 1));
+//     }
+//     return stats;
+// }
 
 /***/ }),
 

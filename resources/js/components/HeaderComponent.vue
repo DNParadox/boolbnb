@@ -9,7 +9,7 @@
                     <div class="col d-md-flex">
                         <figure class="logosize">
                             <a href="http://127.0.0.1:8000">
-                                <img src="../../../public/storage/logo-boolbnb.png" alt="BoolBnB">
+                                <!-- <img src="../../../public/storage/logo-boolbnb.png" alt="BoolBnB"> -->
                             </a>
                         </figure>
                     </div>
