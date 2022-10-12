@@ -19,12 +19,38 @@
         }}
     </div>
     <!-- Inizio  -->
+    
     <section class="front-container container-fluid" v-else>
         <!-- Row -->
+        <hr>
         <div class="row">
             <!-- Col -->
-            <div class="col text-center">
-                <h2 class="">Appartamenti in evidenza</h2>
+            <div class="col text-center wapper-container">
+                <div @click="scroll_left()"><i class="fa-solid fa-chevron-left color-hover"></i></div>
+                <div class="images d-flex wrapper-box">
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/35919456-df89-4024-ad50-5fcb7a472df9.jpg" alt=""><!-- 1 --><span>Minicase</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg" alt=""><!-- 2 --> <span>Isole</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg" alt=""><!-- 3 --><span>Case Organiche</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/4759a0a7-96a8-4dcd-9490-ed785af6df14.jpg" alt=""><!-- 4 --><span>lutre</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/5ed8f7c7-2e1f-43a8-9a39-4edfc81a3325.jpg" alt=""><!-- 5 --><span>B&B</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg" alt=""><!-- 6 --><span>Parchi nazionali</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg" alt=""><!-- 7 --><span>Baite</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg" alt=""><!-- 8 --><span>Wow!</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg" alt=""><!-- 9 --><span>Spiaggia</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/31c1d523-cc46-45b3-957a-da76c30c85f9.jpg" alt=""><!-- 10 --><span>Camper</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg" alt=""><!-- 11 --><span>Dimore storiche</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg" alt=""><!-- 12 --><span>Design</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/8b44f770-7156-4c7b-b4d3-d92549c8652f.jpg" alt=""><!-- 13 --><span>Polo Nord</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/757deeaa-c78f-488f-992b-d3b1ecc06fc9.jpg" alt=""><!-- 14 --><span>Sulle piste</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/c8bba3ed-34c0-464a-8e6e-27574d20e4d2.jpg" alt=""><!-- 15 --><span>Sci</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/1d477273-96d6-4819-9bda-9085f809dad3.jpg" alt=""><!-- 16 --><span>A-frame</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg" alt=""><!-- 17 --><span>Case sull'albero</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/957f8022-dfd7-426c-99fd-77ed792f6d7a.jpg" alt=""><!-- 18 --><span>Surf</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt=""><!-- 19 -->  <span>Piscine</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg" alt=""><!-- 20 --><span>Campagna</span></div>
+                    <div><img class="i1wps9q8 dir dir-ltr" src="https://a0.muscache.com/pictures/a6dd2bae-5fd0-4b28-b123-206783b5de1d.jpg" alt=""><!-- 21 --><span>Nel deserto</span></div>
+                </div>
+                <div @click="scroll_right()"><i class="fa-solid fa-chevron-right color-hover"></i></div>
             </div>
         </div>
         <!-- Row -->
@@ -42,8 +68,9 @@
                         <div class="card-body">
                             <h4>{{ currentApartment.title }}</h4>
                             <div class="description">
+                                <div>Host Professionista</div>
                                 <div>{{ currentApartment.address }}</div>
-                                <span>80 € a notte</span>
+                                <span>{{currentApartment.price ? currentApartment.price : '80' }} € a notte</span>
                             </div>
                         </div>
                     </router-link>
@@ -145,6 +172,14 @@ export default {
                     this.filteredApartments.push(apartment);
                 }
             })
+        },
+        scroll_left() {
+            let content = document.querySelector(".wrapper-box");
+            content.scrollLeft -= 90;
+        },
+        scroll_right() {
+            let content = document.querySelector(".wrapper-box");
+            content.scrollLeft += 80;
         }
     },
     mounted(){
@@ -204,6 +239,54 @@ h2 {
         }
     }
 }
-    
+
+
+.wapper-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%; 
+
+    i{
+        border: 2px solid #b1b1b1;
+        border-radius: 50%;
+        padding: 3px 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+    }
+
+    .images{
+        width: 75%;
+        overflow-x: auto;
+        div{
+            img{
+                cursor: pointer;
+                width: 32px;
+                height: 32px;
+                margin-inline: 30px;    
+                filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);;         
+            }
+
+            span{
+                cursor: pointer;
+                font-size: 11px;  
+                font-weight: 700;
+                color: #939393;
+            }
+
+            &:hover{
+                
+                filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);;
+            }
+        }
+        
+
+    }
+    .images{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
 
 </style>
