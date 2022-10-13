@@ -2078,6 +2078,14 @@ __webpack_require__.r(__webpack_exports__);
           _this4.filteredApartments.push(apartment);
         }
       });
+    },
+    scroll_left: function scroll_left() {
+      var content = document.querySelector(".wrapper-box");
+      content.scrollLeft -= 90;
+    },
+    scroll_right: function scroll_right() {
+      var content = document.querySelector(".wrapper-box");
+      content.scrollLeft += 80;
     }
   },
   mounted: function mounted() {
@@ -2419,7 +2427,12 @@ var staticRenderFns = [function () {
     attrs: {
       href: "http://127.0.0.1:8000"
     }
-  })])]), _vm._v(" "), _c("div", {
+  }, [_c("img", {
+    attrs: {
+      src: __webpack_require__(/*! ../../../public/storage/logo-boolbnb.png */ "./storage/app/public/logo-boolbnb.png"),
+      alt: "BoolBnB"
+    }
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "col d-flex justify-content-end"
   }, [_c("div", {
     staticClass: "profile_header"
@@ -2558,7 +2571,27 @@ var render = function render() {
     }
   })) + "\n    ")]) : _c("section", {
     staticClass: "front-container container-fluid"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col text-center wapper-container"
+  }, [_c("div", {
+    on: {
+      click: function click($event) {
+        return _vm.scroll_left();
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-chevron-left color-hover"
+  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    on: {
+      click: function click($event) {
+        return _vm.scroll_right();
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-chevron-right color-hover"
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "container-bb"
   }, [_vm.currentApartmentsSponsored ? _c("div", {
     staticClass: "row d-flex"
@@ -2587,7 +2620,7 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("h4", [_vm._v(_vm._s(currentApartment.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v("80 € a notte")])])])])], 1)]);
+    }, [_c("div", [_vm._v("Host Professionista")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(currentApartment.address))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(currentApartment.price ? currentApartment.price : "80") + " € a notte")])])])])], 1)]);
   }), 0) : _c("div", [_c("h3", [_vm._v("non ci sono appartamenti")])])])])]);
 };
 
@@ -2596,10 +2629,134 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col text-center"
-  }, [_c("h2", {}, [_vm._v("Appartamenti in evidenza")])])]);
+    staticClass: "images d-flex wrapper-box"
+  }, [_c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/35919456-df89-4024-ad50-5fcb7a472df9.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Minicase")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Isole")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Case Organiche")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/4759a0a7-96a8-4dcd-9490-ed785af6df14.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("lutre")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/5ed8f7c7-2e1f-43a8-9a39-4edfc81a3325.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("B&B")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Parchi nazionali")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Baite")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Wow!")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Spiaggia")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/31c1d523-cc46-45b3-957a-da76c30c85f9.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Camper")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Dimore storiche")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Design")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/8b44f770-7156-4c7b-b4d3-d92549c8652f.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Polo Nord")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/757deeaa-c78f-488f-992b-d3b1ecc06fc9.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Sulle piste")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/c8bba3ed-34c0-464a-8e6e-27574d20e4d2.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Sci")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/1d477273-96d6-4819-9bda-9085f809dad3.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("A-frame")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Case sull'albero")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/957f8022-dfd7-426c-99fd-77ed792f6d7a.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Surf")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("span", [_vm._v("Piscine")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Campagna")])]), _vm._v(" "), _c("div", [_c("img", {
+    staticClass: "i1wps9q8 dir dir-ltr",
+    attrs: {
+      src: "https://a0.muscache.com/pictures/a6dd2bae-5fd0-4b28-b123-206783b5de1d.jpg",
+      alt: ""
+    }
+  }), _c("span", [_vm._v("Nel deserto")])])]);
 }];
 render._withStripped = true;
 
@@ -7411,7 +7568,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .container-bb[data-v-04c29797] {\n  margin: 0 20px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}", ""]);
+exports.push([module.i, "h2[data-v-04c29797] {\n  margin-top: 30px;\n}\n.search[data-v-04c29797] {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.front-container .container-bb[data-v-04c29797] {\n  margin: 0 20px;\n}\n.front-container .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.front-container .card img[data-v-04c29797] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n}\n.front-container .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.front-container .card .description[data-v-04c29797] {\n  color: grey;\n}\n.front-container .card a[data-v-04c29797] {\n  margin-top: 7px;\n}\n.wapper-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 80%;\n}\n.wapper-container i[data-v-04c29797] {\n  border: 2px solid #b1b1b1;\n  border-radius: 50%;\n  padding: 3px 5px;\n  margin-bottom: 10px;\n  cursor: pointer;\n}\n.wapper-container .images[data-v-04c29797] {\n  width: 75%;\n  overflow-x: auto;\n}\n.wapper-container .images div img[data-v-04c29797] {\n  cursor: pointer;\n  width: 32px;\n  height: 32px;\n  margin-inline: 30px;\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images div span[data-v-04c29797] {\n  cursor: pointer;\n  font-size: 11px;\n  font-weight: 700;\n  color: #939393;\n}\n.wapper-container .images div[data-v-04c29797]:hover {\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images[data-v-04c29797] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}", ""]);
 
 // exports
 
@@ -55514,6 +55671,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./storage/app/public/logo-boolbnb.png":
+/*!*********************************************!*\
+  !*** ./storage/app/public/logo-boolbnb.png ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-boolbnb.png?d34261645dcaeaafa0c0a1e61f56eb1a";
 
 /***/ }),
 

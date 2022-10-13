@@ -4,7 +4,7 @@
         <div class="container text-white d-flex flex-wrap align-items-center justify-content-between">
             <div class="logo-footer">
                 <a class="navbar-brand" href="http://127.0.0.1:8000">
-                    <!-- <img class="logo" src="../../../public/storage/logo-boolbnb-white.png" alt="Logo BoolBnb"> -->
+                    <!-- <img class="logo" src="../../../public/storage/logo-boolbnb.png" alt="Logo BoolBnb"> -->
                 </a>
             </div>
             <div class="contact-footer d-flex justify-content-around flex-wrap align-items-center">
