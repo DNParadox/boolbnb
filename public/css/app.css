@@ -10948,6 +10948,7 @@ a.text-dark:focus {
 
 .ura_header .nav_menu .ul_links .icon {
   font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 
 .ura_header .nav_menu .ul_links .links {
@@ -10966,8 +10967,7 @@ a.text-dark:focus {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: lightcoral;
-  border: 1px solid black;
+  background-color: #ff385c;
   margin-inline: 6px;
 }
 
@@ -10979,10 +10979,6 @@ a.text-dark:focus {
   width: 100%;
   align-items: center;
   justify-content: center;
-}
-
-.ura_header .icon-container:active {
-  border: 2px solid black;
 }
 
 .ura_header .profile_header {
@@ -11183,6 +11179,8 @@ a.text-dark:focus {
 
 .apartment-container .info {
   margin: 10px 0;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .apartment-container .info a {
@@ -11258,6 +11256,7 @@ section {
 .sponsor-btn:hover {
   background-color: #ff385c;
   color: white;
+  transition: color 1s;
 }
 
 h1 {
@@ -11311,7 +11310,6 @@ h1 {
   font-size: 14px;
   font-weight: 800;
   background-color: #d0d0d0;
-  /* background-image: linear-gradient(270deg, #c7c7c7 45%, #989898 100%); */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   cursor: pointer;
   transition: background 0.1s;
@@ -11410,35 +11408,6 @@ h1 {
   text-align: left;
 }
 
-.payment-options {
-  display: flex;
-  width: 700px;
-  margin: 0 auto;
-  justify-content: space-between;
-}
-
-.payment-options .payment-row {
-  border: 1px solid #ff385c;
-  border-radius: 20px;
-  font-size: 20px;
-  width: 200px;
-  padding-left: 16px;
-  padding-block: 20px;
-}
-
-.payment-options .pointer {
-  cursor: pointer;
-  background-color: #ff385c;
-  margin-right: 50%;
-  padding-left: 20px;
-  border-radius: 20px;
-}
-
-.payment-wrapper {
-  margin: 50px auto;
-  width: 50%;
-}
-
 .logosize {
   width: 150px;
   height: 30px;
@@ -11467,5 +11436,62 @@ a:hover {
 
 img {
   width: 100%;
+}
+
+.payment-options {
+  display: flex;
+  /* width: 700px; */
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.payment-options .payment-col {
+  /* background-color: #dcdcdc; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 0 0 20px 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.payment-options .payment-col .payment-info {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.payment-options .payment-col .sponsorship-name {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 20px 20px 0 0;
+  font-size: 30px;
+  font-weight: 800;
+  padding: 0 20px;
+}
+
+.payment-options .payment-col .bronze {
+  background-color: #edca9d;
+}
+
+.payment-options .payment-col .gold {
+  background-color: #ffe866;
+}
+
+.payment-options .payment-col .platinum {
+  background-color: #dcdcdc;
+}
+
+.payment-options .pointer {
+  cursor: pointer;
+  background-color: #ff385c;
+  color: white;
+  font-weight: 800;
+  text-align: center;
+  padding: 4px 0;
+  border-radius: 20px;
+}
+
+.payment-wrapper {
+  margin: 50px auto;
+  width: 50%;
 }
 

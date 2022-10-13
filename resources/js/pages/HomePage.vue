@@ -60,21 +60,21 @@
                 <!-- Card -->
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12" v-for="currentApartment in currentApartmentsSponsored" :key="currentApartment.id">
                     <div class="card mx-sm-auto mx-md-0">
-                    <!-- Inside Card -->
-                    <router-link :to="{name: 'single-apartment', 
-                    params: { id: currentApartment.id }
-                    }">
-                        <img :src="currentApartment.photo" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4>{{ currentApartment.title }}</h4>
-                            <div class="description">
-                                <div>Host Professionista</div>
-                                <div>{{ currentApartment.address }}</div>
-                                <span>{{currentApartment.price ? currentApartment.price : '80' }} € a notte</span>
+                        <!-- Inside Card -->
+                        <router-link :to="{name: 'single-apartment', 
+                        params: { id: currentApartment.id }
+                        }">
+                            <img :src="currentApartment.photo" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between"><h5>{{ currentApartment.title }}</h5><span><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ randomValutation() }}</span></div>
+                                <div class="description">
+                                    <div>Host Professionista</div>
+                                    <div>{{ getText(currentApartment.address)  }}</div>
+                                    <span>{{currentApartment.price ? currentApartment.price + '€ a notte': 'Per info contatta la struttura' }} </span>
+                                </div>
                             </div>
-                        </div>
-                    </router-link>
-                </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
             <div v-else>
@@ -180,6 +180,20 @@ export default {
         scroll_right() {
             let content = document.querySelector(".wrapper-box");
             content.scrollLeft += 80;
+        },
+        getText(text){
+            let sliced = text;
+            if(text.length > 24){
+               sliced = sliced.slice(0, 24) + '...';
+            }
+
+            return sliced;
+        },
+        randomValutation(){
+
+            let value = Math.random() * (4.98 - 0.5) + 0.5;
+            value = String(value).slice(0, 4);
+            return value;
         }
     },
     mounted(){
@@ -223,7 +237,7 @@ h2 {
         border: none;
         background-color: inherit;
         img {
-            border-radius: 24px;
+            border-radius: 14px;
             aspect-ratio: 1 / 1;
         }
         .card-body {
@@ -245,7 +259,8 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%; 
+    z-index: 9999;
+    background-color: inherit;
 
     i{
         border: 2px solid #b1b1b1;

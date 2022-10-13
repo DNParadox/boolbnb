@@ -10,17 +10,17 @@
       </div>
     @endif
     @if ($have_one)
-    <h2 class="mt-4">{{$apartments->title}}</h2>
+    {{-- <h2 class="mt-4">{{$apartments->title}}</h2>
     <div>
       {{$apartments->address}}
     </div>
     {{-- Info apartments --}}
-    <div>
+    {{-- <div>
       <span>numero di stanze {{$apartments->room_number}} | </span>
       <span>numero letti {{$apartments->room_number}} | </span>
       <span>numero bagni {{$apartments->room_number}} | </span>
       <span>metri quadri {{$apartments->room_number}}</span>
-    </div>
+    </div>  --}}
     
     <hr class="mb-5">
 
@@ -31,35 +31,44 @@
           
           <div class="right-part">
 
+
+            {{-- Title --}}
+            <h2 class="mt-4">{{$apartments->title}}</h2>
+
+            {{-- Indirizzo --}}
+            <div>    
+              {{$apartments->address}}
+            </div>
+      
             {{-- Description --}}
             <p>{{$apartments->description}}</p>
+
+            <div class="services">
+              <h5>Informazioni appartamento:</h5>
+              <div>
+                <span>Numero di stanze {{$apartments->room_number}} | </span>
+                <span>Numero letti {{$apartments->room_number}} | </span>
+                <span>Numero bagni {{$apartments->room_number}} | </span>
+                <span>Metri quadri {{$apartments->room_number}}</span>
+              </div> 
+            </div>
 
             {{-- Services --}}
             <div class="services">
               <h5>Servizi offerti: </h5>
               @foreach ($apartments->service as $service)
-              @if ($loop->last)
-              <span>{{$service->name}}</span>
-              @else
-                <span>{{$service->name}} - </span>  
-              @endif   
+                @if ($loop->last)
+                  <span>{{$service->name}}</span>
+                @else
+                  <span>{{$service->name}} - </span>  
+                @endif   
               @endforeach              
             </div>
 
             {{-- Price --}}
             <h4>80 € a notte</h4>
 
-            {{-- Button --}}
-            <div class="modification">
-              <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn ms-btn">Modifica</a>
-            
-    
-              <form action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input class="btn ms-btn mt-2" onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
-              </form>
-            </div>
+        
 
           </div>
 
@@ -67,12 +76,21 @@
 
         <div class="info">
           <a href="{{ route('logged.message') }}" class="btn ms-btn">Vedi Messaggi</a>
-          <a class="btn ms-btn" href="#">Statistiche</a>
+          <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn ms-btn">Modifica</a>
+            
+    
+          <form class="d-inline" action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input class="btn ms-btn " onClick="return confirm('Sei sicuro di voler cancellare?');" type="submit" value="Elimina">
+          </form>
 
-          <div class="container">
-            <canvas id="myChart"></canvas>
-          </div>
           
+        </div>
+
+
+        <div class="container">
+          <canvas id="myChart"></canvas>
         </div>
         <hr m-5>
       </div> 
@@ -89,7 +107,9 @@
 
     
 
- 
+ <script>
+
+ </script>
 
 
 
