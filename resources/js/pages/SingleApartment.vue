@@ -1,10 +1,10 @@
 <template>
     <div class="single">
         <div class="container mt-3" v-if="apartment">
-            <h2 class="mt-3">{{apartment.title}}</h2>
+            <h1 class="mt-3">{{apartment.title}}</h1>
             <div class="d-flex justify-content-between">
-                <span><span class="mr-1"><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ randomValutation() }}</span> · <span><a href="">{{ randomRecensioni() }} recensioni</a></span></span>
-                <span><span class="box-share"><i class="fa-solid fa-arrow-up-from-bracket"></i> condividi</span><span class="box-share"><i class="fa-regular fa-heart"></i> save</span></span>
+                <span><span class="mr-1"><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ randomValutation() }}</span> · <span><a href="">{{ randomRecensioni() }} recensioni</a></span> · <span><a href="">{{apartment.address}}</a></span></span>
+                <span><span class="box-share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Condividi</span><span class="box-share"><i class="fa-regular fa-heart"></i> Salva</span></span>
             </div>
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
@@ -19,10 +19,12 @@
                 </div>
             </div>
 
+            <!-- Bottom part -->
             <div class="row bottom-part">
                 <div class="col-md-8 left">
-                    
-                    <h2 class="mt-3">{{apartment.title}}</h2>
+                    <!-- Title and Host -->
+                    <h3 class="mt-3">{{apartment.title}} - Host: {{user.name}}</h3>
+                    <!-- More info -->
                     <div class="info">
                         <span>4 ospiti</span>
                         <span>{{ apartment.room_number }} camere da letto</span>
@@ -30,20 +32,45 @@
                         <span>{{ apartment.bathroom }} bagni</span>
                         <span>{{ apartment.square_meters }} metri quadri</span>
                     </div>
+                    <hr>                        
+                    
+                    <!-- Project and other -->
+                    <div class="mb-2 d-flex alignment-info">
+                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="display: block; height: 24px; width: 24px; fill: currentcolor;" aria-hidden="true" role="presentation" focusable="false"><path d="m2 4c0-.85216986.98551359-1.29743382 1.62252676-.78322518l.08458002.0761184 25.00000002 24.99999998c.6025751.6025751.2205609 1.6142876-.5934759 1.7011235l-.1136309.0059833h-25c-.51283584 0-.93550716-.3860402-.99327227-.8833789l-.00672773-.1166211zm2 2.415v21.585h21.585l-4.085-4.086-1.7928932 1.7931068-1.4142136-1.4142136 1.7921068-1.7938932-2.585-2.585-1.7928932 1.7931068-1.4142136-1.4142136 1.7921068-1.7938932-2.585-2.585-1.7928932 1.7931068-1.4142136-1.4142136 1.7921068-1.7938932-2.585-2.585-1.79289322 1.7931068-1.41421356-1.4142136 1.79210678-1.7938932zm3 10.585c0-.8521699.98551359-1.2974338 1.62252676-.7832252l.08458002.0761184 7.00000002 7c.6025751.6025751.2205609 1.6142876-.5934759 1.7011235l-.1136309.0059833h-7c-.51283584 0-.93550716-.3860402-.99327227-.8833789l-.00672773-.1166211zm5.2928932-15.20710678c.360484-.36048396.927715-.3882135 1.3200062-.08318861l.0942074.08318861 15.5 15.49999998c.0578584.0578584.1082864.1224881.1502461.1923778l.0564586.1085905 2 4.5c.3320921.7472072-.3209586 1.5376556-1.0949471 1.3900057l-.1062123-.0260409-5-1.5c-.1188824-.0356647-.2297327-.0930392-.3270948-.1688646l-.0926641-.0818549-15.49999998-15.50000002c-.36048396-.36048396-.3882135-.92771502-.08318861-1.32000622l.08318861-.09420734zm-3.2928932 17.62210678v3.585h3.585zm7.25-12.251-1.585 1.585 11.365 11.366 2.672.801-1.04-2.339zm-3.25-3.249-1.585 1.585 1.835 1.834 1.585-1.585z"></path></svg><div class="ml-2"><span class="sub-title">Progettato da</span><div class="sub-title-2">Ibuku Bamboo Architecture and Design</div></div>
+                    </div>
+                    <div class="mb-3 d-flex alignment-info">
+                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="display: block; height: 24px; width: 24px; fill: currentcolor;" aria-hidden="true" role="presentation" focusable="false"><path d="m1.66675 2.67728c0-1.29010774 1.19757945-2.22892485 2.43214873-1.95293212l.14254843.03728562 11.76455284 3.5293665 11.7747926-3.3852093c1.1836744-.3403064 2.3638086.45712676 2.5321485 1.63303369l.0152796.14287691.0051793.1462187v23.09468c0 .8279727-.5091718 1.5640524-1.2698418 1.8619846l-.155411.0536419-12.6207 3.7862c-.1499506.0449851-.3078242.0539821-.4609439.026991l-.1137505-.026991-12.62071315-3.786204c-.79308169-.2379357-1.35183119-.937138-1.41857691-1.7513494l-.00671274-.1642731zm1.99999664.00000464v23.24528886l12.33325336 3.6994265 12.3334-3.6994076v-23.0946724l-12.0569924 3.46639925c-.1474472.0423911-.3021582.05014891-.4521925.02334213l-.1114623-.02658488zm21.66607876 17.47821536v2.088l-9.333 2.8v-2.087zm0-6v2.088l-9.333 2.8v-2.087zm0-5.999v2.087l-9.333 2.8v-2.087z"></path></svg><div class="ml-2"><span class="sub-title">In primo piano</span><div class="sub-title-2">Ibuku Bamboo Architecture and Design</div></div>
+                    </div>
+                    <div class="mb-2 d-flex alignment-info">
+                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="display: block; height: 24px; width: 24px; fill: currentcolor;" aria-hidden="true" role="presentation" focusable="false"><path d="m11.6667 0-.00095 1.666h8.667l.00055-1.666h2l-.00055 1.666 6.00065.00063c1.0543745 0 1.9181663.81587127 1.9945143 1.85073677l.0054857.14926323v15.91907c0 .4715696-.1664445.9258658-.4669028 1.2844692l-.1188904.1298308-8.7476886 8.7476953c-.3334303.3332526-.7723097.5367561-1.2381975.5778649l-.1758207.0077398h-12.91915c-2.68874373 0-4.88181754-2.1223321-4.99538046-4.7831124l-.00461954-.2168876v-21.66668c0-1.05436021.81587582-1.91815587 1.85073739-1.99450431l.14926261-.00548569 5.999-.00063.00095-1.666zm16.66605 11.666h-24.666v13.6673c0 1.5976581 1.24893332 2.9036593 2.82372864 2.9949072l.17627136.0050928 10.999-.0003.00095-5.6664c0-2.6887355 2.122362-4.8818171 4.7832071-4.9953804l.2168929-.0046196 5.66595-.0006zm-.081 8-5.58495.0006c-1.5977285 0-2.9037573 1.2489454-2.9950071 2.8237299l-.0050929.1762701-.00095 5.5864zm-18.586-16-5.999.00062v5.99938h24.666l.00065-5.99938-6.00065-.00062.00055 1.66733h-2l-.00055-1.66733h-8.667l.00095 1.66733h-2z"></path></svg><div class="ml-2"><span class="sub-title">Cancellazione gratuita entro il giorno 30</span></div>
+                    </div>
+                    
                     <hr>
+                    <!-- Address -->
                     <div class="address"><i class="fa-solid fa-location-dot mr-1"></i>{{apartment.address}}</div>
-                    <div class="description">
+
+                    <hr>
+                    <!-- Protection -->
+                    <div class="cover-services">
+                        <img src="https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg" alt="cover-image">
+                        <p>Ogni prenotazione include una protezione gratuita in caso di cancellazione da parte dell'host, di inesattezze dell'annuncio e di altri problemi come le difficoltà in fase di check-in.</p>
+                        <a href="#">Per saperne di più</a>
+                    </div>
+
+                    <hr>
+                    <!-- Description -->
+                    <div class="description">                        
                         <p>{{apartment.description}}</p>
                     </div>
 
                     <hr>
-
+                    <!-- Services -->
                     <h4>Cosa troverai</h4>
                     <div class="services">
                         <div v-for="service in apartment.service" :key="service.id"><i :class="service.icon"></i> {{ service.name }}</div>
                     </div>
 
-                    <hr>
+                   
                 </div>
 
                 <div class="col-md-4 right">
@@ -69,7 +96,94 @@
                 </div>
             </div>
         </div>
-
+        
+        <div>
+            <hr>
+            <div class="mt-3 review">
+                <span class="review-title"><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ star }}</span> · <span class="review-title"><a href="">{{ recensioni }} recensioni</a></span>
+                <div><span class="review-subtitle">Scopri di più sulle recensioni</span><i class="fa-solid fa-circle-info ml-2"></i></div>
+                <div class="container p-0 mt-2">
+                    <div class="row">                    
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    Pulizia
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    Precisione
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                    
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    Comunicazione
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    Posizione
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                    
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    Check-in
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 86%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    Qualità\prezzo
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 79%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
     </div>
 </template>
 
@@ -87,6 +201,9 @@ export default {
             email: '',
             note: '',
             send: false,
+            user: null,
+            recensioni: null,
+            star: null,
         }
     },
     methods: {
@@ -96,6 +213,7 @@ export default {
             if(response.data.success){
                 console.log(response);
                 this.apartment = response.data.results;
+                this.user = response.data.user;
                 this.center = {lng: parseFloat(response.data.results.longitude), lat: parseFloat(response.data.results.latitude)};
             } else {
                 this.$router.push({name: 'not-found'})
@@ -133,12 +251,14 @@ export default {
         },
         randomValutation(){
 
-            let value = Math.random() * (4.98 - 0.5) + 0.5;
+            let value = Math.random() * (4.98 - 3.5) + 3.5;
             value = String(value).slice(0, 4);
+            this.star = value;
             return value;
         },
         randomRecensioni(){
-            let value = Math.floor(Math.random() * 1500)+1;
+            let value = Math.floor(Math.random() * 1500) + 100;
+            this.recensioni = value;
             return value;
         }
     },
@@ -151,7 +271,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.single{
+    margin-bottom: 65px;
+
+    h1{
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+}
+
+.cover-services{
+    img{
+        width: 16%;
+        margin-block: 0.5rem 1.5rem;
+    }
+
+    a{
+        text-decoration: underline;
+    }
+}
+
+.alignment-info{
+    align-items: center;
+
+    .sub-title{
+        font-weight: 700;
+    }
+    .sub-title-2{
+        color: grey;
+    }
+}
+
 .container {
+    
     .address {
       color: grey; 
       margin-bottom: 20px; 
@@ -166,11 +319,6 @@ export default {
         } 
     }
 
-    /* .mapboxgl-canvas {
-        width: 100%;
-        height: 400px;
-    } */
-
     .map {
         width: 100%;
         height: 100%;
@@ -184,7 +332,8 @@ export default {
     .bottom-part {
         display: flex;
         justify-content: space-between;
-        padding: 30px 0;
+        padding: 30px 0 0;
+        position: relative;
 
         .left {
             .info {
@@ -220,8 +369,10 @@ export default {
         }
 
         .right {
-
+            position: relative;
             .contact {
+                position: sticky;
+                top: 10%;
                 border: 1px solid lightgray;
                 border-radius: 15px;
                 padding: 10px;
@@ -233,18 +384,46 @@ export default {
     .box-share{
         padding: 5px 7px;
         margin-left: 8px;
+        cursor: pointer;
         &:hover{
-            background-color: lightgrey;    
+            background-color: rgb(244, 244, 244);    
             border-radius: 12px;
+            
         } 
     }
 
-    .color-btn-message{
+    .color-btn-message{       
         color: white;
         background-color: #ff385c;
         width: 100%;
         margin-bottom: 0.6rem;
     }
     
+
+}   
+.review{
+    width: 64%;
+    margin: 0 auto;
+
+    .review-title{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .progress{
+        height: 0.3rem;
+        .progress-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            color: #ffffff;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #000000;
+            transition: width 0.6s ease;
+        }
+    }
+
 }
 </style>

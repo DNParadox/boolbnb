@@ -1,28 +1,27 @@
 <template>
-<div>
-    <h2 class="text-center">Trova l'alloggio che fa per te...</h2>
-    <div class="search">
-      <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo..." v-model="currentSearch" @input="autocomplete()">
-      <datalist id="autocomplete">
+<div class="width">
+    <div class="mb-4 d-flex justify-content-between align-items-center research-menu">
+        <div class="logo">
+            <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
+            <span>Boolbnb</span>
+        </div>
+        <div class="search">
+            <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo..." v-model="currentSearch" @input="autocomplete()">
+            <datalist id="autocomplete">
 
-      </datalist>
-      <button class="ms_btn" type="submit" @click="filterByDistance()"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+            </datalist>
+            <button class="ms_btn" type="submit" @click="filterByDistance()"><i class="fa-solid fa-magnifying-glass icon"></i></button>
 
+        </div>
+        <div class="user">
+            <img src="../../../public/storage/logo-boolbnb.png" alt="BoolBnB">
+        </div>
     </div>
-    <div v-if="filteredApartments.length > 0">
-        {{this.$router.push({
-                name: 'search', 
-                params: {
-                    currentPosition: currentSearchPosition,
-                }
-            }) 
-        }}
-    </div>
-    <!-- Inizio  -->
+
     
-    <section class="front-container container-fluid" v-else>
+    <div>
         <!-- Row -->
-        <hr>
+        <hr class="mb-3">
         <div class="row">
             <!-- Col -->
             <div class="col text-center wapper-container">
@@ -54,7 +53,7 @@
             </div>
         </div>
         <!-- Row -->
-        <div class="container-bb">
+        <div class="container-xxl">
             <!-- Col -->
             <div class="row d-flex" v-if="currentApartmentsSponsored">
                 <!-- Card -->
@@ -81,7 +80,7 @@
                 <h3>non ci sono appartamenti</h3>
             </div>          
         </div>
-    </section>
+    </div>
 </div>  
 </template>
 
@@ -165,13 +164,13 @@ export default {
         };
         },
         filterByDistance(){
-            this.filteredApartments = [];
-            this.currentApartments.forEach((apartment)=> {
-                parseFloat(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
-                if(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
-                    this.filteredApartments.push(apartment);
+
+            this.$router.push({
+                name: 'search', 
+                params: {
+                    currentPosition: this.currentSearchPosition,
                 }
-            })
+            })     
         },
         scroll_left() {
             let content = document.querySelector(".wrapper-box");
@@ -204,11 +203,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-    margin-top: 30px;
+.research-menu{
+    margin-top: 20px;
+    padding-inline: 15px;
+    img{
+        width: 40px;
+    }
+}
+
+.width{
+    width: 100%;
+    overflow: hidden;
 }
 .search {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     
@@ -227,13 +234,11 @@ h2 {
         border-radius: 0 7px 7px 0;
     }
 }
-.front-container{
 
-    .container-bb {
-        margin: 0 20px;
-    }
-    .card {
-        margin-top: 3rem;;
+.container-xxl {
+    padding-inline: 15px;
+    .card {     
+        margin-top: 3rem;
         border: none;
         background-color: inherit;
         img {
@@ -252,6 +257,7 @@ h2 {
             margin-top: 7px;
         }
     }
+  
 }
 
 
