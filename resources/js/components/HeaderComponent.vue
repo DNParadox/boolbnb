@@ -32,13 +32,13 @@
             </div>
         </header>
 
-        <div class="f-banner">
+        <!-- <div class="f-banner">
             <div class="container">
                 <div class="text-center">
                         <router-link :to="{name: 'search'}"><h2>Ricerca case e appartamenti in affitto</h2></router-link>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
         
 </template> 

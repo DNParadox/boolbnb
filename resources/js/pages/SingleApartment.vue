@@ -1,11 +1,12 @@
 <template>
     <div class="single">
-        <div class="container" v-if="apartment">
+        <div class="container mt-3" v-if="apartment">
             <h2 class="mt-3">{{apartment.title}}</h2>
-            <div class="address"><i class="fa-solid fa-location-dot"></i>{{apartment.address}}</div>
-
-            <hr>
-            <div class="row">
+            <div class="d-flex justify-content-between">
+                <span><span class="mr-1"><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ randomValutation() }}</span> · <span><a href="">{{ randomRecensioni() }} recensioni</a></span></span>
+                <span><span class="box-share"><i class="fa-solid fa-arrow-up-from-bracket"></i> condividi</span><span class="box-share"><i class="fa-regular fa-heart"></i> save</span></span>
+            </div>
+            <div class="row mt-3">
                 <div class="col-md-6 mb-3">
                     <div class="image">
                         <img :src="apartment.photo" class="card-img-top" alt="apartment.title">
@@ -20,18 +21,17 @@
 
             <div class="row bottom-part">
                 <div class="col-md-8 left">
-
-                    <hr>
-
+                    
+                    <h2 class="mt-3">{{apartment.title}}</h2>
                     <div class="info">
-                        <span>Camere da letto: {{ apartment.room_number }}</span>
-                        <span>Letti: {{ apartment.bed_number }}</span>
-                        <span>Bagni: {{ apartment.bathroom }}</span>
+                        <span>4 ospiti</span>
+                        <span>{{ apartment.room_number }} camere da letto</span>
+                        <span>{{ apartment.bed_number }} letti</span>
+                        <span>{{ apartment.bathroom }} bagni</span>
                         <span>{{ apartment.square_meters }} metri quadri</span>
                     </div>
-
                     <hr>
-
+                    <div class="address"><i class="fa-solid fa-location-dot mr-1"></i>{{apartment.address}}</div>
                     <div class="description">
                         <p>{{apartment.description}}</p>
                     </div>
@@ -63,7 +63,7 @@
                                 <label for="user-message" class="form-label">Messaggio *</label>
                                 <textarea class="form-control" id="user-message" v-model="note" rows="5" required="required"></textarea>
                             </div>
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn color-btn-message">
                         </form>        
                     </div>
                 </div>
@@ -130,6 +130,16 @@ export default {
         },
         sendInfo(){
             this.send = false;
+        },
+        randomValutation(){
+
+            let value = Math.random() * (4.98 - 0.5) + 0.5;
+            value = String(value).slice(0, 4);
+            return value;
+        },
+        randomRecensioni(){
+            let value = Math.floor(Math.random() * 1500)+1;
+            return value;
         }
     },
     created(){
@@ -178,10 +188,9 @@ export default {
 
         .left {
             .info {
-                margin-top: 25px;
                 font-size: 18px; 
                 span:not(:last-child)::after {
-                    content: ' | ';
+                    content: ' · ';
                 }
             }
 
@@ -194,7 +203,7 @@ export default {
             }
 
             .services {
-                font-size: 18px;
+                font-size: 16px;
                 display: flex;
                 justify-content: flex-start;
                 flex-wrap: wrap;
@@ -205,6 +214,7 @@ export default {
                 } 
                 div{
                     margin-right: 16px; 
+                    width: 40%;
                 }            
             }
         }
@@ -218,6 +228,22 @@ export default {
                 box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
             }
         }
+    }
+
+    .box-share{
+        padding: 5px 7px;
+        margin-left: 8px;
+        &:hover{
+            background-color: lightgrey;    
+            border-radius: 12px;
+        } 
+    }
+
+    .color-btn-message{
+        color: white;
+        background-color: #ff385c;
+        width: 100%;
+        margin-bottom: 0.6rem;
     }
     
 }
