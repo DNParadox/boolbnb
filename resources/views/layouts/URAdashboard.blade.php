@@ -59,25 +59,25 @@
           <div class="col d-flex justify-content-end">
             <div class="profile_header">
               <div class="icon-container pr2 dropdown-btn"> <i class="fa-solid fa-user icon"></i></div>
-                <ul class="dropdown-container tr">
-                    <li class="nav-item"> 
-                      <a class="nav-link" href="#">
-                        Messaggi
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                      Logout
-                      </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    </li>
-                </ul>
-              </div>
-        </div>
+              <ul class="dropdown-container tr">
+                <li class="nav-item"> 
+                  <a class="nav-link" href="#">
+                    Messaggi
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                  Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
       </nav>
     </div>
   </header>
@@ -85,23 +85,27 @@
   <main role="main">
     <div class="register mb-4">
       <div class="container">
-        <div class="text">
-          @if ($have_one)
-            <h1>Inserisci il tuo appartamento nella sezione in Evidenza</h1>
-          @else
-            <h1>Apri le porte ai viaggiatori</h1>
-          @endif
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6 text">
+            @if ($have_one)
+              <h2>Inserisci il tuo appartamento nella sezione in Evidenza</h2>
+            @else
+              <h2>Apri le porte ai viaggiatori</h2>
+            @endif
+          </div>
+      
+          <div class="col-md-6">
+            @if ($have_one)
+              <div class="r-button">
+                <a class="btn sponsor-btn" href="#">Sponsorizza</a>
+              </div>
+            @else
+              <div class="r-button">
+                <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
+              </div>
+            @endif
+          </div>
         </div>
-    
-        @if ($have_one)
-          <div class="r-button">
-            <a class="btn sponsor-btn" href="#">Sponsorizza</a>
-          </div>
-        @else
-          <div class="r-button">
-            <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
-          </div>
-        @endif
       </div>
     </div>
       @yield('content')
