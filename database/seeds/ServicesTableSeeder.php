@@ -16,7 +16,7 @@ class ServicesTableSeeder extends Seeder
         $services = [
             [
                 'name' => 'WiFi',
-                'icon' => 'fa fa-car'
+                'icon' => 'fa-solid fa-wifi'
             ],
             [
                 'name' => 'Posto macchina',
@@ -40,7 +40,7 @@ class ServicesTableSeeder extends Seeder
             ],
             [
                 'name' => 'BBQ',
-                'icon' => 'fa-solid fa-utensils'
+                'icon' => 'fa-solid fa-fire-burner'
             ],
             [
                 'name' => 'Colazione in camera',
