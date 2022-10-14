@@ -1,39 +1,6 @@
 .apartment-container {
-    .apartment {
-        display: flex;
-        margin-bottom: 30px;
-    
-            img {
-                border-radius: 15px;
-                aspect-ratio: 16 / 9;
-                object-fit: cover;
-            }
-    
-            .right-part {
-                margin-left: 15px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-    
-                .services {
-                    margin: 10px 0;
-                }
-    
-                .delete {
-                    margin-top: 15px;
-                }
-            }
-    
-    }
-
-    .info {
-        margin: 10px 0;
-        margin: 0 auto;
-        width: 80%; 
-
-        a {
-            margin-right: 20px;
-        }
+    .apartment{
+        
     }
 }
 

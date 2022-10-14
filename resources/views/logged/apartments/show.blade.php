@@ -10,20 +10,7 @@
       </div>
     @endif
     @if ($have_one)
-    {{-- <h2 class="mt-4">{{$apartments->title}}</h2>
-    <div>
-      {{$apartments->address}}
-    </div>
-    {{-- Info apartments --}}
-    {{-- <div>
-      <span>numero di stanze {{$apartments->room_number}} | </span>
-      <span>numero letti {{$apartments->room_number}} | </span>
-      <span>numero bagni {{$apartments->room_number}} | </span>
-      <span>metri quadri {{$apartments->room_number}}</span>
-    </div>  --}}
-    
-    <hr class="mb-5">
-
+      <h1>Visualizza nel dettaglio il tuo appartamento</h1>
       <div class="apartment-container">
         <div class="apartment">
         

@@ -1,4 +1,31 @@
 <template>
+<div class="width">
+    <div class="mb-4 d-flex justify-content-between align-items-center research-menu">
+        <div class="logo">
+            <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
+            <span class="logo-text">Boolbnb</span>
+        </div>
+        <div class="search">
+            <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo...">
+            <button class="ms_btn" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+
+        </div>
+        <div class="user" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-user login"></i>
+            <div v-if="menu_show">
+                <div class="menu">
+                    <i class="fa-solid fa-caret-up"></i>
+                    <ul class="menu-login">
+                        <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Accedi</span></a></li><hr>
+                        <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Diventa un host</span></a></li>
+                        <li><span class="ml-2">Proponi un'esperianza</span></li>
+                        <li><span class="ml-2">Assistenza</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="single">
         <div class="container mt-3" v-if="apartment">
             <h1 class="mt-3">{{apartment.title}}</h1>
@@ -185,6 +212,8 @@
             </div>   
         </div>
     </div>
+</div>
+    
 </template>
 
 <script>
@@ -204,6 +233,7 @@ export default {
             user: null,
             recensioni: null,
             star: null,
+            menu_show: false,
         }
     },
     methods: {
@@ -271,6 +301,109 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.research-menu{
+    margin-top: 20px;
+    padding-inline: 15px;
+    
+    .logo{
+        
+        *{
+            vertical-align: middle;
+        }
+
+        img{
+            width: 40px;
+        }
+
+        .logo-text{
+            margin-left: 6px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ff385c;
+        }  
+    }
+    
+    .search {
+        display: flex;
+        justify-content: center;
+        
+        .bar {
+            width: 300px;
+            padding: 10px;
+            border-radius: 7px 0 0 7px;
+            border: 1px solid lightgray;
+        }
+
+        .ms_btn {
+            padding: 10px 15px;
+            background-color: #ff385c;
+            color: white;
+            border: none;
+            border-radius: 0 7px 7px 0;
+        }
+    }
+
+    .user{
+        position: relative;
+
+        .login{
+            font-size: 22px;
+            margin-right: 12px;
+            padding: 8px;
+            border: 2px solid #ff385c;
+            border-radius: 20px;
+            color: #ff385c;
+        }
+
+        .menu{
+            margin-top: 10px;
+            padding: 12px 0;
+            position: absolute;
+            z-index: 99999;
+            right: 10px;
+            left: -140px;
+            border: 1px solid #939393;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+
+            i{
+                position: absolute;
+                top: -9px;
+                right: 16px;
+                color: #939393;
+            }
+
+            .menu-login{
+                li{
+                    padding-block: 5px;
+                }
+                li:hover{
+                    background-color: #e3e3e3;
+                } 
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+  .research-menu{
+    .logo{
+      display: none;  
+    }
+
+    .search {  
+      .bar {
+        width: 160px;
+      }
+    }
+  }
+
+    .width{
+        margin-bottom: 80px;
+    }
+}
+
 .single{
     margin-bottom: 65px;
 
@@ -376,7 +509,6 @@ export default {
                 border: 1px solid lightgray;
                 border-radius: 15px;
                 padding: 10px;
-                box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
             }
         }
     }
