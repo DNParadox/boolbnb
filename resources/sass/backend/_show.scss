@@ -1,6 +1,11 @@
 h2{
     font-size: 35px;
 }
+
+.address{
+    font-size: 18px;
+}
+
 .apartment-container {
 
     .apartment{
@@ -16,7 +21,18 @@ h2{
             }
         }
     }
+
+
+    .detail-show{
+        margin-top: 2.2rem;
+
+        .detail-apartment{
+            width: 50%;
+        }
+    }
 }
+
+
 
 @media screen and (max-width: 1000px) {
     .apartment-container {

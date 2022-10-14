@@ -11125,6 +11125,10 @@ h2 {
   font-size: 35px;
 }
 
+.address {
+  font-size: 18px;
+}
+
 .apartment-container .apartment {
   display: flex;
   justify-content: center;
@@ -11137,6 +11141,14 @@ h2 {
 .apartment-container .apartment .col-apartment img {
   aspect-ratio: 16/9;
   border-radius: 20px;
+}
+
+.apartment-container .detail-show {
+  margin-top: 2.2rem;
+}
+
+.apartment-container .detail-show .detail-apartment {
+  width: 50%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -11387,10 +11399,16 @@ h1 {
 .content-form-apt .btn-content .btn-apt {
   width: 100%;
   background-color: #ff385c;
+  color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border: 1px solid #ff385c;
   font-weight: 800;
   border-radius: 20px;
+}
+
+.content-form-apt .btn-content .btn-apt:hover {
+  background-color: white;
+  color: #ff385c;
 }
 
 .content-form-apt .media-upload .form-control {

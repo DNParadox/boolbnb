@@ -34,6 +34,7 @@ class ApartmentController extends Controller
         $user = Auth::user();
         $have_one = true;
         $last_sponsorship = false;
+        $sponsor_detail =  null;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
         // $sponsor = ApartmentSponsorship::all();
@@ -42,7 +43,7 @@ class ApartmentController extends Controller
             // ricerca dell'ultima sponsorizzazione
             $last_sponsorship = ApartmentSponsorship::Where('apartment_id', '=', $apartments->id)->get();  
 
-            if($last_sponsorship){
+            if(count($last_sponsorship) > 0){
                 $sponsor_detail = Sponsorship::find($last_sponsorship[count($last_sponsorship) - 1]->sponsorship_id);
             }
         }

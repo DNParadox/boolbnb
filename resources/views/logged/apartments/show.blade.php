@@ -10,16 +10,24 @@
     @if ($have_one)
       <h1>Visualizza nel dettaglio il tuo appartamento</h1>
       <h2>{{$apartments->title}}</h2>
+      <div class="address mb-2">{{$apartments->address}}</div>
       <div class="apartment-container">
         <div class="apartment">
           <div class="col-apartment">
             <img src="{{ asset( 'storage/' . $apartments->photo) }}" alt="{{$apartments->title}}" alt="nome appartamento">
           </div>      
         </div>
+        <div class="detail-show">
+          <div class="detail-apartment">
+            <h2>{{$apartments->title}}</h2>
+          </div>
+          
+        </div>
         <div class="container">
           <canvas id="myChart"></canvas>
         </div> 
-      </div> 
+      </div>
+       
     @else
       <div class="banner">
         <h2 class="text-center">Prova a ospitare su Bnb</h2>
