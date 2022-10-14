@@ -1,28 +1,38 @@
 <template>
-<div>
-    <h2 class="text-center">Trova l'alloggio che fa per te...</h2>
-    <div class="search">
-      <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo..." v-model="currentSearch" @input="autocomplete()">
-      <datalist id="autocomplete">
+<div class="width">
+    <div class="mb-4 d-flex justify-content-between align-items-center research-menu">
+        <div class="logo">
+            <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
+            <span class="logo-text">Boolbnb</span>
+        </div>
+        <div class="search">
+            <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo..." v-model="currentSearch" @input="autocomplete()">
+            <datalist id="autocomplete">
 
-      </datalist>
-      <button class="ms_btn" type="submit" @click="filterByDistance()"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+            </datalist>
+            <button class="ms_btn" type="submit" @click="filterByDistance()"><i class="fa-solid fa-magnifying-glass icon"></i></button>
 
+        </div>
+        <div class="user" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-user login"></i>
+            <div v-if="menu_show">
+                <div class="menu">
+                    <i class="fa-solid fa-caret-up"></i>
+                    <ul class="menu-login">
+                        <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Accedi</span></a></li><hr>
+                        <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Diventa un host</span></a></li>
+                        <li><span class="ml-2">Proponi un'esperianza</span></li>
+                        <li><span class="ml-2">Assistenza</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div v-if="filteredApartments.length > 0">
-        {{this.$router.push({
-                name: 'search', 
-                params: {
-                    currentPosition: currentSearchPosition,
-                }
-            }) 
-        }}
-    </div>
-    <!-- Inizio  -->
+
     
-    <section class="front-container container-fluid" v-else>
+    <div>
         <!-- Row -->
-        <hr>
+        <hr class="mb-3">
         <div class="row">
             <!-- Col -->
             <div class="col text-center wapper-container">
@@ -54,7 +64,7 @@
             </div>
         </div>
         <!-- Row -->
-        <div class="container-bb">
+        <div class="container-xxl">
             <!-- Col -->
             <div class="row d-flex" v-if="currentApartmentsSponsored">
                 <!-- Card -->
@@ -81,7 +91,7 @@
                 <h3>non ci sono appartamenti</h3>
             </div>          
         </div>
-    </section>
+    </div>
 </div>  
 </template>
 
@@ -94,7 +104,8 @@ export default {
             currentApartmentsSponsored: [],
             currentApartments: [],
             currentSearchPosition: null,
-            filteredApartments: []
+            filteredApartments: [],
+            menu_show: false,
         }
     },
     methods:{
@@ -165,13 +176,13 @@ export default {
         };
         },
         filterByDistance(){
-            this.filteredApartments = [];
-            this.currentApartments.forEach((apartment)=> {
-                parseFloat(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)));
-                if(this.getDistance(parseFloat(this.currentSearchPosition.lat), parseFloat(this.currentSearchPosition.lon), parseFloat(apartment.latitude), parseFloat(apartment.longitude)) < 50) {
-                    this.filteredApartments.push(apartment);
+
+            this.$router.push({
+                name: 'search', 
+                params: {
+                    currentPosition: this.currentSearchPosition,
                 }
-            })
+            })     
         },
         scroll_left() {
             let content = document.querySelector(".wrapper-box");
@@ -194,7 +205,7 @@ export default {
             let value = Math.random() * (4.98 - 0.5) + 0.5;
             value = String(value).slice(0, 4);
             return value;
-        }
+        },
     },
     mounted(){
         this.getApartmentSponsored();
@@ -204,36 +215,120 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-    margin-top: 30px;
-}
-.search {
+.research-menu{
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
+    padding-inline: 15px;
     
-    .bar {
-        width: 300px;
-        padding: 10px;
-        border-radius: 7px 0 0 7px;
-        border: 1px solid lightgray;
+    .logo{
+        
+        *{
+            vertical-align: middle;
+        }
+
+        img{
+            width: 40px;
+        }
+
+        .logo-text{
+            margin-left: 6px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ff385c;
+        }  
+    }
+    
+    .search {
+        display: flex;
+        justify-content: center;
+        
+        .bar {
+            width: 300px;
+            padding: 10px;
+            border-radius: 7px 0 0 7px;
+            border: 1px solid lightgray;
+        }
+
+        .ms_btn {
+            padding: 10px 15px;
+            background-color: #ff385c;
+            color: white;
+            border: none;
+            border-radius: 0 7px 7px 0;
+        }
     }
 
-    .ms_btn {
-        padding: 10px 15px;
-        background-color: #ff385c;
-        color: white;
-        border: none;
-        border-radius: 0 7px 7px 0;
+    .user{
+        position: relative;
+
+        .login{
+            font-size: 22px;
+            margin-right: 12px;
+            padding: 8px;
+            border: 2px solid #ff385c;
+            border-radius: 20px;
+            color: #ff385c;
+        }
+
+        .menu{
+            margin-top: 10px;
+            padding: 12px 0;
+            position: absolute;
+            z-index: 99999;
+            right: 10px;
+            left: -140px;
+            border: 1px solid #939393;
+            border-radius: 12px;
+            background-color: #f2f2f2;
+
+            i{
+                position: absolute;
+                top: -9px;
+                right: 16px;
+                color: #939393;
+            }
+
+            .menu-login{
+                li{
+                    padding-block: 5px;
+                }
+                li:hover{
+                    background-color: #e3e3e3;
+                } 
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .research-menu{
+        .logo{
+        display: none;  
+        }
+
+        .search {  
+            .bar {
+                width: 160px;
+            }
+        }
+
+        
+    }
+    .width{
+        margin-bottom: 80px;
     }
 }
-.front-container{
 
-    .container-bb {
-        margin: 0 20px;
-    }
-    .card {
-        margin-top: 3rem;;
+.width{
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.container-xxl {
+    padding-inline: 15px;
+    .card {     
+        margin-top: 3rem;
         border: none;
         background-color: inherit;
         img {
@@ -241,7 +336,7 @@ h2 {
             aspect-ratio: 1 / 1;
         }
         .card-body {
-            padding-left: 0;
+            padding-inline: 8px;
         }
 
         .description {
@@ -252,6 +347,7 @@ h2 {
             margin-top: 7px;
         }
     }
+  
 }
 
 

@@ -27,19 +27,19 @@
         <div class="list-apartments">
           <div class="row d-flex flex-wrap align-items-center">
             <div class="col-md-6 card-apt p-0">
-              <div>
+              <a href="{{ route('logged.apartments.show',['apartment' => $apartments->id]) }}"><div>
                 <div class="img-apt">
-                  {{-- <img src="https://a0.muscache.com/im/pictures/miso/Hosting-49806039/original/8b83e14e-1263-404c-b1c1-308f8662cc49.jpeg" alt="{{$apartments->title}}"> --}}
                   <img src="{{ asset( 'storage/' . $apartments->photo) }}" alt="{{$apartments->title}}">
                   <h2 class="p-2">{{$apartments->title}}</h3>
                 </div>
                 <div class="px-3 pt-3">
                   <h3 class="d-none">{{$apartments->title}}</h3>
                   <div>{{$apartments->address}}</div>
-                  <div><strong>Sponsorizzato:</strong> {{ $has_sponsorship }}</div>
+                  <div><strong>Sponsorizzazione: </strong>{{ $has_sponsorship->name }}
+                  </div>
                   <hr>
                   <div class="opt-apt">
-                    <a href="{{ route('logged.apartments.show',['apartment' => $apartments->id]) }}" class="btn ms-btn mb-3">Visualizza dettagli</a>
+                    
                     <a href="{{ route('logged.apartments.edit',['apartment' => $apartments->id]) }}" class="btn ms-btn mb-3">Modifica</a>
                     <form class="d-inline-block" action="{{ route('logged.apartments.destroy',['apartment' => $apartments->id]) }}" method="POST">
                       @csrf
@@ -48,7 +48,7 @@
                     </form>
                   </div>
                 </div>
-              </div>
+              </div></a>
 
   
             </div>

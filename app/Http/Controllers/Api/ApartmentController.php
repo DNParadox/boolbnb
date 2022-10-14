@@ -54,6 +54,7 @@ class ApartmentController extends Controller
     public function show(Request $request, $id)
     {
         $apartment = Apartment::where('id', $id)->with('service')->first();
+        $user = User::find($apartment->users_id);
         if($apartment->photo){
             $apartment->photo = asset('storage/'. $apartment->photo);
         }
@@ -61,6 +62,7 @@ class ApartmentController extends Controller
         $data = [
             'success' => true,
             'results' => $apartment,  
+            'user' => $user,
         ];
         
         return response()->json($data);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Apartment;
+use App\Sponsorship;
 use App\User;
 use App\Service;
 use App\Message;
@@ -40,14 +41,10 @@ class ApartmentController extends Controller
         if($apartments){
             // ricerca dell'ultima sponsorizzazione
             $last_sponsorship = ApartmentSponsorship::Where('apartment_id', '=', $apartments->id)->get();  
-        }
 
-
-        // controllo se un appartemento ha la sponsorizzazione
-        if(!$last_sponsorship){
-            $has_sponsorship = 'No';
-        } else {
-            $has_sponsorship = 'Si';
+            if($last_sponsorship){
+                $sponsor_detail = Sponsorship::find($last_sponsorship[count($last_sponsorship) - 1]->sponsorship_id);
+            }
         }
 
         if(!$apartments){
@@ -58,7 +55,7 @@ class ApartmentController extends Controller
             'apartments' => $apartments,
             'user' => $user,
             'have_one' => $have_one,
-            'has_sponsorship' => $has_sponsorship,
+            'has_sponsorship' =>  $sponsor_detail,
             'show_deleted_message' => $show_deleted_message,
             'show_created_message' => $show_created_message,
         ];
