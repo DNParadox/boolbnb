@@ -21,6 +21,11 @@
           <div class="detail-apartment">
             <h2>{{$apartments->title}}</h2>
           </div>
+          <div class="CTA-apartment">
+            <div class="CTA-fake-form">
+
+            </div>
+          </div>
           
         </div>
         <div class="container">

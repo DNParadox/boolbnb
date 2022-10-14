@@ -316,6 +316,7 @@ export default {
     }
     .width{
         margin-bottom: 80px;
+        width: calc(100% - 200px);
     }
 }
 

@@ -11145,10 +11145,16 @@ h2 {
 
 .apartment-container .detail-show {
   margin-top: 2.2rem;
+  display: flex;
 }
 
 .apartment-container .detail-show .detail-apartment {
   width: 50%;
+}
+
+.apartment-container .detail-show .CTA-apartment .CTA-fake-form {
+  padding-block: 15px;
+  border: 1px solid #ff385c;
 }
 
 @media screen and (max-width: 1000px) {

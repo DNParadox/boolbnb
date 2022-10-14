@@ -25,9 +25,18 @@ h2{
 
     .detail-show{
         margin-top: 2.2rem;
-
+        display: flex;
         .detail-apartment{
             width: 50%;
+        }
+
+        .CTA-apartment{
+
+            .CTA-fake-form{
+                padding-block: 15px;
+                border: 1px solid #ff385c;
+            }
+            
         }
     }
 }
