@@ -35,8 +35,11 @@
                 <div class="px-3 pt-3">
                   <h3 class="d-none">{{$apartments->title}}</h3>
                   <div>{{$apartments->address}}</div>
-                  <div><strong>Sponsorizzazione: </strong>{{ $has_sponsorship->name }}
-                  </div>
+                  @if ($has_sponsorship)
+                    <div>
+                      <strong>Sponsorizzazione: </strong>{{ $has_sponsorship->name }}
+                    </div>   
+                  @endif               
                   <hr>
                   <div class="opt-apt">
                     

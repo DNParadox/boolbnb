@@ -1998,7 +1998,8 @@ __webpack_require__.r(__webpack_exports__);
       currentApartmentsSponsored: [],
       currentApartments: [],
       currentSearchPosition: null,
-      filteredApartments: []
+      filteredApartments: [],
+      menu_show: false
     };
   },
   methods: {
@@ -2178,6 +2179,15 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.advancedFilter = arr;
+    },
+    getText: function getText(text) {
+      var sliced = text;
+
+      if (text.length > 24) {
+        sliced = sliced.slice(0, 24) + '...';
+      }
+
+      return sliced;
     }
   },
   mounted: function mounted() {
@@ -2213,7 +2223,8 @@ __webpack_require__.r(__webpack_exports__);
       send: false,
       user: null,
       recensioni: null,
-      star: null
+      star: null,
+      menu_show: false
     };
   },
   methods: {
@@ -2500,7 +2511,16 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-magnifying-glass icon"
-  })])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", [_c("hr", {
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "user",
+    on: {
+      click: function click($event) {
+        _vm.menu_show = !_vm.menu_show;
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user login"
+  }), _vm._v(" "), _vm.menu_show ? _c("div", [_vm._m(1)]) : _vm._e()])]), _vm._v(" "), _c("div", [_c("hr", {
     staticClass: "mb-3"
   }), _vm._v(" "), _c("div", {
     staticClass: "row"
@@ -2570,19 +2590,36 @@ var staticRenderFns = [function () {
       src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
       alt: "BoolBnB"
     }
-  }), _vm._v(" "), _c("span", [_vm._v("Boolbnb")])]);
+  }), _vm._v(" "), _c("span", {
+    staticClass: "logo-text"
+  }, [_vm._v("Boolbnb")])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "user"
-  }, [_c("img", {
+    staticClass: "menu"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-caret-up"
+  }), _vm._v(" "), _c("ul", {
+    staticClass: "menu-login"
+  }, [_c("li", [_c("a", {
     attrs: {
-      src: __webpack_require__(/*! ../../../public/storage/logo-boolbnb.png */ "./storage/app/public/logo-boolbnb.png"),
-      alt: "BoolBnB"
+      href: "http://127.0.0.1:8000/logged/apartments"
     }
-  })]);
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Accedi")])])]), _c("hr"), _vm._v(" "), _c("li", [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/logged/apartments"
+    }
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Diventa un host")])])]), _vm._v(" "), _c("li", [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Proponi un'esperianza")])]), _vm._v(" "), _c("li", [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Assistenza")])])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -2767,6 +2804,20 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
+    staticClass: "width"
+  }, [_c("div", {
+    staticClass: "mb-4 d-flex justify-content-between align-items-center research-menu"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "user",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        _vm.menu_show = !_vm.menu_show;
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user login"
+  }), _vm._v(" "), _vm.menu_show ? _c("div", [_vm._m(2)]) : _vm._e()])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "container-fluid"
   }, [_c("h2", {
     staticClass: "text-center"
@@ -2824,7 +2875,7 @@ var render = function render() {
     staticClass: "fa-solid fa-minus"
   })]), _c("span", {
     staticClass: "number-search"
-  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n                ")]), _vm._v(" "), _c("span", {
+  }, [_vm._v(_vm._s(_vm.bedsNumber) + "\n                  ")]), _vm._v(" "), _c("span", {
     staticClass: "circle",
     "class": _vm.bedsNumber == 20 ? "disabled" : "",
     on: {
@@ -2928,13 +2979,75 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("h4", [_vm._v(_vm._s(Print.title))]), _vm._v(" "), _c("div", {
       staticClass: "description"
-    }, [_c("div", [_vm._v(_vm._s(Print.address))]), _vm._v(" "), _c("span", [_vm._v("Camere: " + _vm._s(Print.room_number) + " | ")]), _vm._v(" "), _c("span", [_vm._v("Letti: " + _vm._s(Print.bed_number) + " | ")]), _vm._v(" "), _c("span", [_vm._v("Bagni: " + _vm._s(Print.bathroom))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.square_meters) + " metri quadri")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(Print.price) + " € a notte")])])])])], 1)]);
+    }, [_c("div", [_vm._v(_vm._s(_vm.getText(Print.address)))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.room_number) + " camere · ")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.bed_number) + " letti · ")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(Print.bathroom) + " bagni")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(Print.price ? Print.price + "€ a notte" : "Per info contatta la struttura") + " ")])])])])], 1)]);
   }), 0) : _c("div", {
     staticClass: "not_found"
-  }, [_c("h2", [_vm._v("Non ci sono appartamenti con questi filtri")])])])]);
+  }, [_c("h2", [_vm._v("Non ci sono appartamenti con questi filtri")])])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "logo"
+  }, [_c("img", {
+    attrs: {
+      src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
+      alt: "BoolBnB"
+    }
+  }), _vm._v(" "), _c("span", {
+    staticClass: "logo-text"
+  }, [_vm._v("Boolbnb")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "search"
+  }, [_c("input", {
+    staticClass: "bar",
+    attrs: {
+      list: "autocomplete",
+      type: "text",
+      placeholder: "Inserisci una città o un indirizzo..."
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "ms_btn",
+    attrs: {
+      type: "submit"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-magnifying-glass icon"
+  })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "menu"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-caret-up"
+  }), _vm._v(" "), _c("ul", {
+    staticClass: "menu-login"
+  }, [_c("li", [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/logged/apartments"
+    }
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Accedi")])])]), _c("hr"), _vm._v(" "), _c("li", [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/logged/apartments"
+    }
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Diventa un host")])])]), _vm._v(" "), _c("li", [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Proponi un'esperianza")])]), _vm._v(" "), _c("li", [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Assistenza")])])])]);
+}];
 render._withStripped = true;
 
 
@@ -2956,6 +3069,19 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
+    staticClass: "width"
+  }, [_c("div", {
+    staticClass: "mb-4 d-flex justify-content-between align-items-center research-menu"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "user",
+    on: {
+      click: function click($event) {
+        _vm.menu_show = !_vm.menu_show;
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user login"
+  }), _vm._v(" "), _vm.menu_show ? _c("div", [_vm._m(2)]) : _vm._e()])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "single"
   }, [_vm.apartment ? _c("div", {
     staticClass: "container mt-3"
@@ -2975,7 +3101,7 @@ var render = function render() {
     attrs: {
       href: ""
     }
-  }, [_vm._v(_vm._s(_vm.apartment.address))])])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.apartment.address))])])]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-md-6 mb-3"
@@ -3021,7 +3147,7 @@ var render = function render() {
     attrs: {
       d: "m2 4c0-.85216986.98551359-1.29743382 1.62252676-.78322518l.08458002.0761184 25.00000002 24.99999998c.6025751.6025751.2205609 1.6142876-.5934759 1.7011235l-.1136309.0059833h-25c-.51283584 0-.93550716-.3860402-.99327227-.8833789l-.00672773-.1166211zm2 2.415v21.585h21.585l-4.085-4.086-1.7928932 1.7931068-1.4142136-1.4142136 1.7921068-1.7938932-2.585-2.585-1.7928932 1.7931068-1.4142136-1.4142136 1.7921068-1.7938932-2.585-2.585-1.7928932 1.7931068-1.4142136-1.4142136 1.7921068-1.7938932-2.585-2.585-1.79289322 1.7931068-1.41421356-1.4142136 1.79210678-1.7938932zm3 10.585c0-.8521699.98551359-1.2974338 1.62252676-.7832252l.08458002.0761184 7.00000002 7c.6025751.6025751.2205609 1.6142876-.5934759 1.7011235l-.1136309.0059833h-7c-.51283584 0-.93550716-.3860402-.99327227-.8833789l-.00672773-.1166211zm5.2928932-15.20710678c.360484-.36048396.927715-.3882135 1.3200062-.08318861l.0942074.08318861 15.5 15.49999998c.0578584.0578584.1082864.1224881.1502461.1923778l.0564586.1085905 2 4.5c.3320921.7472072-.3209586 1.5376556-1.0949471 1.3900057l-.1062123-.0260409-5-1.5c-.1188824-.0356647-.2297327-.0930392-.3270948-.1688646l-.0926641-.0818549-15.49999998-15.50000002c-.36048396-.36048396-.3882135-.92771502-.08318861-1.32000622l.08318861-.09420734zm-3.2928932 17.62210678v3.585h3.585zm7.25-12.251-1.585 1.585 11.365 11.366 2.672.801-1.04-2.339zm-3.25-3.249-1.585 1.585 1.835 1.834 1.585-1.585z"
     }
-  })]), _vm._m(1)]), _vm._v(" "), _c("div", {
+  })]), _vm._m(4)]), _vm._v(" "), _c("div", {
     staticClass: "mb-3 d-flex alignment-info"
   }, [_c("svg", {
     staticStyle: {
@@ -3041,7 +3167,7 @@ var render = function render() {
     attrs: {
       d: "m1.66675 2.67728c0-1.29010774 1.19757945-2.22892485 2.43214873-1.95293212l.14254843.03728562 11.76455284 3.5293665 11.7747926-3.3852093c1.1836744-.3403064 2.3638086.45712676 2.5321485 1.63303369l.0152796.14287691.0051793.1462187v23.09468c0 .8279727-.5091718 1.5640524-1.2698418 1.8619846l-.155411.0536419-12.6207 3.7862c-.1499506.0449851-.3078242.0539821-.4609439.026991l-.1137505-.026991-12.62071315-3.786204c-.79308169-.2379357-1.35183119-.937138-1.41857691-1.7513494l-.00671274-.1642731zm1.99999664.00000464v23.24528886l12.33325336 3.6994265 12.3334-3.6994076v-23.0946724l-12.0569924 3.46639925c-.1474472.0423911-.3021582.05014891-.4521925.02334213l-.1114623-.02658488zm21.66607876 17.47821536v2.088l-9.333 2.8v-2.087zm0-6v2.088l-9.333 2.8v-2.087zm0-5.999v2.087l-9.333 2.8v-2.087z"
     }
-  })]), _vm._m(2)]), _vm._v(" "), _c("div", {
+  })]), _vm._m(5)]), _vm._v(" "), _c("div", {
     staticClass: "mb-2 d-flex alignment-info"
   }, [_c("svg", {
     staticStyle: {
@@ -3061,11 +3187,11 @@ var render = function render() {
     attrs: {
       d: "m11.6667 0-.00095 1.666h8.667l.00055-1.666h2l-.00055 1.666 6.00065.00063c1.0543745 0 1.9181663.81587127 1.9945143 1.85073677l.0054857.14926323v15.91907c0 .4715696-.1664445.9258658-.4669028 1.2844692l-.1188904.1298308-8.7476886 8.7476953c-.3334303.3332526-.7723097.5367561-1.2381975.5778649l-.1758207.0077398h-12.91915c-2.68874373 0-4.88181754-2.1223321-4.99538046-4.7831124l-.00461954-.2168876v-21.66668c0-1.05436021.81587582-1.91815587 1.85073739-1.99450431l.14926261-.00548569 5.999-.00063.00095-1.666zm16.66605 11.666h-24.666v13.6673c0 1.5976581 1.24893332 2.9036593 2.82372864 2.9949072l.17627136.0050928 10.999-.0003.00095-5.6664c0-2.6887355 2.122362-4.8818171 4.7832071-4.9953804l.2168929-.0046196 5.66595-.0006zm-.081 8-5.58495.0006c-1.5977285 0-2.9037573 1.2489454-2.9950071 2.8237299l-.0050929.1762701-.00095 5.5864zm-18.586-16-5.999.00062v5.99938h24.666l.00065-5.99938-6.00065-.00062.00055 1.66733h-2l-.00055-1.66733h-8.667l.00095 1.66733h-2z"
     }
-  })]), _vm._m(3)]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  })]), _vm._m(6)]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "address"
   }, [_c("i", {
     staticClass: "fa-solid fa-location-dot mr-1"
-  }), _vm._v(_vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }), _vm._v(_vm._s(_vm.apartment.address))]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "description"
   }, [_c("p", [_vm._v(_vm._s(_vm.apartment.description))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h4", [_vm._v("Cosa troverai")]), _vm._v(" "), _c("div", {
     staticClass: "services"
@@ -3082,7 +3208,7 @@ var render = function render() {
     attrs: {
       role: "alert"
     }
-  }, [_vm._v("\n                        Messaggio inviato con successo\n                    ")])]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                            Messaggio inviato con successo\r\n                        ")])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "contact"
   }, [_c("form", {
     on: {
@@ -3166,10 +3292,72 @@ var render = function render() {
     attrs: {
       href: ""
     }
-  }, [_vm._v(_vm._s(_vm.recensioni) + " recensioni")])]), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6)])])]);
+  }, [_vm._v(_vm._s(_vm.recensioni) + " recensioni")])]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)])])])]);
 };
 
 var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "logo"
+  }, [_c("img", {
+    attrs: {
+      src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
+      alt: "BoolBnB"
+    }
+  }), _vm._v(" "), _c("span", {
+    staticClass: "logo-text"
+  }, [_vm._v("Boolbnb")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "search"
+  }, [_c("input", {
+    staticClass: "bar",
+    attrs: {
+      list: "autocomplete",
+      type: "text",
+      placeholder: "Inserisci una città o un indirizzo..."
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "ms_btn",
+    attrs: {
+      type: "submit"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-magnifying-glass icon"
+  })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "menu"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-caret-up"
+  }), _vm._v(" "), _c("ul", {
+    staticClass: "menu-login"
+  }, [_c("li", [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/logged/apartments"
+    }
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Accedi")])])]), _c("hr"), _vm._v(" "), _c("li", [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/logged/apartments"
+    }
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Diventa un host")])])]), _vm._v(" "), _c("li", [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Proponi un'esperianza")])]), _vm._v(" "), _c("li", [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Assistenza")])])])]);
+}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -3252,7 +3440,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\n                                Pulizia\n                            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                    Pulizia\r\n                                ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3273,7 +3461,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\n                                Precisione\n                            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                    Precisione\r\n                                ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3296,7 +3484,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\n                                Comunicazione\n                            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                    Comunicazione\r\n                                ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3317,7 +3505,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\n                                Posizione\n                            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                    Posizione\r\n                                ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3340,7 +3528,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\n                                Check-in\n                            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                    Check-in\r\n                                ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3361,7 +3549,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\n                                Qualità\\prezzo\n                            ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                    Qualità\\prezzo\r\n                                ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -7804,7 +7992,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".research-menu[data-v-04c29797] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu img[data-v-04c29797] {\n  width: 40px;\n}\n.width[data-v-04c29797] {\n  width: 100%;\n  overflow: hidden;\n}\n.search[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n}\n.search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.container-xxl[data-v-04c29797] {\n  padding-inline: 15px;\n}\n.container-xxl .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.container-xxl .card img[data-v-04c29797] {\n  border-radius: 14px;\n  aspect-ratio: 1/1;\n}\n.container-xxl .card .card-body[data-v-04c29797] {\n  padding-left: 0;\n}\n.container-xxl .card .description[data-v-04c29797] {\n  color: grey;\n}\n.container-xxl .card a[data-v-04c29797] {\n  margin-top: 7px;\n}\n.wapper-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 9999;\n  background-color: inherit;\n}\n.wapper-container i[data-v-04c29797] {\n  border: 2px solid #b1b1b1;\n  border-radius: 50%;\n  padding: 3px 5px;\n  margin-bottom: 10px;\n  cursor: pointer;\n}\n.wapper-container .images[data-v-04c29797] {\n  width: 75%;\n  overflow-x: auto;\n}\n.wapper-container .images div img[data-v-04c29797] {\n  cursor: pointer;\n  width: 32px;\n  height: 32px;\n  margin-inline: 30px;\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images div span[data-v-04c29797] {\n  cursor: pointer;\n  font-size: 11px;\n  font-weight: 700;\n  color: #939393;\n}\n.wapper-container .images div[data-v-04c29797]:hover {\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images[data-v-04c29797] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}", ""]);
+exports.push([module.i, ".research-menu[data-v-04c29797] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-04c29797] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-04c29797] {\n  width: 40px;\n}\n.research-menu .logo .logo-text[data-v-04c29797] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-04c29797] {\n  position: relative;\n}\n.research-menu .user .login[data-v-04c29797] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-04c29797] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-04c29797] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-04c29797] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-04c29797]:hover {\n  background-color: #e3e3e3;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-04c29797] {\n    display: none;\n}\n.research-menu .search .bar[data-v-04c29797] {\n    width: 160px;\n}\n.width[data-v-04c29797] {\n    margin-bottom: 80px;\n}\n}\n.width[data-v-04c29797] {\n  width: 100%;\n  overflow: hidden;\n}\n.container-xxl[data-v-04c29797] {\n  padding-inline: 15px;\n}\n.container-xxl .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.container-xxl .card img[data-v-04c29797] {\n  border-radius: 14px;\n  aspect-ratio: 1/1;\n}\n.container-xxl .card .card-body[data-v-04c29797] {\n  padding-inline: 8px;\n}\n.container-xxl .card .description[data-v-04c29797] {\n  color: grey;\n}\n.container-xxl .card a[data-v-04c29797] {\n  margin-top: 7px;\n}\n.wapper-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 9999;\n  background-color: inherit;\n}\n.wapper-container i[data-v-04c29797] {\n  border: 2px solid #b1b1b1;\n  border-radius: 50%;\n  padding: 3px 5px;\n  margin-bottom: 10px;\n  cursor: pointer;\n}\n.wapper-container .images[data-v-04c29797] {\n  width: 75%;\n  overflow-x: auto;\n}\n.wapper-container .images div img[data-v-04c29797] {\n  cursor: pointer;\n  width: 32px;\n  height: 32px;\n  margin-inline: 30px;\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images div span[data-v-04c29797] {\n  cursor: pointer;\n  font-size: 11px;\n  font-weight: 700;\n  color: #939393;\n}\n.wapper-container .images div[data-v-04c29797]:hover {\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images[data-v-04c29797] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}", ""]);
 
 // exports
 
@@ -7823,7 +8011,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".not_found[data-v-483e11c0] {\n  display: flex;\n  justify-content: center;\n  margin: 40px;\n  box-shadow: rgba(0, 0, 0, 0.3);\n  border: #D8D8D8 1px solid;\n  border-radius: 24px;\n}\n.bnb_style[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.bnb_style img[data-v-483e11c0] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n}\n.bnb_style .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.bnb_style .description[data-v-483e11c0] {\n  color: grey;\n}\n.bnb_style a[data-v-483e11c0] {\n  margin-top: 7px;\n}\n.style_filer[data-v-483e11c0] {\n  margin-top: 0.2rem;\n  border: #D8D8D8 1px solid;\n  background-color: #F0F0F0;\n  border-radius: 24px;\n  padding-block: 10px;\n  padding-inline: 30px;\n  width: 330px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.style_filer h4[data-v-483e11c0] {\n  text-align: center;\n}\n.style_filer img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.style_filer .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.style_filer .description[data-v-483e11c0] {\n  color: grey;\n}\n.style_filer a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  color: black;\n  border: #ff385c 2px solid;\n  padding: 5px 10px;\n  border-radius: 50%;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 1.1rem;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 90%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}\n.btn[data-v-483e11c0] {\n  background-color: #ff385c;\n  color: white;\n  font-weight: bold;\n}\n.checkbox[data-v-483e11c0] {\n  accent-color: #ff385c;\n}", ""]);
+exports.push([module.i, ".research-menu[data-v-483e11c0] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-483e11c0] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-483e11c0] {\n  width: 40px;\n}\n.research-menu .logo .logo-text[data-v-483e11c0] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-483e11c0] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-483e11c0] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-483e11c0] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-483e11c0] {\n  position: relative;\n}\n.research-menu .user .login[data-v-483e11c0] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-483e11c0] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-483e11c0] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-483e11c0] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-483e11c0]:hover {\n  background-color: #e3e3e3;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-483e11c0] {\n    display: none;\n}\n.research-menu .search .bar[data-v-483e11c0] {\n    width: 160px;\n}\n.width[data-v-483e11c0] {\n    margin-bottom: 80px;\n}\n}\n.width[data-v-483e11c0] {\n  margin-bottom: 50px;\n}\n.not_found[data-v-483e11c0] {\n  display: flex;\n  justify-content: center;\n  margin: 40px;\n  box-shadow: rgba(0, 0, 0, 0.3);\n  border: #D8D8D8 1px solid;\n  border-radius: 24px;\n}\n.bnb_style[data-v-483e11c0] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.bnb_style img[data-v-483e11c0] {\n  border-radius: 24px;\n  aspect-ratio: 1/1;\n}\n.bnb_style .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.bnb_style .description[data-v-483e11c0] {\n  color: grey;\n}\n.bnb_style a[data-v-483e11c0] {\n  margin-top: 7px;\n}\n.style_filer[data-v-483e11c0] {\n  margin-top: 0.2rem;\n  border: #D8D8D8 1px solid;\n  background-color: #F0F0F0;\n  border-radius: 24px;\n  padding-block: 10px;\n  padding-inline: 24px;\n  width: 330px;\n}\n.style_filer h4[data-v-483e11c0] {\n  text-align: center;\n}\n.style_filer img[data-v-483e11c0] {\n  border-radius: 24px;\n  width: 300px;\n  height: 280px;\n}\n.style_filer .card-body[data-v-483e11c0] {\n  padding-left: 0;\n}\n.style_filer .description[data-v-483e11c0] {\n  color: grey;\n}\n.style_filer a[data-v-483e11c0] {\n  margin-top: 7px;\n}\nh2[data-v-483e11c0] {\n  margin: 30px 80px;\n}\n.ul-service[data-v-483e11c0] {\n  display: flex;\n  width: 290px;\n  flex-direction: column;\n  height: 200px;\n  flex-wrap: wrap;\n}\n.ul-service li[data-v-483e11c0] {\n  margin-right: 16px;\n}\n.circle[data-v-483e11c0] {\n  color: black;\n  border: #ff385c 2px solid;\n  padding: 5px 10px;\n  border-radius: 50%;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.serch-text[data-v-483e11c0] {\n  font-size: 1.1rem;\n}\n.number-search[data-v-483e11c0] {\n  margin-inline: 12px;\n  font-size: 20px;\n  vertical-align: middle;\n}\n.alignment[data-v-483e11c0] {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 20px;\n}\n.slidecontainer #myRange[data-v-483e11c0] {\n  width: 90%;\n}\n.disabled[data-v-483e11c0] {\n  color: darkGray;\n  font-style: italic;\n  border: 2px solid darkGray;\n  /*property for disable input element like*/\n  pointer-events: none;\n}\n.btn[data-v-483e11c0] {\n  background-color: #ff385c;\n  color: white;\n  font-weight: bold;\n}\n.checkbox[data-v-483e11c0] {\n  accent-color: #ff385c;\n}", ""]);
 
 // exports
 
@@ -7842,7 +8030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.single[data-v-4fd40851] {\n  margin-bottom: 65px;\n}\n.single h1[data-v-4fd40851] {\n  padding: 0;\n  margin: 0;\n  text-align: left;\n}\n.cover-services img[data-v-4fd40851] {\n  width: 16%;\n  margin-block: 0.5rem 1.5rem;\n}\n.cover-services a[data-v-4fd40851] {\n  text-decoration: underline;\n}\n.alignment-info[data-v-4fd40851] {\n  align-items: center;\n}\n.alignment-info .sub-title[data-v-4fd40851] {\n  font-weight: 700;\n}\n.alignment-info .sub-title-2[data-v-4fd40851] {\n  color: grey;\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0 0;\n  position: relative;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" \\B7   \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 16px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n  width: 40%;\n}\n.container .bottom-part .right[data-v-4fd40851] {\n  position: relative;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  position: sticky;\n  top: 10%;\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .box-share[data-v-4fd40851] {\n  padding: 5px 7px;\n  margin-left: 8px;\n  cursor: pointer;\n}\n.container .box-share[data-v-4fd40851]:hover {\n  background-color: rgb(244, 244, 244);\n  border-radius: 12px;\n}\n.container .color-btn-message[data-v-4fd40851] {\n  color: white;\n  background-color: #ff385c;\n  width: 100%;\n  margin-bottom: 0.6rem;\n}\n.review[data-v-4fd40851] {\n  width: 64%;\n  margin: 0 auto;\n}\n.review .review-title[data-v-4fd40851] {\n  font-size: 20px;\n  font-weight: 600;\n}\n.review .progress[data-v-4fd40851] {\n  height: 0.3rem;\n}\n.review .progress .progress-bar[data-v-4fd40851] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  overflow: hidden;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #000000;\n  transition: width 0.6s ease;\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.research-menu[data-v-4fd40851] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-4fd40851] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-4fd40851] {\n  width: 40px;\n}\n.research-menu .logo .logo-text[data-v-4fd40851] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-4fd40851] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-4fd40851] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-4fd40851] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-4fd40851] {\n  position: relative;\n}\n.research-menu .user .login[data-v-4fd40851] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-4fd40851] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-4fd40851] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-4fd40851] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-4fd40851]:hover {\n  background-color: #e3e3e3;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-4fd40851] {\n    display: none;\n}\n.research-menu .search .bar[data-v-4fd40851] {\n    width: 160px;\n}\n.width[data-v-4fd40851] {\n    margin-bottom: 80px;\n}\n}\n.single[data-v-4fd40851] {\n  margin-bottom: 65px;\n}\n.single h1[data-v-4fd40851] {\n  padding: 0;\n  margin: 0;\n  text-align: left;\n}\n.cover-services img[data-v-4fd40851] {\n  width: 16%;\n  margin-block: 0.5rem 1.5rem;\n}\n.cover-services a[data-v-4fd40851] {\n  text-decoration: underline;\n}\n.alignment-info[data-v-4fd40851] {\n  align-items: center;\n}\n.alignment-info .sub-title[data-v-4fd40851] {\n  font-weight: 700;\n}\n.alignment-info .sub-title-2[data-v-4fd40851] {\n  color: grey;\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0 0;\n  position: relative;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" \\B7   \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 16px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n  width: 40%;\n}\n.container .bottom-part .right[data-v-4fd40851] {\n  position: relative;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  position: sticky;\n  top: 10%;\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n}\n.container .box-share[data-v-4fd40851] {\n  padding: 5px 7px;\n  margin-left: 8px;\n  cursor: pointer;\n}\n.container .box-share[data-v-4fd40851]:hover {\n  background-color: rgb(244, 244, 244);\n  border-radius: 12px;\n}\n.container .color-btn-message[data-v-4fd40851] {\n  color: white;\n  background-color: #ff385c;\n  width: 100%;\n  margin-bottom: 0.6rem;\n}\n.review[data-v-4fd40851] {\n  width: 64%;\n  margin: 0 auto;\n}\n.review .review-title[data-v-4fd40851] {\n  font-size: 20px;\n  font-weight: 600;\n}\n.review .progress[data-v-4fd40851] {\n  height: 0.3rem;\n}\n.review .progress .progress-bar[data-v-4fd40851] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  overflow: hidden;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #000000;\n  transition: width 0.6s ease;\n}", ""]);
 
 // exports
 
@@ -55870,17 +56058,6 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
-
-/***/ }),
-
-/***/ "./storage/app/public/logo-boolbnb.png":
-/*!*********************************************!*\
-  !*** ./storage/app/public/logo-boolbnb.png ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo-boolbnb.png?d34261645dcaeaafa0c0a1e61f56eb1a";
 
 /***/ }),
 
