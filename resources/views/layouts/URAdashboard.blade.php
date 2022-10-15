@@ -85,7 +85,7 @@
   <main role="main">
     <div class="register mb-4">
       <div class="container">
-        <div class="row d-flex align-items-center">
+        <div class="row d-flex align-items-center m-auto">
           <div class="col-md-6 text">
             @if ($have_one)
               <h2>Inserisci il tuo appartamento nella sezione in Evidenza</h2>
@@ -101,7 +101,7 @@
               </div>
             @else
               <div class="r-button">
-                <a class="btn btn-primary" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
+                <a class="btn ms-btn" href="{{route('logged.apartments.create')}}">registra il tuo appartamento</a>
               </div>
             @endif
           </div>

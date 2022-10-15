@@ -11146,15 +11146,64 @@ h2 {
 .apartment-container .detail-show {
   margin-top: 2.2rem;
   display: flex;
+  justify-content: space-between;
 }
 
 .apartment-container .detail-show .detail-apartment {
-  width: 50%;
+  width: 70%;
+}
+
+.apartment-container .detail-show .detail-apartment .info {
+  font-size: 17px;
+}
+
+.apartment-container .detail-show .detail-apartment .services-col {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.apartment-container .detail-show .detail-apartment .services-col .service-ss {
+  font-size: 17px;
+  width: 34%;
+}
+
+.apartment-container .detail-show .CTA-apartment {
+  position: relative;
+  width: 30%;
 }
 
 .apartment-container .detail-show .CTA-apartment .CTA-fake-form {
+  top: 15px;
+  position: sticky;
+  margin-right: 30px;
   padding-block: 15px;
-  border: 1px solid #ff385c;
+  width: 100%;
+}
+
+.apartment-container .detail-show .CTA-apartment .CTA-fake-form .title {
+  font-size: 19px;
+}
+
+.apartment-container .detail-show .CTA-apartment .CTA-fake-form ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.apartment-container .detail-show .CTA-apartment .CTA-fake-form ul li {
+  padding: 0 10px;
+  font-size: 16px;
+  margin-bottom: 7px;
+}
+
+.apartment-container .detail-show .CTA-apartment .CTA-fake-form ul li i {
+  color: #ff385c;
+}
+
+.apartment-container .detail-show .CTA-apartment .CTA-fake-form ul li:hover {
+  transform: scale(1.2);
 }
 
 @media screen and (max-width: 1000px) {
@@ -11182,6 +11231,11 @@ h2 {
 
 .banner p {
   font-size: 22px;
+}
+
+.remove-btn {
+  background-color: transparent;
+  border: none;
 }
 
 .register {
@@ -11573,7 +11627,6 @@ img {
 
 .payment-options .payment-col {
   /* background-color: #dcdcdc; */
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border-radius: 20px;
   font-size: 20px;
   padding: 0 0 20px 0;
@@ -11587,10 +11640,8 @@ img {
 }
 
 .payment-options .payment-col .sponsorship-name {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border-radius: 20px 20px 0 0;
   font-size: 30px;
-  font-weight: 800;
   padding: 0 20px;
 }
 
@@ -11607,17 +11658,35 @@ img {
 }
 
 .payment-options .pointer {
-  cursor: pointer;
-  background-color: #ff385c;
-  color: white;
-  font-weight: 800;
-  text-align: center;
-  padding: 4px 0;
-  border-radius: 20px;
+  margin-block: 1.2rem;
+  padding-inline: 30px;
 }
 
 .payment-wrapper {
   margin: 50px auto;
   width: 50%;
+}
+
+.no-house {
+  display: flex;
+}
+
+.no-house img {
+  width: 50%;
+  height: 600px;
+}
+
+.no-house .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 50%;
+  color: white;
+  text-align: center;
+}
+
+.no-house .text a {
+  margin-top: 20px;
 }
 

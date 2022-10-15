@@ -2609,7 +2609,13 @@ var staticRenderFns = [function () {
     }
   }, [_c("span", {
     staticClass: "ml-2"
-  }, [_vm._v("Accedi")])])]), _c("hr"), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Accedi")])])]), _vm._v(" "), _c("li", [_c("a", {
+    attrs: {
+      href: "http://127.0.0.1:8000/register"
+    }
+  }, [_c("span", {
+    staticClass: "ml-2"
+  }, [_vm._v("Registrati")])])]), _c("hr"), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
       href: "http://127.0.0.1:8000/logged/apartments"
     }

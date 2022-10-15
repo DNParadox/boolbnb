@@ -81,9 +81,30 @@
         </div>
       </div>
     </div>
+    @else
+    <div class="no-house">
+      <img class="_9ofhsl" style="object-fit: cover; object-position: center top; vertical-align: bottom;" aria-hidden="true" alt="Una donna sorridente mette un piatto d'uva su un bancone in una cucina a tema arancione." decoding="async" elementtiming="LCP-target" fetchpriority="low" loading="lazy" src="https://a0.muscache.com/im/pictures/28a23ac3-1626-486f-9069-e5121d2341b0.jpg?im_w=720" data-original-uri="https://a0.muscache.com/im/pictures/28a23ac3-1626-486f-9069-e5121d2341b0.jpg?im_w=720">
+      <div class="text">
+        <div>
+            <h2>Prova a ospitare su Boolbnb</h2>
+            <h4>Unisciti a noi. Saremo al tuo fianco <br> in ogni momento.</h4>
+            <a href="{{ route('logged.apartments.create')}}" class="btn ms-btn">Iniziamo !</a>
+        </div>
+      </div>
+    </div>
     @endif
   </section>
 
-
+  <script>
+  function scroll_left() {
+    // let content = document.querySelector(".slider-no-house");
+    // content.scrollLeft -= 90;
+    alert('dadawdawda')
+  },
+  function scroll_right() {
+    let content = document.querySelector(".slider-no-house");
+    content.scrollLeft += 80;
+  },
+  </script>
     
 @endsection
