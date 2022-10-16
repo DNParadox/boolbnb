@@ -2,8 +2,9 @@
   <div class="width">
     <div class="mb-4 d-flex justify-content-between align-items-center research-menu">
       <div class="logo">
-        <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
-        <span class="logo-text">Boolbnb</span>
+        <img src="../../../public/storage/logo-boolbnb.png" alt="BoolBnB">
+        <!-- <img src="../../../public/storage/airbnb.png" alt="BoolBnB"> -->
+        <!-- <span class="logo-text">Boolbnb</span> -->
       </div>
       <div class="search">
         <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo...">
@@ -197,7 +198,7 @@ export default {
     }
 
     img{
-      width: 40px;
+      width: 130px;
     }
 
     .logo-text{
