@@ -69,7 +69,10 @@
               });
 
               if (result.success) {
-                $('#checkout-message').html('<h1>Success</h1><p>il tuo pagamento è andato a buon fine</p>');
+                $('#checkout-message').html('<h1>Success</h1><p class="text-center">il tuo pagamento è andato a buon fine</p>');
+                setTimeout(() => {
+                  location.href = 'http://127.0.0.1:8000/logged/apartments';
+                }, 5000); 
               } else {
                 console.log(result);
                 $('#checkout-message').html('<h1>Retry</h1><p>il tuo pagamento non è andato a buon fine</p>');

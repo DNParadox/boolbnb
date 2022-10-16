@@ -16,7 +16,8 @@
                 <div class="menu">
                     <i class="fa-solid fa-caret-up"></i>
                     <ul class="menu-login">
-                        <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Accedi</span></a></li><hr>
+                        <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Accedi</span></a></li>
+                        <li><a href="http://127.0.0.1:8000/register"><span class="ml-2">Registrati</span></a></li><hr>
                         <li><a href="http://127.0.0.1:8000/logged/apartments"><span class="ml-2">Diventa un host</span></a></li>
                         <li><span class="ml-2">Proponi un'esperianza</span></li>
                         <li><span class="ml-2">Assistenza</span></li>

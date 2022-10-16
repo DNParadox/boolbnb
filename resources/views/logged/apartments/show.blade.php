@@ -36,7 +36,7 @@
                 <div><span>Durata sponsorizzazione:  {{ $sponsorship->hour }} Ore</span> · <span>Prezzo sponsorizzazione:  {{ $sponsorship->price }} &euro;</span></div>
               
             @else
-              <h3>Non hai annora sponsorizzato il tuo appartamento</h3>
+              <h3>Non hai ancora sponsorizzato il tuo appartamento</h3>
               <p>considera questa opzione per aumentare i tuoi guadagni e per altre funzioni aggiuntive</p>
             @endif
           </div>
