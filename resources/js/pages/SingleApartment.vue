@@ -2,8 +2,9 @@
 <div class="width">
     <div class="mb-4 d-flex justify-content-between align-items-center research-menu">
         <div class="logo">
-            <img src="../../../public/storage/airbnb.png" alt="BoolBnB">
-            <span class="logo-text">Boolbnb</span>
+            <img src="../../../public/storage/logo-boolbnb.png" alt="BoolBnB">
+            <!-- <img src="../../../public/storage/airbnb.png" alt="BoolBnB"> -->
+            <!-- <span class="logo-text">Boolbnb</span> -->
         </div>
         <div class="search">
             <input class="bar" list="autocomplete" type="text" placeholder="Inserisci una città o un indirizzo...">
@@ -124,93 +125,281 @@
                 </div>
             </div>
         </div>
+
+        <hr>
         
-        <div>
-            <hr>
-            <div class="mt-3 review">
-                <span class="review-title"><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ star }}</span> · <span class="review-title"><a href="">{{ recensioni }} recensioni</a></span>
-                <div><span class="review-subtitle">Scopri di più sulle recensioni</span><i class="fa-solid fa-circle-info ml-2"></i></div>
-                <div class="container p-0 mt-2">
-                    <div class="row">                    
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    Pulizia
+        <div class="bkg-bottom">
+            <div class="container">
+
+                <!-- Review Progress -->
+                <div class="mt-3 review">
+                    <span class="review-title"><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ star }}</span> · <span class="review-title"><a href="">{{ recensioni }} recensioni</a></span>
+                    <div><span class="review-subtitle">Scopri di più sulle recensioni</span><i class="fa-solid fa-circle-info ml-2"></i></div>
+                    <div class="container p-0 mt-2">
+                        <div class="row">                    
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Pulizia
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>  
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>  
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Precisione
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    Precisione
+                        <div class="row">                    
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Comunicazione
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>  
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>  
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Posizione
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">                    
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    Comunicazione
-                                </div>
-                                <div class="col">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    Posizione
-                                </div>
-                                <div class="col">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>  
+                        <div class="row">                    
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Check-in
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 86%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">                    
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    Check-in
-                                </div>
-                                <div class="col">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 86%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    Qualità\prezzo
-                                </div>
-                                <div class="col">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 79%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>  
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        Qualità\prezzo
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 79%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>   
+                <!-- END Review Progress -->
+
+                <!-- Review List -->
+                <div class="review-list row pt-5">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 40px; width: 40px;">
+                                <img class="am-img-profile" alt="Tom" src="https://a0.muscache.com/im/pictures/user/aa78da6c-f963-4f5c-a2a7-a2caa33094d0.jpg?im_w=240" data-original-uri="https://a0.muscache.com/im/pictures/user/aa78da6c-f963-4f5c-a2a7-a2caa33094d0.jpg?im_w=240">
+                            </div>
+                            <div class="am-info-profile">
+                                <div class="am-name-profile">
+                                    <strong>
+                                        Tom
+                                    </strong>
+                                </div>
+                                <div class="am-date-profile">
+                                    settembre 2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-review-profile">
+                            La posizione è semplicemente bella. Abbiamo trascorso un soggiorno fantastico e rilassante e speriamo tanto di tornare un giorno.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 40px; width: 40px;">
+                                <img class="am-img-profile" alt="Denise" src="https://a0.muscache.com/im/pictures/user/af7778f1-ceaf-440d-a66d-4d262f372fbd.jpg?im_w=240" data-original-uri="https://a0.muscache.com/im/pictures/user/af7778f1-ceaf-440d-a66d-4d262f372fbd.jpg?im_w=240">
+                            </div>
+                            <div class="am-info-profile">
+                                <div class="am-name-profile">
+                                    <strong>
+                                        Denise
+                                    </strong>
+                                </div>
+                                <div class="am-date-profile">
+                                    agosto 2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-review-profile">
+                            Abbiamo soggiornato in un gruppo di 6 persone e l'alloggio è spazioso e carino. Tutto quello di cui avremmo potuto avere bisogno era nella casa, incredibilmente lussuosa! Ci siamo divertiti e Per-Henrik e la famiglia sono stati gentili e disponibili quando necessario.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 40px; width: 40px;">
+                                <img class="am-img-profile" alt="Saskia" src="https://a0.muscache.com/im/pictures/user/43591778-eeaf-4046-8b29-c82cb159ddcb.jpg?im_w=240" data-original-uri="https://a0.muscache.com/im/pictures/user/43591778-eeaf-4046-8b29-c82cb159ddcb.jpg?im_w=240">
+                            </div>
+                            <div class="am-info-profile">
+                                <div class="am-name-profile">
+                                    <strong>
+                                        Saskia
+                                    </strong>
+                                </div>
+                                <div class="am-date-profile">
+                                    giugno 2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-review-profile">
+                            La casa di Per-Henriks è fantastica. Situato su un'isola, con viste favolose e molto tranquille. C'è una sauna, con un terrazzo sull'acqua. È anche un posto molto piacevole per cenare e rilassarsi. È disponibile una canoa per esplorare parte dell'enorme lago. I negozi di alimentari non sono lontani in auto e ci sono molti ristoranti a Ostersund. Splendide...
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 40px; width: 40px;">
+                                <img class="am-img-profile" alt="Leonie" src="https://a0.muscache.com/im/pictures/user/bf77f6ba-fcb5-4e70-a71a-91e720ee7d38.jpg?im_w=240" data-original-uri="https://a0.muscache.com/im/pictures/user/bf77f6ba-fcb5-4e70-a71a-91e720ee7d38.jpg?im_w=240">
+                            </div>
+                            <div class="am-info-profile">
+                                <div class="am-name-profile">
+                                    <strong>
+                                        Leonie
+                                    </strong>
+                                </div>
+                                <div class="am-date-profile">
+                                    giugno 2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-review-profile">
+                            La casa sull'isola privata è la fuga perfetta dalla città per un paio di giorni o anche una settimana. La vista sul lago è magica e soprattutto in estate, quando c'è la luce del giorno quasi 24 ore è un'esperienza davvero speciale.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 40px; width: 40px;">
+                                <img class="am-img-profile" alt="Thom" src="https://a0.muscache.com/im/users/35290292/profile_pic/1433773070/original.jpg?im_w=240" data-original-uri="https://a0.muscache.com/im/users/35290292/profile_pic/1433773070/original.jpg?im_w=240">
+                            </div>
+                            <div class="am-info-profile">
+                                <div class="am-name-profile">
+                                    <strong>
+                                        Thom
+                                    </strong>
+                                </div>
+                                <div class="am-date-profile">
+                                    febbraio 2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-review-profile">
+                            La posizione è incredibile, un'isola privata con vista sul lago Storsjön. La sauna sul bordo del lago è semplicemente fantastica. La vista può tenerti occupato per tutto il giorno. Quando entri nella grande casa è chiaro che è necessario fare un po' di lavoro. Non è nel suo stato migliore. Le camere hanno un aspetto...
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 40px; width: 40px;">
+                                <img class="am-img-profile" alt="Maxime" decoding="async" elementtiming="LCP-target" src="https://a0.muscache.com/im/pictures/user/2733a740-735d-4e61-afeb-7d63a7c818f1.jpg?im_w=240" data-original-uri="https://a0.muscache.com/im/pictures/user/2733a740-735d-4e61-afeb-7d63a7c818f1.jpg?im_w=240">
+                            </div>
+                            <div class="am-info-profile">
+                                <div class="am-name-profile">
+                                    <strong>
+                                        Maxime
+                                    </strong>
+                                </div>
+                                <div class="am-date-profile">
+                                    febbraio 2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-review-profile">
+                            La casa di Per-Henrik è incredibile, prima hai la posizione, ogni mattina ti sveglierai con una vista mozzafiato sul lago. Il posto è molto calmo, perfetto per un buon riposo. Sei a breve distanza in auto da Ostersund e sei se ti piace sciare o fare attività. La casa è enorme e molto ben arredata. Non ti perdi nulla mentre soggiorni qui. Puoi cucinare come a...
+                        </div>
+                    </div>
+                </div>
+                <!-- END Review List -->
+
+                <hr>
+
+                <div class="pt-3">
+                    <h4>
+                        Da sapere
+                    </h4>
+                    <div class="row know">
+                        <div class="col-md-4 pb-5">
+                            <h5>
+                                Regole della casa
+                            </h5>
+                            <ul>
+                                <li><i class="fa-solid fa-clock"></i> Check-in: Dopo le ore 14:00</li>
+                                <li><i class="fa-solid fa-clock"></i> Check-out: 10:00</li>
+                                <li><i class="fa-solid fa-ban-smoking"></i> Non è consentito fumare</li>
+                                <li class="d-flex"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 16px; width: 16px; fill: currentcolor;"><path d="M5.12 9.363l13.882 13.88c-.494.349-1.01.694-1.549 1.035L19.65 27.2a1.125 1.125 0 0 1-.433 1.7l-.111.043-.157.039-.04.006-.158.013H17v3h-2v-3h-1.75a1.125 1.125 0 0 1-1.117-1.264l.025-.131.067-.189.021-.045.103-.17 2.14-2.862C8.212 20.918 5 16.457 5 11c0-.556.041-1.103.12-1.637zm-1.413-7.07l26 26-1.414 1.414-26-26 1.414-1.414zM16 0c5.909 0 11 5.275 11 11 0 2.915-1.167 5.676-3.472 8.286L7.853 3.609A10.972 10.972 0 0 1 16 0zm6 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path></svg> Vietato organizzare feste/eventi</li>
+                                <li><i class="fa-solid fa-paw"></i> È consentito portare animali domestici</li>
+                                <li>
+                                    <div class="pt-3">
+                                        <strong class="other"><a href="#">Mostra altro</a> <i class="fa-solid fa-greater-than"></i></strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 pb-5">
+                            <h5>
+                                Salute e sicurezza
+                            </h5>
+                            <ul>
+                            <li class="d-flex"><i class="fa-solid fa-hand-sparkles"></i> Si applicano le pratiche di sicurezza di Airbnb per l'emergenza COVID-19</li>
+                                <li><i class="fa-solid fa-circle-question"></i> Rilevatore di monossido di carbonio non segnalato <strong class="other"><a href="#">Mostra altro</a></strong></li>
+                                <li><i class="fa-solid fa-circle-question"></i> Allarme antincendio non segnalato <strong class="other"><a href="#">Mostra altro</a></strong></li>
+                                <li>
+                                    <div class="pt-3">
+                                        <strong class="other"><a href="#">Mostra altro</a> <i class="fa-solid fa-greater-than"></i></strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 pb-5">
+                            <h5>
+                                Termini di cancellazione
+                            </h5>
+                            <p>
+                                Questa prenotazione non è rimborsabile.
+                            </p>
+                            <p>
+                                Leggi i termini di cancellazione completi dell'host, che si applicano anche in caso di malattia o disagi legati alla pandemia di COVID-19.
+                            </p>
+                            <div class="pt-3">
+                                        <strong class="other"><a href="#">Mostra altro</a> <i class="fa-solid fa-greater-than"></i></strong>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -313,7 +502,7 @@ export default {
         }
 
         img{
-            width: 40px;
+            width: 130px;
         }
 
         .logo-text{
@@ -386,25 +575,6 @@ export default {
     }
 
 }
-
-@media screen and (max-width: 1000px) {
-  .research-menu{
-    .logo{
-      display: none;  
-    }
-
-    .search {  
-      .bar {
-        width: 160px;
-      }
-    }
-  }
-
-    .width{
-        margin-bottom: 80px;
-    }
-}
-
 .single{
     margin-bottom: 65px;
 
@@ -435,6 +605,15 @@ export default {
     .sub-title-2{
         color: grey;
     }
+}
+
+.bkg-bottom {
+    background-color: #f0f0f0;
+    padding: 20px 0;
+    margin-top: -17px;
+    margin-bottom: -25px;
+    border-top: 1px solid lightgray;
+    
 }
 
 .container {
@@ -533,30 +712,82 @@ export default {
     }
     
 
-}   
-.review{
-    width: 64%;
-    margin: 0 auto;
+    .review{
+        .review-title{
+            font-size: 20px;
+            font-weight: 600;
+        }
 
-    .review-title{
-        font-size: 20px;
-        font-weight: 600;
-    }
-
-    .progress{
-        height: 0.3rem;
-        .progress-bar {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
-            color: #ffffff;
-            text-align: center;
-            white-space: nowrap;
-            background-color: #000000;
-            transition: width 0.6s ease;
+        .progress{
+            height: 0.3rem;
+            background-color: white;
+            .progress-bar {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: hidden;
+                color: #ffffff;
+                text-align: center;
+                white-space: nowrap;
+                background-color: #000000;
+                transition: width 0.6s ease;
+            }
         }
     }
 
+    .review-list {
+        .am-img-profile {
+            object-fit: cover;
+            border-radius: 50%;
+            vertical-align: bottom;
+            width: 40px;
+            height: 40px;  
+        }
+        .am-info-profile {
+            padding-left: 10px;
+
+            .am-name-profile {
+                font-size: 16px;
+            }
+            .am-date-profile {
+                font-size: 14px;
+            }
+        }
+        .am-review-profile {
+            font-size: 16px;
+            padding-top: 10px;
+            padding-bottom: 40px;
+        }
+    }
 }
+
+.know {
+    font-size: 15px;
+    .other {
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+}
+
+@media screen and (max-width: 1000px) {
+  .research-menu{
+    .logo{
+      display: none;  
+    }
+
+    .search {  
+      .bar {
+        width: 160px;
+      }
+    }
+  }
+
+    .width{
+        margin-bottom: 80px;
+    }
+}
+
 </style>
