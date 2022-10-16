@@ -34,6 +34,7 @@ class ApartmentController extends Controller
         $user = Auth::user();
         $have_one = true;
         $last_sponsorship = false;
+        $sponsor_detail =  null;
         // ricarca degli appartamenti registrati dallo user
         $apartments = Apartment::Where('users_id', '=', $user->id)->first();
         // $sponsor = ApartmentSponsorship::all();
@@ -42,7 +43,7 @@ class ApartmentController extends Controller
             // ricerca dell'ultima sponsorizzazione
             $last_sponsorship = ApartmentSponsorship::Where('apartment_id', '=', $apartments->id)->get();  
 
-            if($last_sponsorship){
+            if(count($last_sponsorship) > 0){
                 $sponsor_detail = Sponsorship::find($last_sponsorship[count($last_sponsorship) - 1]->sponsorship_id);
             }
         }
@@ -125,10 +126,17 @@ class ApartmentController extends Controller
         // Take the current user
         $user = Auth::user();
         $form_data = $request->all();
+        $sponsorship_type = null;
+        $sponsorship = null;
         $show_updated_message = isset($form_data['updated']) ? $form_data['updated'] : null;
         // ricarca degli appartamenti registrati dallo user
-        $apartments = Apartment::Where('users_id', '=', $user->id)->first();
+        $apartments = Apartment::Where('users_id', '=', $user->id)->with("service")->first();
         // controllo se un utente ha registrato un appartamento
+        $sponsorship = ApartmentSponsorship::where('apartment_id', $apartments->id)->get();
+        if(count($sponsorship) > 0){
+            $sponsorship_type = Sponsorship::findOrfail($sponsorship[count($sponsorship) - 1]->sponsorship_id)->first();
+        }
+        
         if($apartments == null){
             
             $data = [
@@ -141,6 +149,7 @@ class ApartmentController extends Controller
                 'show_updated_message' => $show_updated_message,
                 'have_one' => true,
                 'apartments' => $apartments,
+                'sponsorship' =>  $sponsorship_type,
             ]; 
         }
         

@@ -9,10 +9,11 @@
           <div class="sponsorship-name {{$sponsorship->name}}">{{$sponsorship->name}}</div> 
           <div class="payment-info">
             <div class="my-2">
+              <div class="pointer btn ms-btn" onclick="cretePayment({{$sponsorship->id}}, '{{$tokenAutorization}}', {{ $apartment }})">Paga</div>
+              <h4>Dettagli: </h4>
               <div>Ore: {{$sponsorship->hour}}</div>
               <div>Prezzo: {{$sponsorship->price}} €</div>
-            </div>
-            <div class="pointer" onclick="cretePayment({{$sponsorship->id}}, '{{$tokenAutorization}}', {{ $apartment }})">Paga</div>
+            </div>          
           </div>
         </div>
       </div>
@@ -22,7 +23,7 @@
   <div id="dropin-wrapper" class="payment-wrapper">
     <div id="checkout-message"></div>
     <div id="dropin-container"></div>
-    <button id="submit-button">Submit payment</button>
+    <button id="submit-button" class="btn ms-btn">Submit payment</button>
   </div>
 </div>
   <!-- includes the Braintree JS client SDK -->
@@ -31,11 +32,11 @@
   <!-- includes jQuery -->
   <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
   <script>
-    
+    var button_type = document.querySelector('#submit-button').style.display = "none"
     function cretePayment(id,tokenAutorization,apartment){
       $('#dropin-container').html("");
+      var button_type = document.querySelector('#submit-button').style.display = "block";
       var button = document.querySelector('#submit-button');
-      
       braintree.dropin.create({
         // Insert your tokenization key here
         authorization: tokenAutorization,

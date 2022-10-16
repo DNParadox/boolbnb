@@ -1,9 +1,103 @@
+h2{
+    font-size: 35px;
+}
+
+.address{
+    font-size: 18px;
+}
+
 .apartment-container {
+
     .apartment{
-        
+        display: flex;
+        justify-content: center;
+
+        .col-apartment{
+            width: 100%;
+            
+            img{
+                aspect-ratio: 16/9;
+                border-radius: 20px;  
+            }
+        }
+    }
+
+
+    .detail-show{
+        margin-top: 2.2rem;
+        display: flex;
+        justify-content: space-between;
+        .detail-apartment{
+            width: 70%;
+
+            .info{
+                font-size: 17px;
+            }
+
+            .services-col{
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                .service-ss{                 
+                    font-size: 17px;
+                    width: 34%;
+                }
+            }
+
+        }
+
+        .CTA-apartment{
+            position: relative;
+            width: 30%;
+            .CTA-fake-form{
+                top: 15px;
+                position: sticky;
+                margin-right: 30px;
+                padding-block: 15px;
+                width: 100%;
+                
+                .title{
+                    font-size: 19px;
+                }
+
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    li{
+                        padding: 0 10px;
+                        font-size: 16px;
+                        margin-bottom: 7px;
+                        i{
+                            color: #ff385c;
+                        }
+
+                        &:hover{
+                            transform: scale(1.2);
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
     }
 }
 
+
+
+@media screen and (max-width: 1000px) {
+    .apartment-container {
+
+        .apartment{
+            display: block;
+            .col-apartment{
+                width: 100%;
+            }
+        }
+    }
+}
 .banner {
     background-color: #ff385c;
     margin-top: 60px;
@@ -21,3 +115,7 @@
     }
 }
 
+.remove-btn{
+    background-color: transparent;
+    border: none;
+}
