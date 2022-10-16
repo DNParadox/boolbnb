@@ -2587,12 +2587,10 @@ var staticRenderFns = [function () {
     staticClass: "logo"
   }, [_c("img", {
     attrs: {
-      src: __webpack_require__(/*! ../../../public/storage/airbnb.png */ "./storage/app/public/airbnb.png"),
+      src: __webpack_require__(/*! ../../../public/storage/logo-boolbnb.png */ "./storage/app/public/logo-boolbnb.png"),
       alt: "BoolBnB"
     }
-  }), _vm._v(" "), _c("span", {
-    staticClass: "logo-text"
-  }, [_vm._v("Boolbnb")])]);
+  })]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -3286,7 +3284,11 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  })])])])])]) : _vm._e(), _vm._v(" "), _c("div", [_c("hr"), _vm._v(" "), _c("div", {
+  })])])])])]) : _vm._e(), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "bkg-bottom"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "mt-3 review"
   }, [_c("span", {
     staticClass: "review-title"
@@ -3298,7 +3300,33 @@ var render = function render() {
     attrs: {
       href: ""
     }
-  }, [_vm._v(_vm._s(_vm.recensioni) + " recensioni")])]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)])])])]);
+  }, [_vm._v(_vm._s(_vm.recensioni) + " recensioni")])]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)]), _vm._v(" "), _vm._m(10), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "pt-3"
+  }, [_c("h4", [_vm._v("\r\n                        Da sapere\r\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "row know"
+  }, [_c("div", {
+    staticClass: "col-md-4 pb-5"
+  }, [_c("h5", [_vm._v("\r\n                                Regole della casa\r\n                            ")]), _vm._v(" "), _c("ul", [_vm._m(11), _vm._v(" "), _vm._m(12), _vm._v(" "), _vm._m(13), _vm._v(" "), _c("li", {
+    staticClass: "d-flex"
+  }, [_c("svg", {
+    staticStyle: {
+      display: "block",
+      height: "16px",
+      width: "16px",
+      fill: "currentcolor"
+    },
+    attrs: {
+      viewBox: "0 0 32 32",
+      xmlns: "http://www.w3.org/2000/svg",
+      "aria-hidden": "true",
+      role: "presentation",
+      focusable: "false"
+    }
+  }, [_c("path", {
+    attrs: {
+      d: "M5.12 9.363l13.882 13.88c-.494.349-1.01.694-1.549 1.035L19.65 27.2a1.125 1.125 0 0 1-.433 1.7l-.111.043-.157.039-.04.006-.158.013H17v3h-2v-3h-1.75a1.125 1.125 0 0 1-1.117-1.264l.025-.131.067-.189.021-.045.103-.17 2.14-2.862C8.212 20.918 5 16.457 5 11c0-.556.041-1.103.12-1.637zm-1.413-7.07l26 26-1.414 1.414-26-26 1.414-1.414zM16 0c5.909 0 11 5.275 11 11 0 2.915-1.167 5.676-3.472 8.286L7.853 3.609A10.972 10.972 0 0 1 16 0zm6 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"
+    }
+  })]), _vm._v(" Vietato organizzare feste/eventi")]), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15)])]), _vm._v(" "), _vm._m(16), _vm._v(" "), _vm._m(17)])])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -3446,7 +3474,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\r\n                                    Pulizia\r\n                                ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                        Pulizia\r\n                                    ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3467,7 +3495,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\r\n                                    Precisione\r\n                                ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                        Precisione\r\n                                    ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3490,7 +3518,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\r\n                                    Comunicazione\r\n                                ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                        Comunicazione\r\n                                    ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3511,7 +3539,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\r\n                                    Posizione\r\n                                ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                        Posizione\r\n                                    ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3534,7 +3562,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\r\n                                    Check-in\r\n                                ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                        Check-in\r\n                                    ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3555,7 +3583,7 @@ var staticRenderFns = [function () {
     staticClass: "row align-items-center"
   }, [_c("div", {
     staticClass: "col"
-  }, [_vm._v("\r\n                                    Qualità\\prezzo\r\n                                ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\r\n                                        Qualità\\prezzo\r\n                                    ")]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("div", {
     staticClass: "progress"
@@ -3571,6 +3599,256 @@ var staticRenderFns = [function () {
       "aria-valuemax": "100"
     }
   })])])])])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "review-list row pt-5"
+  }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticStyle: {
+      height: "40px",
+      width: "40px"
+    }
+  }, [_c("img", {
+    staticClass: "am-img-profile",
+    attrs: {
+      alt: "Tom",
+      src: "https://a0.muscache.com/im/pictures/user/aa78da6c-f963-4f5c-a2a7-a2caa33094d0.jpg?im_w=240",
+      "data-original-uri": "https://a0.muscache.com/im/pictures/user/aa78da6c-f963-4f5c-a2a7-a2caa33094d0.jpg?im_w=240"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "am-info-profile"
+  }, [_c("div", {
+    staticClass: "am-name-profile"
+  }, [_c("strong", [_vm._v("\r\n                                        Tom\r\n                                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "am-date-profile"
+  }, [_vm._v("\r\n                                    settembre 2022\r\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "am-review-profile"
+  }, [_vm._v("\r\n                            La posizione è semplicemente bella. Abbiamo trascorso un soggiorno fantastico e rilassante e speriamo tanto di tornare un giorno.\r\n                        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticStyle: {
+      height: "40px",
+      width: "40px"
+    }
+  }, [_c("img", {
+    staticClass: "am-img-profile",
+    attrs: {
+      alt: "Denise",
+      src: "https://a0.muscache.com/im/pictures/user/af7778f1-ceaf-440d-a66d-4d262f372fbd.jpg?im_w=240",
+      "data-original-uri": "https://a0.muscache.com/im/pictures/user/af7778f1-ceaf-440d-a66d-4d262f372fbd.jpg?im_w=240"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "am-info-profile"
+  }, [_c("div", {
+    staticClass: "am-name-profile"
+  }, [_c("strong", [_vm._v("\r\n                                        Denise\r\n                                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "am-date-profile"
+  }, [_vm._v("\r\n                                    agosto 2022\r\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "am-review-profile"
+  }, [_vm._v("\r\n                            Abbiamo soggiornato in un gruppo di 6 persone e l'alloggio è spazioso e carino. Tutto quello di cui avremmo potuto avere bisogno era nella casa, incredibilmente lussuosa! Ci siamo divertiti e Per-Henrik e la famiglia sono stati gentili e disponibili quando necessario.\r\n                        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticStyle: {
+      height: "40px",
+      width: "40px"
+    }
+  }, [_c("img", {
+    staticClass: "am-img-profile",
+    attrs: {
+      alt: "Saskia",
+      src: "https://a0.muscache.com/im/pictures/user/43591778-eeaf-4046-8b29-c82cb159ddcb.jpg?im_w=240",
+      "data-original-uri": "https://a0.muscache.com/im/pictures/user/43591778-eeaf-4046-8b29-c82cb159ddcb.jpg?im_w=240"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "am-info-profile"
+  }, [_c("div", {
+    staticClass: "am-name-profile"
+  }, [_c("strong", [_vm._v("\r\n                                        Saskia\r\n                                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "am-date-profile"
+  }, [_vm._v("\r\n                                    giugno 2022\r\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "am-review-profile"
+  }, [_vm._v("\r\n                            La casa di Per-Henriks è fantastica. Situato su un'isola, con viste favolose e molto tranquille. C'è una sauna, con un terrazzo sull'acqua. È anche un posto molto piacevole per cenare e rilassarsi. È disponibile una canoa per esplorare parte dell'enorme lago. I negozi di alimentari non sono lontani in auto e ci sono molti ristoranti a Ostersund. Splendide...\r\n                        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticStyle: {
+      height: "40px",
+      width: "40px"
+    }
+  }, [_c("img", {
+    staticClass: "am-img-profile",
+    attrs: {
+      alt: "Leonie",
+      src: "https://a0.muscache.com/im/pictures/user/bf77f6ba-fcb5-4e70-a71a-91e720ee7d38.jpg?im_w=240",
+      "data-original-uri": "https://a0.muscache.com/im/pictures/user/bf77f6ba-fcb5-4e70-a71a-91e720ee7d38.jpg?im_w=240"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "am-info-profile"
+  }, [_c("div", {
+    staticClass: "am-name-profile"
+  }, [_c("strong", [_vm._v("\r\n                                        Leonie\r\n                                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "am-date-profile"
+  }, [_vm._v("\r\n                                    giugno 2022\r\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "am-review-profile"
+  }, [_vm._v("\r\n                            La casa sull'isola privata è la fuga perfetta dalla città per un paio di giorni o anche una settimana. La vista sul lago è magica e soprattutto in estate, quando c'è la luce del giorno quasi 24 ore è un'esperienza davvero speciale.\r\n                        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticStyle: {
+      height: "40px",
+      width: "40px"
+    }
+  }, [_c("img", {
+    staticClass: "am-img-profile",
+    attrs: {
+      alt: "Thom",
+      src: "https://a0.muscache.com/im/users/35290292/profile_pic/1433773070/original.jpg?im_w=240",
+      "data-original-uri": "https://a0.muscache.com/im/users/35290292/profile_pic/1433773070/original.jpg?im_w=240"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "am-info-profile"
+  }, [_c("div", {
+    staticClass: "am-name-profile"
+  }, [_c("strong", [_vm._v("\r\n                                        Thom\r\n                                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "am-date-profile"
+  }, [_vm._v("\r\n                                    febbraio 2022\r\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "am-review-profile"
+  }, [_vm._v("\r\n                            La posizione è incredibile, un'isola privata con vista sul lago Storsjön. La sauna sul bordo del lago è semplicemente fantastica. La vista può tenerti occupato per tutto il giorno. Quando entri nella grande casa è chiaro che è necessario fare un po' di lavoro. Non è nel suo stato migliore. Le camere hanno un aspetto...\r\n                        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-6"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticStyle: {
+      height: "40px",
+      width: "40px"
+    }
+  }, [_c("img", {
+    staticClass: "am-img-profile",
+    attrs: {
+      alt: "Maxime",
+      decoding: "async",
+      elementtiming: "LCP-target",
+      src: "https://a0.muscache.com/im/pictures/user/2733a740-735d-4e61-afeb-7d63a7c818f1.jpg?im_w=240",
+      "data-original-uri": "https://a0.muscache.com/im/pictures/user/2733a740-735d-4e61-afeb-7d63a7c818f1.jpg?im_w=240"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "am-info-profile"
+  }, [_c("div", {
+    staticClass: "am-name-profile"
+  }, [_c("strong", [_vm._v("\r\n                                        Maxime\r\n                                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "am-date-profile"
+  }, [_vm._v("\r\n                                    febbraio 2022\r\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "am-review-profile"
+  }, [_vm._v("\r\n                            La casa di Per-Henrik è incredibile, prima hai la posizione, ogni mattina ti sveglierai con una vista mozzafiato sul lago. Il posto è molto calmo, perfetto per un buon riposo. Sei a breve distanza in auto da Ostersund e sei se ti piace sciare o fare attività. La casa è enorme e molto ben arredata. Non ti perdi nulla mentre soggiorni qui. Puoi cucinare come a...\r\n                        ")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("i", {
+    staticClass: "fa-solid fa-clock"
+  }), _vm._v(" Check-in: Dopo le ore 14:00")]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("i", {
+    staticClass: "fa-solid fa-clock"
+  }), _vm._v(" Check-out: 10:00")]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("i", {
+    staticClass: "fa-solid fa-ban-smoking"
+  }), _vm._v(" Non è consentito fumare")]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("i", {
+    staticClass: "fa-solid fa-paw"
+  }), _vm._v(" È consentito portare animali domestici")]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", [_c("div", {
+    staticClass: "pt-3"
+  }, [_c("strong", {
+    staticClass: "other"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Mostra altro")]), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-greater-than"
+  })])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-md-4 pb-5"
+  }, [_c("h5", [_vm._v("\r\n                                Salute e sicurezza\r\n                            ")]), _vm._v(" "), _c("ul", [_c("li", {
+    staticClass: "d-flex"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-hand-sparkles"
+  }), _vm._v(" Si applicano le pratiche di sicurezza di Airbnb per l'emergenza COVID-19")]), _vm._v(" "), _c("li", [_c("i", {
+    staticClass: "fa-solid fa-circle-question"
+  }), _vm._v(" Rilevatore di monossido di carbonio non segnalato "), _c("strong", {
+    staticClass: "other"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Mostra altro")])])]), _vm._v(" "), _c("li", [_c("i", {
+    staticClass: "fa-solid fa-circle-question"
+  }), _vm._v(" Allarme antincendio non segnalato "), _c("strong", {
+    staticClass: "other"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Mostra altro")])])]), _vm._v(" "), _c("li", [_c("div", {
+    staticClass: "pt-3"
+  }, [_c("strong", {
+    staticClass: "other"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Mostra altro")]), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-greater-than"
+  })])])])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-md-4 pb-5"
+  }, [_c("h5", [_vm._v("\r\n                                Termini di cancellazione\r\n                            ")]), _vm._v(" "), _c("p", [_vm._v("\r\n                                Questa prenotazione non è rimborsabile.\r\n                            ")]), _vm._v(" "), _c("p", [_vm._v("\r\n                                Leggi i termini di cancellazione completi dell'host, che si applicano anche in caso di malattia o disagi legati alla pandemia di COVID-19.\r\n                            ")]), _vm._v(" "), _c("div", {
+    staticClass: "pt-3"
+  }, [_c("strong", {
+    staticClass: "other"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Mostra altro")]), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-greater-than"
+  })])])]);
 }];
 render._withStripped = true;
 
@@ -7998,7 +8276,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".research-menu[data-v-04c29797] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-04c29797] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-04c29797] {\n  width: 40px;\n}\n.research-menu .logo .logo-text[data-v-04c29797] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-04c29797] {\n  position: relative;\n}\n.research-menu .user .login[data-v-04c29797] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-04c29797] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-04c29797] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-04c29797] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-04c29797]:hover {\n  background-color: #e3e3e3;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-04c29797] {\n    display: none;\n}\n.research-menu .search .bar[data-v-04c29797] {\n    width: 160px;\n}\n.width[data-v-04c29797] {\n    margin-bottom: 80px;\n    width: calc(100% - 200px);\n}\n}\n.width[data-v-04c29797] {\n  width: 100%;\n  overflow: hidden;\n}\n.container-xxl[data-v-04c29797] {\n  padding-inline: 15px;\n}\n.container-xxl .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.container-xxl .card img[data-v-04c29797] {\n  border-radius: 14px;\n  aspect-ratio: 1/1;\n}\n.container-xxl .card .card-body[data-v-04c29797] {\n  padding-inline: 8px;\n}\n.container-xxl .card .description[data-v-04c29797] {\n  color: grey;\n}\n.container-xxl .card a[data-v-04c29797] {\n  margin-top: 7px;\n}\n.wapper-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 9999;\n  background-color: inherit;\n}\n.wapper-container i[data-v-04c29797] {\n  border: 2px solid #b1b1b1;\n  border-radius: 50%;\n  padding: 3px 5px;\n  margin-bottom: 10px;\n  cursor: pointer;\n}\n.wapper-container .images[data-v-04c29797] {\n  width: 75%;\n  overflow-x: auto;\n}\n.wapper-container .images div img[data-v-04c29797] {\n  cursor: pointer;\n  width: 32px;\n  height: 32px;\n  margin-inline: 30px;\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images div span[data-v-04c29797] {\n  cursor: pointer;\n  font-size: 11px;\n  font-weight: 700;\n  color: #939393;\n}\n.wapper-container .images div[data-v-04c29797]:hover {\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images[data-v-04c29797] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}", ""]);
+exports.push([module.i, ".research-menu[data-v-04c29797] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-04c29797] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-04c29797] {\n  width: 130px;\n}\n.research-menu .logo .logo-text[data-v-04c29797] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-04c29797] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-04c29797] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-04c29797] {\n  position: relative;\n}\n.research-menu .user .login[data-v-04c29797] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-04c29797] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-04c29797] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-04c29797] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-04c29797]:hover {\n  background-color: #e3e3e3;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-04c29797] {\n    display: none;\n}\n.research-menu .search .bar[data-v-04c29797] {\n    width: 160px;\n}\n.width[data-v-04c29797] {\n    margin-bottom: 80px;\n    width: calc(100% - 200px);\n}\n}\n.width[data-v-04c29797] {\n  width: 100%;\n  overflow: hidden;\n}\n.container-xxl[data-v-04c29797] {\n  padding-inline: 15px;\n}\n.container-xxl .card[data-v-04c29797] {\n  margin-top: 3rem;\n  border: none;\n  background-color: inherit;\n}\n.container-xxl .card img[data-v-04c29797] {\n  border-radius: 14px;\n  aspect-ratio: 1/1;\n}\n.container-xxl .card .card-body[data-v-04c29797] {\n  padding-inline: 8px;\n}\n.container-xxl .card .description[data-v-04c29797] {\n  color: grey;\n}\n.container-xxl .card a[data-v-04c29797] {\n  margin-top: 7px;\n}\n.wapper-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 9999;\n  background-color: inherit;\n}\n.wapper-container i[data-v-04c29797] {\n  border: 2px solid #b1b1b1;\n  border-radius: 50%;\n  padding: 3px 5px;\n  margin-bottom: 10px;\n  cursor: pointer;\n}\n.wapper-container .images[data-v-04c29797] {\n  width: 75%;\n  overflow-x: auto;\n}\n.wapper-container .images div img[data-v-04c29797] {\n  cursor: pointer;\n  width: 32px;\n  height: 32px;\n  margin-inline: 30px;\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images div span[data-v-04c29797] {\n  cursor: pointer;\n  font-size: 11px;\n  font-weight: 700;\n  color: #939393;\n}\n.wapper-container .images div[data-v-04c29797]:hover {\n  filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(92%) contrast(86%);\n}\n.wapper-container .images[data-v-04c29797] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}", ""]);
 
 // exports
 
@@ -8036,7 +8314,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.research-menu[data-v-4fd40851] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-4fd40851] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-4fd40851] {\n  width: 40px;\n}\n.research-menu .logo .logo-text[data-v-4fd40851] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-4fd40851] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-4fd40851] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-4fd40851] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-4fd40851] {\n  position: relative;\n}\n.research-menu .user .login[data-v-4fd40851] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-4fd40851] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-4fd40851] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-4fd40851] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-4fd40851]:hover {\n  background-color: #e3e3e3;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-4fd40851] {\n    display: none;\n}\n.research-menu .search .bar[data-v-4fd40851] {\n    width: 160px;\n}\n.width[data-v-4fd40851] {\n    margin-bottom: 80px;\n}\n}\n.single[data-v-4fd40851] {\n  margin-bottom: 65px;\n}\n.single h1[data-v-4fd40851] {\n  padding: 0;\n  margin: 0;\n  text-align: left;\n}\n.cover-services img[data-v-4fd40851] {\n  width: 16%;\n  margin-block: 0.5rem 1.5rem;\n}\n.cover-services a[data-v-4fd40851] {\n  text-decoration: underline;\n}\n.alignment-info[data-v-4fd40851] {\n  align-items: center;\n}\n.alignment-info .sub-title[data-v-4fd40851] {\n  font-weight: 700;\n}\n.alignment-info .sub-title-2[data-v-4fd40851] {\n  color: grey;\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0 0;\n  position: relative;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" \\B7   \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 16px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n  width: 40%;\n}\n.container .bottom-part .right[data-v-4fd40851] {\n  position: relative;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  position: sticky;\n  top: 10%;\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n}\n.container .box-share[data-v-4fd40851] {\n  padding: 5px 7px;\n  margin-left: 8px;\n  cursor: pointer;\n}\n.container .box-share[data-v-4fd40851]:hover {\n  background-color: rgb(244, 244, 244);\n  border-radius: 12px;\n}\n.container .color-btn-message[data-v-4fd40851] {\n  color: white;\n  background-color: #ff385c;\n  width: 100%;\n  margin-bottom: 0.6rem;\n}\n.review[data-v-4fd40851] {\n  width: 64%;\n  margin: 0 auto;\n}\n.review .review-title[data-v-4fd40851] {\n  font-size: 20px;\n  font-weight: 600;\n}\n.review .progress[data-v-4fd40851] {\n  height: 0.3rem;\n}\n.review .progress .progress-bar[data-v-4fd40851] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  overflow: hidden;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #000000;\n  transition: width 0.6s ease;\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.research-menu[data-v-4fd40851] {\n  margin-top: 20px;\n  padding-inline: 15px;\n}\n.research-menu .logo *[data-v-4fd40851] {\n  vertical-align: middle;\n}\n.research-menu .logo img[data-v-4fd40851] {\n  width: 40px;\n}\n.research-menu .logo .logo-text[data-v-4fd40851] {\n  margin-left: 6px;\n  font-size: 24px;\n  font-weight: 600;\n  color: #ff385c;\n}\n.research-menu .search[data-v-4fd40851] {\n  display: flex;\n  justify-content: center;\n}\n.research-menu .search .bar[data-v-4fd40851] {\n  width: 300px;\n  padding: 10px;\n  border-radius: 7px 0 0 7px;\n  border: 1px solid lightgray;\n}\n.research-menu .search .ms_btn[data-v-4fd40851] {\n  padding: 10px 15px;\n  background-color: #ff385c;\n  color: white;\n  border: none;\n  border-radius: 0 7px 7px 0;\n}\n.research-menu .user[data-v-4fd40851] {\n  position: relative;\n}\n.research-menu .user .login[data-v-4fd40851] {\n  font-size: 22px;\n  margin-right: 12px;\n  padding: 8px;\n  border: 2px solid #ff385c;\n  border-radius: 20px;\n  color: #ff385c;\n}\n.research-menu .user .menu[data-v-4fd40851] {\n  margin-top: 10px;\n  padding: 12px 0;\n  position: absolute;\n  z-index: 99999;\n  right: 10px;\n  left: -140px;\n  border: 1px solid #939393;\n  border-radius: 12px;\n  background-color: #f2f2f2;\n}\n.research-menu .user .menu i[data-v-4fd40851] {\n  position: absolute;\n  top: -9px;\n  right: 16px;\n  color: #939393;\n}\n.research-menu .user .menu .menu-login li[data-v-4fd40851] {\n  padding-block: 5px;\n}\n.research-menu .user .menu .menu-login li[data-v-4fd40851]:hover {\n  background-color: #e3e3e3;\n}\n.single[data-v-4fd40851] {\n  margin-bottom: 65px;\n}\n.single h1[data-v-4fd40851] {\n  padding: 0;\n  margin: 0;\n  text-align: left;\n}\n.cover-services img[data-v-4fd40851] {\n  width: 16%;\n  margin-block: 0.5rem 1.5rem;\n}\n.cover-services a[data-v-4fd40851] {\n  text-decoration: underline;\n}\n.alignment-info[data-v-4fd40851] {\n  align-items: center;\n}\n.alignment-info .sub-title[data-v-4fd40851] {\n  font-weight: 700;\n}\n.alignment-info .sub-title-2[data-v-4fd40851] {\n  color: grey;\n}\n.bkg-bottom[data-v-4fd40851] {\n  background-color: #f0f0f0;\n  padding: 20px 0;\n  margin-top: -17px;\n  margin-bottom: -25px;\n  border-top: 1px solid lightgray;\n}\n.container .address[data-v-4fd40851] {\n  color: grey;\n  margin-bottom: 20px;\n}\n.container .image img[data-v-4fd40851] {\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 400px;\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\n}\n.container .map[data-v-4fd40851] {\n  width: 100%;\n  height: 100%;\n}\n.container .mapboxgl-map[data-v-4fd40851] {\n  border-radius: 15px;\n}\n.container .bottom-part[data-v-4fd40851] {\n  display: flex;\n  justify-content: space-between;\n  padding: 30px 0 0;\n  position: relative;\n}\n.container .bottom-part .left .info[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .info span[data-v-4fd40851]:not(:last-child)::after {\n  content: \" \\B7   \";\n}\n.container .bottom-part .left hr[data-v-4fd40851] {\n  border-color: lightgrey;\n}\n.container .bottom-part .left .description[data-v-4fd40851] {\n  font-size: 18px;\n}\n.container .bottom-part .left .services[data-v-4fd40851] {\n  font-size: 16px;\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.container .bottom-part .left .services span[data-v-4fd40851] {\n  flex-basis: 50%;\n  margin-bottom: 15px;\n}\n.container .bottom-part .left .services div[data-v-4fd40851] {\n  margin-right: 16px;\n  width: 40%;\n}\n.container .bottom-part .right[data-v-4fd40851] {\n  position: relative;\n}\n.container .bottom-part .right .contact[data-v-4fd40851] {\n  position: sticky;\n  top: 10%;\n  border: 1px solid lightgray;\n  border-radius: 15px;\n  padding: 10px;\n}\n.container .box-share[data-v-4fd40851] {\n  padding: 5px 7px;\n  margin-left: 8px;\n  cursor: pointer;\n}\n.container .box-share[data-v-4fd40851]:hover {\n  background-color: rgb(244, 244, 244);\n  border-radius: 12px;\n}\n.container .color-btn-message[data-v-4fd40851] {\n  color: white;\n  background-color: #ff385c;\n  width: 100%;\n  margin-bottom: 0.6rem;\n}\n.container .review .review-title[data-v-4fd40851] {\n  font-size: 20px;\n  font-weight: 600;\n}\n.container .review .progress[data-v-4fd40851] {\n  height: 0.3rem;\n  background-color: white;\n}\n.container .review .progress .progress-bar[data-v-4fd40851] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  overflow: hidden;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  background-color: #000000;\n  transition: width 0.6s ease;\n}\n.container .review-list .am-img-profile[data-v-4fd40851] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 50%;\n  vertical-align: bottom;\n  width: 40px;\n  height: 40px;\n}\n.container .review-list .am-info-profile[data-v-4fd40851] {\n  padding-left: 10px;\n}\n.container .review-list .am-info-profile .am-name-profile[data-v-4fd40851] {\n  font-size: 16px;\n}\n.container .review-list .am-info-profile .am-date-profile[data-v-4fd40851] {\n  font-size: 14px;\n}\n.container .review-list .am-review-profile[data-v-4fd40851] {\n  font-size: 16px;\n  padding-top: 10px;\n  padding-bottom: 40px;\n}\n.know[data-v-4fd40851] {\n  font-size: 15px;\n}\n.know .other a[data-v-4fd40851] {\n  color: inherit;\n  text-decoration: underline;\n}\n@media screen and (max-width: 1000px) {\n.research-menu .logo[data-v-4fd40851] {\n    display: none;\n}\n.research-menu .search .bar[data-v-4fd40851] {\n    width: 160px;\n}\n.width[data-v-4fd40851] {\n    margin-bottom: 80px;\n}\n}", ""]);
 
 // exports
 
@@ -56067,6 +56345,17 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 
 /***/ }),
 
+/***/ "./storage/app/public/logo-boolbnb.png":
+/*!*********************************************!*\
+  !*** ./storage/app/public/logo-boolbnb.png ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-boolbnb.png?d34261645dcaeaafa0c0a1e61f56eb1a";
+
+/***/ }),
+
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -56074,8 +56363,8 @@ module.exports = "/images/airbnb.png?b29a066fee85cd37eaae107762ff2f2b";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+  __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\js\app.js */"./resources/js/app.js");
+  module.exports = __webpack_require__(/*! C:\Users\loren\Boolean-Project\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
