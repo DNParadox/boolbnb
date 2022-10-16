@@ -501,7 +501,7 @@ export default {
         }
 
         img{
-            width: 40px;
+            width: 130px;
         }
 
         .logo-text{
