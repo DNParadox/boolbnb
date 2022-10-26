@@ -77,10 +77,10 @@
                         }">
                             <img :src="currentApartment.photo" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <div class="d-flex justify-content-between"><h5>{{ currentApartment.title }}</h5><span><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i>{{ randomValutation() }}</span></div>
+                                <div class="d-flex justify-content-between"><h5>{{ currentApartment.title }}</h5><span><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i></span></div>
                                 <div class="description">
                                     <div>Host Professionista</div>
-                                    <div>{{ getText(currentApartment.address)  }}</div>
+          dddddww                          <div>{{ getText(currentApartment.address)  }}</div>
                                     <span>{{currentApartment.price ? currentApartment.price + '€ a notte': 'Per info contatta la struttura' }} </span>
                                 </div>
                             </div>
@@ -151,8 +151,8 @@ export default {
             let dataList = document.getElementById('autocomplete');
             console.log(this.currentSearch);
             let suggestions = [];
-            if(this.currentSearch.length > 12){
-            axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
+            if(this.currentSearch.length > 4){
+            axios.get(`https://api.tomtom.com/search/2/geocode/${this.currentSearch}.json?key=bPDrFGH37g0pZ56Wk83BxfYfIqELJR0v`)
             .then((response)=>{
                 if(response.data.results.length > 0){
                     console.log(response);
@@ -200,12 +200,6 @@ export default {
             }
 
             return sliced;
-        },
-        randomValutation(){
-
-            let value = Math.random() * (4.98 - 0.5) + 0.5;
-            value = String(value).slice(0, 4);
-            return value;
         },
     },
     mounted(){
