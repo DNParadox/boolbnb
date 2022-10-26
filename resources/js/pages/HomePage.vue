@@ -80,7 +80,7 @@
                                 <div class="d-flex justify-content-between"><h5>{{ currentApartment.title }}</h5><span><i class="fa-sharp fa-solid fa-star fa-xs mr-1"></i></span></div>
                                 <div class="description">
                                     <div>Host Professionista</div>
-          dddddww                          <div>{{ getText(currentApartment.address)  }}</div>
+                                        <div>{{ getText(currentApartment.address)  }}</div>
                                     <span>{{currentApartment.price ? currentApartment.price + '€ a notte': 'Per info contatta la struttura' }} </span>
                                 </div>
                             </div>
