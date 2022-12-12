@@ -131,8 +131,8 @@
         let longitude = document.getElementById('longitude');
         let dataList = document.getElementById('addresses');
         let suggestions = [];
-        if(data.address.length > 11){
-          axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=hTkARysmPIUmI98xAqswPUNImV01FNUF`)
+        if(data.address.length > 4){
+          axios.get(`https://api.tomtom.com/search/2/geocode/${data.address}.json?key=bPDrFGH37g0pZ56Wk83BxfYfIqELJR0v`)
           .then((response)=>{
 
             for(let i = 0; i < 4; i++) {
